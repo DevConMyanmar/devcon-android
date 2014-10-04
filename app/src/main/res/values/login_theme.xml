@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Login">
+  </style>
+
+  <style name="Login.Logo">
+    <item name="android:layout_marginTop">50dp</item>
+    <item name="android:src">@drawable/devcon_logo</item>
+  </style>
+
+  <style name="Login.Title">
+    <item name="android:background">@color/text_background</item>
+    <item name="android:padding">@dimen/spacing_major</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">@dimen/text_size_large</item>
+    <item name="android:fontFamily">sans-serif-condensed</item>
+  </style>
+
+  <style name="Login.Slogan">
+    <item name="android:background">@color/text_background</item>
+    <item name="android:padding">@dimen/spacing_medium</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">@dimen/text_size_medium</item>
+    <item name="android:layout_marginTop">@dimen/spacing_micro</item>
+    <item name="android:fontFamily">sans-serif-condensed</item>
+  </style>
+
+  <style name="Login.FbButton">
+    <item name="android:padding">@dimen/spacing_major</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:background">@drawable/fb_button</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_major</item>
+  </style>
+
+</resources>

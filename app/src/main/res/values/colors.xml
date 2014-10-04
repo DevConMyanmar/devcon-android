@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="theme_primary">#c70813</color>
+  <color name="theme_primary_dark">#ff9b0813</color>
+  <color name="theme_primary_light">#88f40813</color>
+
+  <color name="fb_button_background">#3b5998</color>
+  <color name="login_background">#263238</color>
+  <color name="text_background">#50000000</color>
+</resources>

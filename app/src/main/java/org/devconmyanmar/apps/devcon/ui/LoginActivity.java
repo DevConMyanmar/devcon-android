@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,11 @@ public class LoginActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
     ButterKnife.inject(this);
+
+    ActionBar mActionBar = getActionBar();
+    if (mActionBar != null) {
+      mActionBar.hide();
+    }
 
     onLoginListener = new OnLoginListener() {
 
@@ -70,8 +76,7 @@ public class LoginActivity extends Activity {
     super.onActivityResult(requestCode, resultCode, data);
   }
 
-  @SuppressWarnings("method unused")
-  @OnClick(R.id.login_with_facebook) void login() {
+  @SuppressWarnings("method unused") @OnClick(R.id.login_with_facebook) void login() {
     mSimpleFacebook.login(onLoginListener);
   }
 }

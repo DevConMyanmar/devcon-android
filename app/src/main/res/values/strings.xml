@@ -9,4 +9,7 @@
 
   <!-- Login Activity -->
   <string name="log_in_with_facebook">Log in with Facebook</string>
+  <string name="logo_description">DevCon Logo</string>
+  <string name="devcon_title">Developer Conference Yangon 2014</string>
+  <string name="devcon_slogan">Engage, Embrace, Enjoy, Excite</string>
 </resources>
