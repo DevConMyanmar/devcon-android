@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,11 @@ public class ScheduleListActivity extends BaseActivity {
 
     mSlidingTabLayout.setDistributeEvenly(true);
     mSlidingTabLayout.setViewPager(mViewPager);
+
+    ActionBar mActionBar = getActionBar();
+    if (mActionBar != null) {
+      mActionBar.setIcon(android.R.color.transparent);
+    }
   }
 
   private class SlidingTabAdapter extends FragmentPagerAdapter {
@@ -45,7 +51,7 @@ public class ScheduleListActivity extends BaseActivity {
     @Override public Fragment getItem(int position) {
       switch (position) {
         case 0:
-          return FirstDayFragment.getIntance();
+          return FirstDayFragment.getInstance();
         case 1:
           return SecondDayFragment.getInstance();
       }
