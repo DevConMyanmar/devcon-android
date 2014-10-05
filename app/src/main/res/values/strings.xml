@@ -18,6 +18,18 @@
   <string name="first_day">NOV 15</string>
   <string name="second_day">NOV 16</string>
   <string name="drawer_close">Close navigation drawer</string>
-
   <string name="drawer_open">Open navigation drawer</string>
+
+  <!-- Speaker List -->
+  <string name="speaker_list">Speaker List</string>
+
+  <!-- Updates -->
+  <string name="updates">Updates</string>
+
+  <!-- Navigation Drawer Item -->
+  <array name="nav_drawer_items">
+    <item>Schedules</item>
+    <item>Speakers</item>
+    <item>Updates</item>
+  </array>
 </resources>

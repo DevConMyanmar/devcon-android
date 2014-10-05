@@ -1,57 +1,48 @@
 package org.devconmyanmar.apps.devcon.ui;
 
 import android.app.ActionBar;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+import org.devconmyanmar.apps.devcon.ScheduleFragment;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class ScheduleListActivity extends BaseActivity {
 
-  @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
-  @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
   @InjectView(R.id.left_drawer) ListView mDrawerList;
 
   private ActionBarDrawerToggle mDrawerToggle;
-  private String[] mPlanetTitles;
+  private String[] mNavDrawerItems;
   private ActionBar mActionBar;
+  private CharSequence mTitle;
+  private CharSequence mDrawerTitle;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_list);
     ButterKnife.inject(this);
 
-    mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
+    mTitle = mDrawerTitle = getTitle();
 
-    int mPrimaryColor = getResources().getColor(R.color.theme_primary);
-    mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
-    mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
-
-    mViewPager.setAdapter(new SlidingTabAdapter(getSupportFragmentManager()));
-
-    mSlidingTabLayout.setDistributeEvenly(true);
-    mSlidingTabLayout.setViewPager(mViewPager);
-
-    final String mTitle = getString(R.string.schedule_activity);
-    final String mDrawerTitle = getString(R.string.app_name);
+    mNavDrawerItems = getResources().getStringArray(R.array.nav_drawer_items);
 
     mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
     mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_navigation_drawer,
@@ -65,7 +56,7 @@ public class ScheduleListActivity extends BaseActivity {
 
       public void onDrawerOpened(View drawerView) {
         super.onDrawerOpened(drawerView);
-        mActionBar.setTitle(mDrawerTitle);
+        mActionBar.setTitle(getString(R.string.app_name));
         invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
       }
     };
@@ -73,10 +64,12 @@ public class ScheduleListActivity extends BaseActivity {
     mDrawerToggle.syncState(); // this is shit
     mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+    mDrawerList.setAdapter(
+        new ArrayAdapter<String>(this, R.layout.drawer_list_item, mNavDrawerItems));
+
     mActionBar = getActionBar();
     if (mActionBar != null) {
       mActionBar.setIcon(android.R.color.transparent);
-      //mActionBar.setTitle(getString(R.string.schedule_activity));
       mActionBar.setDisplayHomeAsUpEnabled(true);
       mActionBar.setHomeButtonEnabled(true);
     }
@@ -85,6 +78,26 @@ public class ScheduleListActivity extends BaseActivity {
     tintManager.setStatusBarTintEnabled(true);
     tintManager.setNavigationBarTintEnabled(false);
     tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+
+    if (Build.VERSION.SDK_INT >= 19) {
+      SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+      mDrawerList.setPadding(0, config.getPixelInsetTop(true), config.getPixelInsetRight(),
+          config.getPixelInsetBottom());
+    }
+
+    if (savedInstanceState == null) {
+      selectItem(0);
+    }
+
+    FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+    tx.replace(R.id.content_frame, ScheduleFragment.getInstance());
+    tx.commit();
+  }
+
+  @Override
+  public void setTitle(CharSequence title) {
+    mTitle = title;
+    mActionBar.setTitle(mTitle);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,17 +105,14 @@ public class ScheduleListActivity extends BaseActivity {
     return super.onCreateOptionsMenu(menu);
   }
 
-  /* Called whenever we call invalidateOptionsMenu() */
-  @Override
-  public boolean onPrepareOptionsMenu(Menu menu) {
+  @Override public boolean onPrepareOptionsMenu(Menu menu) {
     // If the nav drawer is open, hide action items related to the content view
     boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
     menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
     return super.onPrepareOptionsMenu(menu);
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
     // The action bar home/up action should open or close the drawer.
     // ActionBarDrawerToggle will take care of this.
     if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -115,34 +125,30 @@ public class ScheduleListActivity extends BaseActivity {
     }
   }
 
-  private class SlidingTabAdapter extends FragmentPagerAdapter {
-
-    public SlidingTabAdapter(FragmentManager fm) {
-      super(fm);
+  @OnItemClick(R.id.left_drawer) void selectItem(int position) {
+    // update the main content by replacing fragments
+    Fragment fragment;
+    switch (position) {
+      case 0:
+        fragment = ScheduleFragment.getInstance();
+        break;
+      case 1:
+        fragment = SpeakerFragment.getInstance();
+        break;
+      case 2:
+        fragment = UpdateFragment.getInstance();
+        break;
+      default:
+        fragment = ScheduleFragment.getInstance();
+        break;
     }
 
-    @Override public Fragment getItem(int position) {
-      switch (position) {
-        case 0:
-          return FirstDayFragment.getInstance();
-        case 1:
-          return SecondDayFragment.getInstance();
-      }
-      return null;
-    }
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-    @Override public int getCount() {
-      return 2;
-    }
-
-    @Override public CharSequence getPageTitle(int position) {
-      switch (position) {
-        case 0:
-          return getString(R.string.first_day);
-        case 1:
-          return getString(R.string.second_day);
-      }
-      return super.getPageTitle(position);
-    }
+    // update selected item and title, then close the drawer
+    mDrawerList.setItemChecked(position, true);
+    setTitle(mNavDrawerItems[position]);
+    mDrawerLayout.closeDrawer(mDrawerList);
   }
 }
