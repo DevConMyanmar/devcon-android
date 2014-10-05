@@ -22,4 +22,10 @@
   <style name="AppTheme.LoginTheme" parent="android:Theme.Holo.Light.NoActionBar">
   </style>
 
+  <style name="AppTheme.ScheduleActivity" parent="android:Theme.Holo.Light.DarkActionBar">
+    <!-- API 19 theme customizations can go here. -->
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+  </style>
+
 </resources>

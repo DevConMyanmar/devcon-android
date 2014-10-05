@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="app_name">DevCon</string>
+  <string name="app_name">DevCon 2014</string>
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
 
@@ -17,4 +17,7 @@
   <string name="schedule_activity">Schedules</string>
   <string name="first_day">NOV 15</string>
   <string name="second_day">NOV 16</string>
+  <string name="drawer_close">Close navigation drawer</string>
+
+  <string name="drawer_open">Open navigation drawer</string>
 </resources>
