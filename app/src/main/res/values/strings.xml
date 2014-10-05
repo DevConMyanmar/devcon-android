@@ -12,4 +12,9 @@
   <string name="logo_description">DevCon Logo</string>
   <string name="devcon_title">Developer Conference Yangon 2014</string>
   <string name="devcon_slogan">Engage, Embrace, Enjoy, Excite</string>
+
+  <!-- Schedule Activity -->
+  <string name="schedule_activity">Schedules</string>
+  <string name="first_day">NOV 15</string>
+  <string name="second_day">NOV 16</string>
 </resources>

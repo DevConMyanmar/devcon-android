@@ -1,12 +1,24 @@
 <resources>
+  <style name="FrameworkRoot.ActionBar" parent="android:Widget.Holo.ActionBar"/>
+  <style name="FrameworkRoot.ActionBar.TitleText"
+      parent="android:TextAppearance.Holo.Widget.ActionBar.Title"/>
 
   <!-- Base application theme. -->
   <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
     <!-- Customize your theme here. -->
+    <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+  </style>
+
+  <style name="AppTheme.ActionBar" parent="FrameworkRoot.ActionBar">
+    <item name="android:background">@color/theme_primary</item>
+    <item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleText</item>
+  </style>
+
+  <style name="AppTheme.ActionBar.TitleText" parent="FrameworkRoot.ActionBar.TitleText">
+    <item name="android:textColor">@android:color/white</item>
   </style>
 
   <style name="AppTheme.LoginTheme" parent="android:Theme.Holo.Light.NoActionBar">
-    <!-- Customize your theme here. -->
   </style>
 
 </resources>
