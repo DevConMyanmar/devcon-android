@@ -22,6 +22,7 @@
 
     <activity
         android:name=".ui.ScheduleListActivity"
+        android:theme="@style/AppTheme.ScheduleActivity"
         android:label="@string/schedule_activity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
 
@@ -39,7 +40,13 @@ public class ScheduleListActivity extends BaseActivity {
     ActionBar mActionBar = getActionBar();
     if (mActionBar != null) {
       mActionBar.setIcon(android.R.color.transparent);
+      mActionBar.setTitle("        " + getString(R.string.schedule_activity));
     }
+
+    SystemBarTintManager tintManager = new SystemBarTintManager(this);
+    tintManager.setStatusBarTintEnabled(true);
+    tintManager.setNavigationBarTintEnabled(false);
+    tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
   }
 
   private class SlidingTabAdapter extends FragmentPagerAdapter {

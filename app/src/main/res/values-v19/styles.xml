@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="AppTheme.ScheduleActivity" parent="android:Theme.Holo.Light.DarkActionBar">
+    <!-- API 19 theme customizations can go here. -->
+    <item name="android:windowTranslucentNavigation">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+  </style>
+</resources>
