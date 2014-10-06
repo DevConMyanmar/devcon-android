@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <TextView
-      android:text="@string/first_day"
-      android:textSize="@dimen/text_size_large"
+  <ListView
+      android:id="@+id/first_day_list"
+      android:layout_marginLeft="@dimen/spacing_minor"
+      android:layout_marginStart="@dimen/spacing_minor"
+      android:scrollbarStyle="outsideInset"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerVertical="true"
-      android:layout_centerHorizontal="true"/>
+      android:layout_height="wrap_content"/>
+
 </RelativeLayout>

@@ -26,6 +26,9 @@
   <!-- Updates -->
   <string name="updates">Updates</string>
 
+  <!-- Schedule row -->
+  <string name="keynote_background">Keynote</string>
+
   <!-- Navigation Drawer Item -->
   <array name="nav_drawer_items">
     <item>Schedules</item>

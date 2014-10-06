@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView
+      android:id="@+id/keynote_background"
+      style="@style/KeynoteView.KeynoteImageStyle"
+      android:foreground="@drawable/image_overlay"
+      android:contentDescription="@string/keynote_background"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/keynote_title"
+      style="@style/KeynoteView.KeynoteTitleStyle"
+      tools:text="Keynote by Mr. Ravi Chhabra"
+      android:background="@drawable/gradient_overlay"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+</FrameLayout>

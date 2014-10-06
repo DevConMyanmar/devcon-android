@@ -13,6 +13,7 @@ public class Talk extends RealmObject {
   private String photo;
   private String date;
   private boolean favourite;
+  private int talk_type;
 
   public Talk() {
   }
@@ -63,5 +64,21 @@ public class Talk extends RealmObject {
 
   public void setFavourite(boolean favourite) {
     this.favourite = favourite;
+  }
+
+  public int getTalkType() {
+    return talk_type;
+  }
+
+  public void setTalkType(int talk_type) {
+    this.talk_type = talk_type;
+  }
+
+  public int getTalk_type() {
+    return talk_type;
+  }
+
+  public void setTalk_type(int talk_type) {
+    this.talk_type = talk_type;
   }
 }

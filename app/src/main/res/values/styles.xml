@@ -28,4 +28,70 @@
     <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
   </style>
 
+  <style name="KeynoteView"/>
+
+  <style name="KeynoteView.KeynoteImageStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <!--<item name="android:tint">@color/photo_tint</item>-->
+    <item name="android:scaleType">centerCrop</item>
+  </style>
+
+  <style name="KeynoteView.KeynoteTitleStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:textSize">@dimen/text_size_large</item>
+    <item name="android:textColor">#fff</item>
+
+    <item name="android:gravity">bottom|left</item>
+    <item name="android:layout_gravity">bottom|left</item>
+    <item name="android:paddingLeft">5dp</item>
+    <item name="android:paddingBottom">8dp</item>
+
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:background">?android:selectableItemBackground</item>
+  </style>
+
+  <style name="ScheduleView"/>
+
+  <style name="ScheduleView.TitleStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:textSize">@dimen/text_size_medium</item>
+    <item name="android:textColor">@android:color/black</item>
+
+    <item name="android:gravity">bottom|left</item>
+    <item name="android:layout_gravity">bottom|left</item>
+    <item name="android:paddingLeft">5dp</item>
+    <item name="android:paddingBottom">8dp</item>
+
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:background">?android:selectableItemBackground</item>
+  </style>
+
+  <style name="ScheduleView.SpeakerStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:textSize">@dimen/text_size_micro</item>
+    <item name="android:textColor">@android:color/black</item>
+
+    <item name="android:gravity">bottom|left</item>
+    <item name="android:layout_gravity">bottom|left</item>
+    <item name="android:paddingLeft">5dp</item>
+    <item name="android:paddingBottom">8dp</item>
+
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:background">?android:selectableItemBackground</item>
+
+  </style>
+
 </resources>
