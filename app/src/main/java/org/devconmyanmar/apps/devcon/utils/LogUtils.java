@@ -6,12 +6,12 @@ import org.devconmyanmar.apps.devcon.BuildConfig;
 /**
  * Created by Ye Lin Aung on 14/07/08.
  */
-public class Logger {
-  private static final String LOG_PREFIX = "ys_";
+public class LogUtils {
+  private static final String LOG_PREFIX = "dc_";
   private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
   private static final int MAX_LOG_TAG_LENGTH = 23;
 
-  public Logger() {
+  public LogUtils() {
   }
 
   public static String makeLogTag(String str) {

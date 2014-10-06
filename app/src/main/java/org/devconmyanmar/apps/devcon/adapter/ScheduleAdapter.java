@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +17,8 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
@@ -24,6 +27,7 @@ public class ScheduleAdapter extends BaseAdapter {
   private static final int VIEW_TYPE_KEYNOTE = 1;
   private static final int VIEW_TYPE_NORMAL = 2;
   private static final int VIEW_TYPE_LIGHTNING = 3;
+  private static final String TAG = makeLogTag(ScheduleAdapter.class);
 
   private static final int VIEW_TYPE_COUNT = 3;
 
@@ -35,7 +39,7 @@ public class ScheduleAdapter extends BaseAdapter {
   }
 
   public void replaceWith(List<Talk> talks) {
-    this.mTalks = talks ;
+    this.mTalks = talks;
     notifyDataSetChanged();
   }
 
@@ -58,33 +62,40 @@ public class ScheduleAdapter extends BaseAdapter {
   @Override public int getItemViewType(int position) {
     Talk talk = getItem(position);
 
-    switch (talk.getTalkType()) {
-      case 0:
-        return VIEW_TYPE_KEYNOTE;
-      case 1:
-        return VIEW_TYPE_NORMAL;
-      case 2:
-        return VIEW_TYPE_LIGHTNING;
-    }
-    return 0;
+    return position % VIEW_TYPE_COUNT;
+
+    //switch (talk.getTalk_type()) {
+    //  case 0 :
+    //    return VIEW_TYPE_KEYNOTE;
+    //  case 1:
+    //    return VIEW_TYPE_NORMAL;
+    //  case 2:
+    //    return VIEW_TYPE_LIGHTNING;
+    //}
+    //return 0;
   }
 
-  @Override public View getView(int position, View convertView, ViewGroup parent) {
+  @Override public View getView(int position, View view, ViewGroup parent) {
 
     Talk mTalk = getItem(position);
     KeynoteViewHolder keynoteViewHolder;
     NormalViewHolder normalViewHolder;
+    LightningViewHolder lightningViewHolder;
 
-    View rootView = convertView;
-    LayoutInflater inflater =
-        (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    //LOGD(LOG_TAG, "talk type " + mTalk.getTalkType());
+    //LOGD(TAG, "item view type " + getItemViewType(position));
+
+    LayoutInflater mInflater =
+        (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
+    View rootView = view;
 
     switch (getItemViewType(position)) {
       case 0:
         if (rootView != null) {
           keynoteViewHolder = (KeynoteViewHolder) rootView.getTag();
         } else {
-          rootView = inflater.inflate(R.layout.row_keynote, parent, false);
+          rootView = mInflater.inflate(R.layout.row_keynote, parent, false);
           keynoteViewHolder = new KeynoteViewHolder(rootView);
           rootView.setTag(keynoteViewHolder);
         }
@@ -95,10 +106,10 @@ public class ScheduleAdapter extends BaseAdapter {
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
         return rootView;
       case 1:
-        if (convertView != null) {
-          normalViewHolder = (NormalViewHolder) convertView.getTag();
+        if (rootView != null) {
+          normalViewHolder = (NormalViewHolder) rootView.getTag();
         } else {
-          rootView = inflater.inflate(R.layout.row_normal_schedule, parent, false);
+          rootView = mInflater.inflate(R.layout.row_normal_schedule, parent, false);
           normalViewHolder = new NormalViewHolder(rootView);
           rootView.setTag(normalViewHolder);
         }
@@ -106,6 +117,19 @@ public class ScheduleAdapter extends BaseAdapter {
         normalViewHolder.mScheduleTime.setText(mTalk.getDate());
 
         return rootView;
+      case 2:
+        if (rootView != null) {
+          lightningViewHolder = (LightningViewHolder) rootView.getTag();
+        } else {
+          rootView = mInflater.inflate(R.layout.row_lightning_schedule, parent, false);
+          lightningViewHolder = new LightningViewHolder(rootView);
+          rootView.setTag(lightningViewHolder);
+        }
+        lightningViewHolder.mScheduleTitle.setText(mTalk.getTitle());
+        lightningViewHolder.mScheduleTime.setText(mTalk.getDate());
+
+        return rootView;
+      default:
     }
 
     return rootView;
@@ -125,6 +149,15 @@ public class ScheduleAdapter extends BaseAdapter {
     @InjectView(R.id.schedule_time) TextView mScheduleTime;
 
     public NormalViewHolder(View view) {
+      ButterKnife.inject(this, view);
+    }
+  }
+
+  static class LightningViewHolder {
+    @InjectView(R.id.schedule_title) TextView mScheduleTitle;
+    @InjectView(R.id.schedule_time) TextView mScheduleTime;
+
+    public LightningViewHolder(View view) {
       ButterKnife.inject(this, view);
     }
   }

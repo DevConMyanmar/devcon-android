@@ -66,14 +66,6 @@ public class Talk extends RealmObject {
     this.favourite = favourite;
   }
 
-  public int getTalkType() {
-    return talk_type;
-  }
-
-  public void setTalkType(int talk_type) {
-    this.talk_type = talk_type;
-  }
-
   public int getTalk_type() {
     return talk_type;
   }

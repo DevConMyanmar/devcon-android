@@ -5,8 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.Menu;
@@ -24,24 +22,29 @@ import org.devconmyanmar.apps.devcon.ScheduleFragment;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class ScheduleListActivity extends BaseActivity {
 
+  private static final String TAG = makeLogTag(ScheduleListActivity.class);
   @InjectView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
   @InjectView(R.id.left_drawer) ListView mDrawerList;
-
   private ActionBarDrawerToggle mDrawerToggle;
   private String[] mNavDrawerItems;
   private ActionBar mActionBar;
   private CharSequence mTitle;
   private CharSequence mDrawerTitle;
+  private Bundle mInstanceState;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_list);
     ButterKnife.inject(this);
+
+    this.mInstanceState = savedInstanceState;
 
     mTitle = mDrawerTitle = getTitle();
 
@@ -88,13 +91,13 @@ public class ScheduleListActivity extends BaseActivity {
           config.getPixelInsetBottom());
     }
 
-    //if (savedInstanceState == null) {
+    //if (mInstanceState == null) {
     //  selectItem(0);
     //}
 
-    FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-    tx.replace(R.id.content_frame, ScheduleFragment.getInstance());
-    tx.commit();
+    //FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+    //tx.replace(R.id.content_frame, ScheduleFragment.getInstance());
+    //tx.commit();
 
     createFake();
   }
@@ -132,7 +135,7 @@ public class ScheduleListActivity extends BaseActivity {
 
   @OnItemClick(R.id.left_drawer) void selectItem(int position) {
     // update the main content by replacing fragments
-    Fragment fragment;
+    Fragment fragment = null;
     switch (position) {
       case 0:
         fragment = ScheduleFragment.getInstance();
@@ -143,13 +146,11 @@ public class ScheduleListActivity extends BaseActivity {
       case 2:
         fragment = UpdateFragment.getInstance();
         break;
-      default:
-        fragment = ScheduleFragment.getInstance();
-        break;
     }
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+    if (mInstanceState == null) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+    }
 
     // update selected item and title, then close the drawer
     mDrawerList.setItemChecked(position, true);
@@ -207,7 +208,7 @@ public class ScheduleListActivity extends BaseActivity {
       t.setTitle(myFakeTalkTitles[i]);
       t.setDate(talkDates[i]);
       t.setPhoto(talkPhotos[i]);
-      t.setTalkType(talkTypes[i]);
+      t.setTalk_type(talkTypes[i]);
 
       Speaker s = realm.createObject(Speaker.class);
       s.setId(i);

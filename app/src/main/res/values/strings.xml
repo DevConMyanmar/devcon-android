@@ -28,6 +28,7 @@
 
   <!-- Schedule row -->
   <string name="keynote_background">Keynote</string>
+  <string name="lightning_talk_label">Lightning Talk</string>
 
   <!-- Navigation Drawer Item -->
   <array name="nav_drawer_items">

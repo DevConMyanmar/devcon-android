@@ -20,4 +20,10 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"/>
 
+  <TextView
+      style="@style/ScheduleView.LightningLabel"
+      android:text="@string/lightning_talk_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
 </LinearLayout>

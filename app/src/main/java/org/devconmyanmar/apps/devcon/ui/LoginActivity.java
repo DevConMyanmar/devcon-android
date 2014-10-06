@@ -12,15 +12,15 @@ import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.listeners.OnLoginListener;
 import org.devconmyanmar.apps.devcon.R;
 
-import static org.devconmyanmar.apps.devcon.utils.Logger.LOGE;
-import static org.devconmyanmar.apps.devcon.utils.Logger.LOGI;
-import static org.devconmyanmar.apps.devcon.utils.Logger.makeLogTag;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGE;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGI;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class LoginActivity extends Activity {
 
+  private static final String TAG = makeLogTag(LoginActivity.class);
   private SimpleFacebook mSimpleFacebook;
   private OnLoginListener onLoginListener;
-  private static final String TAG = makeLogTag(LoginActivity.class);
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
