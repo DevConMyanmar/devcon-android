@@ -61,7 +61,6 @@ public class FirstDayFragment extends BaseFragment {
   }
 
   @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
-    LOGD(TAG, "talk type -> " + mTalks.get(position).getTalk_type());
-    LOGD(TAG, "id -> " + mTalks.get(position).getId());
+    LOGD(TAG, "photo -> " + mTalks.get(position).getPhoto());
   }
 }

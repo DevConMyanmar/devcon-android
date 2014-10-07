@@ -2,8 +2,6 @@ package org.devconmyanmar.apps.devcon.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -33,6 +32,8 @@ public class ScheduleAdapter extends BaseAdapter {
 
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
+
+
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
@@ -100,9 +101,14 @@ public class ScheduleAdapter extends BaseAdapter {
           rootView.setTag(keynoteViewHolder);
         }
 
-        // FIXME replace with glide
-        keynoteViewHolder.mKeynoteBackground.setForeground(
-            new ColorDrawable(Color.parseColor("#3f51b5")));
+        Glide.with(mContext)
+            .load(mTalk.getPhoto())
+            .fitCenter()
+            .error(R.drawable.dc14)
+            .placeholder(R.drawable.dc14)
+            .crossFade()
+            .into(keynoteViewHolder.mKeynoteBackground);
+
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
         return rootView;
       case 1:

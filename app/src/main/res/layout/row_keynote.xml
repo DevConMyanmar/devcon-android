@@ -5,7 +5,7 @@
     android:background="@drawable/card_bg"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="300dp">
 
   <org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView
       android:id="@+id/keynote_background"
@@ -13,7 +13,7 @@
       android:foreground="@drawable/image_overlay"
       android:contentDescription="@string/keynote_background"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:layout_height="match_parent"/>
 
   <TextView
       android:id="@+id/keynote_title"
