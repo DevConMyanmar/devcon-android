@@ -11,6 +11,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -98,7 +99,6 @@ public class NavigationDrawerFragment extends BaseFragment {
   public boolean isDrawerOpen() {
     return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
   }
-
 
   public void setUp(int fragmentId, DrawerLayout drawerLayout) {
     mFragmentContainerView = getActivity().findViewById(fragmentId);
@@ -191,6 +191,19 @@ public class NavigationDrawerFragment extends BaseFragment {
     mDrawerToggle.onConfigurationChanged(newConfig);
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    // The action bar home/up action should open or close the drawer.
+    // ActionBarDrawerToggle will take care of this.
+    if (mDrawerToggle.onOptionsItemSelected(item)) {
+      return true;
+    }
+    // Handle action buttons
+    switch (item.getItemId()) {
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
   private void selectItem(int position) {
     mCurrentSelectedPosition = position;
     if (mDrawerListView != null) {
@@ -203,10 +216,6 @@ public class NavigationDrawerFragment extends BaseFragment {
       mCallbacks.onNavigationDrawerItemSelected(position);
     }
   }
-
-
-
-
 
   public static interface NavigationDrawerCallbacks {
     /**
