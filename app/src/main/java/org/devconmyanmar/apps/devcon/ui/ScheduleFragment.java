@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +59,7 @@ public class ScheduleFragment extends BaseFragment {
     super.onDestroyView();
   }
 
-  private class SlidingTabAdapter extends FragmentPagerAdapter {
+  private class SlidingTabAdapter extends FragmentStatePagerAdapter {
 
     public SlidingTabAdapter(FragmentManager fm) {
       super(fm);
