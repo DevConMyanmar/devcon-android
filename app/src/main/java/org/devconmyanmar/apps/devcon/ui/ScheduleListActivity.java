@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.ScheduleFragment;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 

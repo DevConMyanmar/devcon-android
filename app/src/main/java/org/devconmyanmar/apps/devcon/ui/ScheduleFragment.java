@@ -1,4 +1,4 @@
-package org.devconmyanmar.apps.devcon;
+package org.devconmyanmar.apps.devcon.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,16 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import org.devconmyanmar.apps.devcon.ui.BaseFragment;
-import org.devconmyanmar.apps.devcon.ui.FirstDayFragment;
-import org.devconmyanmar.apps.devcon.ui.SecondDayFragment;
+import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class ScheduleFragment extends BaseFragment {
 
+  private static final String TAG = makeLogTag(ScheduleFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
 
@@ -34,6 +36,7 @@ public class ScheduleFragment extends BaseFragment {
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
+    LOGD(TAG, "i am created");
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
 
@@ -49,6 +52,11 @@ public class ScheduleFragment extends BaseFragment {
     mSlidingTabLayout.setViewPager(mViewPager);
 
     return view;
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
   }
 
   private class SlidingTabAdapter extends FragmentPagerAdapter {
@@ -72,6 +80,7 @@ public class ScheduleFragment extends BaseFragment {
     }
 
     @Override public CharSequence getPageTitle(int position) {
+      LOGD(TAG, "item ➞ " + getItem(position).toString());
       switch (position) {
         case 0:
           return getString(R.string.first_day);

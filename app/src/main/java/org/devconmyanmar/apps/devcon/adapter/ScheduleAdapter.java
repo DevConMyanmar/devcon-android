@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -101,13 +100,13 @@ public class ScheduleAdapter extends BaseAdapter {
           rootView.setTag(keynoteViewHolder);
         }
 
-        Glide.with(mContext)
-            .load(mTalk.getPhoto())
-            .fitCenter()
-            .error(R.drawable.dc14)
-            .placeholder(R.drawable.dc14)
-            .crossFade()
-            .into(keynoteViewHolder.mKeynoteBackground);
+        //Glide.with(mContext)
+        //    .load(mTalk.getPhoto())
+        //    .fitCenter()
+        //    .error(R.drawable.dc14)
+        //    .placeholder(R.drawable.dc14)
+        //    .crossFade()
+        //    .into(keynoteViewHolder.mKeynoteBackground);
 
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
         return rootView;

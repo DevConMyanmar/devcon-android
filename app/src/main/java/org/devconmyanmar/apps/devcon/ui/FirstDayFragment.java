@@ -43,6 +43,9 @@ public class FirstDayFragment extends BaseFragment {
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
+
+    LOGD(TAG, "i am created");
+
     View rootView = inflater.inflate(R.layout.fragment_first_day, container, false);
     ButterKnife.inject(this, rootView);
 
