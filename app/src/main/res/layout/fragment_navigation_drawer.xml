@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/navigation_drawer_background"
     android:choiceMode="singleChoice"
-    android:divider="#eee"
-    android:dividerHeight="1dp"
+    android:divider="@null"
     tools:context="org.devconmyanmar.apps.devcon.ui.NavigationDrawerFragment" />
