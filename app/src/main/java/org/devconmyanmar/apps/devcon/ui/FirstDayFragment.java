@@ -10,7 +10,6 @@ import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
-import io.realm.Realm;
 import io.realm.RealmQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +43,8 @@ public class FirstDayFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
 
-    LOGD(TAG, "i am created");
-
     View rootView = inflater.inflate(R.layout.fragment_first_day, container, false);
     ButterKnife.inject(this, rootView);
-
-    Realm realm = Realm.getInstance(mContext);
 
     RealmQuery<Talk> query = realm.where(Talk.class);
     query.equalTo("date", "Oct 15");
