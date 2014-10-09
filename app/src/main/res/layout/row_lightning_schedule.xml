@@ -8,15 +8,16 @@
 
   <TextView
       android:id="@+id/schedule_title"
-      style="@style/ScheduleView.TitleStyle"
+      style="@style/ScheduleView.LightningTitle"
       tools:text="Bringing Silicon Valley to Yangon"
+      android:textSize="@dimen/text_size_small"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"/>
 
   <TextView
       android:id="@+id/schedule_time"
       style="@style/ScheduleView.SpeakerStyle"
-      tools:text="Bringing Silicon Valley to Yangon"
+      tools:text="Oct 15"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"/>
 

@@ -33,6 +33,7 @@
     <!-- API 19 theme customizations can go here. -->
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+    <item name="android:actionOverflowButtonStyle">@style/AppTheme.ActionBar.Overflow</item>
   </style>
 
   <style name="KeynoteView"/>
@@ -95,6 +96,11 @@
 
     <item name="android:clickable">true</item>
 
+  </style>
+
+  <style name="ScheduleView.LightningTitle" parent="ScheduleView.TitleStyle">
+    <item name="android:textSize">@dimen/text_size_small</item>
+    <item name="android:clickable">true</item>
   </style>
 
   <style name="ScheduleView.LightningLabel">
