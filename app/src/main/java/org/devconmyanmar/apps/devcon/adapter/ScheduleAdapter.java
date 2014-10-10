@@ -15,24 +15,20 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
-
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class ScheduleAdapter extends BaseAdapter {
 
-  private static final int VIEW_TYPE_KEYNOTE = 1;
-  private static final int VIEW_TYPE_NORMAL = 2;
-  private static final int VIEW_TYPE_LIGHTNING = 3;
-  private static final String TAG = makeLogTag(ScheduleAdapter.class);
+  private static final int VIEW_TYPE_KEYNOTE = 0;
+  private static final int VIEW_TYPE_NORMAL = 1;
+  private static final int VIEW_TYPE_LIGHTNING = 2;
+  // private static final String TAG = makeLogTag(ScheduleAdapter.class);
 
   private static final int VIEW_TYPE_COUNT = 3;
 
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
-
-
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
@@ -60,19 +56,7 @@ public class ScheduleAdapter extends BaseAdapter {
   }
 
   @Override public int getItemViewType(int position) {
-    Talk talk = getItem(position);
-
     return position % VIEW_TYPE_COUNT;
-
-    //switch (talk.getTalk_type()) {
-    //  case 0 :
-    //    return VIEW_TYPE_KEYNOTE;
-    //  case 1:
-    //    return VIEW_TYPE_NORMAL;
-    //  case 2:
-    //    return VIEW_TYPE_LIGHTNING;
-    //}
-    //return 0;
   }
 
   @Override public View getView(int position, View view, ViewGroup parent) {
@@ -82,16 +66,13 @@ public class ScheduleAdapter extends BaseAdapter {
     NormalViewHolder normalViewHolder;
     LightningViewHolder lightningViewHolder;
 
-    //LOGD(LOG_TAG, "talk type " + mTalk.getTalkType());
-    //LOGD(TAG, "item view type " + getItemViewType(position));
-
     LayoutInflater mInflater =
         (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
     View rootView = view;
 
     switch (getItemViewType(position)) {
-      case 0:
+      case VIEW_TYPE_KEYNOTE:
         if (rootView != null) {
           keynoteViewHolder = (KeynoteViewHolder) rootView.getTag();
         } else {
@@ -110,7 +91,7 @@ public class ScheduleAdapter extends BaseAdapter {
 
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
         return rootView;
-      case 1:
+      case VIEW_TYPE_NORMAL:
         if (rootView != null) {
           normalViewHolder = (NormalViewHolder) rootView.getTag();
         } else {
@@ -122,7 +103,7 @@ public class ScheduleAdapter extends BaseAdapter {
         normalViewHolder.mScheduleTime.setText(mTalk.getDate());
 
         return rootView;
-      case 2:
+      case VIEW_TYPE_LIGHTNING:
         if (rootView != null) {
           lightningViewHolder = (LightningViewHolder) rootView.getTag();
         } else {

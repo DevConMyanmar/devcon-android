@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/card_bg"
+    android:padding="@dimen/spacing_minor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+  <ImageView
+      android:id="@+id/speaker_image"
+      android:scaleType="centerCrop"
+      android:contentDescription="@string/speaker_profile"
+      android:src="@drawable/person_image_empty"
+      android:layout_width="@dimen/speaker_image_size"
+      android:layout_height="@dimen/speaker_image_size"/>
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_toRightOf="@+id/speaker_image"
+      android:layout_toEndOf="@+id/speaker_image"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/speaker_title"
+        tools:text="@string/placeholder_title"
+        android:layout_marginLeft="@dimen/spacing_minor"
+        android:layout_marginStart="@dimen/spacing_minor"
+        android:layout_marginBottom="@dimen/spacing_minor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/speaker_abstract"
+        tools:text="@string/placeholder_text"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="#8a000000"
+        android:layout_marginLeft="@dimen/spacing_minor"
+        android:layout_marginStart="@dimen/spacing_minor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
+</org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView>
+

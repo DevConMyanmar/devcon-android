@@ -16,4 +16,6 @@
   <dimen name="text_size_large">22sp</dimen>
 
   <dimen name="navigation_drawer_width">240dp</dimen>
+
+  <dimen name="speaker_image_size">48dp</dimen>
 </resources>

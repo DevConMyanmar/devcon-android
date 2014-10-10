@@ -36,4 +36,12 @@
     <item>Speakers</item>
     <item>Updates</item>
   </array>
+
+  <!-- Speaker Item -->
+  <string name="speaker_profile">Speaker profile</string>
+  <string name="placeholder_title">Ryan Stone, Mission Specialist</string>
+  <string name="placeholder_text">Houston, Houston in the blind, this is Mission Specialist Ryan
+    Stone reporting from the Shenzhou.
+    I'm about to undock from Tiangong… and I have a bad feeling about it
+  </string>
 </resources>
