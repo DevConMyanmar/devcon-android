@@ -10,9 +10,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 
 /**
@@ -21,8 +21,6 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 public class SpeakerFragment extends BaseFragment {
 
   @InjectView(R.id.speaker_list) ListView speakerList;
-
-  private static List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
   public SpeakerFragment() {
   }
@@ -43,7 +41,12 @@ public class SpeakerFragment extends BaseFragment {
 
     Realm realm = Realm.getInstance(mContext);
     RealmQuery<Speaker> query = realm.where(Speaker.class);
-    mSpeakers = query.findAll();
+    List<Speaker> mSpeakers = query.findAll();
+
+    SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
+    speakerAdapter.replaceWith(mSpeakers);
+
+    speakerList.setAdapter(speakerAdapter);
 
     return rootView;
   }

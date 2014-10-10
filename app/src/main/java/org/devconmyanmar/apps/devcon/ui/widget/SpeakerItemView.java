@@ -1,6 +1,7 @@
 package org.devconmyanmar.apps.devcon.ui.widget;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +21,14 @@ public class SpeakerItemView extends RelativeLayout {
 
   public SpeakerItemView(Context context) {
     super(context);
+  }
+
+  public SpeakerItemView(Context context, AttributeSet attrs) {
+    super(context, attrs);
+  }
+
+  public SpeakerItemView(Context context, AttributeSet attrs, int defStyle) {
+    super(context, attrs, defStyle);
   }
 
   @Override protected void onFinishInflate() {

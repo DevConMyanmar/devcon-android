@@ -19,9 +19,9 @@ public class SpeakerAdapter extends BindableAdapter<Speaker> {
 
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
-  public SpeakerAdapter(Context context, Context mContext) {
+  public SpeakerAdapter(Context context) {
     super(context);
-    this.mContext = mContext;
+    this.mContext = context;
   }
 
   public void replaceWith(List<Speaker> speakers) {
