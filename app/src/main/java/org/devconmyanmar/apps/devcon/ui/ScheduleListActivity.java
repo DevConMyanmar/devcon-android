@@ -2,6 +2,7 @@ package org.devconmyanmar.apps.devcon.ui;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -10,7 +11,9 @@ import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.utils.SharePref;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -38,13 +41,17 @@ public class ScheduleListActivity extends BaseActivity
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
-    createFake();
+    if (SharePref.getInstance(this).isFirstTime()) {
+      createFake();
+      SharePref.getInstance(this).noLongerFirstTime();
+    } else {
+      LOGD(TAG, "no longer first time");
+    }
   }
 
   @Override
   public void onNavigationDrawerItemSelected(int position) {
     // update the main content by replacing fragments
-
     Fragment fragment = null;
     switch (position) {
       case 0:
@@ -58,8 +65,14 @@ public class ScheduleListActivity extends BaseActivity
         break;
     }
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+    final Fragment finalFragment = fragment;
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, finalFragment).commit();
+      }
+    }, 200);
   }
 
   public void restoreActionBar() {
@@ -86,6 +99,7 @@ public class ScheduleListActivity extends BaseActivity
 
   private void createFake() {
 
+    LOGD(TAG, "i am faking la la la ~");
     // Empty first
     Realm.deleteRealmFile(this);
 

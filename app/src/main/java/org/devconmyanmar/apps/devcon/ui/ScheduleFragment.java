@@ -80,7 +80,7 @@ public class ScheduleFragment extends BaseFragment {
     }
 
     @Override public CharSequence getPageTitle(int position) {
-      LOGD(TAG, "item ➞ " + getItem(position).toString());
+      //LOGD(TAG, "item ➞ " + getItem(position).toString());
       switch (position) {
         case 0:
           return getString(R.string.first_day);
