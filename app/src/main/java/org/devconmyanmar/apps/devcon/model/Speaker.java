@@ -10,6 +10,7 @@ public class Speaker extends RealmObject {
   private String name;
   private String title;
   private String description;
+  private String photo;
 
   public Speaker() {
   }
@@ -44,5 +45,13 @@ public class Speaker extends RealmObject {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
   }
 }

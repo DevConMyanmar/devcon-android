@@ -147,6 +147,7 @@ public class ScheduleListActivity extends BaseActivity
       s.setName(myFakeSpeakers[i]);
       s.setTitle(myFakeSpeakersTitle[i]);
       s.setDescription("hello " + i);
+      s.setPhoto(talkPhotos[i]);
     }
 
     realm.commitTransaction();

@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.bumptech.glide.Glide;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 
@@ -38,6 +39,14 @@ public class SpeakerItemView extends RelativeLayout {
 
   public void bindTo(final Speaker speaker, Context context) {
     // TODO bind image with Glide
+    Glide.with(context)
+        .load(speaker.getPhoto())
+        .centerCrop()
+        .error(R.drawable.person_image_empty)
+        .placeholder(R.drawable.person_image_empty)
+        .crossFade()
+        .into(mSpeakerImage);
+
     mSpeakerTitle.setText(speaker.getTitle());
     mSpeakerAbstract.setText(speaker.getDescription());
   }
