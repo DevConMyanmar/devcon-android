@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ public class TalkDetailFragment extends BaseFragment {
   @InjectView(R.id.talk_title) TextView mTalkTitle;
 
   private int mTalkId;
+  private ActionBar mActionBar;
 
   public static TalkDetailFragment newInstance(String talk_id) {
     TalkDetailFragment fragment = new TalkDetailFragment();
@@ -36,6 +38,8 @@ public class TalkDetailFragment extends BaseFragment {
     if (getArguments() != null) {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
+
+    mActionBar = getActivity().getActionBar();
   }
 
   @Override
@@ -49,6 +53,10 @@ public class TalkDetailFragment extends BaseFragment {
     Realm realm = Realm.getInstance(mContext);
     Talk talk = realm.where(Talk.class).equalTo("id", mTalkId).findFirst();
     mTalkTitle.setText(talk.getTitle());
+
+    if (mActionBar != null) {
+      mActionBar.setTitle(getString(R.string.title_activity_schedule_detail));
+    }
 
     return rootView;
   }
