@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
@@ -36,6 +37,7 @@ public class ScheduleDetailActivity extends BaseActivity {
     SchedulePagerAdapter mAdapter =
         new SchedulePagerAdapter(getSupportFragmentManager(), fragments);
 
+    mScheduleViewPager.setPageTransformer(true, new StackTransformer());
     mScheduleViewPager.setAdapter(mAdapter);
     mScheduleViewPager.setCurrentItem(position);
   }
@@ -70,7 +72,7 @@ public class ScheduleDetailActivity extends BaseActivity {
 
     for (Talk talk : talks) {
       int talkId = talk.getId();
-      fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
+      fList.add(ScheduleDetailFragment.newInstance(String.valueOf(talkId)));
     }
 
     return fList;

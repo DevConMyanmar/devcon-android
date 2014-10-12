@@ -3,10 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.devconmyanmar.apps.devcon.ui.TalkDetailFragment">
+    android:background="@android:color/white"
+    tools:context="org.devconmyanmar.apps.devcon.ui.ScheduleDetailFragment">
 
   <TextView
       android:id="@+id/talk_title"
+      tools:text="Hello Android!"
+      android:padding="@dimen/spacing_minor"
+      android:textSize="@dimen/text_size_large"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
