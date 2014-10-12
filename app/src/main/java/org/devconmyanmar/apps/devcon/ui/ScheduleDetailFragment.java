@@ -56,6 +56,7 @@ public class ScheduleDetailFragment extends BaseFragment {
 
     if (mActionBar != null) {
       mActionBar.setTitle(getString(R.string.title_activity_schedule_detail));
+      mActionBar.setIcon(android.R.color.transparent);
     }
 
     return rootView;

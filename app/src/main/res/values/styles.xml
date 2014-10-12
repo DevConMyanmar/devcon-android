@@ -11,6 +11,8 @@
     <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:actionOverflowButtonStyle">@style/AppTheme.ActionBar.Overflow</item>
+
+    <item name="android:homeAsUpIndicator">@drawable/ic_ab_back_mtrl_am_alpha</item>
   </style>
 
   <style name="AppTheme.ActionBar" parent="FrameworkRoot.ActionBar">
