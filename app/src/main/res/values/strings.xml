@@ -45,4 +45,7 @@
   </string>
   <string name="title_activity_schedule_detail">Schedule Detail</string>
 
+  <!-- Talk Detail -->
+  <string name="photo_banner">Photo banner</string>
+
 </resources>

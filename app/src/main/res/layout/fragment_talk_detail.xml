@@ -6,12 +6,25 @@
     android:background="@android:color/white"
     tools:context="org.devconmyanmar.apps.devcon.ui.ScheduleDetailFragment">
 
+  <FrameLayout android:id="@+id/session_photo_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:foreground="@drawable/photo_banner_scrim">
+    <ImageView
+        android:src="@drawable/dc14"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/photo_banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+  </FrameLayout>
+
   <TextView
       android:id="@+id/talk_title"
       tools:text="Hello Android!"
+      android:layout_below="@+id/session_photo_container"
       android:padding="@dimen/spacing_minor"
       android:textSize="@dimen/text_size_large"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
 
 </RelativeLayout>
