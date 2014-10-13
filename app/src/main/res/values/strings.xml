@@ -47,5 +47,54 @@
 
   <!-- Talk Detail -->
   <string name="photo_banner">Photo banner</string>
+  <string name="dummy_talk_description">
+    Master at least one multi-paradigm language.
+    Mastering a language gives you a great sense of perspective.
+    To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
+    practices.
+    Ideally the language has a vibrant community, runs a lot of production code and is reasonably en
+    vogue.
+    Some good candidates are C#, C++, Java, PHP, Python, and Ruby.
+    There’s a famous leading question that C++ interviewers like to ask other C++ programming
+    candidates,
+    "On a scale of 1-10, 10 being the highest, how would you rank your knowledge of C++?" I hate
+    this question.
+    And god help anyone who answers a 9-10, because the claws will come out.
+    Bjarne Stroustrap himself would rate himself probably an 8 or less.
+    The language is simply too complex, too rich, and has evolved too much over time.
+    I digress.
+    \n
+    Master at least one multi-paradigm language.
+    Mastering a language gives you a great sense of perspective.
+    To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
+    practices.
+    Ideally the language has a vibrant community, runs a lot of production code and is reasonably en
+    vogue.
+    Some good candidates are C#, C++, Java, PHP, Python, and Ruby.
+    There’s a famous leading question that C++ interviewers like to ask other C++ programming
+    candidates,
+    "On a scale of 1-10, 10 being the highest, how would you rank your knowledge of C++?" I hate
+    this question.
+    And god help anyone who answers a 9-10, because the claws will come out.
+    Bjarne Stroustrap himself would rate himself probably an 8 or less.
+    The language is simply too complex, too rich, and has evolved too much over time.
+    I digress.
+    \n
+    Master at least one multi-paradigm language.
+    Mastering a language gives you a great sense of perspective.
+    To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
+    practices.
+    Ideally the language has a vibrant community, runs a lot of production code and is reasonably en
+    vogue.
+    Some good candidates are C#, C++, Java, PHP, Python, and Ruby.
+    There’s a famous leading question that C++ interviewers like to ask other C++ programming
+    candidates,
+    "On a scale of 1-10, 10 being the highest, how would you rank your knowledge of C++?" I hate
+    this question.
+    And god help anyone who answers a 9-10, because the claws will come out.
+    Bjarne Stroustrap himself would rate himself probably an 8 or less.
+    The language is simply too complex, too rich, and has evolved too much over time.
+    I digress.
+  </string>
 
 </resources>

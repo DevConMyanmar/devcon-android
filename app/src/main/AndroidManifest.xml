@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.devconmyanmar.apps.devcon" >
+    package="org.devconmyanmar.apps.devcon">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application
-        android:name="org.devconmyanmar.apps.devcon.DevConApplication"
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+  <application
+      android:name="org.devconmyanmar.apps.devcon.DevConApplication"
+      android:allowBackup="true"
+      android:icon="@drawable/ic_launcher"
+      android:label="@string/app_name"
+      android:theme="@style/AppTheme">
+    <activity
+        android:name="org.devconmyanmar.apps.devcon.ui.LoginActivity"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.LoginActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.LoginTheme" >
-        </activity>
-        <activity android:name="com.facebook.LoginActivity" />
-        <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.ScheduleActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/AppTheme.LoginTheme">
+    </activity>
+    <activity android:name="com.facebook.LoginActivity"/>
+    <activity
+        android:name="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.ScheduleActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/app_id" />
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/app_id"/>
 
-        <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.ScheduleDetailActivity"
-            android:label="@string/title_activity_schedule_detail"
-            android:parentActivityName="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity" />
-        </activity>
-    </application>
+    <activity
+        android:name="org.devconmyanmar.apps.devcon.ui.ScheduleDetailActivity"
+        android:label="@string/title_activity_schedule_detail"
+        android:theme="@style/TalkDetailTheme"
+        android:parentActivityName="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity"/>
+    </activity>
+  </application>
 
 </manifest>
