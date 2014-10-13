@@ -24,8 +24,6 @@ public class ScheduleListActivity extends BaseActivity
 
   private static final String TAG = makeLogTag(ScheduleListActivity.class);
 
-  private CharSequence mTitle;
-
   private NavigationDrawerFragment mNavigationDrawerFragment;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class ScheduleListActivity extends BaseActivity
         (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(
             R.id.navigation_drawer);
 
-    mTitle = getTitle();
 
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
@@ -65,6 +62,7 @@ public class ScheduleListActivity extends BaseActivity
         break;
     }
 
+
     final Fragment finalFragment = fragment;
     new Handler().postDelayed(new Runnable() {
       @Override
@@ -73,19 +71,28 @@ public class ScheduleListActivity extends BaseActivity
         fragmentManager.beginTransaction().replace(R.id.container, finalFragment).commit();
       }
     }, 200);
+
   }
 
   public void restoreActionBar() {
     ActionBar actionBar = getActionBar();
+    CharSequence title =  getTitle();
     if (actionBar != null) {
       actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
       actionBar.setDisplayShowTitleEnabled(true);
-      actionBar.setTitle(mTitle);
+      actionBar.setTitle(title);
     }
   }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
+    if (mNavigationDrawerFragment.isDrawerOpen()) {
+      // Show App Label When drawer is Open
+      ActionBar actionBar = getActionBar();
+      if(actionBar != null){
+        actionBar.setTitle(getString(R.string.app_name));
+      }
+    }
     if (!mNavigationDrawerFragment.isDrawerOpen()) {
       // Only show items in the action bar relevant to this screen
       // if the drawer is not showing. Otherwise, let the drawer
