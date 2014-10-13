@@ -3,4 +3,10 @@
   <declare-styleable name="ForegroundImageView">
     <attr name="android:foreground"/>
   </declare-styleable>
+
+  <declare-styleable name="StickyScrollView">
+    <attr name="stuckShadowHeight" format="dimension"/>
+    <attr name="stuckShadowDrawable" format="reference"/>
+  </declare-styleable>
+
 </resources>

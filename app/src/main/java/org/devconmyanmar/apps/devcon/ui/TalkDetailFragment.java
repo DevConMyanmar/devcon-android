@@ -11,11 +11,13 @@ import butterknife.InjectView;
 import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 
 public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
 
   @InjectView(R.id.talk_title) TextView mTalkTitle;
+  @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
 
   private int mTalkId;
   private ActionBar mActionBar;
