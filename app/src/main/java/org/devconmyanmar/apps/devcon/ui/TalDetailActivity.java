@@ -20,7 +20,7 @@ import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
-public class ScheduleDetailActivity extends BaseActivity {
+public class TalDetailActivity extends BaseActivity {
 
   @InjectView(R.id.schedule_pager) ViewPager mScheduleViewPager;
 
@@ -72,7 +72,7 @@ public class ScheduleDetailActivity extends BaseActivity {
 
     for (Talk talk : talks) {
       int talkId = talk.getId();
-      fList.add(ScheduleDetailFragment.newInstance(String.valueOf(talkId)));
+      fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
     }
 
     return fList;

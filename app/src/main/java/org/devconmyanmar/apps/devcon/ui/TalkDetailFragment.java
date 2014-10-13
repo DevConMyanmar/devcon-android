@@ -12,7 +12,7 @@ import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
-public class ScheduleDetailFragment extends BaseFragment {
+public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
 
   @InjectView(R.id.talk_title) TextView mTalkTitle;
@@ -20,15 +20,15 @@ public class ScheduleDetailFragment extends BaseFragment {
   private int mTalkId;
   private ActionBar mActionBar;
 
-  public static ScheduleDetailFragment newInstance(String talk_id) {
-    ScheduleDetailFragment fragment = new ScheduleDetailFragment();
+  public static TalkDetailFragment newInstance(String talk_id) {
+    TalkDetailFragment fragment = new TalkDetailFragment();
     Bundle args = new Bundle();
     args.putString(ARG_TALK_ID, talk_id);
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ScheduleDetailFragment() {
+  public TalkDetailFragment() {
     // Required empty public constructor
   }
 

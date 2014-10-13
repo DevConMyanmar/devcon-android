@@ -64,7 +64,7 @@ public class FirstDayFragment extends BaseFragment {
 
   @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
     int id = mTalks.get(position).getId();
-    Intent i = new Intent(getActivity(), ScheduleDetailActivity.class);
+    Intent i = new Intent(getActivity(), TalDetailActivity.class);
     i.putExtra(POSITION, id);
     startActivity(i);
   }

@@ -32,7 +32,7 @@
         android:value="@string/app_id"/>
 
     <activity
-        android:name="org.devconmyanmar.apps.devcon.ui.ScheduleDetailActivity"
+        android:name=".ui.TalDetailActivity"
         android:label="@string/title_activity_schedule_detail"
         android:theme="@style/TalkDetailTheme"
         android:parentActivityName="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity">

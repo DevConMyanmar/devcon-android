@@ -4,6 +4,7 @@
     xmlns:androidsucks="http://schemas.android.com/apk/res-auto"
     androidsucks:stuckShadowDrawable="@drawable/sticky_shawdow"
     androidsucks:stuckShadowHeight="10dip"
+    android:id="@+id/talk_detail_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
   <LinearLayout
@@ -11,7 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@android:color/white"
-      tools:context="org.devconmyanmar.apps.devcon.ui.ScheduleDetailFragment">
+      tools:context="org.devconmyanmar.apps.devcon.ui.TalkDetailFragment">
 
     <FrameLayout android:id="@+id/session_photo_container"
         android:layout_width="match_parent"
