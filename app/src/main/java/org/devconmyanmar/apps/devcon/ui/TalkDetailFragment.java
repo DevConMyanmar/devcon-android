@@ -61,6 +61,8 @@ public class TalkDetailFragment extends BaseFragment {
       mActionBar.setIcon(android.R.color.transparent);
     }
 
+    talkDetailScrollView.hideActionBarOnScroll(true);
+
     return rootView;
   }
 }

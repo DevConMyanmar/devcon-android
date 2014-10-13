@@ -60,6 +60,8 @@ public class StickyScrollView extends ScrollView {
   private int mShadowHeight;
   private Drawable mShadowDrawable;
 
+  private boolean hideActionBarOnScroll = false;
+
   private final Runnable invalidateRunnable = new Runnable() {
 
     @Override
@@ -288,6 +290,12 @@ public class StickyScrollView extends ScrollView {
     doTheStickyThing();
 
     Activity activity = (Activity) getContext();
+    if (hideActionBarOnScroll) {
+      actionBarOnScroll(activity, t, oldt);
+    }
+  }
+
+  private void actionBarOnScroll(Activity activity, int t, int oldt) {
     if (activity != null) {
 
       int scrollViewHeight = this.getHeight();
@@ -427,6 +435,15 @@ public class StickyScrollView extends ScrollView {
       anim.setFillAfter(true);
       v.startAnimation(anim);
     }
+  }
+
+  /**
+   * A flag to set whether to hide actionbar on scroll or not
+   *
+   * @param hideActionBar - flag to determine whether to hide or not
+   */
+  public void hideActionBarOnScroll(boolean hideActionBar) {
+    this.hideActionBarOnScroll = hideActionBar;
   }
 }
 
