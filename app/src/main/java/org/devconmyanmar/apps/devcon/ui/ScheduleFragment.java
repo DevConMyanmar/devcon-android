@@ -33,8 +33,15 @@ public class ScheduleFragment extends BaseFragment {
     return new ScheduleFragment();
   }
 
-  @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    getActivity().setTitle(getString(R.string.schedule_activity));
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
 
