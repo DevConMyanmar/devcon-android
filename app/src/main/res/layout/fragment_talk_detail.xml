@@ -40,8 +40,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
       <TextView
+          android:id="@+id/talk_time_and_room"
           tools:text="1:00 PM - 1:45 PM, Sunday in Room 205"
-          android:text="1:00 PM - 1:45 PM, Sunday in Room 205"
           android:textSize="@dimen/text_size_medium"
           android:padding="@dimen/spacing_major"
           android:layout_width="match_parent"
@@ -49,8 +49,8 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/talk_description"
         tools:text="@string/dummy_talk_description"
-        android:text="@string/dummy_talk_description"
         android:padding="@dimen/spacing_major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
