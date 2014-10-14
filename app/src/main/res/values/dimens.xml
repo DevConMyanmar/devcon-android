@@ -10,10 +10,11 @@
   <dimen name="spacing_not_so_massive">18dp</dimen>
   <dimen name="spacing_massive">24dp</dimen>
 
-  <dimen name="text_size_micro">12sp</dimen>
-  <dimen name="text_size_small">14sp</dimen>
-  <dimen name="text_size_medium">18sp</dimen>
-  <dimen name="text_size_large">22sp</dimen>
+  <dimen name="text_size_xsmall">11sp</dimen>
+  <dimen name="text_size_small">12sp</dimen>
+  <dimen name="text_size_medium">14sp</dimen>
+  <dimen name="text_size_large">18sp</dimen>
+  <dimen name="text_size_xlarge">20sp</dimen>
 
   <dimen name="navigation_drawer_width">240dp</dimen>
 

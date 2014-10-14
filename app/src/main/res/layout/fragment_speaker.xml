@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <ListView
-      android:id="@+id/speaker_list"
-      android:layout_marginLeft="@dimen/spacing_minor"
-      android:layout_marginStart="@dimen/spacing_minor"
-      android:divider="@null"
-      android:focusable="false"
-      android:focusableInTouchMode="false"
-      android:clickable="true"
-      android:scrollbarStyle="outsideInset"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
+  <include layout="@layout/speaker_list"/>
+
 </RelativeLayout>

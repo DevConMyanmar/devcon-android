@@ -54,10 +54,38 @@
 
     <TextView
         android:id="@+id/talk_description"
-        tools:text="@string/dummy_talk_description"
+        tools:text="@string/placeholder_talk_description"
         android:padding="@dimen/spacing_major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+      <include
+          android:layout_margin="@dimen/spacing_major"
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          layout="@layout/divider"/>
+
+      <TextView
+          android:text="@string/speakers"
+          style="@style/SessionDetailSectionHeader"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+      <include
+          android:id="@+id/include_speaker_list"
+          layout="@layout/speaker_list"/>
+
+      <include
+          android:layout_margin="@dimen/spacing_major"
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          layout="@layout/divider"/>
+    </LinearLayout>
 
   </LinearLayout>
 </org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView>
