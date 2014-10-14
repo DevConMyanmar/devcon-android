@@ -2,6 +2,7 @@ package org.devconmyanmar.apps.devcon.utils;
 
 import android.content.Context;
 import io.realm.Realm;
+import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
@@ -85,6 +86,7 @@ public class DataUtils {
       t.setRoom(rooms[i]);
       t.setFrom_time(fromTime[i]);
       t.setTo_time(toTime[i]);
+      t.setDescription(mContext.getString(R.string.dummy_talk_description));
 
       Speaker s = realm.createObject(Speaker.class);
       s.setId(i);

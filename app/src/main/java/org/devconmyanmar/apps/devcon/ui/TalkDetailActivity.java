@@ -20,7 +20,7 @@ import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
-public class TalDetailActivity extends BaseActivity {
+public class TalkDetailActivity extends BaseActivity {
 
   @InjectView(R.id.schedule_pager) ViewPager mScheduleViewPager;
 

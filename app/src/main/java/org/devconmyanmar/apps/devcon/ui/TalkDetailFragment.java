@@ -12,12 +12,15 @@ import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
+import org.devconmyanmar.apps.devcon.utils.Phrase;
 
 public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
 
   @InjectView(R.id.talk_title) TextView mTalkTitle;
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
+  @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
+  @InjectView(R.id.talk_description) TextView talkDesciption;
 
   private int mTalkId;
   private ActionBar mActionBar;
@@ -62,6 +65,17 @@ public class TalkDetailFragment extends BaseFragment {
     }
 
     talkDetailScrollView.hideActionBarOnScroll(true);
+
+    CharSequence timeAndRoom = Phrase.from(mContext, R.string.talk_detail_time_and_place)
+        .put("day", talk.getDate())
+        .put("from_time", talk.getFrom_time())
+        .put("to_time", talk.getTo_time())
+        .put("room", talk.getRoom())
+        .format();
+
+    talkTimeAndRoom.setText(timeAndRoom);
+
+    talkDesciption.setText(talk.getDescription());
 
     return rootView;
   }

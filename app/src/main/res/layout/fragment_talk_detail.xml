@@ -35,14 +35,18 @@
       <TextView
           android:id="@+id/talk_title"
           tools:text="Hello Android!"
-          android:padding="@dimen/spacing_major"
+          android:paddingLeft="@dimen/spacing_major"
+          android:paddingStart="@dimen/spacing_major"
+          android:paddingEnd="@dimen/spacing_major"
+          android:paddingTop="@dimen/spacing_major"
           android:textSize="@dimen/text_size_large"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
       <TextView
           android:id="@+id/talk_time_and_room"
           tools:text="1:00 PM - 1:45 PM, Sunday in Room 205"
-          android:textSize="@dimen/text_size_medium"
+          android:textColor="#8a000000"
+          android:textSize="@dimen/text_size_small"
           android:padding="@dimen/spacing_major"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
