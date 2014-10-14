@@ -20,7 +20,7 @@ public class TalkDetailFragment extends BaseFragment {
   @InjectView(R.id.talk_title) TextView mTalkTitle;
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
   @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
-  @InjectView(R.id.talk_description) TextView talkDesciption;
+  @InjectView(R.id.talk_description) TextView talkDescription;
 
   private int mTalkId;
   private ActionBar mActionBar;
@@ -75,7 +75,7 @@ public class TalkDetailFragment extends BaseFragment {
 
     talkTimeAndRoom.setText(timeAndRoom);
 
-    talkDesciption.setText(talk.getDescription());
+    talkDescription.setText(talk.getDescription());
 
     return rootView;
   }

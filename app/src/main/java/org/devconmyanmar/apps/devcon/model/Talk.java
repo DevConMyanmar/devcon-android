@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.model;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
@@ -17,6 +18,7 @@ public class Talk extends RealmObject {
   private String room;
   private String from_time;
   private String to_time;
+  private RealmList<Speaker> speakers;
 
   public Talk() {
   }
@@ -99,5 +101,13 @@ public class Talk extends RealmObject {
 
   public void setTo_time(String to_time) {
     this.to_time = to_time;
+  }
+
+  public RealmList<Speaker> getSpeakers() {
+    return speakers;
+  }
+
+  public void setSpeakers(RealmList<Speaker> speakers) {
+    this.speakers = speakers;
   }
 }
