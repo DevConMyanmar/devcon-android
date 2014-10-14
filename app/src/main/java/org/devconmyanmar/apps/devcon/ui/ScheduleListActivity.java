@@ -7,10 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
-import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.model.Speaker;
-import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.utils.DataUtils;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
@@ -34,12 +32,11 @@ public class ScheduleListActivity extends BaseActivity
         (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(
             R.id.navigation_drawer);
 
-
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
     if (SharePref.getInstance(this).isFirstTime()) {
-      createFake();
+      new DataUtils(this).createFake();
       SharePref.getInstance(this).noLongerFirstTime();
     } else {
       LOGD(TAG, "no longer first time");
@@ -62,7 +59,6 @@ public class ScheduleListActivity extends BaseActivity
         break;
     }
 
-
     final Fragment finalFragment = fragment;
     new Handler().postDelayed(new Runnable() {
       @Override
@@ -71,12 +67,11 @@ public class ScheduleListActivity extends BaseActivity
         fragmentManager.beginTransaction().replace(R.id.container, finalFragment).commit();
       }
     }, 200);
-
   }
 
   public void restoreActionBar() {
     ActionBar actionBar = getActionBar();
-    CharSequence title =  getTitle();
+    CharSequence title = getTitle();
     if (actionBar != null) {
       actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
       actionBar.setDisplayShowTitleEnabled(true);
@@ -89,7 +84,7 @@ public class ScheduleListActivity extends BaseActivity
     if (mNavigationDrawerFragment.isDrawerOpen()) {
       // Show App Label When drawer is Open
       ActionBar actionBar = getActionBar();
-      if(actionBar != null){
+      if (actionBar != null) {
         actionBar.setTitle(getString(R.string.app_name));
       }
     }
@@ -102,75 +97,5 @@ public class ScheduleListActivity extends BaseActivity
       return true;
     }
     return super.onCreateOptionsMenu(menu);
-  }
-
-  private void createFake() {
-
-    LOGD(TAG, "i am faking la la la ~");
-    // Empty first
-    Realm.deleteRealmFile(this);
-
-    String[] myFakeSpeakers = new String[] {
-        "John Graham-Cumming", "Brad Fitzpatrick", "Jeremy Saenz", "Andrew Gerrand", "Keith Rarick",
-        "Blake Mizerany"
-    };
-
-    String[] myFakeSpeakersTitle = new String[] {
-        "Programmer at CloudFlare, Author of The Geek Atlas",
-        "Creator of memcached, OpenID & LiveJournal\n" + "Member of the Go team",
-        "Creator of Martini and Negroni", "Member of the Go team",
-        "Creator of godep, Beanstalkd and Doozer\n" + "Former programmer at Heroku",
-        "Creator of Sinatra, co-creator of Doozer"
-    };
-
-    String[] myFakeTalkTitles = new String[] {
-        "The greatest machine that never was", "Software I'm excited about",
-        "Go, Martini and Gophercasts", "Writing Web Apps in Go", "Go Dependency Management",
-        "Inside the Gophers Studio"
-    };
-
-    String[] talkPhotos = new String[] {
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png",
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png",
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png",
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png",
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png",
-        //"https://dl.dropboxusercontent.com/u/2709123/default.png"
-        "http://www.dotgo.eu/images/speakers/john-graham-cumming.png",
-        "http://www.dotgo.eu/images/speakers/brad-fitzpatrick.png",
-        "http://www.dotgo.eu/images/speakers/jeremy-saenz.png",
-        "http://www.dotgo.eu/images/speakers/andrew-gerrand.png",
-        "http://www.dotgo.eu/images/speakers/keith-rarick.png",
-        "http://www.dotgo.eu/images/speakers/blake-mizerany.png"
-    };
-
-    String[] talkDates = new String[] {
-        "Oct 15", "Oct 15", "Oct 15", "Oct 16", "Oct 16", "Oct 16"
-    };
-
-    int[] talkTypes = new int[] {
-        0, 1, 2, 0, 1, 2
-    };
-
-    Realm realm = Realm.getInstance(this);
-    realm.beginTransaction();
-
-    for (int i = 0; i < myFakeSpeakers.length; i++) {
-      Talk t = realm.createObject(Talk.class);
-      t.setId(i);
-      t.setTitle(myFakeTalkTitles[i]);
-      t.setDate(talkDates[i]);
-      t.setPhoto(talkPhotos[i]);
-      t.setTalk_type(talkTypes[i]);
-
-      Speaker s = realm.createObject(Speaker.class);
-      s.setId(i);
-      s.setName(myFakeSpeakers[i]);
-      s.setTitle(myFakeSpeakersTitle[i]);
-      s.setDescription("hello " + i);
-      s.setPhoto(talkPhotos[i]);
-    }
-
-    realm.commitTransaction();
   }
 }

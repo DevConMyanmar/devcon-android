@@ -14,6 +14,9 @@ public class Talk extends RealmObject {
   private String date;
   private boolean favourite;
   private int talk_type;
+  private String room;
+  private String from_time;
+  private String to_time;
 
   public Talk() {
   }
@@ -72,5 +75,29 @@ public class Talk extends RealmObject {
 
   public void setTalk_type(int talk_type) {
     this.talk_type = talk_type;
+  }
+
+  public String getRoom() {
+    return room;
+  }
+
+  public void setRoom(String room) {
+    this.room = room;
+  }
+
+  public String getFrom_time() {
+    return from_time;
+  }
+
+  public void setFrom_time(String from_time) {
+    this.from_time = from_time;
+  }
+
+  public String getTo_time() {
+    return to_time;
+  }
+
+  public void setTo_time(String to_time) {
+    this.to_time = to_time;
   }
 }
