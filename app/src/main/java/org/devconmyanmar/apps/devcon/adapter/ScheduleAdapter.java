@@ -12,9 +12,12 @@ import butterknife.InjectView;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -24,7 +27,7 @@ public class ScheduleAdapter extends BaseAdapter {
   private static final int VIEW_TYPE_KEYNOTE = 0;
   private static final int VIEW_TYPE_NORMAL = 1;
   private static final int VIEW_TYPE_LIGHTNING = 2;
-  // private static final String TAG = makeLogTag(ScheduleAdapter.class);
+  private static final String TAG = makeLogTag(ScheduleAdapter.class);
 
   private static final int VIEW_TYPE_COUNT = 3;
 
@@ -103,7 +106,11 @@ public class ScheduleAdapter extends BaseAdapter {
           rootView.setTag(normalViewHolder);
         }
         normalViewHolder.mScheduleTitle.setText(mTalk.getTitle());
-        normalViewHolder.mScheduleTime.setText(mTalk.getDate());
+        normalViewHolder.mFromTime.setText(mTalk.getFrom_time());
+        normalViewHolder.mToTime.setText(mTalk.getTo_time());
+
+        List<Speaker> speakers = mTalk.getSpeakers();
+        normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
 
         return rootView;
       case VIEW_TYPE_LIGHTNING:
@@ -135,8 +142,11 @@ public class ScheduleAdapter extends BaseAdapter {
   }
 
   static class NormalViewHolder {
-    @InjectView(R.id.schedule_title) TextView mScheduleTitle;
-    @InjectView(R.id.schedule_time) TextView mScheduleTime;
+
+    @InjectView(R.id.normal_schedule_from_time) TextView mFromTime;
+    @InjectView(R.id.normal_schedule_to_time) TextView mToTime;
+    @InjectView(R.id.normal_schedule_title) TextView mScheduleTitle;
+    @InjectView(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
 
     public NormalViewHolder(View view) {
       ButterKnife.inject(this, view);

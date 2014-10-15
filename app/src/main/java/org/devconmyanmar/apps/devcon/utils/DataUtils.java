@@ -23,12 +23,17 @@ public class DataUtils {
     Realm.deleteRealmFile(mContext);
 
     String[] myFakeSpeakers = new String[] {
-        "John Graham-Cumming", "Brad Fitzpatrick", "Jeremy Saenz", "Andrew Gerrand", "Keith Rarick",
+        "John Graham-Cumming",
+        "Brad Fitzpatrick",
+        "Jeremy Saenz",
+        "Andrew Gerrand",
+        "Keith Rarick",
         "Blake Mizerany"
     };
 
     String[] myFakeSpeakersTitle = new String[] {
         "Programmer at CloudFlare, Author of The Geek Atlas",
+        "Before the Startup",
         "Creator of memcached, OpenID & LiveJournal\n" + "Member of the Go team",
         "Creator of Martini and Negroni", "Member of the Go team",
         "Creator of godep, Beanstalkd and Doozer\n" + "Former programmer at Heroku",
