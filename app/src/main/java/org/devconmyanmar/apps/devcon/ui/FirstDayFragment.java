@@ -20,6 +20,7 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -64,8 +65,9 @@ public class FirstDayFragment extends BaseFragment {
 
   @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
     int id = mTalks.get(position).getId();
+    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
     Intent i = new Intent(getActivity(), TalkDetailActivity.class);
     i.putExtra(POSITION, id);
-    startActivity(i);
+    //startActivity(i);
   }
 }

@@ -60,7 +60,8 @@ public class ScheduleAdapter extends BaseAdapter {
   }
 
   @Override public int getItemViewType(int position) {
-    return position % VIEW_TYPE_COUNT;
+    // return position % VIEW_TYPE_COUNT;
+    return mTalks.get(position).getTalk_type() % VIEW_TYPE_COUNT;
   }
 
   @Override public View getView(int position, View view, ViewGroup parent) {
@@ -75,7 +76,7 @@ public class ScheduleAdapter extends BaseAdapter {
 
     View rootView = view;
 
-    switch (getItemViewType(position)) {
+    switch (mTalk.getTalk_type()) {
       case VIEW_TYPE_KEYNOTE:
         if (rootView != null) {
           keynoteViewHolder = (KeynoteViewHolder) rootView.getTag();

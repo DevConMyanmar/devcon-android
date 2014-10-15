@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/card_bg"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
   <LinearLayout
       android:orientation="vertical"
+      android:paddingLeft="@dimen/spacing_major"
       android:layout_width="@dimen/talk_time_column_width"
       android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/normal_schedule_from_time"
         tools:text="10:00 AM"
-        android:layout_gravity="center_horizontal"
         style="@style/ScheduleView.TitleStyle"
         android:layout_width="wrap_content"/>
 
     <TextView
         android:id="@+id/normal_schedule_to_time"
+        style="@style/ScheduleView.TitleStyle"
         tools:text="10:45 AM"
+        android:textColor="@android:color/darker_gray"
         android:textSize="@dimen/text_size_small"
-        android:paddingTop="5dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
   </LinearLayout>
