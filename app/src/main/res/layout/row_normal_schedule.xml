@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/card_bg"
+    android:padding="@dimen/spacing_minor"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
   <LinearLayout
       android:orientation="vertical"
       android:paddingLeft="@dimen/spacing_major"
+      android:paddingRight="@dimen/spacing_major"
+      android:paddingStart="@dimen/spacing_major"
+      android:layout_gravity="center"
+      android:gravity="center_horizontal"
       android:layout_width="@dimen/talk_time_column_width"
       android:layout_height="wrap_content">
 
