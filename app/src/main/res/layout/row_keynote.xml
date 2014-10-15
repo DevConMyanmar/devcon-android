@@ -2,25 +2,41 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/card_bg"
+    android:background="@drawable/card_background"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="200dp">
 
   <org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView
       android:id="@+id/keynote_background"
       style="@style/KeynoteView.KeynoteImageStyle"
+      android:src="@drawable/dc14"
       android:foreground="@drawable/image_overlay"
+
       android:contentDescription="@string/keynote_background"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
-  <TextView
-      android:id="@+id/keynote_title"
-      style="@style/KeynoteView.KeynoteTitleStyle"
-      tools:text="Keynote by Mr. Ravi Chhabra"
+  <LinearLayout
+      android:orientation="vertical"
       android:background="@drawable/gradient_overlay"
+      android:layout_gravity="bottom|start"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/keynote_title"
+        style="@style/KeynoteView.KeynoteTitleStyle"
+        tools:text="Keynote by Mr. Ravi Chhabra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/keynote_time_and_place"
+        style="@style/KeynoteView.KeynoteTimeAndPlace"
+        tools:text="@string/talk_detail_time_and_place"
+        android:background="@drawable/gradient_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+  </LinearLayout>
 </FrameLayout>

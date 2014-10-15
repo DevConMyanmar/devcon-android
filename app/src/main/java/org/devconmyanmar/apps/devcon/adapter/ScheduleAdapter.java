@@ -14,6 +14,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
+import org.devconmyanmar.apps.devcon.utils.Phrase;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -81,15 +82,17 @@ public class ScheduleAdapter extends BaseAdapter {
           rootView.setTag(keynoteViewHolder);
         }
 
-        //Glide.with(mContext)
-        //    .load(mTalk.getPhoto())
-        //    .fitCenter()
-        //    .error(R.drawable.dc14)
-        //    .placeholder(R.drawable.dc14)
-        //    .crossFade()
-        //    .into(keynoteViewHolder.mKeynoteBackground);
-
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
+        // Phrase yo!
+        CharSequence keyNoteTimeAndPlace =
+            Phrase.from(mContext, R.string.talk_detail_time_and_place)
+                .put("day", mTalk.getDate())
+                .put("from_time", mTalk.getFrom_time())
+                .put("to_time", mTalk.getTo_time())
+                .put("room", mTalk.getRoom())
+                .format();
+        keynoteViewHolder.mKeyNoteTime.setText(keyNoteTimeAndPlace);
+
         return rootView;
       case VIEW_TYPE_NORMAL:
         if (rootView != null) {
@@ -124,6 +127,7 @@ public class ScheduleAdapter extends BaseAdapter {
   static class KeynoteViewHolder {
     @InjectView(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
     @InjectView(R.id.keynote_title) TextView mKeynoteTitle;
+    @InjectView(R.id.keynote_time_and_place) TextView mKeyNoteTime;
 
     public KeynoteViewHolder(View view) {
       ButterKnife.inject(this, view);
