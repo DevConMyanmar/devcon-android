@@ -67,6 +67,8 @@ public class ScheduleAdapter extends BaseAdapter {
   @Override public View getView(int position, View view, ViewGroup parent) {
 
     Talk mTalk = getItem(position);
+    List<Speaker> speakers = mTalk.getSpeakers();
+
     KeynoteViewHolder keynoteViewHolder;
     NormalViewHolder normalViewHolder;
     LightningViewHolder lightningViewHolder;
@@ -110,7 +112,6 @@ public class ScheduleAdapter extends BaseAdapter {
         normalViewHolder.mFromTime.setText(mTalk.getFrom_time());
         normalViewHolder.mToTime.setText(mTalk.getTo_time());
 
-        List<Speaker> speakers = mTalk.getSpeakers();
         normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
 
         return rootView;
@@ -122,8 +123,10 @@ public class ScheduleAdapter extends BaseAdapter {
           lightningViewHolder = new LightningViewHolder(rootView);
           rootView.setTag(lightningViewHolder);
         }
-        lightningViewHolder.mScheduleTitle.setText(mTalk.getTitle());
-        lightningViewHolder.mScheduleTime.setText(mTalk.getDate());
+        lightningViewHolder.mLightFromTime.setText(mTalk.getFrom_time());
+        lightningViewHolder.mLightToTime.setText(mTalk.getTo_time());
+        lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
+        lightningViewHolder.mLightSpeaker.setText(speakers.get(0).getName());
 
         return rootView;
       default:
@@ -155,8 +158,10 @@ public class ScheduleAdapter extends BaseAdapter {
   }
 
   static class LightningViewHolder {
-    @InjectView(R.id.schedule_title) TextView mScheduleTitle;
-    @InjectView(R.id.schedule_time) TextView mScheduleTime;
+    @InjectView(R.id.lightning_schedule_from_time) TextView mLightFromTime;
+    @InjectView(R.id.lightning_schedule_to_time) TextView mLightToTime;
+    @InjectView(R.id.lightning_schedule_title) TextView mLightScheduleTitle;
+    @InjectView(R.id.lightning_schedule_speaker) TextView mLightSpeaker;
 
     public LightningViewHolder(View view) {
       ButterKnife.inject(this, view);
