@@ -55,22 +55,9 @@
     Mastering a language gives you a great sense of perspective.
     To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
     practices.
-    \nHouston, Houston in the blind, this is Mission Specialist Ryan
-    Stone reporting from the Shenzhou.
-    I\'m about to undock from Tiangong… and I have a bad feeling about it.
-    \nMaster at least one multi-paradigm language.
-    Mastering a language gives you a great sense of perspective.
-    To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
-    practices.
-    \nHouston, Houston in the blind, this is Mission Specialist Ryan
-    Stone reporting from the Shenzhou.
-    I\'m about to undock from Tiangong… and I have a bad feeling about it
-    \nMaster at least one multi-paradigm language.
-    Mastering a language gives you a great sense of perspective.
-    To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
-    practices.
   </string>
   <string name="talk_detail_time_and_place">{day}, {from_time} - {to_time} in {room}</string>
   <string name="speakers">Speakers</string>
+  <string name="add_to_fav">Add to Favourites</string>
 
 </resources>

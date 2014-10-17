@@ -21,4 +21,6 @@
   <dimen name="speaker_image_size">48dp</dimen>
 
   <dimen name="talk_time_column_width">100dp</dimen>
+
+  <dimen name="add_to_schedule_button_height">56dp</dimen> <!-- including padding -->
 </resources>

@@ -7,6 +7,7 @@
     android:id="@+id/talk_detail_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
   <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
@@ -14,43 +15,66 @@
       android:background="@android:color/white"
       tools:context="org.devconmyanmar.apps.devcon.ui.TalkDetailFragment">
 
-    <FrameLayout android:id="@+id/session_photo_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/photo_banner_scrim">
-      <ImageView
-          android:src="@drawable/dc14"
-          android:scaleType="centerCrop"
-          android:contentDescription="@string/photo_banner"
-          android:layout_width="match_parent"
-          android:layout_height="200dp"/>
-    </FrameLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:tag="sticky"
-        android:background="@android:color/white"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-      <TextView
-          android:id="@+id/talk_title"
-          tools:text="Hello Android!"
-          android:paddingLeft="@dimen/spacing_major"
-          android:paddingStart="@dimen/spacing_major"
-          android:paddingEnd="@dimen/spacing_major"
-          android:paddingTop="@dimen/spacing_major"
-          android:textSize="@dimen/text_size_large"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-      <TextView
-          android:id="@+id/talk_time_and_room"
-          tools:text="1:00 PM - 1:45 PM, Sunday in Room 205"
-          android:textColor="#8a000000"
-          android:textSize="@dimen/text_size_small"
-          android:padding="@dimen/spacing_major"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-    </LinearLayout>
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <FrameLayout android:id="@+id/session_photo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="@drawable/photo_banner_scrim">
+          <ImageView
+              android:src="@drawable/dc14"
+              android:scaleType="centerCrop"
+              android:contentDescription="@string/photo_banner"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_below="@+id/session_photo_container"
+            android:tag="sticky"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+          <TextView
+              android:id="@+id/talk_title"
+              tools:text="Hello Android!"
+              android:paddingLeft="@dimen/spacing_major"
+              android:paddingStart="@dimen/spacing_major"
+              android:paddingEnd="@dimen/spacing_major"
+              android:paddingTop="@dimen/spacing_major"
+              android:textSize="@dimen/text_size_large"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+          <TextView
+              android:id="@+id/talk_time_and_room"
+              tools:text="1:00 PM - 1:45 PM, Sunday in Room 205"
+              android:textColor="#8a000000"
+              android:textSize="@dimen/text_size_small"
+              android:padding="@dimen/spacing_major"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <include layout="@layout/add_to_fav_fab"
+            android:layout_width="@dimen/add_to_schedule_button_height"
+            android:layout_height="@dimen/add_to_schedule_button_height"
+            android:layout_alignBottom="@+id/session_photo_container"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-27dp"
+            android:layout_marginEnd="@dimen/spacing_minor"
+            android:layout_marginLeft="@dimen/spacing_minor"
+            android:layout_marginRight="@dimen/spacing_minor"
+            />
+      </RelativeLayout>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/talk_description"
@@ -88,5 +112,7 @@
     </LinearLayout>
 
   </LinearLayout>
+
+
 </org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView>
 
