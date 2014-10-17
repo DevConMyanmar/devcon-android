@@ -47,7 +47,7 @@ public class SpeakerItemView extends RelativeLayout {
         .crossFade()
         .into(mSpeakerImage);
 
-    mSpeakerTitle.setText(speaker.getTitle());
-    mSpeakerAbstract.setText(speaker.getDescription());
+    mSpeakerTitle.setText(speaker.getName());
+    mSpeakerAbstract.setText(speaker.getTitle());
   }
 }
