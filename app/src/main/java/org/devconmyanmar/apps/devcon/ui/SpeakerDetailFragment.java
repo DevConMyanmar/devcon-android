@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -77,6 +78,7 @@ public class SpeakerDetailFragment extends BaseFragment {
           .error(R.drawable.person_image_empty)
           .placeholder(R.drawable.person_image_empty)
           .crossFade()
+          .transform(new CircleTransformer(mContext))
           .into(mSpeakerProfileImage);
     }
 

@@ -10,6 +10,7 @@ import butterknife.InjectView;
 import com.bumptech.glide.Glide;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
 
 /**
  * Created by Ye Lin Aung on 14/10/09.
@@ -44,6 +45,7 @@ public class SpeakerItemView extends RelativeLayout {
         .error(R.drawable.person_image_empty)
         .placeholder(R.drawable.person_image_empty)
         .crossFade()
+        .transform(new CircleTransformer(context))
         .into(mSpeakerImage);
 
     mSpeakerTitle.setText(speaker.getName());
