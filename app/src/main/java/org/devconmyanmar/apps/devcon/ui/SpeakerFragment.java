@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+
+import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -58,8 +61,8 @@ public class SpeakerFragment extends BaseFragment {
   @SuppressWarnings("unused") @OnItemClick(R.id.speaker_list) void speakerListItemClick(
       int position) {
     int id = mSpeakers.get(position).getId();
-    //Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-    //i.putExtra(POSITION, id);
-    //startActivity(i);
+    Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
+    i.putExtra(POSITION, id);
+    startActivity(i);
   }
 }
