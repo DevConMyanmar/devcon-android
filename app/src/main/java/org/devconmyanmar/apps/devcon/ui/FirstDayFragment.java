@@ -63,7 +63,7 @@ public class FirstDayFragment extends BaseFragment {
     return rootView;
   }
 
-  @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
+  @SuppressWarnings("unused") @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
     int id = mTalks.get(position).getId();
     LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
     Intent i = new Intent(getActivity(), TalkDetailActivity.class);

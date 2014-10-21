@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 import io.realm.Realm;
 import io.realm.RealmQuery;
+import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
@@ -21,6 +23,8 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 public class SpeakerFragment extends BaseFragment {
 
   @InjectView(R.id.speaker_list) ListView speakerList;
+
+  private List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
   public SpeakerFragment() {
   }
@@ -41,7 +45,7 @@ public class SpeakerFragment extends BaseFragment {
 
     Realm realm = Realm.getInstance(mContext);
     RealmQuery<Speaker> query = realm.where(Speaker.class);
-    List<Speaker> mSpeakers = query.findAll();
+    mSpeakers = query.findAll();
 
     SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
     speakerAdapter.replaceWith(mSpeakers);
@@ -49,5 +53,13 @@ public class SpeakerFragment extends BaseFragment {
     speakerList.setAdapter(speakerAdapter);
 
     return rootView;
+  }
+
+  @SuppressWarnings("unused") @OnItemClick(R.id.speaker_list) void speakerListItemClick(
+      int position) {
+    int id = mSpeakers.get(position).getId();
+    //Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+    //i.putExtra(POSITION, id);
+    //startActivity(i);
   }
 }
