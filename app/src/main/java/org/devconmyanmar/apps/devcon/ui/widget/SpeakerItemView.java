@@ -38,7 +38,6 @@ public class SpeakerItemView extends RelativeLayout {
   }
 
   public void bindTo(final Speaker speaker, Context context) {
-    // TODO bind image with Glide
     Glide.with(context)
         .load(speaker.getPhoto())
         .centerCrop()

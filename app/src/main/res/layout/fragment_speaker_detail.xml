@@ -63,7 +63,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/speaker_image"
+            android:id="@+id/speaker_detail_profile_image"
             android:layout_alignBottom="@+id/session_photo_container"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
