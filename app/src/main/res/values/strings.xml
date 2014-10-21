@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DevCon 2014</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="app_id">625994234086470</string>
+  <string name="app_name">DevCon 2014</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="action_settings">Settings</string>
+  <string name="app_id">625994234086470</string>
 
-    <!-- Login Activity -->
-    <string name="log_in_with_facebook">Log in with Facebook</string>
-    <string name="logo_description">DevCon Logo</string>
-    <string name="devcon_title">Developer Conference Yangon 2014</string>
-    <string name="devcon_slogan">Engage, Embrace, Enjoy, Excite</string>
+  <!-- Login Activity -->
+  <string name="log_in_with_facebook">Log in with Facebook</string>
+  <string name="logo_description">DevCon Logo</string>
+  <string name="devcon_title">Developer Conference Yangon 2014</string>
+  <string name="devcon_slogan">Engage, Embrace, Enjoy, Excite</string>
 
-    <!-- Schedule Activity -->
-    <string name="schedule_activity">Schedules</string>
-    <string name="first_day">NOV 15</string>
-    <string name="second_day">NOV 16</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="drawer_open">Open navigation drawer</string>
+  <!-- Schedule Activity -->
+  <string name="schedule_activity">Schedules</string>
+  <string name="first_day">NOV 15</string>
+  <string name="second_day">NOV 16</string>
+  <string name="drawer_close">Close navigation drawer</string>
+  <string name="drawer_open">Open navigation drawer</string>
 
-    <!-- Speaker List -->
-    <string name="speaker_list">Speaker List</string>
+  <!-- Speaker List -->
+  <string name="speaker_list">Speaker List</string>
 
-    <!-- Updates -->
-    <string name="updates">Updates</string>
+  <!-- Updates -->
+  <string name="updates">Updates</string>
 
-    <!-- Schedule row -->
-    <string name="keynote_background">Keynote</string>
-    <string name="lightning_talk_label">Lightning Talk</string>
+  <!-- Schedule row -->
+  <string name="keynote_background">Keynote</string>
+  <string name="lightning_talk_label">Lightning Talk</string>
 
-    <!-- Navigation Drawer Item -->
-    <array name="nav_drawer_items">
-        <item>Schedules</item>
-        <item>Speakers</item>
-        <item>Updates</item>
-    </array>
+  <!-- Navigation Drawer Item -->
+  <array name="nav_drawer_items">
+    <item>Schedules</item>
+    <item>Speakers</item>
+    <item>Updates</item>
+  </array>
 
-    <!-- Speaker Item -->
-    <string name="speaker_profile">Speaker profile</string>
-    <string name="placeholder_title">Ryan Stone, Mission Specialist</string>
-    <string name="placeholder_text">Houston, Houston in the blind, this is Mission Specialist Ryan
+  <!-- Speaker Item -->
+  <string name="speaker_profile">Speaker profile</string>
+  <string name="placeholder_title">Ryan Stone, Mission Specialist</string>
+  <string name="placeholder_text">Houston, Houston in the blind, this is Mission Specialist Ryan
     Stone reporting from the Shenzhou.
-    I\'m about to undock from Tiangong… and I have a bad feeling about it</string>
-    <string name="title_activity_schedule_detail">Schedule Detail</string>
+    I\'m about to undock from Tiangong… and I have a bad feeling about it
+  </string>
+  <string name="title_activity_schedule_detail">Schedule Detail</string>
 
-    <!-- Talk Detail -->
-    <string name="photo_banner">Photo banner</string>
-    <string name="placeholder_talk_description">    Houston, Houston in the blind, this is Mission Specialist Ryan
+  <!-- Talk Detail -->
+  <string name="photo_banner">Photo banner</string>
+  <string name="placeholder_talk_description">Houston, Houston in the blind, this is Mission
+    Specialist Ryan
     Stone reporting from the Shenzhou.
     I\'m about to undock from Tiangong… and I have a bad feeling about it.
     \nMaster at least one multi-paradigm language.
     Mastering a language gives you a great sense of perspective.
     To do this, you must write a lot of code, read a lot more, and learn the gotchas and best
-    practices.</string>
-    <string name="talk_detail_time_and_place">{day}, {from_time} - {to_time} in {room}</string>
-    <string name="speakers">Speakers</string>
-    <string name="add_to_fav">Add to Favourites</string>
-    <string name="title_activity_speaker_detail">SpeakerDetailActivity</string>
+    practices.
+  </string>
+  <string name="talk_detail_time_and_place">{day}, {from_time} - {to_time} in {room}</string>
+  <string name="speakers">Speakers</string>
+  <string name="add_to_fav">Add to Favourites</string>
+  <string name="title_activity_speaker_detail">SpeakerDetailActivity</string>
+
+  <!-- Speaker Detail -->
+  <string name="related_talks">Related Talks</string>
 
 </resources>

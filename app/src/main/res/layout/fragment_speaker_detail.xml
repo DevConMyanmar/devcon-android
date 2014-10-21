@@ -1,0 +1,121 @@
+<org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:androidsucks="http://schemas.android.com/apk/res-auto"
+    androidsucks:stuckShadowDrawable="@drawable/sticky_shawdow"
+    androidsucks:stuckShadowHeight="10dip"
+    android:id="@+id/talk_detail_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@android:color/white"
+      tools:context="org.devconmyanmar.apps.devcon.ui.TalkDetailFragment">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <FrameLayout android:id="@+id/session_photo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="@drawable/photo_banner_scrim">
+          <ImageView
+              android:src="@drawable/dc14"
+              android:scaleType="centerCrop"
+              android:contentDescription="@string/photo_banner"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_below="@+id/session_photo_container"
+            android:tag="sticky"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+          <TextView
+              android:id="@+id/speaker_detail_name"
+              tools:text="Paul Graham"
+              android:paddingLeft="@dimen/spacing_major"
+              android:paddingStart="@dimen/spacing_major"
+              android:paddingEnd="@dimen/spacing_major"
+              android:paddingTop="@dimen/spacing_major"
+              android:textSize="@dimen/text_size_large"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+          <TextView
+              android:id="@+id/speaker_detail_title"
+              tools:text="Founder, Y Combinator"
+              android:textColor="#8a000000"
+              android:textSize="@dimen/text_size_small"
+              android:padding="@dimen/spacing_major"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/speaker_image"
+            android:layout_alignBottom="@+id/session_photo_container"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-27dp"
+            android:layout_marginEnd="@dimen/spacing_minor"
+            android:layout_marginLeft="@dimen/spacing_minor"
+            android:layout_marginRight="@dimen/spacing_minor"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/speaker_profile"
+            android:src="@drawable/person_image_empty"
+            android:layout_width="@dimen/speaker_image_size"
+            android:layout_height="@dimen/speaker_image_size"/>
+      </RelativeLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/speaker_detail_description"
+        tools:text="@string/placeholder_talk_description"
+        android:padding="@dimen/spacing_major"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+      <include
+          android:layout_margin="@dimen/spacing_major"
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          layout="@layout/divider"/>
+
+      <TextView
+          android:text="@string/related_talks"
+          style="@style/SessionDetailSectionHeader"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+      <!--<include-->
+      <!--android:id="@+id/include_speaker_list"-->
+      <!--layout="@layout/speaker_list"/>-->
+
+      <include
+          android:layout_margin="@dimen/spacing_major"
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          layout="@layout/divider"/>
+    </LinearLayout>
+
+  </LinearLayout>
+
+
+</org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView>
+

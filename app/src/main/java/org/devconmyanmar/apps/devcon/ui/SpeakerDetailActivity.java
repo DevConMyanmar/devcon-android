@@ -67,8 +67,8 @@ public class SpeakerDetailActivity extends BaseActivity {
     List<Speaker> speakers = query.findAll();
 
     for (Speaker speaker : speakers) {
-      int talkId = speaker.getId();
-      fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
+      int speakerId = speaker.getId();
+      fList.add(SpeakerDetailFragment.newInstance(String.valueOf(speakerId)));
     }
 
     return fList;
