@@ -1,12 +1,23 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import java.util.ArrayList;
+import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.MyPagerAdapter;
+import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
+
+import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
 public class SpeakerDetailActivity extends BaseActivity {
 
@@ -17,6 +28,16 @@ public class SpeakerDetailActivity extends BaseActivity {
     setContentView(R.layout.activity_speaker_detail);
 
     ButterKnife.inject(this);
+
+    Intent intent = getIntent();
+    int position = intent.getIntExtra(POSITION, 0);
+
+    List<Fragment> fragments = getTalkFragments();
+    MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager(), fragments);
+
+    mSpeakerViewPager.setPageTransformer(true, new StackTransformer());
+    mSpeakerViewPager.setAdapter(mAdapter);
+    mSpeakerViewPager.setCurrentItem(position);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,5 +58,19 @@ public class SpeakerDetailActivity extends BaseActivity {
     }
 
     return super.onOptionsItemSelected(item);
+  }
+
+  private List<Fragment> getTalkFragments() {
+    List<Fragment> fList = new ArrayList<Fragment>();
+    Realm realm = Realm.getInstance(this);
+    RealmQuery<Speaker> query = realm.where(Speaker.class);
+    List<Speaker> speakers = query.findAll();
+
+    for (Speaker speaker : speakers) {
+      int talkId = speaker.getId();
+      fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
+    }
+
+    return fList;
   }
 }

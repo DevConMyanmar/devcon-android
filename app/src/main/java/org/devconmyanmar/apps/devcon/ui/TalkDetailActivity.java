@@ -3,8 +3,6 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +13,7 @@ import io.realm.RealmQuery;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.MyPagerAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
 
@@ -34,8 +33,8 @@ public class TalkDetailActivity extends BaseActivity {
     int position = intent.getIntExtra(POSITION, 0);
 
     List<Fragment> fragments = getTalkFragments();
-    SchedulePagerAdapter mAdapter =
-        new SchedulePagerAdapter(getSupportFragmentManager(), fragments);
+    MyPagerAdapter mAdapter =
+        new MyPagerAdapter(getSupportFragmentManager(), fragments);
 
     mScheduleViewPager.setPageTransformer(true, new StackTransformer());
     mScheduleViewPager.setAdapter(mAdapter);
@@ -76,25 +75,5 @@ public class TalkDetailActivity extends BaseActivity {
     }
 
     return fList;
-  }
-
-  public class SchedulePagerAdapter extends FragmentPagerAdapter {
-
-    private List<Fragment> fragments;
-
-    public SchedulePagerAdapter(FragmentManager fm, List<Fragment> fragments) {
-      super(fm);
-      this.fragments = fragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-      return this.fragments.get(position);
-    }
-
-    @Override
-    public int getCount() {
-      return fragments.size();
-    }
   }
 }
