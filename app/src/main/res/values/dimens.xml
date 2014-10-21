@@ -19,6 +19,7 @@
   <dimen name="navigation_drawer_width">240dp</dimen>
 
   <dimen name="speaker_image_size">48dp</dimen>
+  <dimen name="speaker_detail_image_size">96dp</dimen>
 
   <dimen name="talk_time_column_width">100dp</dimen>
 
