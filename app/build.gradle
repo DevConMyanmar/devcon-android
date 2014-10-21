@@ -9,12 +9,12 @@ def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim
 def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
 
 android {
-  compileSdkVersion 20
+  compileSdkVersion 21
   buildToolsVersion '20.0.0'
 
   defaultConfig {
     minSdkVersion 14
-    targetSdkVersion 20
+    targetSdkVersion 21
 
     versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
     versionName "${versionMajor}.${versionMinor}.${versionPatch}"
