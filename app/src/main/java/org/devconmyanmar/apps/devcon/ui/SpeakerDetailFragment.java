@@ -64,7 +64,7 @@ public class SpeakerDetailFragment extends BaseFragment {
 
     if (speaker != null) {
       if (mActionBar != null) {
-        mActionBar.setTitle(speaker.getName());
+        mActionBar.setTitle(getString(R.string.speakers));
         mActionBar.setIcon(android.R.color.transparent);
       }
 
