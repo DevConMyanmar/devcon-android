@@ -21,7 +21,7 @@
     android:layout_height="@dimen/add_to_schedule_button_height"
     android:layout_marginLeft="@dimen/spacing_minor"
     android:layout_marginStart="@dimen/spacing_minor"
-    android:visibility="invisible"
+    android:visibility="visible"
     android:clickable="true"
     android:focusable="true"
     android:background="@drawable/add_schedule_fab_background"

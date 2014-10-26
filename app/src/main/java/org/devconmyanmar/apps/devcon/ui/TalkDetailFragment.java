@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import io.realm.Realm;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -17,6 +19,7 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
+import org.devconmyanmar.apps.devcon.utils.LUtils;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -25,13 +28,15 @@ public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
   private static final String TAG = makeLogTag(TalkDetailFragment.class);
 
+  private LUtils mLUtils;
+
   @InjectView(R.id.talk_title) TextView mTalkTitle;
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
   @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @InjectView(R.id.talk_description) TextView talkDescription;
   @InjectView(R.id.include_speaker_list) ListView mSpeakerList;
 
-  @InjectView(R.id.add_to_fav_button) CheckableFrameLayout mAddToFav;
+  @InjectView(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
 
   private int mTalkId;
   private ActionBar mActionBar;
@@ -48,18 +53,18 @@ public class TalkDetailFragment extends BaseFragment {
     // Required empty public constructor
   }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
+  @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
 
     mActionBar = getActivity().getActionBar();
+
+    mLUtils = LUtils.getInstance(mContext);
   }
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_talk_detail, container, false);
@@ -94,5 +99,12 @@ public class TalkDetailFragment extends BaseFragment {
     mSpeakerList.setAdapter(speakerAdapter);
 
     return rootView;
+  }
+
+  @OnClick(R.id.add_schedule_button) void addToFav() {
+    mAddToFav.setChecked(true, false);
+
+    ImageView iconView = (ImageView) mAddToFav.findViewById(R.id.add_to_fav_icon);
+    mLUtils.setOrAnimatePlusCheckIcon(iconView, true, true);
   }
 }
