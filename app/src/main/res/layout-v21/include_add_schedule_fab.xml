@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 
-<org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout
+<org.devconmyanmar.apps.devcon.ui.widget.AddToScheduleFABFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/add_schedule_button"
     android:layout_width="@dimen/add_to_schedule_button_height"
@@ -36,4 +36,5 @@
       android:contentDescription="@null"
       android:layout_gravity="center"/>
 
-</org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout>
+</org.devconmyanmar.apps.devcon.ui.widget.AddToScheduleFABFrameLayout>
+

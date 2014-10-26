@@ -15,6 +15,7 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 
@@ -29,6 +30,8 @@ public class TalkDetailFragment extends BaseFragment {
   @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @InjectView(R.id.talk_description) TextView talkDescription;
   @InjectView(R.id.include_speaker_list) ListView mSpeakerList;
+
+  @InjectView(R.id.add_to_fav_button) CheckableFrameLayout mAddToFav;
 
   private int mTalkId;
   private ActionBar mActionBar;

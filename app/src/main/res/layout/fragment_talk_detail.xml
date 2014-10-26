@@ -62,7 +62,8 @@
               android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <include layout="@layout/add_to_fav_fab"
+        <include
+            layout="@layout/add_to_fav_fab"
             android:layout_width="@dimen/add_to_schedule_button_height"
             android:layout_height="@dimen/add_to_schedule_button_height"
             android:layout_alignBottom="@+id/session_photo_container"

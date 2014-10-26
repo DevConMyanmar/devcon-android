@@ -21,4 +21,7 @@
   <color name="photo_tint">#7f2c2c2c</color>
 
   <color name="time_and_place">#8affffff</color>
+
+  <color name="theme_accent_1">#00b0ff</color>
+  <color name="theme_accent_1_light">#8ad4fa</color>
 </resources>
