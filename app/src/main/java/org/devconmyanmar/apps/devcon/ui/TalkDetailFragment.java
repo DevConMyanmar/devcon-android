@@ -65,7 +65,7 @@ public class TalkDetailFragment extends BaseFragment {
 
     mActionBar = getActivity().getActionBar();
 
-    mLUtils = LUtils.getInstance(mContext);
+    mLUtils = LUtils.getInstance(getActivity());
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
