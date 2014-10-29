@@ -80,12 +80,7 @@ public class TalkDetailFragment extends BaseFragment {
 
     isFavourite = talk.isFavourite();
     LOGD(TAG, "favourite ? " + isFavourite);
-
-    if (isFavourite) {
-      mAddToFav.setChecked(true);
-    } else {
-      mAddToFav.setChecked(false);
-    }
+    showStarred(isFavourite, true);
 
     if (mActionBar != null) {
       mActionBar.setTitle(getString(R.string.title_activity_schedule_detail));
@@ -113,18 +108,15 @@ public class TalkDetailFragment extends BaseFragment {
     return rootView;
   }
 
-  @OnClick(R.id.add_schedule_button) void addToFav() {
-
+  @SuppressWarnings("unused") @OnClick(R.id.add_schedule_button) void addToFav() {
     boolean starred = !isFavourite;
     realm.beginTransaction();
     if (!isFavourite) {
-      mAddToFav.setChecked(true);
       talk.setFavourite(true);
       showStarred(starred, true);
     } else {
-      mAddToFav.setChecked(false);
       talk.setFavourite(false);
-      showStarred(starred, false);
+      showStarred(starred, true);
     }
 
     realm.commitTransaction();
