@@ -22,24 +22,30 @@ import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
   private static final String TAG = makeLogTag(TalkDetailFragment.class);
 
-  private LUtils mLUtils;
-
   @InjectView(R.id.talk_title) TextView mTalkTitle;
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
   @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @InjectView(R.id.talk_description) TextView talkDescription;
   @InjectView(R.id.include_speaker_list) ListView mSpeakerList;
-
   @InjectView(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
 
+  private LUtils mLUtils;
   private int mTalkId;
   private ActionBar mActionBar;
+  private Realm realm;
+  private Talk talk;
+  private boolean isFavourite;
+
+  public TalkDetailFragment() {
+    // Required empty public constructor
+  }
 
   public static TalkDetailFragment newInstance(String talk_id) {
     TalkDetailFragment fragment = new TalkDetailFragment();
@@ -49,15 +55,13 @@ public class TalkDetailFragment extends BaseFragment {
     return fragment;
   }
 
-  public TalkDetailFragment() {
-    // Required empty public constructor
-  }
-
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
+
+    realm = Realm.getInstance(mContext);
 
     mActionBar = getActivity().getActionBar();
 
@@ -71,9 +75,17 @@ public class TalkDetailFragment extends BaseFragment {
 
     ButterKnife.inject(this, rootView);
 
-    Realm realm = Realm.getInstance(mContext);
-    Talk talk = realm.where(Talk.class).equalTo("id", mTalkId).findFirst();
+    talk = realm.where(Talk.class).equalTo("id", mTalkId).findFirst();
     mTalkTitle.setText(talk.getTitle());
+
+    isFavourite = talk.isFavourite();
+    LOGD(TAG, "favourite ? " + isFavourite);
+
+    if (isFavourite) {
+      mAddToFav.setChecked(true);
+    } else {
+      mAddToFav.setChecked(false);
+    }
 
     if (mActionBar != null) {
       mActionBar.setTitle(getString(R.string.title_activity_schedule_detail));
@@ -102,7 +114,18 @@ public class TalkDetailFragment extends BaseFragment {
   }
 
   @OnClick(R.id.add_schedule_button) void addToFav() {
-    mAddToFav.setChecked(true, false);
+
+    realm.beginTransaction();
+
+    if (!isFavourite && !mAddToFav.isChecked()) {
+      mAddToFav.setChecked(true);
+      talk.setFavourite(true);
+    } else {
+      mAddToFav.setChecked(false);
+      talk.setFavourite(false);
+    }
+
+    realm.commitTransaction();
 
     ImageView iconView = (ImageView) mAddToFav.findViewById(R.id.add_to_fav_icon);
     mLUtils.setOrAnimatePlusCheckIcon(iconView, true, true);
