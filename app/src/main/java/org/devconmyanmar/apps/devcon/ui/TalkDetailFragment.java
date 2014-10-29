@@ -115,19 +115,27 @@ public class TalkDetailFragment extends BaseFragment {
 
   @OnClick(R.id.add_schedule_button) void addToFav() {
 
+    boolean starred = !isFavourite;
     realm.beginTransaction();
-
-    if (!isFavourite && !mAddToFav.isChecked()) {
+    if (!isFavourite) {
       mAddToFav.setChecked(true);
       talk.setFavourite(true);
+      showStarred(starred, true);
     } else {
       mAddToFav.setChecked(false);
       talk.setFavourite(false);
+      showStarred(starred, false);
     }
 
     realm.commitTransaction();
+  }
+
+  private void showStarred(boolean starred, boolean allowAnimate) {
+    isFavourite = starred;
+
+    mAddToFav.setChecked(isFavourite, allowAnimate);
 
     ImageView iconView = (ImageView) mAddToFav.findViewById(R.id.add_to_fav_icon);
-    mLUtils.setOrAnimatePlusCheckIcon(iconView, true, true);
+    mLUtils.setOrAnimatePlusCheckIcon(iconView, starred, allowAnimate);
   }
 }
