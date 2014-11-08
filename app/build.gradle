@@ -10,7 +10,7 @@ def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone(
 
 android {
   compileSdkVersion 21
-  buildToolsVersion '21.0.2'
+  buildToolsVersion '21.1.0'
 
   defaultConfig {
     minSdkVersion 14
