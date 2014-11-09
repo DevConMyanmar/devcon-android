@@ -44,7 +44,7 @@ public class SecondDayFragment extends BaseFragment {
 
     Realm realm = Realm.getInstance(mContext);
     RealmQuery<Talk> query = realm.where(Talk.class);
-    query.equalTo("date", "Oct 16");
+    query.equalTo("date", "161114");
     mTalks = query.findAll();
 
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);

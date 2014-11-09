@@ -24,9 +24,9 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  */
 public class ScheduleAdapter extends BaseAdapter {
 
-  private static final int VIEW_TYPE_KEYNOTE = 0;
-  private static final int VIEW_TYPE_NORMAL = 1;
-  private static final int VIEW_TYPE_LIGHTNING = 2;
+  private static final int VIEW_TYPE_KEYNOTE = 1;
+  private static final int VIEW_TYPE_NORMAL = 2;
+  private static final int VIEW_TYPE_LIGHTNING = 3;
   private static final String TAG = makeLogTag(ScheduleAdapter.class);
 
   private static final int VIEW_TYPE_COUNT = 3;

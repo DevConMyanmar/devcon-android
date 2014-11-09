@@ -52,7 +52,7 @@ public class FirstDayFragment extends BaseFragment {
     Realm realm = Realm.getInstance(mContext);
 
     RealmQuery<Talk> query = realm.where(Talk.class);
-    query.equalTo("date", "Oct 15");
+    query.equalTo("date", "151114");
     mTalks = query.findAll();
 
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);

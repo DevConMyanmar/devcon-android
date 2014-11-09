@@ -10,7 +10,6 @@ import io.realm.Realm;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
@@ -29,7 +28,7 @@ public class DataUtils {
     this.mContext = context;
   }
 
-  public void createFake() {
+/*  public void createFake() {
 
     // Empty first
     Realm.deleteRealmFile(mContext);
@@ -130,7 +129,7 @@ public class DataUtils {
     }
 
     realm.commitTransaction();
-  }
+  }*/
 
   public void loadFromAssets() {
 
@@ -184,6 +183,7 @@ public class DataUtils {
       //  speaker.setPhoto(e.getAsJsonObject().get("photo").getAsString());
       //}
       realm.commitTransaction();
+      LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {
       e.printStackTrace();
     }
