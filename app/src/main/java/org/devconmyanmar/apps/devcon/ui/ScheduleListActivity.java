@@ -71,7 +71,7 @@ public class ScheduleListActivity extends BaseActivity
   }
 
   public void restoreActionBar() {
-    android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+    ActionBar actionBar = getSupportActionBar();
     CharSequence title = getTitle();
     if (actionBar != null) {
       actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
