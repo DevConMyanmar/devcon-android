@@ -25,4 +25,21 @@ public class TimeUtils {
 
     return null;
   }
+
+  public static String parseFromToString(String dateString) {
+    // 08:30:00Z
+    DateFormat readFormat = new SimpleDateFormat("HH:mm");
+    DateFormat writeFormat = new SimpleDateFormat("hh:mm a");
+    Date date = null;
+    try {
+      date = readFormat.parse(dateString);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    if (date != null) {
+      return writeFormat.format(date);
+    }
+
+    return null;
+  }
 }
