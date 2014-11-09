@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
@@ -22,13 +23,14 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
 public class TalkDetailActivity extends BaseActivity {
 
   @InjectView(R.id.schedule_pager) ViewPager mScheduleViewPager;
-
+  @InjectView(R.id.toolbar) Toolbar mToolbar;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_detail);
     ButterKnife.inject(this);
-
+    setSupportActionBar(mToolbar);
+    mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0);
 

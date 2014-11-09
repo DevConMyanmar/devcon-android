@@ -1,7 +1,7 @@
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +63,7 @@ public class TalkDetailFragment extends BaseFragment {
 
     realm = Realm.getInstance(mContext);
 
-    mActionBar = getActivity().getActionBar();
+    mActionBar = ((BaseActivity)getActivity()).getSupportActionBar();
 
     mLUtils = LUtils.getInstance(getActivity());
   }

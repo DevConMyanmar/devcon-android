@@ -1,7 +1,7 @@
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +48,7 @@ public class SpeakerDetailFragment extends BaseFragment {
       mSpeakerId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
 
-    mActionBar = getActivity().getActionBar();
+    mActionBar = ((BaseActivity)getActivity()).getSupportActionBar();
   }
 
   @Override

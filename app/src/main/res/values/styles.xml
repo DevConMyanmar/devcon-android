@@ -6,7 +6,7 @@
       parent="android:Widget.Holo.ActionButton.Overflow"/>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="android:Theme.Holo.Light">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
     <item name="android:windowContentOverlay">@null</item>
@@ -31,7 +31,7 @@
   <style name="AppTheme.LoginTheme" parent="android:Theme.Holo.Light.NoActionBar">
   </style>
 
-  <style name="AppTheme.ScheduleActivity" parent="android:Theme.Holo.Light">
+  <style name="AppTheme.ScheduleActivity" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- API 19 theme customizations can go here. -->
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class ScheduleFragment extends BaseFragment {
   private static final String TAG = makeLogTag(ScheduleFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
-
+  @InjectView(R.id.toolbar) Toolbar mToolbar;
   public ScheduleFragment() {
   }
 
@@ -44,7 +45,8 @@ public class ScheduleFragment extends BaseFragment {
     @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
-
+    ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
+    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
 
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
