@@ -1,0 +1,697 @@
+{
+  "sessions": [
+    {
+      "id": "1",
+      "title": "Opening Announcement",
+      "description": "Opening Announcement",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0830",
+      "to_time": "0833",
+      "speakers": []
+    },
+    {
+      "id": "2",
+      "title": "DevCon Welcome Speech",
+      "description": "DevCon Welcome Speech",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0833",
+      "to_time": "0845",
+      "speakers": [
+        {
+          "id": "39",
+          "name": "U Ye Yint Win",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Opening Speech (VIP)",
+      "description": "Opening Announcement",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0845",
+      "to_time": "0900",
+      "speakers": []
+    },
+    {
+      "id": "4",
+      "title": "Software industry updates and about SIDC",
+      "description": "Software industry updates and about SIDC",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0830",
+      "to_time": "0833",
+      "speakers": [
+        {
+          "id": "40",
+          "name": "Dr Tun Thura Thet",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "HR Opportunities, Challenges and State in Myanmar",
+      "description": "Software industry updates and about SIDC",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0900",
+      "to_time": "0920",
+      "speakers": [
+        {
+          "id": "41",
+          "name": "U Win Htein Win",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Photo Section",
+      "description": "Photo Section",
+      "photo": "",
+      "date": "151114",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "0940",
+      "to_time": "1000",
+      "speakers": [
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Cross country, cross culture product development",
+      "description": "Cross country, cross culture product development",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "1000",
+      "to_time": "1100",
+      "speakers": [
+        {
+          "id": "3",
+          "name": "Aung Aung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Lightening Talks",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "3",
+      "room": "conference",
+      "from_time": "1100",
+      "to_time": "1200",
+      "speakers": [
+        {
+          "id": "3",
+          "name": "Wai Lin Tun",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Ravi Chhabra",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Aung Aung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Ei Maung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Thar Htet",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Ye Lin Aung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Myat Min Han",
+          "title": "",
+          "description": "",
+          "photo": ""
+        },
+        {
+          "id": "3",
+          "name": "Yadanar Tun",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Web Security",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "1300",
+      "to_time": "1400",
+      "speakers": [
+        {
+          "id": "9",
+          "name": "Thet Aung Min Latt",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Exploitations of the most critical applications security risks",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "1400",
+      "to_time": "1500",
+      "speakers": [
+        {
+          "id": "10",
+          "name": "Ye Thura Thet",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Software Project Management & best practices",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "1500",
+      "to_time": "1600",
+      "speakers": [
+        {
+          "id": "11",
+          "name": "Hoang Thi Thu Huong",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Dreams Do Come True",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "1600",
+      "to_time": "1700",
+      "speakers": [
+        {
+          "id": "12",
+          "name": "Khin Mrat Noe",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Crashing an app 40 times a day: A dev's Lessons.",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1000",
+      "to_time": "1100",
+      "speakers": [
+        {
+          "id": "6",
+          "name": "Ye Lin Aung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Common Back-End Server Architecture Design",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1100",
+      "to_time": "1200",
+      "speakers": [
+        {
+          "id": "4",
+          "name": "Ei Maung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Be a programmer for real",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1300",
+      "to_time": "1400",
+      "speakers": [
+        {
+          "id": "7",
+          "name": "Myat Min Han",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Artificial Intelligence: A Brief History",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1400",
+      "to_time": "1500",
+      "speakers": [
+        {
+          "id": "13",
+          "name": "Myint Kyaw Thu",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Web Browser Automation",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1500",
+      "to_time": "1600",
+      "speakers": [
+        {
+          "id": "14",
+          "name": "Ye Maung",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Your business with Open Source software and Open Hardware",
+      "description": "-",
+      "photo": "",
+      "date": "151114",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "1600",
+      "to_time": "1700",
+      "speakers": [
+        {
+          "id": "15",
+          "name": "Ko Ko Ye",
+          "title": "",
+          "description": "",
+          "photo": ""
+        }
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "id": "1",
+      "name": "Wai Lin Tun",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "2",
+      "name": "Ravi Chhabra",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "3",
+      "name": "Aung Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "4",
+      "name": "Ei Maung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "5",
+      "name": "Thar Htet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "6",
+      "name": "Ye Lin Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "7",
+      "name": "Myat Min Han",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "8",
+      "name": "Yadanar Tun",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "9",
+      "name": "Thet Aung Min Latt",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "10",
+      "name": "Ye Thura Thet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "11",
+      "name": "Hoang Thi Thu Huong",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "12",
+      "name": "Khin Mrat Noe",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "13",
+      "name": "Myint Kyaw Thu",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "14",
+      "name": "Ye Maung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "15",
+      "name": "Ko Ko Ye",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "16",
+      "name": "",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "17",
+      "name": "Poe Poe Myint Swe",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "18",
+      "name": "Sean Lin",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "19",
+      "name": "Nyan Lynn Htut",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "20",
+      "name": "Arkar Min Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "21",
+      "name": "Soe Thiha",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "22",
+      "name": "Thura Myo Nyunt",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "23",
+      "name": "Mon Mon Myint Thu",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "24",
+      "name": "Aung Win Myat",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "25",
+      "name": "Htoo Lin",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "26",
+      "name": "Tin Aung Lin",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "27",
+      "name": "Tran Tuan Anh",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "28",
+      "name": "Ye Wint Ko",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "29",
+      "name": "Zaw Thet Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "30",
+      "name": "Set Kyar Wa Lar",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "31",
+      "name": "Hein Zaw Htet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "32",
+      "name": "Swan Htet Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "33",
+      "name": "Aye Aye Thin",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "34",
+      "name": "Nan Aye Me",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "35",
+      "name": "Phyo Zaw Tun",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "36",
+      "name": "Htoo Myat Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "37",
+      "name": "Naing Win",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "38",
+      "name": "Ravi",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "39",
+      "name": "U Ye Yint Win",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "40",
+      "name": "Dr Tun Thura Thet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "41",
+      "name": "U Win Htein Win",
+      "title": "",
+      "description": "",
+      "photo": ""
+    }
+  ]
+}

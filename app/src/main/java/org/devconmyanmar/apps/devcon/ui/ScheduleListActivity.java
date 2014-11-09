@@ -36,7 +36,8 @@ public class ScheduleListActivity extends BaseActivity
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
     if (SharePref.getInstance(this).isFirstTime()) {
-      new DataUtils(this).createFake();
+      //new DataUtils(this).createFake();
+      new DataUtils(this).loadFromAssets();
       SharePref.getInstance(this).noLongerFirstTime();
     } else {
       LOGD(TAG, "no longer first time");
