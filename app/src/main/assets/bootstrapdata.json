@@ -9,8 +9,8 @@
       "favourite": "true",
       "talk_type": "1",
       "room": "conference",
-      "from_time": "08:30:00Z",
-      "to_time": "08:33:00Z",
+      "from_time": "08:30",
+      "to_time": "08:33",
       "speakers": []
     },
     {
@@ -22,8 +22,8 @@
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "0833",
-      "to_time": "0845",
+      "from_time": "08:33",
+      "to_time": "08:45",
       "speakers": [
         {
           "id": "39",
@@ -43,8 +43,8 @@
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "0845",
-      "to_time": "0900",
+      "from_time": "08:45",
+      "to_time": "09:00",
       "speakers": []
     },
     {
@@ -56,8 +56,8 @@
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "0830",
-      "to_time": "0833",
+      "from_time": "08:30",
+      "to_time": "08:33",
       "speakers": [
         {
           "id": "40",
@@ -77,8 +77,8 @@
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "0900",
-      "to_time": "0920",
+      "from_time": "09:00",
+      "to_time": "09:20",
       "speakers": [
         {
           "id": "41",
@@ -98,8 +98,8 @@
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "0940",
-      "to_time": "1000",
+      "from_time": "09:40",
+      "to_time": "10:00",
       "speakers": [
       ]
     },
@@ -112,8 +112,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "1000",
-      "to_time": "1100",
+      "from_time": "10:00",
+      "to_time": "11:00",
       "speakers": [
         {
           "id": "3",
@@ -133,8 +133,8 @@
       "favourite": "false",
       "talk_type": "3",
       "room": "conference",
-      "from_time": "1100",
-      "to_time": "1200",
+      "from_time": "11:00",
+      "to_time": "12:00",
       "speakers": [
         {
           "id": "3",
@@ -203,8 +203,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "1300",
-      "to_time": "1400",
+      "from_time": "13:00",
+      "to_time": "14:00",
       "speakers": [
         {
           "id": "9",
@@ -224,8 +224,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "1400",
-      "to_time": "1500",
+      "from_time": "14:00",
+      "to_time": "15:00",
       "speakers": [
         {
           "id": "10",
@@ -245,8 +245,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "1500",
-      "to_time": "1600",
+      "from_time": "15:00",
+      "to_time": "16:00",
       "speakers": [
         {
           "id": "11",
@@ -266,8 +266,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "1600",
-      "to_time": "1700",
+      "from_time": "16:00",
+      "to_time": "17:00",
       "speakers": [
         {
           "id": "12",
@@ -287,8 +287,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1000",
-      "to_time": "1100",
+      "from_time": "10:00",
+      "to_time": "11:00",
       "speakers": [
         {
           "id": "6",
@@ -308,8 +308,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1100",
-      "to_time": "1200",
+      "from_time": "11:00",
+      "to_time": "12:00",
       "speakers": [
         {
           "id": "4",
@@ -329,8 +329,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1300",
-      "to_time": "1400",
+      "from_time": "13:00",
+      "to_time": "14:00",
       "speakers": [
         {
           "id": "7",
@@ -350,8 +350,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1400",
-      "to_time": "1500",
+      "from_time": "14:00",
+      "to_time": "15:00",
       "speakers": [
         {
           "id": "13",
@@ -371,8 +371,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1500",
-      "to_time": "1600",
+      "from_time": "15:00",
+      "to_time": "16:00",
       "speakers": [
         {
           "id": "14",
@@ -392,8 +392,8 @@
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "1600",
-      "to_time": "1700",
+      "from_time": "16:00",
+      "to_time": "17:00",
       "speakers": [
         {
           "id": "15",

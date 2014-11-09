@@ -96,14 +96,14 @@ public class ScheduleAdapter extends BaseAdapter {
         String dateString = mTalk.getDate();
 
         formattedDate = TimeUtils.parseDateString(dateString);
-        String formattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
-        String formattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+        String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
+        String keynoteFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
         // Phrase yo!
         CharSequence keyNoteTimeAndPlace =
             Phrase.from(mContext, R.string.talk_detail_time_and_place)
                 .put("day", formattedDate)
-                .put("from_time", formattedFrom)
-                .put("to_time", formattedTo)
+                .put("from_time", keynoteFormattedFrom)
+                .put("to_time", keynoteFormattedTo)
                 .put("room", mTalk.getRoom())
                 .format();
         keynoteViewHolder.mKeyNoteTime.setText(keyNoteTimeAndPlace);
@@ -117,9 +117,13 @@ public class ScheduleAdapter extends BaseAdapter {
           normalViewHolder = new NormalViewHolder(rootView);
           rootView.setTag(normalViewHolder);
         }
+
+        String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
+        String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+
         normalViewHolder.mScheduleTitle.setText(mTalk.getTitle());
-        normalViewHolder.mFromTime.setText(mTalk.getFrom_time());
-        normalViewHolder.mToTime.setText(mTalk.getTo_time());
+        normalViewHolder.mFromTime.setText(normalFormattedFrom);
+        normalViewHolder.mToTime.setText(normalFormattedTo);
 
         normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
 
@@ -132,8 +136,12 @@ public class ScheduleAdapter extends BaseAdapter {
           lightningViewHolder = new LightningViewHolder(rootView);
           rootView.setTag(lightningViewHolder);
         }
-        lightningViewHolder.mLightFromTime.setText(mTalk.getFrom_time());
-        lightningViewHolder.mLightToTime.setText(mTalk.getTo_time());
+
+        String lFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
+        String lFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+
+        lightningViewHolder.mLightFromTime.setText(lFormattedFrom);
+        lightningViewHolder.mLightToTime.setText(lFormattedTo);
         lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
         lightningViewHolder.mLightSpeaker.setText(speakers.get(0).getName());
 
