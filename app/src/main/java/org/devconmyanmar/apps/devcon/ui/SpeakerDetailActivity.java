@@ -31,6 +31,8 @@ public class SpeakerDetailActivity extends BaseActivity {
     ButterKnife.inject(this);
     setSupportActionBar(mToolbar);
     mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0);
@@ -54,13 +56,17 @@ public class SpeakerDetailActivity extends BaseActivity {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
+    switch(id){
+      case R.id.action_settings:
+        return true;
+      case R.id.home:
+        finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
 
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
     }
 
-    return super.onOptionsItemSelected(item);
   }
 
   private List<Fragment> getTalkFragments() {
