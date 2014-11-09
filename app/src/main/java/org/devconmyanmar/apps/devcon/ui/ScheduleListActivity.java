@@ -1,11 +1,11 @@
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.utils.DataUtils;
@@ -71,7 +71,7 @@ public class ScheduleListActivity extends BaseActivity
   }
 
   public void restoreActionBar() {
-    ActionBar actionBar = getActionBar();
+    android.support.v7.app.ActionBar actionBar = getSupportActionBar();
     CharSequence title = getTitle();
     if (actionBar != null) {
       actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -84,7 +84,7 @@ public class ScheduleListActivity extends BaseActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     if (mNavigationDrawerFragment.isDrawerOpen()) {
       // Show App Label When drawer is Open
-      ActionBar actionBar = getActionBar();
+      ActionBar actionBar = getSupportActionBar();
       if (actionBar != null) {
         actionBar.setTitle(getString(R.string.app_name));
       }

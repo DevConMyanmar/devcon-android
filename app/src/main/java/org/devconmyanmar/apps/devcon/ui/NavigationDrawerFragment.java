@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
@@ -28,7 +30,8 @@ public class NavigationDrawerFragment extends BaseFragment {
 
   private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
   private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-  @InjectView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+  @InjectView(R.id.drawer_list) ListView mDrawerListView;
+  @InjectView(R.id.drawer_title) TextView mDrawerTitle;
   private int mCurrentSelectedPosition = 0;
   private boolean mFromSavedInstanceState;
   private boolean mUserLearnedDrawer;
@@ -36,7 +39,7 @@ public class NavigationDrawerFragment extends BaseFragment {
   private String[] mNavDrawerItems;
   private ActionBarDrawerToggle mDrawerToggle;
   private NavigationDrawerCallbacks mCallbacks;
-  private ListView mDrawerListView;
+  private DrawerLayout mDrawerLayout;
 
   public NavigationDrawerFragment() {
   }
@@ -66,15 +69,16 @@ public class NavigationDrawerFragment extends BaseFragment {
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-
-    mDrawerListView =
-        (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+    View v = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+    ButterKnife.inject(this, v);
     mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selectItem(position);
       }
     });
+
+    mDrawerTitle.setPadding(0,getStatusBarHeight(),0,0);
 
     mNavDrawerItems = getResources().getStringArray(R.array.nav_drawer_items);
     mDrawerListView.setAdapter(
@@ -88,12 +92,9 @@ public class NavigationDrawerFragment extends BaseFragment {
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
       tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
-      SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-      mDrawerListView.setPadding(0, config.getPixelInsetTop(true), config.getPixelInsetRight(),
-          config.getPixelInsetBottom());
     }
 
-    return mDrawerListView;
+    return v;
   }
 
   public boolean isDrawerOpen() {
@@ -222,5 +223,13 @@ public class NavigationDrawerFragment extends BaseFragment {
      * Called when an item in the navigation drawer is selected.
      */
     void onNavigationDrawerItemSelected(int position);
+  }
+  public int getStatusBarHeight() {
+    int result = 0;
+    int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (resourceId > 0) {
+      result = getResources().getDimensionPixelSize(resourceId);
+    }
+    return result;
   }
 }

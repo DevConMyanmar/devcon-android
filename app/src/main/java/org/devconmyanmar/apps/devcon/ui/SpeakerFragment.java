@@ -3,6 +3,7 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
 public class SpeakerFragment extends BaseFragment {
 
   @InjectView(R.id.speaker_list) ListView speakerList;
-
+  @InjectView(R.id.toolbar) Toolbar mToolbar;
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
   public SpeakerFragment() {
@@ -45,7 +46,8 @@ public class SpeakerFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.inject(this, rootView);
-
+    ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
+    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     Realm realm = Realm.getInstance(mContext);
     RealmQuery<Speaker> query = realm.where(Speaker.class);
     mSpeakers = query.findAll();
