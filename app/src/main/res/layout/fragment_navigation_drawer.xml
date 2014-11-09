@@ -7,9 +7,9 @@
   <TextView
       android:id="@+id/drawer_title"
       android:layout_width="match_parent"
-      android:layout_height="120dp"
+      android:layout_height="160dp"
       android:text="@string/app_name"
-      android:background="@drawable/draweryellow"
+      android:background="@drawable/drawer_title_background"
       android:textSize="30sp"
       android:textColor="@android:color/white"
       android:gravity="center"/>

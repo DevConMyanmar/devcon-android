@@ -11,10 +11,10 @@
 
   <color name="translucent_actionbar_background">#c70813</color>
 
-  <color name="navigation_drawer_background">#96000000</color>
+  <color name="navigation_drawer_background">#ffffff</color>
 
-  <color name="drawer_selected">#ff9b0813</color>
-  <color name="drawer_on_press">#88f40813</color>
+  <color name="drawer_selected">#819b0813</color>
+  <color name="drawer_on_press">#729b0813</color>
 
   <color name="card_bg_pressed">#eeeeee</color>
 

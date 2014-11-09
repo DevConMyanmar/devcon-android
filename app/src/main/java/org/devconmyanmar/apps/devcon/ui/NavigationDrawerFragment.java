@@ -15,13 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
 
 /**
  * Created by Ye Lin Aung on 14/10/06.
@@ -36,7 +36,6 @@ public class NavigationDrawerFragment extends BaseFragment {
   private boolean mFromSavedInstanceState;
   private boolean mUserLearnedDrawer;
   private View mFragmentContainerView;
-  private String[] mNavDrawerItems;
   private ActionBarDrawerToggle mDrawerToggle;
   private NavigationDrawerCallbacks mCallbacks;
   private DrawerLayout mDrawerLayout;
@@ -79,11 +78,8 @@ public class NavigationDrawerFragment extends BaseFragment {
     });
 
     mDrawerTitle.setPadding(0,getStatusBarHeight(),0,0);
-
-    mNavDrawerItems = getResources().getStringArray(R.array.nav_drawer_items);
-    mDrawerListView.setAdapter(
-        new ArrayAdapter<String>(mContext, R.layout.drawer_list_item, mNavDrawerItems));
-
+    DrawerListAdapter adapter = new DrawerListAdapter(getActivity());
+    mDrawerListView.setAdapter(adapter);
     mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
     if (Build.VERSION.SDK_INT >= 19) {
