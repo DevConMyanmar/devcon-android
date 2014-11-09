@@ -9,7 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
@@ -17,6 +21,7 @@ import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -33,6 +38,8 @@ public class ScheduleAdapter extends BaseAdapter {
 
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
+
+  private String formattedDate;
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
@@ -89,10 +96,25 @@ public class ScheduleAdapter extends BaseAdapter {
         }
 
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
+
+        String dateString = mTalk.getDate();
+        DateFormat readFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat writeFormat = new SimpleDateFormat("dd MMM yy");
+        Date date = null;
+
+        try {
+          date = readFormat.parse(dateString);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        if (date != null) {
+          formattedDate = writeFormat.format(date);
+          LOGD(TAG, "date : " + formattedDate);
+        }
         // Phrase yo!
         CharSequence keyNoteTimeAndPlace =
             Phrase.from(mContext, R.string.talk_detail_time_and_place)
-                .put("day", mTalk.getDate())
+                .put("day", formattedDate)
                 .put("from_time", mTalk.getFrom_time())
                 .put("to_time", mTalk.getTo_time())
                 .put("room", mTalk.getRoom())

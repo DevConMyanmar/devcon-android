@@ -29,6 +29,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
+  private static final String FIRST_DAY = "2014-11-15";
   @InjectView(R.id.first_day_list) ListView firstDayList;
   private List<Talk> mTalks = new ArrayList<Talk>();
 
@@ -52,7 +53,7 @@ public class FirstDayFragment extends BaseFragment {
     Realm realm = Realm.getInstance(mContext);
 
     RealmQuery<Talk> query = realm.where(Talk.class);
-    query.equalTo("date", "151114");
+    query.equalTo("date", "2014-11-15");
     mTalks = query.findAll();
 
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
