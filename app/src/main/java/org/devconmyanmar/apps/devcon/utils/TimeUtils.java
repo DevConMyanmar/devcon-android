@@ -12,7 +12,7 @@ public class TimeUtils {
 
   public static String parseDateString(String dateString) {
     DateFormat readFormat = new SimpleDateFormat("yyyy-MM-dd");
-    DateFormat writeFormat = new SimpleDateFormat("dd MMM yy");
+    DateFormat writeFormat = new SimpleDateFormat("dd MMM");
     Date date = null;
     try {
       date = readFormat.parse(dateString);
