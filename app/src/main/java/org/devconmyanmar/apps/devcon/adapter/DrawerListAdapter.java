@@ -1,7 +1,9 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Build;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +52,10 @@ public class DrawerListAdapter extends BaseAdapter {
       view.setTag(holder);
     }
     holder.mText1.setText((String)getItem(i));
-    holder.mText1.setCompoundDrawablePadding(60);
+    Resources r = mContext.getResources();
+    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20,
+        r.getDisplayMetrics());
+    holder.mText1.setCompoundDrawablePadding(px);
     if (Build.VERSION.SDK_INT >= 17){
       holder.mText1.setCompoundDrawablesRelativeWithIntrinsicBounds(drawerIcons.get(i),0,0,0);}
     return view;
