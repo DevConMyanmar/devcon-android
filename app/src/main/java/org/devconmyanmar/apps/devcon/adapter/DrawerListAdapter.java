@@ -1,13 +1,11 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -20,9 +18,14 @@ import org.devconmyanmar.apps.devcon.R;
 public class DrawerListAdapter extends BaseAdapter {
   private String[] mNavDrawerItems;
   private Context mContext;
+  private int mCurrentSelectedPosition;
 
   public DrawerListAdapter(Context context){
     mContext = context;
+  }
+
+  public void setChecked(int currentSelectedPosition){
+    mCurrentSelectedPosition = currentSelectedPosition;
   }
   @Override public int getCount() {
     return 3;
@@ -52,12 +55,20 @@ public class DrawerListAdapter extends BaseAdapter {
       view.setTag(holder);
     }
     holder.mText1.setText((String)getItem(i));
-    Resources r = mContext.getResources();
-    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20,
-        r.getDisplayMetrics());
-    holder.mText1.setCompoundDrawablePadding(px);
-    if (Build.VERSION.SDK_INT >= 17){
-      holder.mText1.setCompoundDrawablesRelativeWithIntrinsicBounds(drawerIcons.get(i),0,0,0);}
+    if(mCurrentSelectedPosition == i){
+      holder.mText1.setTextColor(mContext.getResources().getColor(R.color.drawer_selected));
+    }
+    else{
+      holder.mText1.setTextColor(mContext.getResources().getColor(android.R.color.black));
+    }
+    holder.mDrawerIcon.setImageResource(drawerIcons.get(i));
+    if(mCurrentSelectedPosition == i){
+      holder.mDrawerIcon.setColorFilter(mContext.getResources().getColor(R.color.drawer_selected));
+    }
+    else{
+      holder.mDrawerIcon.clearColorFilter();
+    }
+
     return view;
   }
 
@@ -69,7 +80,7 @@ public class DrawerListAdapter extends BaseAdapter {
    */
   static class ViewHolder {
     @InjectView(android.R.id.text1) TextView mText1;
-
+    @InjectView(R.id.drawer_icon) ImageView mDrawerIcon;
     ViewHolder(View view) {
       ButterKnife.inject(this, view);
     }
