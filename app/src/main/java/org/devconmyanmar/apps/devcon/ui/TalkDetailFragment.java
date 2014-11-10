@@ -140,7 +140,6 @@ public class TalkDetailFragment extends BaseFragment {
     return rootView;
   }
 
-  // FIXME Fix according to the dao
   @SuppressWarnings("unused") @OnClick(R.id.add_schedule_button) void addToFav() {
     boolean starred = !isFavourite;
     if (!isFavourite) {
