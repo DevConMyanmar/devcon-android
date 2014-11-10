@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.OnItemClick;
+import android.widget.AdapterView;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -57,14 +57,17 @@ public class FirstDayFragment extends BaseFragment {
 
     firstDayList.setAdapter(mScheduleAdapter);
 
-    return rootView;
-  }
+    firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
+          long l) {
+        int id = mTalks.get(position).getId();
+        LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+        Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+        i.putExtra(POSITION, id);
+        startActivity(i);
+      }
+    });
 
-  @SuppressWarnings("unused") @OnItemClick(R.id.first_day_list) void listItemClick(int position) {
-    int id = mTalks.get(position).getId();
-    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
-    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-    i.putExtra(POSITION, id);
-    startActivity(i);
+    return rootView;
   }
 }
