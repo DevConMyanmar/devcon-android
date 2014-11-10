@@ -17,13 +17,14 @@ import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class ScheduleAdapter extends BaseAdapter {
+public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
   private static final int VIEW_TYPE_KEYNOTE = 1;
   private static final int VIEW_TYPE_NORMAL = 2;
@@ -35,10 +36,13 @@ public class ScheduleAdapter extends BaseAdapter {
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
 
+  private LayoutInflater mInflater;
+
   private String formattedDate;
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
+    this.mInflater = LayoutInflater.from(mContext);
   }
 
   public void replaceWith(List<Talk> talks) {
@@ -153,6 +157,29 @@ public class ScheduleAdapter extends BaseAdapter {
     return rootView;
   }
 
+  @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
+    HeaderViewHolder holder;
+    if (view == null) {
+      holder = new HeaderViewHolder();
+      view = mInflater.inflate(R.layout.room_header, viewGroup, false);
+      assert view != null;
+      holder.header = (TextView) view.findViewById(R.id.room_name);
+      view.setTag(holder);
+    } else {
+      holder = (HeaderViewHolder) view.getTag();
+    }
+
+    CharSequence headerChar = TimeUtils.getProperRoomName(mTalks.get(i).getRoom());
+    holder.header.setText(headerChar);
+    holder.header.invalidate();
+
+    return view;
+  }
+
+  @Override public long getHeaderId(int i) {
+    return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
+  }
+
   static class KeynoteViewHolder {
     @InjectView(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
     @InjectView(R.id.keynote_title) TextView mKeynoteTitle;
@@ -184,5 +211,9 @@ public class ScheduleAdapter extends BaseAdapter {
     public LightningViewHolder(View view) {
       ButterKnife.inject(this, view);
     }
+  }
+
+  private static class HeaderViewHolder {
+    TextView header;
   }
 }
