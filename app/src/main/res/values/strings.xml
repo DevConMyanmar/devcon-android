@@ -31,9 +31,9 @@
 
   <!-- Navigation Drawer Item -->
   <array name="nav_drawer_items">
-    <item>Schedules</item>
+    <item>My Schedules</item>
+    <item>Explore</item>
     <item>Speakers</item>
-    <item>Updates</item>
   </array>
 
   <!-- Speaker Item -->

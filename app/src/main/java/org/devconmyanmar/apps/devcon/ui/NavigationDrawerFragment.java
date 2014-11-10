@@ -32,7 +32,7 @@ public class NavigationDrawerFragment extends BaseFragment {
   private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
   @InjectView(R.id.drawer_list) ListView mDrawerListView;
   @InjectView(R.id.drawer_title) TextView mDrawerTitle;
-  private int mCurrentSelectedPosition = 0;
+  private int mCurrentSelectedPosition = 1;
   private boolean mFromSavedInstanceState;
   private boolean mUserLearnedDrawer;
   private View mFragmentContainerView;

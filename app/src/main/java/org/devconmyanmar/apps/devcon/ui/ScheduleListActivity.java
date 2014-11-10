@@ -51,13 +51,13 @@ public class ScheduleListActivity extends BaseActivity
     Fragment fragment = null;
     switch (position) {
       case 0:
-        fragment = ScheduleFragment.getInstance();
+        fragment = UpdateFragment.getInstance();
         break;
       case 1:
-        fragment = SpeakerFragment.getInstance();
+        fragment = ScheduleFragment.getInstance();
         break;
       case 2:
-        fragment = UpdateFragment.getInstance();
+        fragment = SpeakerFragment.getInstance();
         break;
     }
 
