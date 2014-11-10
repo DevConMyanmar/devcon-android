@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -20,6 +20,7 @@ import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
+import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
@@ -36,8 +37,8 @@ public class TalkDetailFragment extends BaseFragment {
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
   @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @InjectView(R.id.talk_description) TextView talkDescription;
-  @InjectView(R.id.include_speaker_list) ListView mSpeakerList;
   @InjectView(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
+  @InjectView(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
 
   private LUtils mLUtils;
   private int mTalkId;
@@ -117,7 +118,22 @@ public class TalkDetailFragment extends BaseFragment {
 
     SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
     speakerAdapter.replaceWith(flatternSpeakers(mTalk.getSpeakers()));
-    mSpeakerList.setAdapter(speakerAdapter);
+
+    ArrayList<Speaker> mSpeakers = flatternSpeakers(mTalk.getSpeakers());
+
+    for (Speaker s : mSpeakers) {
+      final SpeakerItemView speakerItemView =
+          (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
+
+      speakerItemView.setId(s.getId());
+      TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
+      TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
+
+      speakerName.setText(s.getName());
+      speakerAbstract.setText(s.getTitle());
+
+      realatedSpeakerWrapper.addView(speakerItemView);
+    }
 
     return rootView;
   }
