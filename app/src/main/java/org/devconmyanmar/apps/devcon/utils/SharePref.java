@@ -42,5 +42,4 @@ public class SharePref {
   public void noLongerFirstTime() {
     mEditor.putBoolean(PREF_FIRST_TIME_CHECK, false).apply();
   }
-
 }

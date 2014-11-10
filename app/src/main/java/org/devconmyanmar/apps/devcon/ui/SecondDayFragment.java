@@ -17,6 +17,7 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -25,6 +26,8 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class SecondDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(SecondDayFragment.class);
+  private static final String SECOND_DAY = "2014-11-16";
+
   @InjectView(R.id.second_day_list) ListView secondDayList;
   private List<Talk> mTalks = new ArrayList<Talk>();
 
@@ -40,7 +43,8 @@ public class SecondDayFragment extends BaseFragment {
     View rootView = inflater.inflate(R.layout.fragment_second_day, container, false);
     ButterKnife.inject(this, rootView);
 
-    //mTalks = query.findAll();
+    mTalks = talkDao.getTalkByDay(SECOND_DAY);
+    LOGD(TAG, "second day : " + mTalks.size());
 
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
     mScheduleAdapter.replaceWith(mTalks);

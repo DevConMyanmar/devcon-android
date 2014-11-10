@@ -51,4 +51,16 @@ public class TalkDao {
     }
     return null;
   }
+
+  public List<Talk> getTalkByDay(String date) {
+    try {
+      QueryBuilder<Talk, Integer> qb = talkDao.queryBuilder();
+      qb.where().eq("date", date);
+      PreparedQuery<Talk> pq = qb.prepare();
+      return talkDao.query(pq);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }
