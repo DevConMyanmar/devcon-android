@@ -10,7 +10,6 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.bumptech.glide.Glide;
-import io.realm.Realm;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
@@ -29,16 +28,16 @@ public class SpeakerDetailFragment extends BaseFragment {
   private int mSpeakerId;
   private ActionBar mActionBar;
 
+  public SpeakerDetailFragment() {
+    // Required empty public constructor
+  }
+
   public static SpeakerDetailFragment newInstance(String speakerId) {
     SpeakerDetailFragment fragment = new SpeakerDetailFragment();
     Bundle args = new Bundle();
     args.putString(ARG_TALK_ID, speakerId);
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public SpeakerDetailFragment() {
-    // Required empty public constructor
   }
 
   @Override
@@ -48,7 +47,7 @@ public class SpeakerDetailFragment extends BaseFragment {
       mSpeakerId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
 
-    mActionBar = ((BaseActivity)getActivity()).getSupportActionBar();
+    mActionBar = ((BaseActivity) getActivity()).getSupportActionBar();
   }
 
   @Override
@@ -59,8 +58,7 @@ public class SpeakerDetailFragment extends BaseFragment {
 
     ButterKnife.inject(this, rootView);
 
-    Realm realm = Realm.getInstance(mContext);
-    Speaker speaker = realm.where(Speaker.class).equalTo("id", mSpeakerId).findFirst();
+    Speaker speaker = speakerDao.getSpeakerById(mSpeakerId);
 
     if (speaker != null) {
       if (mActionBar != null) {

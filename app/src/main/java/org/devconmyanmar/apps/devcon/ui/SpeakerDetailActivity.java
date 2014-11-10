@@ -9,8 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import io.realm.Realm;
-import io.realm.RealmQuery;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -24,6 +23,7 @@ public class SpeakerDetailActivity extends BaseActivity {
 
   @InjectView(R.id.speaker_pager) ViewPager mSpeakerViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_speaker_detail);
@@ -56,7 +56,7 @@ public class SpeakerDetailActivity extends BaseActivity {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
-    switch(id){
+    switch (id) {
       case R.id.action_settings:
         return true;
       case R.id.home:
@@ -64,20 +64,20 @@ public class SpeakerDetailActivity extends BaseActivity {
         return true;
       default:
         return super.onOptionsItemSelected(item);
-
     }
-
   }
 
   private List<Fragment> getTalkFragments() {
     List<Fragment> fList = new ArrayList<Fragment>();
-    Realm realm = Realm.getInstance(this);
-    RealmQuery<Speaker> query = realm.where(Speaker.class);
-    List<Speaker> speakers = query.findAll();
 
-    for (Speaker speaker : speakers) {
-      int speakerId = speaker.getId();
-      fList.add(SpeakerDetailFragment.newInstance(String.valueOf(speakerId)));
+    try {
+      List<Speaker> speakers = speakerDao.getAll();
+      for (Speaker speaker : speakers) {
+        int speakerId = speaker.getId();
+        fList.add(SpeakerDetailFragment.newInstance(String.valueOf(speakerId)));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
     return fList;

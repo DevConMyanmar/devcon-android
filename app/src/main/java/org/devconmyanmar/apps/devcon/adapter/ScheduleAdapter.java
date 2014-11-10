@@ -12,7 +12,6 @@ import butterknife.InjectView;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
@@ -74,7 +73,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   @Override public View getView(int position, View view, ViewGroup parent) {
 
     Talk mTalk = getItem(position);
-    List<Speaker> speakers = mTalk.getSpeakers();
 
     KeynoteViewHolder keynoteViewHolder;
     NormalViewHolder normalViewHolder;
@@ -130,7 +128,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         normalViewHolder.mFromTime.setText(normalFormattedFrom);
         normalViewHolder.mToTime.setText(normalFormattedTo);
 
-        normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
+        // FIXME load speaker by id
+        //normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
 
         return rootView;
       case VIEW_TYPE_LIGHTNING:
@@ -148,7 +147,7 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         lightningViewHolder.mLightFromTime.setText(lFormattedFrom);
         lightningViewHolder.mLightToTime.setText(lFormattedTo);
         lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
-        lightningViewHolder.mLightSpeaker.setText(speakers.get(0).getName());
+        //lightningViewHolder.mLightSpeaker.setText(speakers.get(0).getName());
 
         return rootView;
       default:

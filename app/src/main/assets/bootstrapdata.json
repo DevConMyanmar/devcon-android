@@ -25,13 +25,7 @@
       "from_time": "08:33",
       "to_time": "08:45",
       "speakers": [
-        {
-          "id": "39",
-          "name": "U Ye Yint Win",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "39"
       ]
     },
     {
@@ -59,13 +53,7 @@
       "from_time": "08:30",
       "to_time": "08:33",
       "speakers": [
-        {
-          "id": "40",
-          "name": "Dr Tun Thura Thet",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "40"
       ]
     },
     {
@@ -80,13 +68,7 @@
       "from_time": "09:00",
       "to_time": "09:20",
       "speakers": [
-        {
-          "id": "41",
-          "name": "U Win Htein Win",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "41"
       ]
     },
     {
@@ -100,8 +82,7 @@
       "room": "conference",
       "from_time": "09:40",
       "to_time": "10:00",
-      "speakers": [
-      ]
+      "speakers": []
     },
     {
       "id": "7",
@@ -115,13 +96,7 @@
       "from_time": "10:00",
       "to_time": "11:00",
       "speakers": [
-        {
-          "id": "3",
-          "name": "Aung Aung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "3"
       ]
     },
     {
@@ -136,62 +111,12 @@
       "from_time": "11:00",
       "to_time": "12:00",
       "speakers": [
-        {
-          "id": "3",
-          "name": "Wai Lin Tun",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Ravi Chhabra",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Aung Aung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Ei Maung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Thar Htet",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Ye Lin Aung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Myat Min Han",
-          "title": "",
-          "description": "",
-          "photo": ""
-        },
-        {
-          "id": "3",
-          "name": "Yadanar Tun",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
       ]
     },
     {
@@ -206,13 +131,7 @@
       "from_time": "13:00",
       "to_time": "14:00",
       "speakers": [
-        {
-          "id": "9",
-          "name": "Thet Aung Min Latt",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "9"
       ]
     },
     {
@@ -227,13 +146,7 @@
       "from_time": "14:00",
       "to_time": "15:00",
       "speakers": [
-        {
-          "id": "10",
-          "name": "Ye Thura Thet",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "10"
       ]
     },
     {
@@ -248,13 +161,7 @@
       "from_time": "15:00",
       "to_time": "16:00",
       "speakers": [
-        {
-          "id": "11",
-          "name": "Hoang Thi Thu Huong",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "11"
       ]
     },
     {
@@ -269,13 +176,7 @@
       "from_time": "16:00",
       "to_time": "17:00",
       "speakers": [
-        {
-          "id": "12",
-          "name": "Khin Mrat Noe",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "12"
       ]
     },
     {
@@ -290,13 +191,7 @@
       "from_time": "10:00",
       "to_time": "11:00",
       "speakers": [
-        {
-          "id": "6",
-          "name": "Ye Lin Aung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "6"
       ]
     },
     {
@@ -311,13 +206,7 @@
       "from_time": "11:00",
       "to_time": "12:00",
       "speakers": [
-        {
-          "id": "4",
-          "name": "Ei Maung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "4"
       ]
     },
     {
@@ -332,13 +221,7 @@
       "from_time": "13:00",
       "to_time": "14:00",
       "speakers": [
-        {
-          "id": "7",
-          "name": "Myat Min Han",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "7"
       ]
     },
     {
@@ -353,13 +236,7 @@
       "from_time": "14:00",
       "to_time": "15:00",
       "speakers": [
-        {
-          "id": "13",
-          "name": "Myint Kyaw Thu",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "13"
       ]
     },
     {
@@ -374,13 +251,7 @@
       "from_time": "15:00",
       "to_time": "16:00",
       "speakers": [
-        {
-          "id": "14",
-          "name": "Ye Maung",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "14"
       ]
     },
     {
@@ -395,13 +266,7 @@
       "from_time": "16:00",
       "to_time": "17:00",
       "speakers": [
-        {
-          "id": "15",
-          "name": "Ko Ko Ye",
-          "title": "",
-          "description": "",
-          "photo": ""
-        }
+        "15"
       ]
     }
   ],

@@ -10,8 +10,6 @@ import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
-import io.realm.Realm;
-import io.realm.RealmQuery;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -42,10 +40,7 @@ public class SecondDayFragment extends BaseFragment {
     View rootView = inflater.inflate(R.layout.fragment_second_day, container, false);
     ButterKnife.inject(this, rootView);
 
-    Realm realm = Realm.getInstance(mContext);
-    RealmQuery<Talk> query = realm.where(Talk.class);
-    query.equalTo("date", "161114");
-    mTalks = query.findAll();
+    //mTalks = query.findAll();
 
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
     mScheduleAdapter.replaceWith(mTalks);

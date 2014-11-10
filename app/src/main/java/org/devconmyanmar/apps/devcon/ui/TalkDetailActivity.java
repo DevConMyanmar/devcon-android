@@ -9,8 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import io.realm.Realm;
-import io.realm.RealmQuery;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -24,6 +23,7 @@ public class TalkDetailActivity extends BaseActivity {
 
   @InjectView(R.id.schedule_pager) ViewPager mScheduleViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,8 +38,7 @@ public class TalkDetailActivity extends BaseActivity {
     int position = intent.getIntExtra(POSITION, 0);
 
     List<Fragment> fragments = getTalkFragments();
-    MyPagerAdapter mAdapter =
-        new MyPagerAdapter(getSupportFragmentManager(), fragments);
+    MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager(), fragments);
 
     mScheduleViewPager.setPageTransformer(true, new StackTransformer());
     mScheduleViewPager.setAdapter(mAdapter);
@@ -59,7 +58,7 @@ public class TalkDetailActivity extends BaseActivity {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
-    switch(id){
+    switch (id) {
       case R.id.action_settings:
         return true;
       case R.id.home:
@@ -67,21 +66,19 @@ public class TalkDetailActivity extends BaseActivity {
         return true;
       default:
         return super.onOptionsItemSelected(item);
-
     }
-
-
   }
 
   private List<Fragment> getTalkFragments() {
     List<Fragment> fList = new ArrayList<Fragment>();
-    Realm realm = Realm.getInstance(this);
-    RealmQuery<Talk> query = realm.where(Talk.class);
-    List<Talk> talks = query.findAll();
-
-    for (Talk talk : talks) {
-      int talkId = talk.getId();
-      fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
+    try {
+      List<Talk> talks = talkDao.getAll();
+      for (Talk talk : talks) {
+        int talkId = talk.getId();
+        fList.add(TalkDetailFragment.newInstance(String.valueOf(talkId)));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
     return fList;

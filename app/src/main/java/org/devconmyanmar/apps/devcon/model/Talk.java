@@ -1,24 +1,25 @@
 package org.devconmyanmar.apps.devcon.model;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class Talk extends RealmObject {
+@DatabaseTable(tableName = "talks")
+public class Talk {
 
-  private int id;
-  private String title;
-  private String description;
-  private String photo;
-  private String date;
-  private boolean favourite;
-  private int talk_type;
-  private String room;
-  private String from_time;
-  private String to_time;
-  private RealmList<Speaker> speakers;
+  @DatabaseField(id = true) private int id;
+  @DatabaseField private String title;
+  @DatabaseField private String description;
+  @DatabaseField private String photo;
+  @DatabaseField private String date;
+  @DatabaseField private boolean favourite;
+  @DatabaseField private int talk_type;
+  @DatabaseField private String room;
+  @DatabaseField private String from_time;
+  @DatabaseField private String to_time;
+  @DatabaseField private String speakers;
 
   public Talk() {
   }
@@ -103,11 +104,11 @@ public class Talk extends RealmObject {
     this.to_time = to_time;
   }
 
-  public RealmList<Speaker> getSpeakers() {
+  public String getSpeakers() {
     return speakers;
   }
 
-  public void setSpeakers(RealmList<Speaker> speakers) {
+  public void setSpeakers(String speakers) {
     this.speakers = speakers;
   }
 }

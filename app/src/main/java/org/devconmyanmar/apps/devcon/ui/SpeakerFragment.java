@@ -11,8 +11,7 @@ import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
-import io.realm.Realm;
-import io.realm.RealmQuery;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -46,17 +45,17 @@ public class SpeakerFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.inject(this, rootView);
-    ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
+    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mToolbar.setNavigationIcon(R.drawable.ic_drawer);
-    Realm realm = Realm.getInstance(mContext);
-    RealmQuery<Speaker> query = realm.where(Speaker.class);
-    mSpeakers = query.findAll();
-
-    SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
-    speakerAdapter.replaceWith(mSpeakers);
-
-    speakerList.setAdapter(speakerAdapter);
+    try {
+      mSpeakers = speakerDao.getAll();
+      SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
+      speakerAdapter.replaceWith(mSpeakers);
+      speakerList.setAdapter(speakerAdapter);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
 
     return rootView;
   }

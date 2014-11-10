@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.OnItemClick;
-import io.realm.Realm;
-import io.realm.RealmQuery;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -52,12 +50,7 @@ public class FirstDayFragment extends BaseFragment {
 
     firstDayList.setDivider(null);
 
-    Realm realm = Realm.getInstance(mContext);
-
-    RealmQuery<Talk> query = realm.where(Talk.class);
-    query.equalTo("date", "2014-11-15");
-    mTalks = query.findAll();
-
+    //mTalks = query.findAll();
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
     mScheduleAdapter.replaceWith(mTalks);
 

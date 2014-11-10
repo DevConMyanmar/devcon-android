@@ -11,11 +11,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import io.realm.Realm;
-import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
-import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
@@ -39,7 +36,6 @@ public class TalkDetailFragment extends BaseFragment {
   private LUtils mLUtils;
   private int mTalkId;
   private ActionBar mActionBar;
-  private Realm realm;
   private Talk talk;
   private boolean isFavourite;
 
@@ -61,9 +57,7 @@ public class TalkDetailFragment extends BaseFragment {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
 
-    realm = Realm.getInstance(mContext);
-
-    mActionBar = ((BaseActivity)getActivity()).getSupportActionBar();
+    mActionBar = ((BaseActivity) getActivity()).getSupportActionBar();
 
     mLUtils = LUtils.getInstance(getActivity());
   }
@@ -75,7 +69,7 @@ public class TalkDetailFragment extends BaseFragment {
 
     ButterKnife.inject(this, rootView);
 
-    talk = realm.where(Talk.class).equalTo("id", mTalkId).findFirst();
+    talk = talkDao.getTalkById(mTalkId);
     mTalkTitle.setText(talk.getTitle());
 
     isFavourite = talk.isFavourite();
@@ -100,17 +94,18 @@ public class TalkDetailFragment extends BaseFragment {
 
     talkDescription.setText(talk.getDescription());
 
-    List<Speaker> speakers = talk.getSpeakers();
+    // FIXME load speakers according to the id
+    //List<Speaker> speakers = talk.getSpeakers();
     SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
-    speakerAdapter.replaceWith(speakers);
+    //speakerAdapter.replaceWith(speakers);
     mSpeakerList.setAdapter(speakerAdapter);
 
     return rootView;
   }
 
+  // FIXME Fix according to the dao
   @SuppressWarnings("unused") @OnClick(R.id.add_schedule_button) void addToFav() {
     boolean starred = !isFavourite;
-    realm.beginTransaction();
     if (!isFavourite) {
       talk.setFavourite(true);
       showStarred(starred, true);
@@ -118,8 +113,6 @@ public class TalkDetailFragment extends BaseFragment {
       talk.setFavourite(false);
       showStarred(starred, true);
     }
-
-    realm.commitTransaction();
   }
 
   private void showStarred(boolean starred, boolean allowAnimate) {

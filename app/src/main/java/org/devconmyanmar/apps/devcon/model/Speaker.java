@@ -1,16 +1,19 @@
 package org.devconmyanmar.apps.devcon.model;
 
-import io.realm.RealmObject;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class Speaker extends RealmObject {
-  private int id;
-  private String name;
-  private String title;
-  private String description;
-  private String photo;
+
+@DatabaseTable(tableName = "speakers")
+public class Speaker {
+  @DatabaseField private int id;
+  @DatabaseField private String name;
+  @DatabaseField private String title;
+  @DatabaseField private String description;
+  @DatabaseField private String photo;
 
   public Speaker() {
   }
