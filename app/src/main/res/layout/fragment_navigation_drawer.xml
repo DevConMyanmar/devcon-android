@@ -17,6 +17,7 @@
     android:id="@+id/drawer_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="8dp"
     android:background="@color/navigation_drawer_background"
     android:choiceMode="singleChoice"
     android:divider="@null"

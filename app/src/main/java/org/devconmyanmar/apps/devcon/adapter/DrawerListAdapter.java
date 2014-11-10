@@ -40,8 +40,8 @@ public class DrawerListAdapter extends BaseAdapter {
     mNavDrawerItems = mContext.getResources().getStringArray(R.array.nav_drawer_items);
     ArrayList<Integer> drawerIcons = new ArrayList<Integer>();
     drawerIcons.add(R.drawable.ic_drawer_my_schedule);
-    drawerIcons.add(R.drawable.ic_drawer_people_met);
     drawerIcons.add(R.drawable.ic_drawer_explore);
+    drawerIcons.add(R.drawable.ic_drawer_people_met);
 
     ViewHolder holder;
     if (view != null) {
