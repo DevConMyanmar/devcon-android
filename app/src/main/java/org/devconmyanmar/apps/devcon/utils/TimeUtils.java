@@ -42,4 +42,16 @@ public class TimeUtils {
 
     return null;
   }
+
+  public static String getProperRoomName(String room) {
+    if (room.equalsIgnoreCase("conference")) {
+      return "Conference Room";
+    } else if (room.equalsIgnoreCase("205")) {
+      return "Room 205";
+    } else if (room.equalsIgnoreCase("201")) {
+      return "Room 201";
+    }
+
+    return "N/A";
+  }
 }

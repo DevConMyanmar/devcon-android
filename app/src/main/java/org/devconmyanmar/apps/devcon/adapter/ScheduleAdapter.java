@@ -98,13 +98,14 @@ public class ScheduleAdapter extends BaseAdapter {
         formattedDate = TimeUtils.parseDateString(dateString);
         String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String keynoteFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+        String keynoteRoom = TimeUtils.getProperRoomName(mTalk.getRoom());
         // Phrase yo!
         CharSequence keyNoteTimeAndPlace =
             Phrase.from(mContext, R.string.talk_detail_time_and_place)
                 .put("day", formattedDate)
                 .put("from_time", keynoteFormattedFrom)
                 .put("to_time", keynoteFormattedTo)
-                .put("room", mTalk.getRoom())
+                .put("room", keynoteRoom)
                 .format();
         keynoteViewHolder.mKeyNoteTime.setText(keyNoteTimeAndPlace);
 
