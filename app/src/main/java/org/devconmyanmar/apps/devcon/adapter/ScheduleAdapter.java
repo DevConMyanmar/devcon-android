@@ -13,9 +13,11 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
@@ -40,12 +42,14 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   private Context mContext;
 
   private LayoutInflater mInflater;
+  private SpeakerDao speakerDao;
 
   private String formattedDate;
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
     this.mInflater = LayoutInflater.from(mContext);
+    this.speakerDao = new SpeakerDao(mContext);
   }
 
   public void replaceWith(List<Talk> talks) {
@@ -127,8 +131,9 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
           rootView.setTag(normalViewHolder);
         }
 
-        if (Build.VERSION.SDK_INT >= 21){
-        normalViewHolder.mNormalContainer.setPadding(0,px,0,0);}
+        if (Build.VERSION.SDK_INT >= 21) {
+          normalViewHolder.mNormalContainer.setPadding(0, px, 0, 0);
+        }
         String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
 
@@ -136,8 +141,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         normalViewHolder.mFromTime.setText(normalFormattedFrom);
         normalViewHolder.mToTime.setText(normalFormattedTo);
 
-        // FIXME load speaker by id
-        //normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
+        String speakers = flatternSpeakerNames(mTalk.getSpeakers());
+        normalViewHolder.mScheduleSpeakers.setText(speakers);
 
         return rootView;
       case VIEW_TYPE_LIGHTNING:
@@ -151,12 +156,15 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
         String lFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String lFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
-        if (Build.VERSION.SDK_INT >= 21){
-          lightningViewHolder.mLightContainer.setPadding(0,px,0,0);}
+        if (Build.VERSION.SDK_INT >= 21) {
+          lightningViewHolder.mLightContainer.setPadding(0, px, 0, 0);
+        }
         lightningViewHolder.mLightFromTime.setText(lFormattedFrom);
         lightningViewHolder.mLightToTime.setText(lFormattedTo);
         lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
-        //lightningViewHolder.mLightSpeaker.setText(speakers.get(0).getName());
+
+        String lightSpeakers = flatternSpeakerNames(mTalk.getSpeakers());
+        lightningViewHolder.mLightSpeaker.setText(lightSpeakers);
 
         return rootView;
       default:
@@ -186,6 +194,20 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
   @Override public long getHeaderId(int i) {
     return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
+  }
+
+  private String flatternSpeakerNames(String speakers) {
+    String id[] = new Gson().fromJson(speakers, String[].class);
+    String s = "";
+    for (int i = 0; i < id.length; i++) {
+      s = s + speakerDao.getSpeakerNameById(id[i]);
+      // Do not append comma at the end of last element
+      if (i < id.length - 1) {
+        s = s + ", ";
+      }
+    }
+
+    return s;
   }
 
   static class KeynoteViewHolder {

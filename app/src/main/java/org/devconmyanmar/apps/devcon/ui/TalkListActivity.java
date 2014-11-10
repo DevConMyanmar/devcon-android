@@ -18,10 +18,10 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class ScheduleListActivity extends BaseActivity
+public class TalkListActivity extends BaseActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-  private static final String TAG = makeLogTag(ScheduleListActivity.class);
+  private static final String TAG = makeLogTag(TalkListActivity.class);
 
   private NavigationDrawerFragment mNavigationDrawerFragment;
 
@@ -54,7 +54,7 @@ public class ScheduleListActivity extends BaseActivity
         fragment = UpdateFragment.getInstance();
         break;
       case 1:
-        fragment = ScheduleFragment.getInstance();
+        fragment = TalkFragment.getInstance();
         break;
       case 2:
         fragment = SpeakerFragment.getInstance();

@@ -17,7 +17,7 @@
         </activity>
         <activity android:name="com.facebook.LoginActivity" />
         <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.ScheduleListActivity"
+            android:name=".ui.TalkListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ScheduleActivity" >
             <intent-filter>
@@ -39,6 +39,7 @@
         <activity
             android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
             android:label="@string/title_activity_speaker_detail" >
+
         </activity>
     </application>
 

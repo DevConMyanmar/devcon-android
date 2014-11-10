@@ -36,7 +36,7 @@ public class SpeakerDetailActivity extends BaseActivity {
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
     Intent intent = getIntent();
-    int position = intent.getIntExtra(POSITION, 0);
+    int position = intent.getIntExtra(POSITION, 0) - 1;
 
     List<Fragment> fragments = getTalkFragments();
     MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager(), fragments);

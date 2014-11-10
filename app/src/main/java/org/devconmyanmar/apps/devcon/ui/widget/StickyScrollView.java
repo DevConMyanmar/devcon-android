@@ -1,13 +1,12 @@
 package org.devconmyanmar.apps.devcon.ui.widget;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBarActivity;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,16 +51,6 @@ public class StickyScrollView extends ScrollView {
   private ArrayList<View> stickyViews;
   private View currentlyStickingView;
   private float stickyViewTopOffset;
-  private int stickyViewLeftOffset;
-  private boolean redirectTouchesToStickyView;
-  private boolean clippingToPadding;
-  private boolean clipToPaddingHasBeenSet;
-
-  private int mShadowHeight;
-  private Drawable mShadowDrawable;
-
-  private boolean hideActionBarOnScroll = false;
-
   private final Runnable invalidateRunnable = new Runnable() {
 
     @Override
@@ -76,6 +65,14 @@ public class StickyScrollView extends ScrollView {
       postDelayed(this, 16);
     }
   };
+  private int stickyViewLeftOffset;
+  private boolean redirectTouchesToStickyView;
+  private boolean clippingToPadding;
+  private boolean clipToPaddingHasBeenSet;
+  private int mShadowHeight;
+  private Drawable mShadowDrawable;
+  private boolean hideActionBarOnScroll = false;
+  private boolean hasNotDoneActionDown = true;
 
   public StickyScrollView(Context context) {
     this(context, null);
@@ -257,8 +254,6 @@ public class StickyScrollView extends ScrollView {
     return super.dispatchTouchEvent(ev);
   }
 
-  private boolean hasNotDoneActionDown = true;
-
   @Override
   public boolean onTouchEvent(@NonNull MotionEvent ev) {
     if (redirectTouchesToStickyView) {
@@ -289,33 +284,32 @@ public class StickyScrollView extends ScrollView {
     super.onScrollChanged(l, t, oldl, oldt);
     doTheStickyThing();
 
-    Activity activity = (Activity) getContext();
+    ActionBarActivity activity = (ActionBarActivity) getContext();
     if (hideActionBarOnScroll) {
       actionBarOnScroll(activity, t, oldt);
     }
   }
 
-  private void actionBarOnScroll(Activity activity, int t, int oldt) {
-    if (activity != null) {
+  private void actionBarOnScroll(ActionBarActivity actionBarActivity, int t, int oldt) {
+    if (actionBarActivity != null) {
 
       int scrollViewHeight = this.getHeight();
 
       int diff = oldt - t;
-      ActionBar actionBar = activity.getActionBar();
       int actionBarHeight = 0;
-      if (actionBar != null) {
-        actionBarHeight = actionBar.getHeight();
+      if (actionBarActivity.getSupportActionBar() != null) {
+        actionBarHeight = actionBarActivity.getSupportActionBar().getHeight();
       }
       View view = this.getChildAt(this.getChildCount() - 1);
 
       if (diff < -20 || (t > actionBarHeight + 20 && t < actionBarHeight * 2 && diff < 0)) {
         if (t + scrollViewHeight > view.getBottom() - actionBarHeight - 20) return;
-        activity.getActionBar().hide();
+        actionBarActivity.getSupportActionBar();
         return;
       }
 
       if (diff > 20 || t < 10) {
-        activity.getActionBar().show();
+        actionBarActivity.getSupportActionBar().show();
       }
     }
   }
@@ -446,5 +440,3 @@ public class StickyScrollView extends ScrollView {
     this.hideActionBarOnScroll = hideActionBar;
   }
 }
-
-

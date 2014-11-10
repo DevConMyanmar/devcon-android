@@ -21,17 +21,17 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class ScheduleFragment extends BaseFragment {
+public class TalkFragment extends BaseFragment {
 
-  private static final String TAG = makeLogTag(ScheduleFragment.class);
+  private static final String TAG = makeLogTag(TalkFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
-  public ScheduleFragment() {
+  public TalkFragment() {
   }
 
-  public static ScheduleFragment getInstance() {
-    return new ScheduleFragment();
+  public static TalkFragment getInstance() {
+    return new TalkFragment();
   }
 
   @Override
