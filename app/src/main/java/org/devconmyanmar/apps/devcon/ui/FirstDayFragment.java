@@ -7,9 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnItemClick;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -18,6 +15,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
@@ -30,7 +28,7 @@ public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2014-11-15";
-  @InjectView(R.id.first_day_list) ListView firstDayList;
+  //@InjectView(R.id.first_day_list) StickyListHeadersListView firstDayList;
   private List<Talk> mTalks = new ArrayList<Talk>();
 
   public FirstDayFragment() {
@@ -48,7 +46,11 @@ public class FirstDayFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
 
     View rootView = inflater.inflate(R.layout.fragment_first_day, container, false);
-    ButterKnife.inject(this, rootView);
+    //ButterKnife.inject(this, rootView);
+    StickyListHeadersListView firstDayList =
+        (StickyListHeadersListView) rootView.findViewById(R.id.first_day_list);
+
+    firstDayList.setDivider(null);
 
     Realm realm = Realm.getInstance(mContext);
 
