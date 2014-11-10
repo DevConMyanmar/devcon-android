@@ -2,10 +2,14 @@ package org.devconmyanmar.apps.devcon.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -82,6 +86,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
     View rootView = view;
+    Resources r = mContext.getResources();
+    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
 
     switch (mTalk.getTalk_type()) {
       case VIEW_TYPE_KEYNOTE:
@@ -121,6 +127,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
           rootView.setTag(normalViewHolder);
         }
 
+        if (Build.VERSION.SDK_INT >= 21){
+        normalViewHolder.mNormalContainer.setPadding(0,px,0,0);}
         String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
 
@@ -143,7 +151,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
         String lFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String lFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
-
+        if (Build.VERSION.SDK_INT >= 21){
+          lightningViewHolder.mLightContainer.setPadding(0,px,0,0);}
         lightningViewHolder.mLightFromTime.setText(lFormattedFrom);
         lightningViewHolder.mLightToTime.setText(lFormattedTo);
         lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
@@ -190,7 +199,7 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   }
 
   static class NormalViewHolder {
-
+    @InjectView(R.id.normal_card_container) FrameLayout mNormalContainer;
     @InjectView(R.id.normal_schedule_from_time) TextView mFromTime;
     @InjectView(R.id.normal_schedule_to_time) TextView mToTime;
     @InjectView(R.id.normal_schedule_title) TextView mScheduleTitle;
@@ -202,6 +211,7 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   }
 
   static class LightningViewHolder {
+    @InjectView(R.id.lightning_card_container) FrameLayout mLightContainer;
     @InjectView(R.id.lightning_schedule_from_time) TextView mLightFromTime;
     @InjectView(R.id.lightning_schedule_to_time) TextView mLightToTime;
     @InjectView(R.id.lightning_schedule_title) TextView mLightScheduleTitle;
