@@ -13,6 +13,7 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
  * Created by Ye Lin Aung on 14/11/10.
  */
 public class SpeakerDao {
+  public static final String EMPTY_REC = "just_empty";
   private Dao<Speaker, Integer> speakerDao;
   private ConnectionSource source;
 
@@ -50,5 +51,22 @@ public class SpeakerDao {
       e.printStackTrace();
     }
     return null;
+  }
+
+  public String getSpeakerNameById(String id) {
+    try {
+      QueryBuilder<Speaker, Integer> qb = speakerDao.queryBuilder();
+      qb.where().eq("id", id);
+      // THIS IS HOW I KILL NPE wahaha
+      PreparedQuery<Speaker> pq = qb.prepare();
+      if (qb.countOf() == 0) {
+        return "";
+      } else {
+        return speakerDao.queryForFirst(pq).getName();
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return "";
   }
 }

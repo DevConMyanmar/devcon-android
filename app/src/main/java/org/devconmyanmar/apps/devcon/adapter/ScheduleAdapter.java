@@ -9,9 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
@@ -36,12 +38,14 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   private Context mContext;
 
   private LayoutInflater mInflater;
+  private SpeakerDao speakerDao;
 
   private String formattedDate;
 
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
     this.mInflater = LayoutInflater.from(mContext);
+    this.speakerDao = new SpeakerDao(mContext);
   }
 
   public void replaceWith(List<Talk> talks) {
@@ -129,7 +133,15 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         normalViewHolder.mToTime.setText(normalFormattedTo);
 
         // FIXME load speaker by id
-        //normalViewHolder.mScheduleSpeakers.setText(speakers.get(0).getName());
+        String id[] = new Gson().fromJson(mTalk.getSpeakers(), String[].class);
+        String s = "";
+        for (int i = 0; i < id.length; i++) {
+          s = s + speakerDao.getSpeakerNameById(id[i]);
+          if (i < id.length - 1) {
+            s = s + ", ";
+          }
+        }
+        normalViewHolder.mScheduleSpeakers.setText(s);
 
         return rootView;
       case VIEW_TYPE_LIGHTNING:
