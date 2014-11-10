@@ -50,7 +50,8 @@ public class FirstDayFragment extends BaseFragment {
 
     firstDayList.setDivider(null);
 
-    //mTalks = query.findAll();
+    mTalks = talkDao.getTalkByDay(FIRST_DAY);
+    LOGD(TAG, "first day : " + mTalks.size());
     ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
     mScheduleAdapter.replaceWith(mTalks);
 
