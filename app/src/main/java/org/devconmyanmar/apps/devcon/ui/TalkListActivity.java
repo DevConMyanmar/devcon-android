@@ -51,7 +51,7 @@ public class TalkListActivity extends BaseActivity
     Fragment fragment = null;
     switch (position) {
       case 0:
-        fragment = UpdateFragment.getInstance();
+        fragment = MyScheduleFragment.getInstance();
         break;
       case 1:
         fragment = TalkFragment.getInstance();
