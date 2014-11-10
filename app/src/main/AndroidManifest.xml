@@ -38,7 +38,8 @@
         </activity>
         <activity
             android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
-            android:label="@string/title_activity_speaker_detail" >
+            android:label="@string/title_activity_speaker_detail"
+            android:theme="@style/TalkDetailTheme">
 
         </activity>
     </application>

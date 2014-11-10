@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.bumptech.glide.Glide;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
@@ -57,7 +59,13 @@ public class SpeakerDetailFragment extends BaseFragment {
     View rootView = inflater.inflate(R.layout.fragment_speaker_detail, container, false);
 
     ButterKnife.inject(this, rootView);
+    if (Build.VERSION.SDK_INT >= 19) {
 
+      SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+      tintManager.setStatusBarTintEnabled(true);
+      tintManager.setNavigationBarTintEnabled(false);
+      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+    }
     Speaker speaker = speakerDao.getSpeakerById(mSpeakerId);
 
     if (speaker != null) {

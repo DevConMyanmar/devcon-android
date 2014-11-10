@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
@@ -69,7 +71,13 @@ public class TalkDetailFragment extends BaseFragment {
     View rootView = inflater.inflate(R.layout.fragment_talk_detail, container, false);
 
     ButterKnife.inject(this, rootView);
+    if (Build.VERSION.SDK_INT >= 19) {
 
+      SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+      tintManager.setStatusBarTintEnabled(true);
+      tintManager.setNavigationBarTintEnabled(false);
+      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+    }
     mTalk = talkDao.getTalkById(mTalkId);
     mTalkTitle.setText(mTalk.getTitle());
 
