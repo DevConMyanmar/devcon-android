@@ -63,4 +63,12 @@ public class TalkDao {
     }
     return null;
   }
+
+  public void createOrUpdate(Talk talk) {
+    try {
+      talkDao.createOrUpdate(talk);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 }

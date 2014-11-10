@@ -146,9 +146,13 @@ public class TalkDetailFragment extends BaseFragment {
     if (!isFavourite) {
       mTalk.setFavourite(true);
       showStarred(starred, true);
+      mTalk.setId(mTalkId);
+      talkDao.createOrUpdate(mTalk);
     } else {
       mTalk.setFavourite(false);
       showStarred(starred, true);
+      mTalk.setId(mTalkId);
+      talkDao.createOrUpdate(mTalk);
     }
   }
 
