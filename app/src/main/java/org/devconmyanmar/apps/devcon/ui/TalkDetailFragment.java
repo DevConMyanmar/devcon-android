@@ -84,6 +84,9 @@ public class TalkDetailFragment extends BaseFragment {
 
     talkDetailScrollView.hideActionBarOnScroll(true);
 
+    // If talk type is keynote, don't show the add to fav button
+    showAddToFav(mTalk);
+
     String dateString = mTalk.getDate();
     String formattedDate = TimeUtils.parseDateString(dateString);
     String formattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
@@ -129,5 +132,15 @@ public class TalkDetailFragment extends BaseFragment {
 
     ImageView iconView = (ImageView) mAddToFav.findViewById(R.id.add_to_fav_icon);
     mLUtils.setOrAnimatePlusCheckIcon(iconView, starred, allowAnimate);
+  }
+
+  private void showAddToFav(Talk mTalk) {
+    int talkType = mTalk.getTalk_type();
+    switch (talkType) {
+      case 1:
+        mAddToFav.setVisibility(View.GONE);
+      default:
+        mAddToFav.setVisibility(View.VISIBLE);
+    }
   }
 }
