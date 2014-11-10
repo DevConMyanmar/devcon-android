@@ -18,6 +18,7 @@ import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
+import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -36,7 +37,7 @@ public class TalkDetailFragment extends BaseFragment {
   private LUtils mLUtils;
   private int mTalkId;
   private ActionBar mActionBar;
-  private Talk talk;
+  private Talk mTalk;
   private boolean isFavourite;
 
   public TalkDetailFragment() {
@@ -69,10 +70,10 @@ public class TalkDetailFragment extends BaseFragment {
 
     ButterKnife.inject(this, rootView);
 
-    talk = talkDao.getTalkById(mTalkId);
-    mTalkTitle.setText(talk.getTitle());
+    mTalk = talkDao.getTalkById(mTalkId);
+    mTalkTitle.setText(mTalk.getTitle());
 
-    isFavourite = talk.isFavourite();
+    isFavourite = mTalk.isFavourite();
     LOGD(TAG, "favourite ? " + isFavourite);
     showStarred(isFavourite, true);
 
@@ -83,19 +84,25 @@ public class TalkDetailFragment extends BaseFragment {
 
     talkDetailScrollView.hideActionBarOnScroll(true);
 
+    String dateString = mTalk.getDate();
+    String formattedDate = TimeUtils.parseDateString(dateString);
+    String formattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
+    String formattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+    String room = TimeUtils.getProperRoomName(mTalk.getRoom());
+
     CharSequence timeAndRoom = Phrase.from(mContext, R.string.talk_detail_time_and_place)
-        .put("day", talk.getDate())
-        .put("from_time", talk.getFrom_time())
-        .put("to_time", talk.getTo_time())
-        .put("room", talk.getRoom())
+        .put("day", formattedDate)
+        .put("from_time", formattedFrom)
+        .put("to_time", formattedTo)
+        .put("room", room)
         .format();
 
     talkTimeAndRoom.setText(timeAndRoom);
 
-    talkDescription.setText(talk.getDescription());
+    talkDescription.setText(mTalk.getDescription());
 
     // FIXME load speakers according to the id
-    //List<Speaker> speakers = talk.getSpeakers();
+    //List<Speaker> speakers = mTalk.getSpeakers();
     SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
     //speakerAdapter.replaceWith(speakers);
     mSpeakerList.setAdapter(speakerAdapter);
@@ -107,10 +114,10 @@ public class TalkDetailFragment extends BaseFragment {
   @SuppressWarnings("unused") @OnClick(R.id.add_schedule_button) void addToFav() {
     boolean starred = !isFavourite;
     if (!isFavourite) {
-      talk.setFavourite(true);
+      mTalk.setFavourite(true);
       showStarred(starred, true);
     } else {
-      talk.setFavourite(false);
+      mTalk.setFavourite(false);
       showStarred(starred, true);
     }
   }
