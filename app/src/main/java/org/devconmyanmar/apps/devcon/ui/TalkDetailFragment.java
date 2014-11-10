@@ -11,8 +11,11 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import com.google.gson.Gson;
+import java.util.ArrayList;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
+import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
@@ -104,10 +107,8 @@ public class TalkDetailFragment extends BaseFragment {
 
     talkDescription.setText(mTalk.getDescription());
 
-    // FIXME load speakers according to the id
-    //List<Speaker> speakers = mTalk.getSpeakers();
     SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
-    //speakerAdapter.replaceWith(speakers);
+    speakerAdapter.replaceWith(flatternSpeakers(mTalk.getSpeakers()));
     mSpeakerList.setAdapter(speakerAdapter);
 
     return rootView;
@@ -142,5 +143,15 @@ public class TalkDetailFragment extends BaseFragment {
       default:
         mAddToFav.setVisibility(View.VISIBLE);
     }
+  }
+
+  private ArrayList<Speaker> flatternSpeakers(String speakers) {
+    ArrayList<Speaker> mSpeakers = new ArrayList<Speaker>();
+    String id[] = new Gson().fromJson(speakers, String[].class);
+    for (String anId : id) {
+      mSpeakers.add(speakerDao.getSpeakerById(anId));
+    }
+
+    return mSpeakers;
   }
 }

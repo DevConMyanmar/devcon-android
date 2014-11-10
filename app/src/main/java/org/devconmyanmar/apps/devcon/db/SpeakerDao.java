@@ -41,7 +41,7 @@ public class SpeakerDao {
     return speakerDao.queryBuilder().query();
   }
 
-  public Speaker getSpeakerById(int id) {
+  public Speaker getSpeakerById(String id) {
     try {
       QueryBuilder<Speaker, Integer> qb = speakerDao.queryBuilder();
       qb.distinct().where().eq("id", id);

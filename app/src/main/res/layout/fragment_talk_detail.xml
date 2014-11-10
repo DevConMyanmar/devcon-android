@@ -5,6 +5,7 @@
     androidsucks:stuckShadowDrawable="@drawable/sticky_shawdow"
     androidsucks:stuckShadowHeight="10dip"
     android:id="@+id/talk_detail_scroll_view"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,8 +47,6 @@
               android:id="@+id/talk_title"
               tools:text="Hello Android!"
               android:paddingLeft="@dimen/spacing_major"
-              android:paddingStart="@dimen/spacing_major"
-              android:paddingEnd="@dimen/spacing_major"
               android:paddingTop="@dimen/spacing_major"
               android:textSize="@dimen/text_size_large"
               android:layout_width="match_parent"

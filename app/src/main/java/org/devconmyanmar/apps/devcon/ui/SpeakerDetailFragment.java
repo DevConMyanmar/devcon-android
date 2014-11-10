@@ -25,7 +25,7 @@ public class SpeakerDetailFragment extends BaseFragment {
   @InjectView(R.id.speaker_detail_profile_image) ImageView mSpeakerProfileImage;
   @InjectView(R.id.speaker_detail_description) TextView mSpeakerDescription;
 
-  private int mSpeakerId;
+  private String mSpeakerId;
   private ActionBar mActionBar;
 
   public SpeakerDetailFragment() {
@@ -44,7 +44,7 @@ public class SpeakerDetailFragment extends BaseFragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
-      mSpeakerId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
+      mSpeakerId = getArguments().getString(ARG_TALK_ID);
     }
 
     mActionBar = ((BaseActivity) getActivity()).getSupportActionBar();
