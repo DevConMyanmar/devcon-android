@@ -44,7 +44,6 @@
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>
 
-    <item name="android:clickable">true</item>
     <item name="android:focusable">true</item>
     <item name="android:tint">@color/photo_tint</item>
     <item name="android:scaleType">centerCrop</item>
@@ -62,7 +61,6 @@
     <item name="android:paddingLeft">5dp</item>
     <item name="android:paddingBottom">8dp</item>
 
-    <item name="android:clickable">true</item>
     <item name="android:focusable">true</item>
     <item name="android:background">?android:selectableItemBackground</item>
   </style>
@@ -98,7 +96,6 @@
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingLeft">5dp</item>
 
-    <item name="android:clickable">true</item>
   </style>
 
   <style name="ScheduleView.SpeakerStyle">
@@ -113,13 +110,11 @@
     <item name="android:paddingLeft">5dp</item>
     <item name="android:paddingBottom">8dp</item>
 
-    <item name="android:clickable">true</item>
 
   </style>
 
   <style name="ScheduleView.LightningTitle" parent="ScheduleView.TitleStyle">
     <item name="android:textSize">@dimen/text_size_small</item>
-    <item name="android:clickable">true</item>
   </style>
 
   <style name="ScheduleView.LightningLabel">
@@ -134,7 +129,6 @@
     <item name="android:paddingLeft">5dp</item>
     <item name="android:paddingBottom">8dp</item>
 
-    <item name="android:clickable">true</item>
 
   </style>
 
