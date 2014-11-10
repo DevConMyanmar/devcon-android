@@ -101,4 +101,7 @@
   <string name="about_licenses">Open Source Licenses</string>
   <!-- Title text for dialog screen about the application -->
   <string name="title_about">About</string>
+
+  <!-- My Schedule -->
+  <string name="my_schedule_title">My Schedule</string>
 </resources>

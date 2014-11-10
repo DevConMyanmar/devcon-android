@@ -87,7 +87,7 @@ public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
   public void setChecked(boolean checked, boolean allowAnimate) {
     super.setChecked(checked, allowAnimate);
     if (allowAnimate) {
-      // TODO: switch to mHotSpotX/mHotSpotY/getWidth if/when nested reveals can be clipped
+      // _TODO_: switch to mHotSpotX/mHotSpotY/getWidth if/when nested reveals can be clipped
       // by parents. was possible in LPV79 but no longer as of this writing.
       Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, (int) getWidth() / 2,
           (int) getHeight() / 2, 0, getWidth() / 2);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/speaker_list"
+    android:id="@+id/my_list"
     android:layout_marginLeft="@dimen/spacing_minor"
     android:layout_marginStart="@dimen/spacing_minor"
     android:divider="@null"

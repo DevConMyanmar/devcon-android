@@ -13,8 +13,7 @@
       android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@android:color/white"
-      tools:context="org.devconmyanmar.apps.devcon.ui.TalkDetailFragment">
+      android:background="@android:color/white">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -78,41 +77,47 @@
 
     <TextView
         android:id="@+id/talk_description"
-        tools:text="@string/placeholder_talk_description"
+        tools:text="Hello"
         android:padding="@dimen/spacing_major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
       <include
+          android:id="@+id/divider_1"
           android:layout_margin="@dimen/spacing_major"
           android:layout_width="wrap_content"
           android:layout_height="1dp"
           layout="@layout/divider"/>
 
       <TextView
+          android:id="@+id/speaker_header"
+          android:layout_below="@+id/divider_1"
           android:text="@string/speakers"
           style="@style/SessionDetailSectionHeader"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
 
-      <include
-          android:id="@+id/include_speaker_list"
-          layout="@layout/speaker_list"/>
+      <LinearLayout
+          android:id="@+id/related_speaker_wrapper"
+          android:orientation="vertical"
+          android:background="@color/theme_primary"
+          android:layout_below="@+id/speaker_header"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
 
       <include
+          android:id="@+id/divider_2"
           android:layout_margin="@dimen/spacing_major"
           android:layout_width="wrap_content"
           android:layout_height="1dp"
           layout="@layout/divider"/>
-    </LinearLayout>
+    </RelativeLayout>
 
   </LinearLayout>
-
-
 </org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView>
 

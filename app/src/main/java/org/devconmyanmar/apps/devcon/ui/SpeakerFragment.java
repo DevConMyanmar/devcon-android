@@ -25,7 +25,7 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
  */
 public class SpeakerFragment extends BaseFragment {
 
-  @InjectView(R.id.speaker_list) ListView speakerList;
+  @InjectView(R.id.my_list) ListView speakerList;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
@@ -60,7 +60,7 @@ public class SpeakerFragment extends BaseFragment {
     return rootView;
   }
 
-  @SuppressWarnings("unused") @OnItemClick(R.id.speaker_list) void speakerListItemClick(
+  @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(
       int position) {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);

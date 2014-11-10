@@ -27,7 +27,6 @@ public class SharePref {
     this.mContext = context;
   }
 
-  // FIXME fix meee
   public static synchronized SharePref getInstance(Context mContext) {
     if (pref == null) {
       pref = new SharePref(mContext);
