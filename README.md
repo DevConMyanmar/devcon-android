@@ -1,7 +1,9 @@
 DevCon Myanmar 2014 Android Client
 ----------------------------------
 
-This is a WIP Project.
+This is a WIP Project and changing really fast.
+
+Please see [Trello board](https://trello.com/b/Y4vcQ4zg/devcon-2014) for the features and help wanted!
 
 If you see `io.realm.exceptions.RealmMigrationNeededException`, uninstall the existing app from your device and install it again.
 We're not doing any auto migration works since we haven't finalized the models. Once stable, it will have proper migration support.
