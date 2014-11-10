@@ -46,7 +46,7 @@ public class ScheduleFragment extends BaseFragment {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
     ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setNavigationIcon(R.drawable.ic_navigation_drawer);
+    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
 

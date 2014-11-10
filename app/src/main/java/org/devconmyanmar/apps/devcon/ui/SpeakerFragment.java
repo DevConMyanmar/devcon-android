@@ -48,7 +48,7 @@ public class SpeakerFragment extends BaseFragment {
     ButterKnife.inject(this, rootView);
     ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
-    mToolbar.setNavigationIcon(R.drawable.ic_navigation_drawer);
+    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
     Realm realm = Realm.getInstance(mContext);
     RealmQuery<Speaker> query = realm.where(Speaker.class);
     mSpeakers = query.findAll();
