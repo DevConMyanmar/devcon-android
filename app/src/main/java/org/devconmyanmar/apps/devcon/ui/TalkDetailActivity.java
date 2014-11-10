@@ -61,7 +61,7 @@ public class TalkDetailActivity extends BaseActivity {
     switch (id) {
       case R.id.action_settings:
         return true;
-      case R.id.home:
+      case android.R.id.home:
         finish();
         return true;
       default:
