@@ -77,7 +77,7 @@ public class NavigationDrawerFragment extends BaseFragment {
       }
     });
 
-    mDrawerTitle.setPadding(0,getStatusBarHeight(),0,0);
+    mDrawerTitle.setPadding(0, getStatusBarHeight(), 0, 0);
     DrawerListAdapter adapter = new DrawerListAdapter(getActivity());
     mDrawerListView.setAdapter(adapter);
     mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
@@ -114,37 +114,36 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     // ActionBarDrawerToggle ties together the the proper interactions
     // between the navigation drawer and the action bar app icon.
-    mDrawerToggle =
-        new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.drawable.ic_drawer,
-            R.string.drawer_open, R.string.drawer_close) {
-          @Override
-          public void onDrawerClosed(View drawerView) {
-            super.onDrawerClosed(drawerView);
-            if (!isAdded()) {
-              return;
-            }
+    mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.drawable.ic_drawer,
+        R.string.drawer_open, R.string.drawer_close) {
+      @Override
+      public void onDrawerClosed(View drawerView) {
+        super.onDrawerClosed(drawerView);
+        if (!isAdded()) {
+          return;
+        }
 
-            getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-          }
+        getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+      }
 
-          @Override
-          public void onDrawerOpened(View drawerView) {
-            super.onDrawerOpened(drawerView);
-            if (!isAdded()) {
-              return;
-            }
+      @Override
+      public void onDrawerOpened(View drawerView) {
+        super.onDrawerOpened(drawerView);
+        if (!isAdded()) {
+          return;
+        }
 
-            if (!mUserLearnedDrawer) {
-              // The user manually opened the drawer; store this flag to prevent auto-showing
-              // the navigation drawer automatically in the future.
-              mUserLearnedDrawer = true;
-              SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-              sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).commit();
-            }
+        if (!mUserLearnedDrawer) {
+          // The user manually opened the drawer; store this flag to prevent auto-showing
+          // the navigation drawer automatically in the future.
+          mUserLearnedDrawer = true;
+          SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+          sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).commit();
+        }
 
-            getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-          }
-        };
+        getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+      }
+    };
 
     // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
     // per the navigation drawer design guidelines.
@@ -214,12 +213,6 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
   }
 
-  public static interface NavigationDrawerCallbacks {
-    /**
-     * Called when an item in the navigation drawer is selected.
-     */
-    void onNavigationDrawerItemSelected(int position);
-  }
   public int getStatusBarHeight() {
     int result = 0;
     int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -227,5 +220,12 @@ public class NavigationDrawerFragment extends BaseFragment {
       result = getResources().getDimensionPixelSize(resourceId);
     }
     return result;
+  }
+
+  public static interface NavigationDrawerCallbacks {
+    /**
+     * Called when an item in the navigation drawer is selected.
+     */
+    void onNavigationDrawerItemSelected(int position);
   }
 }

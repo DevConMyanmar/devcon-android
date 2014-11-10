@@ -27,6 +27,7 @@ public class TalkFragment extends BaseFragment {
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
+
   public TalkFragment() {
   }
 
@@ -37,15 +38,15 @@ public class TalkFragment extends BaseFragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivity().setTitle(getString(R.string.schedule_activity));
+    getActivity().setTitle(getString(R.string.explore_title));
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-    @Nullable Bundle savedInstanceState) {
+      @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
-    ((BaseActivity)getActivity()).setSupportActionBar(mToolbar);
+    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
     mToolbar.setNavigationIcon(R.drawable.ic_drawer);
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
