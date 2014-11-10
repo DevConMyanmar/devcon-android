@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -126,6 +127,7 @@ public class TalkDetailFragment extends BaseFragment {
           (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
 
       speakerItemView.setId(s.getId());
+      speakerItemView.setBackgroundColor(Color.WHITE);
       TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
       TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
 
