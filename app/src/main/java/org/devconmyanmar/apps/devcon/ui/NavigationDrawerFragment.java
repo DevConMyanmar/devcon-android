@@ -115,7 +115,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     // ActionBarDrawerToggle ties together the the proper interactions
     // between the navigation drawer and the action bar app icon.
     mDrawerToggle =
-        new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.drawable.ic_navigation_drawer,
+        new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.drawable.ic_drawer,
             R.string.drawer_open, R.string.drawer_close) {
           @Override
           public void onDrawerClosed(View drawerView) {
