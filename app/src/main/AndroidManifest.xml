@@ -34,19 +34,12 @@
         <activity
             android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
             android:label="@string/title_activity_schedule_detail"
-            android:parentActivityName=".ui.TalkListActivity"
             android:theme="@style/TalkDetailTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.TalkListActivity" />
         </activity>
         <activity
             android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
-            android:label="@string/title_activity_speaker_detail"
-            android:parentActivityName=".ui.TalkListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.TalkListActivity" />
+            android:label="@string/title_activity_speaker_detail" >
+
         </activity>
     </application>
 

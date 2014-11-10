@@ -16,6 +16,7 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyPagerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
@@ -47,7 +48,7 @@ public class SpeakerDetailActivity extends BaseActivity {
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.speaker_detail, menu);
+    getMenuInflater().inflate(R.menu.schedule_menu, menu);
     return true;
   }
 
@@ -57,9 +58,10 @@ public class SpeakerDetailActivity extends BaseActivity {
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     switch (id) {
-      case R.id.action_settings:
+      case R.id.action_about:
+      HelpUtils.showAbout(this);
         return true;
-      case R.id.home:
+      case android.R.id.home:
         finish();
         return true;
       default:
