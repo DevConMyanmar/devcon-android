@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -40,5 +41,10 @@ public class MyScheduleFragment extends BaseFragment {
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mToolbar.setNavigationIcon(R.drawable.ic_drawer);
     return rootView;
+  }
+
+  @Override public void onAttach(Activity activity) {
+    super.onAttach(activity);
+    activity.setTitle(getString(R.string.my_schedule_title));
   }
 }
