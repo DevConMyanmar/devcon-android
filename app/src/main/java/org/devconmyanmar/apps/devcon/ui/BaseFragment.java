@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import com.squareup.okhttp.OkHttpClient;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
+import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 
 /**
@@ -40,5 +41,15 @@ public abstract class BaseFragment extends Fragment {
 
   public void disableSwipe(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
     mSwipeRefreshWidget.setEnabled(false);
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    BusProvider.getInstance().register(this);
+  }
+
+  @Override public void onPause() {
+    super.onPause();
+    BusProvider.getInstance().unregister(this);
   }
 }
