@@ -104,4 +104,7 @@
 
   <!-- My Schedule -->
   <string name="my_schedule_title">My Schedule</string>
+
+  <!-- Menu refresh -->
+  <string name="refresh">Refresh</string>
 </resources>

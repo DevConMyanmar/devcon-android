@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
-import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
@@ -85,14 +87,24 @@ public class SecondDayFragment extends BaseFragment {
     return rootView;
   }
 
-  @Override public void onResume() {
-    super.onResume();
-    BusProvider.getInstance().register(this);
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.refresh_menu, menu);
   }
 
-  @Override public void onPause() {
-    super.onPause();
-    BusProvider.getInstance().unregister(this);
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.refresh:
+        //if (ConnectionUtils.isOnline(mContext)) {
+        //  BusProvider.getInstance().post(new DownloadCinemasEvent());
+        syncSchedules(exploreSwipeRefreshView);
+        //} else {
+        //  cinemaSwipeRefreshLayout.setRefreshing(false);
+        //  Toast.makeText(mContext, R.string.no_connection_cant_connect, Toast.LENGTH_SHORT).show();
+        //}
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
