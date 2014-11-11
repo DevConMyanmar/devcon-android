@@ -6,15 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnItemClick;
+import android.widget.AdapterView;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
@@ -28,7 +27,6 @@ public class SecondDayFragment extends BaseFragment {
   private static final String TAG = makeLogTag(SecondDayFragment.class);
   private static final String SECOND_DAY = "2014-11-16";
 
-  @InjectView(R.id.second_day_list) ListView secondDayList;
   private List<Talk> mTalks = new ArrayList<Talk>();
 
   public SecondDayFragment() {
@@ -40,8 +38,13 @@ public class SecondDayFragment extends BaseFragment {
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View rootView = inflater.inflate(R.layout.fragment_second_day, container, false);
-    ButterKnife.inject(this, rootView);
+    View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
+
+    StickyListHeadersListView secondDayList =
+        (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
+
+    CustomSwipeRefreshLayout exploreSwipeRefreshView =
+        (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
 
     mTalks = talkDao.getTalkByDay(SECOND_DAY);
     LOGD(TAG, "second day : " + mTalks.size());
@@ -51,13 +54,16 @@ public class SecondDayFragment extends BaseFragment {
 
     secondDayList.setAdapter(mScheduleAdapter);
 
-    return rootView;
-  }
+    secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
+          long l) {
+        int id = mTalks.get(position).getId();
+        Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+        i.putExtra(POSITION, id);
+        startActivity(i);
+      }
+    });
 
-  @OnItemClick(R.id.second_day_list) void listItemClick(int position) {
-    int id = mTalks.get(position).getId();
-    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-    i.putExtra(POSITION, id);
-    startActivity(i);
+    return rootView;
   }
 }
