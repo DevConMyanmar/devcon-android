@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
+import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -21,5 +22,21 @@ public abstract class BaseFragment extends Fragment {
 
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
+  }
+
+  public void showRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+    mSwipeRefreshWidget.setRefreshing(true);
+  }
+
+  public void hideRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+    mSwipeRefreshWidget.setRefreshing(false);
+  }
+
+  public void enableSwipe(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+    mSwipeRefreshWidget.setEnabled(true);
+  }
+
+  public void disableSwipe(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+    mSwipeRefreshWidget.setEnabled(false);
   }
 }

@@ -51,6 +51,9 @@ public class FirstDayFragment extends BaseFragment {
     CustomSwipeRefreshLayout exploreSwipeRefreshView =
         (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
 
+    exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
+        R.color.color4);
+
     firstDayList.setDivider(null);
 
     mTalks = talkDao.getTalkByDay(FIRST_DAY);

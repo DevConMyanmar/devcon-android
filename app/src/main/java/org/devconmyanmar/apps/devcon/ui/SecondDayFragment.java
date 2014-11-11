@@ -46,6 +46,9 @@ public class SecondDayFragment extends BaseFragment {
     CustomSwipeRefreshLayout exploreSwipeRefreshView =
         (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
 
+    exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
+        R.color.color4);
+
     mTalks = talkDao.getTalkByDay(SECOND_DAY);
     LOGD(TAG, "second day : " + mTalks.size());
 
