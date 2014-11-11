@@ -5,4 +5,6 @@ package org.devconmyanmar.apps.devcon;
  */
 public class Config {
   public static final String POSITION = "position";
+
+  public static final String BASE_URL = "http://devcon-2014-static-json.herokuapp.com/";
 }
