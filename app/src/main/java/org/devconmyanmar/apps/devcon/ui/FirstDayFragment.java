@@ -9,26 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.squareup.otto.Subscribe;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.OkClient;
-import retrofit.client.Response;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
@@ -77,7 +66,7 @@ public class FirstDayFragment extends BaseFragment {
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
-        syncSchedules();
+        syncSchedules(exploreSwipeRefreshView);
       }
     });
 
@@ -101,49 +90,6 @@ public class FirstDayFragment extends BaseFragment {
     return rootView;
   }
 
-  private void syncSchedules() {
-    showRefreshProgress(exploreSwipeRefreshView);
-
-    RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
-        .setLogLevel(RestAdapter.LogLevel.BASIC)
-        .setClient(new OkClient(okHttpClient))
-        .build();
-
-    SyncScheduleService syncScheduleService = scheduleRestAdapter.create(SyncScheduleService.class);
-    syncScheduleService.getSchedules(new Callback<JsonObject>() {
-      @Override public void success(JsonObject jsonObj, Response response) {
-        JsonArray scheduleArray = jsonObj.getAsJsonArray("sessions");
-        try {
-          talkDao.deleteAll();
-        } catch (SQLException e) {
-          e.printStackTrace();
-        }
-        for (JsonElement j : scheduleArray) {
-          Talk talk = new Talk();
-          talk.setId(j.getAsJsonObject().get("id").getAsInt());
-          talk.setTitle(j.getAsJsonObject().get("title").getAsString());
-          talk.setDescription(j.getAsJsonObject().get("description").getAsString());
-          talk.setPhoto(j.getAsJsonObject().get("photo").getAsString());
-          talk.setDate(j.getAsJsonObject().get("date").getAsString());
-          talk.setFavourite(j.getAsJsonObject().get("favourite").getAsBoolean());
-          talk.setTalk_type(j.getAsJsonObject().get("talk_type").getAsInt());
-          talk.setRoom(j.getAsJsonObject().get("room").getAsString());
-          talk.setFrom_time(j.getAsJsonObject().get("from_time").getAsString());
-          talk.setTo_time(j.getAsJsonObject().get("to_time").getAsString());
-          JsonArray speakers = j.getAsJsonObject().getAsJsonArray("speakers");
-          talk.setSpeakers(speakers.toString());
-          talkDao.create(talk);
-        }
-        hideRefreshProgress(exploreSwipeRefreshView);
-        BusProvider.getInstance().post(new SyncSuccessEvent());
-      }
-
-      @Override public void failure(RetrofitError error) {
-        hideRefreshProgress(exploreSwipeRefreshView);
-      }
-    });
-  }
-
   @Override public void onResume() {
     super.onResume();
     BusProvider.getInstance().register(this);
@@ -155,7 +101,6 @@ public class FirstDayFragment extends BaseFragment {
   }
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
-    LOGD(TAG, "updating ui..");
     mTalks = talkDao.getTalkByDay(FIRST_DAY);
     mScheduleAdapter.replaceWith(mTalks);
     firstDayList.setAdapter(mScheduleAdapter);
