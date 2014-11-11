@@ -107,4 +107,7 @@
 
   <!-- Menu refresh -->
   <string name="refresh">Refresh</string>
+
+  <!-- Toast messages -->
+  <string name="no_connection_cannot_connect">No connection. Cannot sync right now.</string>
 </resources>

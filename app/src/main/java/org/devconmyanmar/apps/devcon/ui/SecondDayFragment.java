@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
@@ -64,7 +66,13 @@ public class SecondDayFragment extends BaseFragment {
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
-        syncSchedules(exploreSwipeRefreshView);
+        if (ConnectionUtils.isOnline(mContext)) {
+          syncSchedules(exploreSwipeRefreshView);
+        } else {
+          hideRefreshProgress(exploreSwipeRefreshView);
+          Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)
+              .show();
+        }
       }
     });
 
@@ -95,13 +103,13 @@ public class SecondDayFragment extends BaseFragment {
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.refresh:
-        //if (ConnectionUtils.isOnline(mContext)) {
-        //  BusProvider.getInstance().post(new DownloadCinemasEvent());
-        syncSchedules(exploreSwipeRefreshView);
-        //} else {
-        //  cinemaSwipeRefreshLayout.setRefreshing(false);
-        //  Toast.makeText(mContext, R.string.no_connection_cant_connect, Toast.LENGTH_SHORT).show();
-        //}
+        if (ConnectionUtils.isOnline(mContext)) {
+          syncSchedules(exploreSwipeRefreshView);
+        } else {
+          hideRefreshProgress(exploreSwipeRefreshView);
+          Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)
+              .show();
+        }
         return true;
     }
     return super.onOptionsItemSelected(item);
