@@ -39,8 +39,6 @@ android {
 }
 
 dependencies {
-  compile project('libs:facebook')
-  compile files('libs/simple.facebook-2.1.jar')
   compile 'com.j256.ormlite:ormlite-android:4.47'
   compile 'com.github.bumptech.glide:glide:3.4.0'
   compile 'com.github.bumptech.glide:okhttp-integration:1.0.1'
@@ -50,5 +48,7 @@ dependencies {
   compile 'com.android.support:appcompat-v7:21.0.0'
   compile 'com.google.code.gson:gson:2.3'
   compile 'se.emilsjolander:stickylistheaders:2.5.2'
-  compile project(':app:libs:facebook')
+  compile 'com.squareup.retrofit:retrofit:1.7.1'
+  compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+  compile 'com.squareup.okhttp:okhttp:2.0.0'
 }
