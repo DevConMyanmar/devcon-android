@@ -3,6 +3,7 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import com.squareup.okhttp.OkHttpClient;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
@@ -15,6 +16,7 @@ public abstract class BaseFragment extends Fragment {
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
   protected Context mContext;
+  protected OkHttpClient okHttpClient = new OkHttpClient();
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
