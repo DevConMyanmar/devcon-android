@@ -64,6 +64,8 @@ public class SecondDayFragment extends BaseFragment {
     exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
 
+    exploreSwipeRefreshView.setStickyListHeadersListView(secondDayList);
+
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
         if (ConnectionUtils.isOnline(mContext)) {
