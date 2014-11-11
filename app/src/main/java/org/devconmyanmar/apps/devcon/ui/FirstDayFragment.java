@@ -12,12 +12,15 @@ import android.widget.AdapterView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.squareup.otto.Subscribe;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
+import org.devconmyanmar.apps.devcon.event.BusProvider;
+import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
@@ -39,9 +42,10 @@ public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2014-11-15";
-  //@InjectView(R.id.first_day_list) StickyListHeadersListView firstDayList;
   private List<Talk> mTalks = new ArrayList<Talk>();
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
+  private ScheduleAdapter mScheduleAdapter;
+  private StickyListHeadersListView firstDayList;
 
   public FirstDayFragment() {
   }
@@ -54,12 +58,16 @@ public class FirstDayFragment extends BaseFragment {
     super.onAttach(activity);
   }
 
+  @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    mScheduleAdapter = new ScheduleAdapter(mContext);
+  }
+
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
 
     View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
-    StickyListHeadersListView firstDayList =
-        (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
+    firstDayList = (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
 
     exploreSwipeRefreshView =
         (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
@@ -76,10 +84,7 @@ public class FirstDayFragment extends BaseFragment {
     firstDayList.setDivider(null);
 
     mTalks = talkDao.getTalkByDay(FIRST_DAY);
-    LOGD(TAG, "first day : " + mTalks.size());
-    ScheduleAdapter mScheduleAdapter = new ScheduleAdapter(mContext);
     mScheduleAdapter.replaceWith(mTalks);
-
     firstDayList.setAdapter(mScheduleAdapter);
 
     firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -130,11 +135,29 @@ public class FirstDayFragment extends BaseFragment {
           talkDao.create(talk);
         }
         hideRefreshProgress(exploreSwipeRefreshView);
+        BusProvider.getInstance().post(new SyncSuccessEvent());
       }
 
       @Override public void failure(RetrofitError error) {
         hideRefreshProgress(exploreSwipeRefreshView);
       }
     });
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    BusProvider.getInstance().register(this);
+  }
+
+  @Override public void onPause() {
+    super.onPause();
+    BusProvider.getInstance().unregister(this);
+  }
+
+  @Subscribe public void syncSuccess(SyncSuccessEvent event) {
+    LOGD(TAG, "updating ui..");
+    mTalks = talkDao.getTalkByDay(FIRST_DAY);
+    mScheduleAdapter.replaceWith(mTalks);
+    firstDayList.setAdapter(mScheduleAdapter);
   }
 }
