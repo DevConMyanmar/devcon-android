@@ -22,6 +22,7 @@ import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
@@ -32,6 +33,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class TalkDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
   private static final String TAG = makeLogTag(TalkDetailFragment.class);
+  private static final String SCREEN_LABEL = "Talk Detail";
 
   @InjectView(R.id.talk_title) TextView mTalkTitle;
   @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
@@ -79,8 +81,11 @@ public class TalkDetailFragment extends BaseFragment {
       tintManager.setNavigationBarTintEnabled(false);
       tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
     }
+
     mTalk = talkDao.getTalkById(mTalkId);
     mTalkTitle.setText(mTalk.getTitle());
+
+    AnalyticsManager.sendScreenView(SCREEN_LABEL + " : " + mTalk.getTitle());
 
     isFavourite = mTalk.isFavourite();
     LOGD(TAG, "favourite ? " + isFavourite);

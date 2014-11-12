@@ -17,6 +17,7 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -30,6 +31,8 @@ public class SecondDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(SecondDayFragment.class);
   private static final String SECOND_DAY = "2014-11-16";
+
+  private final static String SCREEN_LABEL = "Explore Second Day";
 
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
   private ScheduleAdapter mScheduleAdapter;
@@ -47,6 +50,7 @@ public class SecondDayFragment extends BaseFragment {
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mScheduleAdapter = new ScheduleAdapter(mContext);
+    AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
