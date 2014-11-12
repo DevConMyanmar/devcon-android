@@ -34,9 +34,11 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   private static final int VIEW_TYPE_KEYNOTE = 1;
   private static final int VIEW_TYPE_NORMAL = 2;
   private static final int VIEW_TYPE_LIGHTNING = 3;
+  private static final int VIEW_TYPE_WORKSHOP = 4;
+
   private static final String TAG = makeLogTag(ScheduleAdapter.class);
 
-  private static final int VIEW_TYPE_COUNT = 3;
+  private static final int VIEW_TYPE_COUNT = 4;
 
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
@@ -85,6 +87,7 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     KeynoteViewHolder keynoteViewHolder;
     NormalViewHolder normalViewHolder;
     LightningViewHolder lightningViewHolder;
+    WorkshopViewHolder workshopViewHolder;
 
     LayoutInflater mInflater =
         (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -167,6 +170,36 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         lightningViewHolder.mLightSpeaker.setText(lightSpeakers);
 
         return rootView;
+      case VIEW_TYPE_WORKSHOP:
+        if (rootView != null) {
+          workshopViewHolder = (WorkshopViewHolder) rootView.getTag();
+        } else {
+          rootView = mInflater.inflate(R.layout.row_workshop, parent, false);
+          workshopViewHolder = new WorkshopViewHolder(rootView);
+          rootView.setTag(workshopViewHolder);
+        }
+
+        workshopViewHolder.mWorkshopBackground.setBackgroundColor(
+            mContext.getResources().getColor(R.color.fb_button_background));
+        workshopViewHolder.mWorkshopTitle.setText(mTalk.getTitle());
+
+        String workshopDate = mTalk.getDate();
+
+        formattedDate = TimeUtils.parseDateString(workshopDate);
+        String wsFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
+        String wsFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
+        String wsRoom = TimeUtils.getProperRoomName(mTalk.getRoom());
+        // Phrase yo!
+        CharSequence wsNoteTimeAndPlace = Phrase.from(mContext, R.string.talk_detail_time_and_place)
+            .put("day", formattedDate)
+            .put("from_time", wsFormattedFrom)
+            .put("to_time", wsFormattedTo)
+            .put("room", wsRoom)
+            .format();
+        workshopViewHolder.mWorkshopTime.setText(wsNoteTimeAndPlace);
+
+        return rootView;
+
       default:
     }
 
@@ -211,6 +244,7 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   }
 
   static class KeynoteViewHolder {
+    @InjectView(R.id.keynote_row) FrameLayout mKeynoteWrapper;
     @InjectView(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
     @InjectView(R.id.keynote_title) TextView mKeynoteTitle;
     @InjectView(R.id.keynote_time_and_place) TextView mKeyNoteTime;
@@ -244,7 +278,17 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     }
   }
 
-  private static class HeaderViewHolder {
+  static class WorkshopViewHolder {
+    @InjectView(R.id.workshop_background) ForegroundImageView mWorkshopBackground;
+    @InjectView(R.id.workshop_title) TextView mWorkshopTitle;
+    @InjectView(R.id.workshop_time_and_place) TextView mWorkshopTime;
+
+    public WorkshopViewHolder(View view) {
+      ButterKnife.inject(this, view);
+    }
+  }
+
+  static class HeaderViewHolder {
     TextView header;
   }
 }

@@ -27,11 +27,11 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class TalkFragment extends BaseFragment {
-private BaseActivity mActivity;
   private static final String TAG = makeLogTag(TalkFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
+  private BaseActivity mActivity;
 
   public TalkFragment() {
   }
@@ -78,20 +78,18 @@ private BaseActivity mActivity;
     return view;
   }
 
-
   @Override
   public void onDestroyView() {
     super.onDestroyView();
   }
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    inflater.inflate(R.menu.refresh_menu,menu);
+    inflater.inflate(R.menu.refresh_menu, menu);
     super.onCreateOptionsMenu(menu, inflater);
-
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch(item.getItemId()){
+    switch (item.getItemId()) {
       case R.id.action_about:
         HelpUtils.showAbout(getActivity());
         return true;
@@ -101,7 +99,6 @@ private BaseActivity mActivity;
       default:
         return super.onOptionsItemSelected(item);
     }
-
   }
 }
 

@@ -48,8 +48,10 @@ public class TimeUtils {
       return "Conference Room";
     } else if (room.equalsIgnoreCase("205")) {
       return "Room 205";
-    } else if (room.equalsIgnoreCase("201")) {
-      return "Room 201";
+    } else if (room.equalsIgnoreCase("102")) {
+      return "Room 102";
+    } else if (room.equalsIgnoreCase("mcf")) {
+      return "MCF Meeting Room";
     }
 
     return "N/A";
