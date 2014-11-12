@@ -34,7 +34,7 @@
     </activity>
     <activity android:name=".ui.ContributorsActivity"
         android:label="@string/about_contributors"/>
-    <meta-data android:name="com.crashlytics.ApiKey" android:value="10c6fe8841e559534f187322cd8818266f15dc32"/>
+    <meta-data android:name="com.crashlytics.ApiKey" android:value="3156a941ed9d890a7b2faa705726aa4e4d16fae2"/>
   </application>
 
 </manifest>
