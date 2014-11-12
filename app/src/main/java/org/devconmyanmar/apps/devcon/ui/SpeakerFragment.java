@@ -3,8 +3,12 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -17,6 +21,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
@@ -28,8 +33,10 @@ public class SpeakerFragment extends BaseFragment {
   @InjectView(R.id.my_list) ListView speakerList;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
+  private BaseActivity mActivity;
 
   public SpeakerFragment() {
+
   }
 
   public static SpeakerFragment getInstance() {
@@ -38,16 +45,19 @@ public class SpeakerFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivity().setTitle(getString(R.string.speaker_list));
+    mActivity = (BaseActivity)getActivity();
+
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.inject(this, rootView);
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
-    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
+    mActivity.setSupportActionBar(mToolbar);
+    ActionBar actionBar = mActivity.getSupportActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    actionBar.setTitle(R.string.speakers);
     try {
       mSpeakers = speakerDao.getAll();
       SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
@@ -59,12 +69,28 @@ public class SpeakerFragment extends BaseFragment {
 
     return rootView;
   }
-
   @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(
       int position) {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
     i.putExtra(POSITION, id);
     startActivity(i);
+  }
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.schedule_menu,menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.action_about:
+        HelpUtils.showAbout(mActivity);
+        return true;
+      case android.R.id.home:
+        mActivity.finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }

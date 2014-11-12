@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -95,26 +92,6 @@ public class SecondDayFragment extends BaseFragment {
     });
 
     return rootView;
-  }
-
-  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    super.onCreateOptionsMenu(menu, inflater);
-    inflater.inflate(R.menu.refresh_menu, menu);
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.refresh:
-        if (ConnectionUtils.isOnline(mContext)) {
-          syncSchedules(exploreSwipeRefreshView);
-        } else {
-          hideRefreshProgress(exploreSwipeRefreshView);
-          Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)
-              .show();
-        }
-        return true;
-    }
-    return super.onOptionsItemSelected(item);
   }
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {

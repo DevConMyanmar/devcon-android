@@ -4,8 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
@@ -13,6 +17,7 @@ import butterknife.InjectView;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -20,7 +25,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class TalkFragment extends BaseFragment {
-
+private BaseActivity mActivity;
   private static final String TAG = makeLogTag(TalkFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
@@ -36,7 +41,7 @@ public class TalkFragment extends BaseFragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivity().setTitle(getString(R.string.explore_title));
+    mActivity = (BaseActivity) getActivity();
   }
 
   @Override
@@ -44,11 +49,12 @@ public class TalkFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
+    mActivity.setSupportActionBar(mToolbar);
+    ActionBar actionBar = mActivity.getSupportActionBar();
+    actionBar.setTitle(R.string.explore_title);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
@@ -66,4 +72,23 @@ public class TalkFragment extends BaseFragment {
   public void onDestroyView() {
     super.onDestroyView();
   }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.schedule_menu,menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.action_about:
+        HelpUtils.showAbout(mActivity);
+        return true;
+      case android.R.id.home:
+        mActivity.finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
 }
+

@@ -2,7 +2,6 @@ package org.devconmyanmar.apps.devcon.ui;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +27,6 @@ public class SpeakerDetailFragment extends BaseFragment {
   @InjectView(R.id.speaker_detail_description) TextView mSpeakerDescription;
 
   private String mSpeakerId;
-  private ActionBar mActionBar;
-
   public SpeakerDetailFragment() {
     // Required empty public constructor
   }
@@ -48,8 +45,6 @@ public class SpeakerDetailFragment extends BaseFragment {
     if (getArguments() != null) {
       mSpeakerId = getArguments().getString(ARG_TALK_ID);
     }
-
-    mActionBar = ((BaseActivity) getActivity()).getSupportActionBar();
   }
 
   @Override
@@ -69,11 +64,6 @@ public class SpeakerDetailFragment extends BaseFragment {
     Speaker speaker = speakerDao.getSpeakerById(mSpeakerId);
 
     if (speaker != null) {
-      if (mActionBar != null) {
-        mActionBar.setTitle(getString(R.string.speakers));
-        mActionBar.setIcon(android.R.color.transparent);
-      }
-
       mSpeakerName.setText(speaker.getName());
       mSpeakerTitle.setText(speaker.getTitle());
       mSpeakerDescription.setText(speaker.getDescription());

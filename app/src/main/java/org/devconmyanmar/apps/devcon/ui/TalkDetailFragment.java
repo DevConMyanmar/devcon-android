@@ -3,7 +3,6 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,6 @@ public class TalkDetailFragment extends BaseFragment {
 
   private LUtils mLUtils;
   private int mTalkId;
-  private ActionBar mActionBar;
   private Talk mTalk;
   private boolean isFavourite;
 
@@ -64,8 +62,6 @@ public class TalkDetailFragment extends BaseFragment {
     if (getArguments() != null) {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
     }
-
-    mActionBar = ((BaseActivity) getActivity()).getSupportActionBar();
 
     mLUtils = LUtils.getInstance(getActivity());
   }
@@ -89,11 +85,6 @@ public class TalkDetailFragment extends BaseFragment {
     isFavourite = mTalk.isFavourite();
     LOGD(TAG, "favourite ? " + isFavourite);
     showStarred(isFavourite, true);
-
-    if (mActionBar != null) {
-      mActionBar.setTitle(getString(R.string.title_activity_schedule_detail));
-      mActionBar.setIcon(android.R.color.transparent);
-    }
 
     talkDetailScrollView.hideActionBarOnScroll(true);
 

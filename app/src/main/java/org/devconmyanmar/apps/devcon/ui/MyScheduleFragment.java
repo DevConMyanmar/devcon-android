@@ -1,10 +1,10 @@
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +19,7 @@ import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
  * Created by Ye Lin Aung on 14/11/10.
  */
 public class MyScheduleFragment extends BaseFragment {
+  private BaseActivity mActivity;
 
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
@@ -33,6 +34,7 @@ public class MyScheduleFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    mActivity = (BaseActivity)getActivity();
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -40,13 +42,14 @@ public class MyScheduleFragment extends BaseFragment {
     View rootView = inflater.inflate(R.layout.fragment_my_schedule, container, false);
     ButterKnife.inject(this, rootView);
 
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
+    mActivity.setSupportActionBar(mToolbar);
+    ActionBar actionBar = mActivity.getSupportActionBar();
+    actionBar.setTitle(R.string.my_schedule_title);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
 
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
+
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
@@ -60,8 +63,4 @@ public class MyScheduleFragment extends BaseFragment {
     return rootView;
   }
 
-  @Override public void onAttach(Activity activity) {
-    super.onAttach(activity);
-    activity.setTitle(getString(R.string.my_schedule_title));
-  }
 }

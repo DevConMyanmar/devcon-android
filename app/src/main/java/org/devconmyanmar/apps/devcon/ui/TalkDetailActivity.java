@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,10 +32,10 @@ public class TalkDetailActivity extends BaseActivity {
     setContentView(R.layout.activity_schedule_detail);
     ButterKnife.inject(this);
     setSupportActionBar(mToolbar);
-    mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
-
+    ActionBar actionBar = getSupportActionBar();
+    actionBar.setTitle(R.string.title_activity_schedule_detail);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;
 
