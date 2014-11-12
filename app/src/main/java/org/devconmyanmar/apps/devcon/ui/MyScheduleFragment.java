@@ -35,9 +35,6 @@ public class MyScheduleFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_my_schedule, container, false);
     ButterKnife.inject(this, rootView);
-
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-
     mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
     mToolbar.setNavigationIcon(R.drawable.ic_drawer);
     return rootView;

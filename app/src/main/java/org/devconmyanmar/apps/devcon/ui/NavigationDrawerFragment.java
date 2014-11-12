@@ -1,6 +1,5 @@
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -10,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +39,7 @@ public class NavigationDrawerFragment extends BaseFragment {
   private ActionBarDrawerToggle mDrawerToggle;
   private NavigationDrawerCallbacks mCallbacks;
   private DrawerLayout mDrawerLayout;
+  private Activity mActivity;
 
   public NavigationDrawerFragment() {
   }
@@ -51,6 +52,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
     mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+    mActivity = (ActionBarActivity)getActivity();
 
     if (savedInstanceState != null) {
       mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -108,12 +110,6 @@ public class NavigationDrawerFragment extends BaseFragment {
     mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
     // set up the drawer's list view with items and click listener
 
-    ActionBar mActionBar = getActivity().getActionBar();
-    if (mActionBar != null) {
-      mActionBar.setIcon(android.R.color.transparent);
-      mActionBar.setDisplayHomeAsUpEnabled(true);
-      mActionBar.setHomeButtonEnabled(true);
-    }
 
     // ActionBarDrawerToggle ties together the the proper interactions
     // between the navigation drawer and the action bar app icon.

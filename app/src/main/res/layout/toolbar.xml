@@ -5,8 +5,9 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
-    android:gravity="center_vertical"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    android:gravity="center"
+    android:layout_gravity="center"
+    app:theme="@style/myToolbarStyle"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:background="@color/theme_primary">
 </android.support.v7.widget.Toolbar>

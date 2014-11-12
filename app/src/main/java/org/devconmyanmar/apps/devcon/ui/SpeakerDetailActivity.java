@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import java.sql.SQLException;
@@ -16,7 +14,6 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyPagerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
-import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
@@ -30,10 +27,11 @@ public class SpeakerDetailActivity extends BaseActivity {
     setContentView(R.layout.activity_speaker_detail);
 
     ButterKnife.inject(this);
-    setSupportActionBar(mToolbar);
+    mToolbar.setTitle(R.string.speaker_profile);
     mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
+
+    //Inflate Menu
+    mToolbar.inflateMenu(R.menu.schedule_menu);
 
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;
@@ -44,29 +42,6 @@ public class SpeakerDetailActivity extends BaseActivity {
     mSpeakerViewPager.setPageTransformer(true, new StackTransformer());
     mSpeakerViewPager.setAdapter(mAdapter);
     mSpeakerViewPager.setCurrentItem(position);
-  }
-
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.schedule_menu, menu);
-    return true;
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-    switch (id) {
-      case R.id.action_about:
-      HelpUtils.showAbout(this);
-        return true;
-      case android.R.id.home:
-        finish();
-        return true;
-      default:
-        return super.onOptionsItemSelected(item);
-    }
   }
 
   private List<Fragment> getTalkFragments() {

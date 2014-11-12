@@ -22,7 +22,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class TalkFragment extends BaseFragment {
-
+private BaseActivity mActivity;
   private static final String TAG = makeLogTag(TalkFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
@@ -38,7 +38,7 @@ public class TalkFragment extends BaseFragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivity().setTitle(getString(R.string.explore_title));
+    mActivity = (BaseActivity) getActivity();
   }
 
   @Override
@@ -46,11 +46,9 @@ public class TalkFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
+    mToolbar.setTitle(mActivity.getResources().getString(R.string.schedule_activity));
+    mActivity.setSupportActionBar(mToolbar);
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);

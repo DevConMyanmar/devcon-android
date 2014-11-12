@@ -30,10 +30,6 @@ public class TalkDetailActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_detail);
     ButterKnife.inject(this);
-    setSupportActionBar(mToolbar);
-    mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;

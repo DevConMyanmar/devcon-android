@@ -28,8 +28,10 @@ public class SpeakerFragment extends BaseFragment {
   @InjectView(R.id.my_list) ListView speakerList;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
+  private BaseActivity mActivity;
 
   public SpeakerFragment() {
+
   }
 
   public static SpeakerFragment getInstance() {
@@ -38,16 +40,15 @@ public class SpeakerFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getActivity().setTitle(getString(R.string.speaker_list));
+    mActivity = (BaseActivity)getActivity();
+
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.inject(this, rootView);
-    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
-    mToolbar.setNavigationIcon(R.drawable.ic_drawer);
+    mToolbar.setTitle(R.string.speakers);
     try {
       mSpeakers = speakerDao.getAll();
       SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
@@ -59,7 +60,6 @@ public class SpeakerFragment extends BaseFragment {
 
     return rootView;
   }
-
   @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(
       int position) {
     int id = mSpeakers.get(position).getId();
