@@ -1,24 +1,25 @@
 package org.devconmyanmar.apps.devcon.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Ye Lin Aung on 14/11/12.
  */
-@DatabaseTable(tableName = "myschedule")
+@DatabaseTable(tableName = "my_schedule")
 public class MySchedule {
   @DatabaseField private int id;
   @DatabaseField private String title;
   @DatabaseField private String start;
   @DatabaseField private String end;
-  @DatabaseField private boolean clickBlock;
-  @DatabaseField private String subTitle;
+  @DatabaseField @SerializedName("click_block") private boolean clickBlock;
+  @DatabaseField @SerializedName("sub_title") private String subTitle;
+  @DatabaseField private int date;
+  @DatabaseField @SerializedName("associated_talk") private int associatedTalkId;
 
   public MySchedule() {
   }
-
-
 
   public String getTitle() {
     return title;
@@ -66,6 +67,22 @@ public class MySchedule {
 
   public void setSubTitle(String subTitle) {
     this.subTitle = subTitle;
+  }
+
+  public int getDate() {
+    return date;
+  }
+
+  public void setDate(int date) {
+    this.date = date;
+  }
+
+  public int getAssociatedTalkId() {
+    return associatedTalkId;
+  }
+
+  public void setAssociatedTalkId(int associatedTalkId) {
+    this.associatedTalkId = associatedTalkId;
   }
 }
 
