@@ -1,23 +1,27 @@
 package org.devconmyanmar.apps.devcon.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
+import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
 
 /**
  * Created by Ye Lin Aung on 14/11/10.
  */
 public class MyScheduleFragment extends BaseFragment {
 
-  @InjectView(R.id.my_list) ListView mScheduleList;
+  @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
+  @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
 
   public MyScheduleFragment() {
@@ -38,8 +42,21 @@ public class MyScheduleFragment extends BaseFragment {
 
     ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
 
-    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
+    ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
     mToolbar.setNavigationIcon(R.drawable.ic_drawer);
+    mToolbar.setTitleTextColor(getActivity().getResources().getColor(android.R.color.white));
+    mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
+
+    int mPrimaryColor = getResources().getColor(R.color.theme_primary);
+    mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
+    mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
+
+    mViewPager.setAdapter(
+        new SlidingTabAdapter(getActivity().getSupportFragmentManager(), mContext));
+
+    mSlidingTabLayout.setDistributeEvenly(true);
+    mSlidingTabLayout.setViewPager(mViewPager);
+
     return rootView;
   }
 

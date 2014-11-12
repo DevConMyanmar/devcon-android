@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="#ffebebeb"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <include layout="@layout/toolbar"
-      android:id="@+id/toolbar"/>
-  <include layout="@layout/speaker_list"
-      android:layout_below="@id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
 
-</RelativeLayout>
+  <include layout="@layout/toolbar"
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?android:attr/actionBarSize"/>
+
+  <org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout
+      android:id="@+id/sliding_tabs"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <android.support.v4.view.ViewPager
+      android:id="@+id/view_pager"
+      android:layout_width="0dp"
+      android:layout_height="0px"
+      android:layout_weight="1"
+      android:background="@android:color/white"/>
+
+</LinearLayout>
