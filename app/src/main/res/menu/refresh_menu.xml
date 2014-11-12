@@ -1,11 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item android:id="@+id/action_refresh"
+      android:title="@string/refresh"
+      android:orderInCategory="90"
+      app:showAsAction="never"/>
   <item android:id="@+id/action_about"
       android:title="@string/title_about"
       android:orderInCategory="100"
-      tools:showAsAction="never"/>
-  <item android:id="@+id/refresh"
-      android:title="@string/refresh"
-      android:orderInCategory="90"
-      tools:showAsAction="never"/>
+      app:showAsAction="never"/>
 </menu>

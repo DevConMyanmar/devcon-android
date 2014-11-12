@@ -35,6 +35,7 @@ public class MyScheduleFragment extends BaseFragment {
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mActivity = (BaseActivity)getActivity();
+    setHasOptionsMenu(true);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +20,7 @@ import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
@@ -35,6 +34,7 @@ public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2014-11-15";
+  private static final int MENU_REFRESH = 10000;
   private List<Talk> mTalks = new ArrayList<Talk>();
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
   private ScheduleAdapter mScheduleAdapter;
@@ -103,14 +103,11 @@ public class FirstDayFragment extends BaseFragment {
     return rootView;
   }
 
-  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    super.onCreateOptionsMenu(menu, inflater);
-    inflater.inflate(R.menu.refresh_menu, menu);
-  }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.refresh:
+
+      case R.id.action_refresh:
         if (ConnectionUtils.isOnline(mContext)) {
           syncSchedules(exploreSwipeRefreshView);
         } else {
@@ -119,9 +116,12 @@ public class FirstDayFragment extends BaseFragment {
               .show();
         }
         return true;
+
+      default:
+        return super.onOptionsItemSelected(item);
     }
-    return super.onOptionsItemSelected(item);
   }
+
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
     mTalks = talkDao.getTalkByDay(FIRST_DAY);

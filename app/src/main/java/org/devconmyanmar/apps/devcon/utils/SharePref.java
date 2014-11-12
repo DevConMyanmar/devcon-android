@@ -13,6 +13,7 @@ public class SharePref {
 
   /** Boolean to check if the app is launched for the first time * */
   private static final String PREF_FIRST_TIME_CHECK = "pref_first_time_check";
+  private static final String PREF_MENU_CHECK = "pref_menu_check";
 
   private static final String TAG = makeLogTag(SharePref.class);
   private static SharePref pref;

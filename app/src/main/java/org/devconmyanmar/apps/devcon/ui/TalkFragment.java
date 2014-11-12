@@ -41,6 +41,7 @@ private BaseActivity mActivity;
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
     mActivity = (BaseActivity) getActivity();
   }
 
@@ -74,21 +75,23 @@ private BaseActivity mActivity;
   }
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    inflater.inflate(R.menu.refresh_menu,menu);
     super.onCreateOptionsMenu(menu, inflater);
-    inflater.inflate(R.menu.schedule_menu,menu);
+
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()){
+    switch(item.getItemId()){
       case R.id.action_about:
-        HelpUtils.showAbout(mActivity);
+        HelpUtils.showAbout(getActivity());
         return true;
       case android.R.id.home:
-        mActivity.finish();
+        getActivity().finish();
         return true;
       default:
         return super.onOptionsItemSelected(item);
     }
+
   }
 }
 
