@@ -39,7 +39,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
       LOGI(TAG, "onCreate -- creating");
       TableUtils.createTable(connectionSource, Speaker.class);
       TableUtils.createTable(connectionSource, Talk.class);
-      TableUtils.createTable(connectionSource,MySchedule.class);
+      TableUtils.createTable(connectionSource, MySchedule.class);
     } catch (SQLException e) {
       LOGE(TAG, "Can't create database", e);
       e.printStackTrace();

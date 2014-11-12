@@ -1,10 +1,12 @@
 package org.devconmyanmar.apps.devcon.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Ye Lin Aung on 14/11/12.
  */
+@DatabaseTable(tableName = "myschedule")
 public class MySchedule {
   @DatabaseField private int id;
   @DatabaseField private String title;
