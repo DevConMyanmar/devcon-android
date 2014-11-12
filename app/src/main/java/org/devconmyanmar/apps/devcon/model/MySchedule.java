@@ -16,7 +16,7 @@ public class MySchedule {
   @DatabaseField @SerializedName("click_block") private boolean clickBlock;
   @DatabaseField @SerializedName("sub_title") private String subTitle;
   @DatabaseField private int date;
-  @DatabaseField @SerializedName("associated_talk") private int associatedTalkId;
+  @DatabaseField @SerializedName("associated_talk") private String associatedTalkId;
 
   public MySchedule() {
   }
@@ -77,11 +77,11 @@ public class MySchedule {
     this.date = date;
   }
 
-  public int getAssociatedTalkId() {
+  public String getAssociatedTalkId() {
     return associatedTalkId;
   }
 
-  public void setAssociatedTalkId(int associatedTalkId) {
+  public void setAssociatedTalkId(String associatedTalkId) {
     this.associatedTalkId = associatedTalkId;
   }
 }
