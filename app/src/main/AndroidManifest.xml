@@ -3,7 +3,7 @@
     package="org.devconmyanmar.apps.devcon">
 
   <uses-permission android:name="android.permission.INTERNET"/>
-
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <application
       android:name="org.devconmyanmar.apps.devcon.DevConApplication"
       android:allowBackup="true"
