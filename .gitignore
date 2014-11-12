@@ -17,3 +17,6 @@ proguard/
 
 # OSX
 .DS_Store
+
+# Crashlytics
+crashlytics.properties
