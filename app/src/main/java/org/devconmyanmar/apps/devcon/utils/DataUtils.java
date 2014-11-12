@@ -89,32 +89,34 @@ public class DataUtils {
           }
           switch(i){
             case 0:
-              schedule.setStart("0900");
-              schedule.setEnd("1000");
+              schedule.setStart("09:00");
+              schedule.setEnd("10:00");
               break;
             case 1:
-              schedule.setStart("1000");
-              schedule.setEnd("1100");
+              schedule.setStart("10:00");
+              schedule.setEnd("11:00");
               break;
             case 2:
-              schedule.setStart("1100");
-              schedule.setEnd("1200");
+              schedule.setStart("11:00");
+              schedule.setEnd("12:00");
               break;
             case 3:
-              schedule.setStart("1200");
-              schedule.setEnd("1300");
+              schedule.setStart("12:00");
+              schedule.setEnd("13:00");
               break;
             case 4:
-              schedule.setStart("1300");
-              schedule.setEnd("1400");
+              schedule.setStart("13:00");
+              schedule.setEnd("14:00");
               break;
             case 5:
-              schedule.setStart("1400");
-              schedule.setEnd("1500");
+              schedule.setStart("14:00");
+              schedule.setEnd("15:00");
               break;
             case 6:
-              schedule.setStart("1500");
-              schedule.setEnd("1600");
+              schedule.setStart("15:00");
+              schedule.setEnd("16:00");
+              break;
+            default:
               break;
 
           }

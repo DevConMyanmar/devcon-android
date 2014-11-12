@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -61,15 +61,20 @@ public class MyScheduleAdapter extends BaseAdapter {
       holder = new ViewHolder(view);
       view.setTag(holder);
     }
-    String lFormattedFrom = TimeUtils.parseDateString(mySchedule.getStart());
+    String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
     String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
+    System.out.println(lFormattedFrom);
       holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
       holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
-      holder.mFavoriteScheduleToTime.setText(lFormattedTo);
       holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
     if (Build.VERSION.SDK_INT >= 21) {
-      holder.mFavoriteCardContainer.setPadding(0, px, 0, 0);
+      holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
 
+    }
+    if(mySchedule.getTitle().equals("Lunch Break")){
+      RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+          RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+      holder.mFavoriteCardContainer.setLayoutParams(layoutParams);
     }
 
     return view;
@@ -84,10 +89,9 @@ public class MyScheduleAdapter extends BaseAdapter {
 
   class ViewHolder {
     @InjectView(R.id.favorite_schedule_from_time) TextView mFavoriteScheduleFromTime;
-    @InjectView(R.id.favorite_schedule_to_time) TextView mFavoriteScheduleToTime;
     @InjectView(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
     @InjectView(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
-    @InjectView(R.id.favorite_card_container) FrameLayout mFavoriteCardContainer;
+    @InjectView(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
 
     ViewHolder(View view) {
       ButterKnife.inject(this, view);
