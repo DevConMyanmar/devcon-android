@@ -28,7 +28,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  */
 public class MyScheduleFragment extends BaseFragment {
   private BaseActivity mActivity;
-  private static final String TAG = makeLogTag(TalkFragment.class);
+  private static final String TAG = makeLogTag(ExploreFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.favorite_view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
