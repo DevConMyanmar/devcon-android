@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.devconmyanmar.apps.devcon.ui.widget.ContributorItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_minor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+  <ImageView
+      android:id="@+id/contributor_image"
+      android:scaleType="centerCrop"
+      android:contentDescription="@string/speaker_profile"
+      android:src="@drawable/person_image_empty"
+      android:layout_width="@dimen/speaker_image_size"
+      android:layout_height="@dimen/speaker_image_size"/>
+
+  <TextView
+      android:id="@+id/contributor_name"
+      android:layout_toRightOf="@+id/contributor_image"
+      android:layout_toEndOf="@+id/contributor_image"
+      tools:text="@string/placeholder_title"
+      android:layout_marginLeft="@dimen/spacing_minor"
+      android:layout_marginStart="@dimen/spacing_minor"
+      android:layout_marginBottom="@dimen/spacing_minor"
+      android:gravity="center"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+</org.devconmyanmar.apps.devcon.ui.widget.ContributorItemView>
+

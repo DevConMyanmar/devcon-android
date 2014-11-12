@@ -18,7 +18,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
-  private Context mContext;
+  protected Context mContext;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,39 +38,39 @@ public abstract class BaseActivity extends ActionBarActivity {
     BusProvider.getInstance().unregister(this);
   }
 
-  public void showProgress(final boolean show, final View firstView, final View secondView) {
+  public void showProgress(final boolean show, final View listView, final View progressView) {
     // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
     // for very easy animations. If available, use these APIs to fade-in
     // the progress spinner.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
       int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-      firstView.setVisibility(show ? View.GONE : View.VISIBLE);
-      firstView.animate()
+      listView.setVisibility(show ? View.GONE : View.VISIBLE);
+      listView.animate()
           .setDuration(shortAnimTime)
           .alpha(show ? 0 : 1)
           .setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-              firstView.setVisibility(show ? View.GONE : View.VISIBLE);
+              listView.setVisibility(show ? View.GONE : View.VISIBLE);
             }
           });
 
-      secondView.setVisibility(show ? View.VISIBLE : View.GONE);
-      secondView.animate()
+      progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+      progressView.animate()
           .setDuration(shortAnimTime)
           .alpha(show ? 1 : 0)
           .setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-              secondView.setVisibility(show ? View.VISIBLE : View.GONE);
+              progressView.setVisibility(show ? View.VISIBLE : View.GONE);
             }
           });
     } else {
       // The ViewPropertyAnimator APIs are not available, so simply show
       // and hide the relevant UI components.
-      secondView.setVisibility(show ? View.VISIBLE : View.GONE);
-      firstView.setVisibility(show ? View.GONE : View.VISIBLE);
+      progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+      listView.setVisibility(show ? View.GONE : View.VISIBLE);
     }
   }
 }

@@ -69,6 +69,18 @@ public class TalkDao {
     return null;
   }
 
+  public List<Talk> getFavTalks() {
+    try {
+      QueryBuilder<Talk, Integer> qb = talkDao.queryBuilder();
+      qb.where().eq("favourite", true);
+      PreparedQuery<Talk> pq = qb.prepare();
+      return talkDao.query(pq);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
   public void createOrUpdate(Talk talk) {
     try {
       talkDao.createOrUpdate(talk);
