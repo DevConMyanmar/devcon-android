@@ -45,7 +45,7 @@ public class SpeakerFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mActivity = (BaseActivity)getActivity();
+    mActivity = (BaseActivity) getActivity();
     setHasOptionsMenu(true);
   }
 
@@ -69,20 +69,21 @@ public class SpeakerFragment extends BaseFragment {
 
     return rootView;
   }
-  @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(
-      int position) {
+
+  @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(int position) {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
     i.putExtra(POSITION, id);
     startActivity(i);
   }
+
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
-    inflater.inflate(R.menu.schedule_menu,menu);
+    inflater.inflate(R.menu.schedule_menu, menu);
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()){
+    switch (item.getItemId()) {
       case R.id.action_about:
         HelpUtils.showAbout(mActivity);
         return true;
