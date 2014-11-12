@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -12,10 +13,10 @@ public class MySchedule {
   @DatabaseField private String title;
   @DatabaseField private String start;
   @DatabaseField private String end;
-  @DatabaseField private boolean clickBlock;
-  @DatabaseField private String subTitle;
+  @DatabaseField @SerializedName("click_block") private boolean clickBlock;
+  @DatabaseField @SerializedName("sub_title") private String subTitle;
   @DatabaseField private int date;
-  @DatabaseField private int associatedTalkId;
+  @DatabaseField @SerializedName("associated_talk") private int associatedTalkId;
 
   public MySchedule() {
   }
