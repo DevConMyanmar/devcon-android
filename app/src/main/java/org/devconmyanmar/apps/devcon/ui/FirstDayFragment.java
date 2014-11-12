@@ -97,6 +97,11 @@ public class FirstDayFragment extends BaseFragment {
           long l) {
         int id = mTalks.get(position).getId();
         LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+
+        // GA
+        AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
+            mTalks.get(position).getTitle(), 0L);
+
         Intent i = new Intent(getActivity(), TalkDetailActivity.class);
         i.putExtra(POSITION, id);
         startActivity(i);

@@ -139,11 +139,13 @@ public class TalkDetailFragment extends BaseFragment {
   @SuppressWarnings("unused") @OnClick(R.id.add_schedule_button) void addToFav() {
     boolean starred = !isFavourite;
     if (!isFavourite) {
+      AnalyticsManager.sendEvent("Talk Detail", "favourite", mTalk.getTitle(), 0L);
       mTalk.setFavourite(true);
       showStarred(starred, true);
       mTalk.setId(mTalkId);
       talkDao.createOrUpdate(mTalk);
     } else {
+      AnalyticsManager.sendEvent("Talk Detail", "un-favourite", mTalk.getTitle(), 0L);
       mTalk.setFavourite(false);
       showStarred(starred, true);
       mTalk.setId(mTalkId);

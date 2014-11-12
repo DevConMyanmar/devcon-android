@@ -76,6 +76,10 @@ public class SpeakerFragment extends BaseFragment {
   @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(int position) {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
+
+    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle(),
+        0L);
+
     i.putExtra(POSITION, id);
     startActivity(i);
   }
