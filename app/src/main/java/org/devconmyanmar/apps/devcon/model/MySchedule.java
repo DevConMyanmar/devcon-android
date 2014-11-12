@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by Ye Lin Aung on 14/11/12.
  */
-@DatabaseTable(tableName = "myschedule")
+@DatabaseTable(tableName = "my_schedule")
 public class MySchedule {
   @DatabaseField private int id;
   @DatabaseField private String title;
@@ -14,11 +14,11 @@ public class MySchedule {
   @DatabaseField private String end;
   @DatabaseField private boolean clickBlock;
   @DatabaseField private String subTitle;
+  @DatabaseField private int date;
+  @DatabaseField private int associatedTalkId;
 
   public MySchedule() {
   }
-
-
 
   public String getTitle() {
     return title;
@@ -66,6 +66,22 @@ public class MySchedule {
 
   public void setSubTitle(String subTitle) {
     this.subTitle = subTitle;
+  }
+
+  public int getDate() {
+    return date;
+  }
+
+  public void setDate(int date) {
+    this.date = date;
+  }
+
+  public int getAssociatedTalkId() {
+    return associatedTalkId;
+  }
+
+  public void setAssociatedTalkId(int associatedTalkId) {
+    this.associatedTalkId = associatedTalkId;
   }
 }
 

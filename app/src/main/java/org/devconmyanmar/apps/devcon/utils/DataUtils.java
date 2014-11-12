@@ -76,54 +76,50 @@ public class DataUtils {
       }
 
       for (int i = 0; i <= 6; i++) {
-          MySchedule schedule = new MySchedule();
-          schedule.setId(i);
-          if(i == 4){
-            schedule.setTitle("Lunch Break");
-            schedule.setClickBlock(true);
-          }
-          else{
-            schedule.setTitle("Browse Sessions");
-            schedule.setClickBlock(false);
-            schedule.setSubTitle("click to View");
-          }
-          switch(i){
-            case 0:
-              schedule.setStart("09:00");
-              schedule.setEnd("10:00");
-              break;
-            case 1:
-              schedule.setStart("10:00");
-              schedule.setEnd("11:00");
-              break;
-            case 2:
-              schedule.setStart("11:00");
-              schedule.setEnd("12:00");
-              break;
-            case 3:
-              schedule.setStart("12:00");
-              schedule.setEnd("13:00");
-              break;
-            case 4:
-              schedule.setStart("13:00");
-              schedule.setEnd("14:00");
-              break;
-            case 5:
-              schedule.setStart("14:00");
-              schedule.setEnd("15:00");
-              break;
-            case 6:
-              schedule.setStart("15:00");
-              schedule.setEnd("16:00");
-              break;
-            default:
-              break;
-
-          }
-        mFavDao.create(schedule);
-
+        MySchedule schedule = new MySchedule();
+        schedule.setId(i);
+        if (i == 4) {
+          schedule.setTitle("Lunch Break");
+          schedule.setClickBlock(true);
+        } else {
+          schedule.setTitle("Browse Sessions");
+          schedule.setClickBlock(false);
+          schedule.setSubTitle("click to View");
         }
-
+        switch (i) {
+          case 0:
+            schedule.setStart("09:00");
+            schedule.setEnd("10:00");
+            break;
+          case 1:
+            schedule.setStart("10:00");
+            schedule.setEnd("11:00");
+            break;
+          case 2:
+            schedule.setStart("11:00");
+            schedule.setEnd("12:00");
+            break;
+          case 3:
+            schedule.setStart("12:00");
+            schedule.setEnd("13:00");
+            break;
+          case 4:
+            schedule.setStart("13:00");
+            schedule.setEnd("14:00");
+            break;
+          case 5:
+            schedule.setStart("14:00");
+            schedule.setEnd("15:00");
+            break;
+          case 6:
+            schedule.setStart("15:00");
+            schedule.setEnd("16:00");
+            break;
+          default:
+            break;
+        }
+        mFavDao.create(schedule);
+      }
 
       LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {

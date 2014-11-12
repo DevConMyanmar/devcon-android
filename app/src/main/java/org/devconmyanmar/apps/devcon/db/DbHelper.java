@@ -22,12 +22,12 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
   private static final String DATABASE_NAME = "devcon.db";
 
-  private static final int DATABASE_VERSION = 4;
+  private static final int DATABASE_VERSION = 1;
 
   private static String TAG = makeLogTag(DbHelper.class);
   private Dao<Speaker, Integer> mSpeakerDao = null;
   private Dao<Talk, Integer> mTalkDao = null;
-  private Dao<MySchedule,Integer> mFavDao = null;
+  private Dao<MySchedule, Integer> mFavDao = null;
 
   public DbHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,7 +53,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     try {
       TableUtils.dropTable(connectionSource, Speaker.class, true);
       TableUtils.dropTable(connectionSource, Talk.class, true);
-      TableUtils.dropTable(connectionSource,MySchedule.class,true);
+      TableUtils.dropTable(connectionSource, MySchedule.class, true);
       onCreate(sqLiteDatabase, connectionSource);
     } catch (SQLException e) {
       LOGE(TAG, "Can't drop databases", e);
@@ -75,8 +75,8 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     return mTalkDao;
   }
 
-  public Dao<MySchedule,Integer> getFavDao() throws SQLException {
-    if(mFavDao == null){
+  public Dao<MySchedule, Integer> getFavDao() throws SQLException {
+    if (mFavDao == null) {
       mFavDao = getDao(MySchedule.class);
     }
     return mFavDao;
