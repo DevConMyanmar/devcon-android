@@ -1,6 +1,7 @@
 package org.devconmyanmar.apps.devcon.ui;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
@@ -66,8 +68,16 @@ private BaseActivity mActivity;
     mSlidingTabLayout.setDistributeEvenly(true);
     mSlidingTabLayout.setViewPager(mViewPager);
 
+    if (Build.VERSION.SDK_INT >= 19) {
+
+      SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+      tintManager.setStatusBarTintEnabled(true);
+      tintManager.setNavigationBarTintEnabled(false);
+      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+    }
     return view;
   }
+
 
   @Override
   public void onDestroyView() {
