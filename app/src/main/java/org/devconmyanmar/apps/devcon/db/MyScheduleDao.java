@@ -16,12 +16,12 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/11/10.
  */
-public class FavoriteDao {
+public class MyScheduleDao {
   private static final String TAG = makeLogTag(TalkDao.class);
   private Dao<MySchedule, Integer> favDao;
   private ConnectionSource source;
 
-  public FavoriteDao(Context ctx) {
+  public MyScheduleDao(Context ctx) {
     DbMgr dbManager = new DbMgr();
     DbHelper dbHelper = dbManager.getHelper(ctx);
     try {

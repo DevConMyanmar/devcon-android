@@ -27,7 +27,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
   private static String TAG = makeLogTag(DbHelper.class);
   private Dao<Speaker, Integer> mSpeakerDao = null;
   private Dao<Talk, Integer> mTalkDao = null;
-  private Dao<MySchedule, Integer> mFavDao = null;
+  private Dao<MySchedule, Integer> mMyScheeduleDao = null;
 
   public DbHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -76,17 +76,17 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
   }
 
   public Dao<MySchedule, Integer> getFavDao() throws SQLException {
-    if (mFavDao == null) {
-      mFavDao = getDao(MySchedule.class);
+    if (mMyScheeduleDao == null) {
+      mMyScheeduleDao = getDao(MySchedule.class);
     }
-    return mFavDao;
+    return mMyScheeduleDao;
   }
 
   @Override public void close() {
     super.close();
     mSpeakerDao = null;
     mTalkDao = null;
-    mFavDao = null;
+    mMyScheeduleDao = null;
   }
 }
 
