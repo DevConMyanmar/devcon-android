@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.devconmyanmar.apps.devcon.ui.ContributorsActivity">
+
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
+
+  <ProgressBar
+      android:id="@+id/contributor_loading_progress"
+      style="?android:progressBarStyleLarge"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="visible"/>
+
+  <ListView
+      android:id="@+id/contributor_list"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+  </ListView>
+</RelativeLayout>

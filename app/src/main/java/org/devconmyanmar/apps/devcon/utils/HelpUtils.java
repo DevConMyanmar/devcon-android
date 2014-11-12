@@ -25,6 +25,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.ui.ContributorsActivity;
 
 /**
  * This is a set of helper methods for showing contextual help information in the app.
@@ -91,6 +93,20 @@ public class HelpUtils {
       SpannableStringBuilder aboutBody = new SpannableStringBuilder();
       aboutBody.append(Html.fromHtml(getString(R.string.about_body, versionName)));
 
+      SpannableString contributorsLink =
+          new SpannableString(getString(R.string.about_contributors));
+
+      contributorsLink.setSpan(new ClickableSpan() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(getActivity(), ContributorsActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+          startActivity(i);
+        }
+      }, 0, contributorsLink.length(), 0);
+      aboutBody.append("\n\n");
+      aboutBody.append(contributorsLink);
+
       SpannableString licensesLink = new SpannableString(getString(R.string.about_licenses));
       licensesLink.setSpan(new ClickableSpan() {
         @Override
@@ -98,7 +114,7 @@ public class HelpUtils {
           HelpUtils.showOpenSourceLicenses(getActivity());
         }
       }, 0, licensesLink.length(), 0);
-      aboutBody.append("\n\n");
+      aboutBody.append("\n");
       aboutBody.append(licensesLink);
 
       LayoutInflater layoutInflater =

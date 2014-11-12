@@ -21,6 +21,9 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".ui.ContributorsActivity"
+        android:label="@string/about_contributors"/>
+
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
         android:label="@string/title_activity_schedule_detail"
