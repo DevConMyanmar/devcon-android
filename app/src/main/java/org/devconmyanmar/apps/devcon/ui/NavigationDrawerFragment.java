@@ -76,8 +76,8 @@ public class NavigationDrawerFragment extends BaseFragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selectItem(position);
-        ((DrawerListAdapter)mDrawerListView.getAdapter()).setChecked(mCurrentSelectedPosition);
-        ((DrawerListAdapter)mDrawerListView.getAdapter()).notifyDataSetChanged();
+        ((DrawerListAdapter) mDrawerListView.getAdapter()).setChecked(mCurrentSelectedPosition);
+        ((DrawerListAdapter) mDrawerListView.getAdapter()).notifyDataSetChanged();
       }
     });
 

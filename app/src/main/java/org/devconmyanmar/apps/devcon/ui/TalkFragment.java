@@ -3,9 +3,6 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -14,6 +11,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -53,7 +51,8 @@ private BaseActivity mActivity;
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
 
-    mViewPager.setAdapter(new SlidingTabAdapter(getActivity().getSupportFragmentManager()));
+    mViewPager.setAdapter(
+        new SlidingTabAdapter(getActivity().getSupportFragmentManager(), mContext));
 
     mSlidingTabLayout.setDistributeEvenly(true);
     mSlidingTabLayout.setViewPager(mViewPager);
@@ -64,36 +63,5 @@ private BaseActivity mActivity;
   @Override
   public void onDestroyView() {
     super.onDestroyView();
-  }
-
-  private class SlidingTabAdapter extends FragmentStatePagerAdapter {
-
-    public SlidingTabAdapter(FragmentManager fm) {
-      super(fm);
-    }
-
-    @Override public Fragment getItem(int position) {
-      switch (position) {
-        case 0:
-          return FirstDayFragment.getInstance();
-        case 1:
-          return SecondDayFragment.getInstance();
-      }
-      return null;
-    }
-
-    @Override public int getCount() {
-      return 2;
-    }
-
-    @Override public CharSequence getPageTitle(int position) {
-      switch (position) {
-        case 0:
-          return getString(R.string.first_day);
-        case 1:
-          return getString(R.string.second_day);
-      }
-      return super.getPageTitle(position);
-    }
   }
 }

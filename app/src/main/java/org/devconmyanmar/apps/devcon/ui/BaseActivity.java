@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
+import org.devconmyanmar.apps.devcon.event.BusProvider;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -21,5 +22,15 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    BusProvider.getInstance().register(this);
+  }
+
+  @Override public void onPause() {
+    super.onPause();
+    BusProvider.getInstance().unregister(this);
   }
 }

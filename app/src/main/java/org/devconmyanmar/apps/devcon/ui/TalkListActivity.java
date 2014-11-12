@@ -24,6 +24,7 @@ public class TalkListActivity extends BaseActivity
   private static final String TAG = makeLogTag(TalkListActivity.class);
 
   private NavigationDrawerFragment mNavigationDrawerFragment;
+  private Bundle mBundle;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

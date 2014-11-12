@@ -20,13 +20,14 @@ public class DrawerListAdapter extends BaseAdapter {
   private Context mContext;
   private int mCurrentSelectedPosition;
 
-  public DrawerListAdapter(Context context){
+  public DrawerListAdapter(Context context) {
     mContext = context;
   }
 
-  public void setChecked(int currentSelectedPosition){
+  public void setChecked(int currentSelectedPosition) {
     mCurrentSelectedPosition = currentSelectedPosition;
   }
+
   @Override public int getCount() {
     return 3;
   }
@@ -50,22 +51,21 @@ public class DrawerListAdapter extends BaseAdapter {
     if (view != null) {
       holder = (ViewHolder) view.getTag();
     } else {
-      view = ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.drawer_list_item, viewGroup, false);
+      view = ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
+          R.layout.drawer_list_item, viewGroup, false);
       holder = new ViewHolder(view);
       view.setTag(holder);
     }
-    holder.mText1.setText((String)getItem(i));
-    if(mCurrentSelectedPosition == i){
-      holder.mText1.setTextColor(mContext.getResources().getColor(R.color.drawer_selected));
-    }
-    else{
+    holder.mText1.setText((String) getItem(i));
+    if (mCurrentSelectedPosition == i) {
+      holder.mText1.setTextColor(mContext.getResources().getColor(R.color.theme_primary));
+    } else {
       holder.mText1.setTextColor(mContext.getResources().getColor(android.R.color.black));
     }
     holder.mDrawerIcon.setImageResource(drawerIcons.get(i));
-    if(mCurrentSelectedPosition == i){
-      holder.mDrawerIcon.setColorFilter(mContext.getResources().getColor(R.color.drawer_selected));
-    }
-    else{
+    if (mCurrentSelectedPosition == i) {
+      holder.mDrawerIcon.setColorFilter(mContext.getResources().getColor(R.color.theme_primary));
+    } else {
       holder.mDrawerIcon.clearColorFilter();
     }
 
@@ -73,14 +73,17 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   /**
-   * This class contains all butterknife-injected Views & Layouts from layout file 'drawer_list_item.xml'
+   * This class contains all butterknife-injected Views & Layouts from layout file
+   * 'drawer_list_item.xml'
    * for easy to all layout elements.
    *
-   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers (http://inmite.github.io)
+   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers
+   *         (http://inmite.github.io)
    */
   static class ViewHolder {
     @InjectView(android.R.id.text1) TextView mText1;
     @InjectView(R.id.drawer_icon) ImageView mDrawerIcon;
+
     ViewHolder(View view) {
       ButterKnife.inject(this, view);
     }

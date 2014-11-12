@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:orientation="vertical"
     tools:context="org.devconmyanmar.apps.devcon.ui.NavigationDrawerFragment">
   <TextView
@@ -12,15 +12,15 @@
       android:background="@drawable/drawer_title_background"
       android:textSize="30sp"
       android:textColor="@android:color/white"
+      android:layout_gravity="center"
       android:gravity="center"/>
-<ListView
-    android:id="@+id/drawer_list"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    android:background="@color/navigation_drawer_background"
-    android:choiceMode="singleChoice"
-    android:divider="@null"
-
-     />
-  </LinearLayout>
+  <ListView
+      android:id="@+id/drawer_list"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingTop="8dp"
+      android:background="@color/navigation_drawer_background"
+      android:choiceMode="singleChoice"
+      android:divider="@null"
+      />
+</LinearLayout>
