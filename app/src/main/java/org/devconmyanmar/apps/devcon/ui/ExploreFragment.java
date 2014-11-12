@@ -19,6 +19,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -26,18 +27,20 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class TalkFragment extends BaseFragment {
-  private static final String TAG = makeLogTag(TalkFragment.class);
+public class ExploreFragment extends BaseFragment {
+  private static final String TAG = makeLogTag(ExploreFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   private BaseActivity mActivity;
 
-  public TalkFragment() {
+  private final static String SCREEN_LABEL = "Explore";
+
+  public ExploreFragment() {
   }
 
-  public static TalkFragment getInstance() {
-    return new TalkFragment();
+  public static ExploreFragment getInstance() {
+    return new ExploreFragment();
   }
 
   @Override
@@ -45,6 +48,8 @@ public class TalkFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     mActivity = (BaseActivity) getActivity();
+
+    AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
   @Override

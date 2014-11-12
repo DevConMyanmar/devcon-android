@@ -19,6 +19,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyScheduleSlidingAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -27,11 +28,12 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class MyScheduleFragment extends BaseFragment {
-  private BaseActivity mActivity;
-  private static final String TAG = makeLogTag(TalkFragment.class);
+  private static final String TAG = makeLogTag(ExploreFragment.class);
+  private final static String SCREEN_LABEL = "My Schedule";
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @InjectView(R.id.favorite_view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
+  private BaseActivity mActivity;
 
   public MyScheduleFragment() {
   }
@@ -45,6 +47,8 @@ public class MyScheduleFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     mActivity = (BaseActivity) getActivity();
+
+    AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
   @Override
@@ -78,20 +82,18 @@ public class MyScheduleFragment extends BaseFragment {
     return view;
   }
 
-
   @Override
   public void onDestroyView() {
     super.onDestroyView();
   }
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    inflater.inflate(R.menu.refresh_menu,menu);
+    inflater.inflate(R.menu.refresh_menu, menu);
     super.onCreateOptionsMenu(menu, inflater);
-
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch(item.getItemId()){
+    switch (item.getItemId()) {
       case R.id.action_about:
         HelpUtils.showAbout(getActivity());
         return true;
@@ -101,7 +103,6 @@ public class MyScheduleFragment extends BaseFragment {
       default:
         return super.onOptionsItemSelected(item);
     }
-
   }
 }
 

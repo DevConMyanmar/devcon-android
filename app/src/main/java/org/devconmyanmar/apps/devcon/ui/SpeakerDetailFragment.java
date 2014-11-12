@@ -14,6 +14,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -21,12 +22,15 @@ public class SpeakerDetailFragment extends BaseFragment {
   private static final String ARG_TALK_ID = "param1";
   private static final String TAG = makeLogTag(SpeakerDetailFragment.class);
 
+  private static final String SCREEN_LABEL = "Speaker Detail";
+
   @InjectView(R.id.speaker_detail_name) TextView mSpeakerName;
   @InjectView(R.id.speaker_detail_title) TextView mSpeakerTitle;
   @InjectView(R.id.speaker_detail_profile_image) ImageView mSpeakerProfileImage;
   @InjectView(R.id.speaker_detail_description) TextView mSpeakerDescription;
 
   private String mSpeakerId;
+
   public SpeakerDetailFragment() {
     // Required empty public constructor
   }
@@ -64,6 +68,8 @@ public class SpeakerDetailFragment extends BaseFragment {
     Speaker speaker = speakerDao.getSpeakerById(mSpeakerId);
 
     if (speaker != null) {
+      AnalyticsManager.sendScreenView(SCREEN_LABEL + " : " + speaker.getName());
+
       mSpeakerName.setText(speaker.getName());
       mSpeakerTitle.setText(speaker.getTitle());
       mSpeakerDescription.setText(speaker.getDescription());

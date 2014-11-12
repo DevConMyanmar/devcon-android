@@ -19,6 +19,7 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -33,6 +34,7 @@ public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2014-11-15";
+  private final static String SCREEN_LABEL = "Explore First Day";
   private List<Talk> mTalks = new ArrayList<Talk>();
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
   private ScheduleAdapter mScheduleAdapter;
@@ -53,6 +55,8 @@ public class FirstDayFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     mScheduleAdapter = new ScheduleAdapter(mContext);
     setHasOptionsMenu(true);
+
+    AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -93,6 +97,11 @@ public class FirstDayFragment extends BaseFragment {
           long l) {
         int id = mTalks.get(position).getId();
         LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+
+        // GA
+        AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
+            mTalks.get(position).getTitle());
+
         Intent i = new Intent(getActivity(), TalkDetailActivity.class);
         i.putExtra(POSITION, id);
         startActivity(i);
@@ -107,8 +116,6 @@ public class FirstDayFragment extends BaseFragment {
       case R.id.action_refresh:
         if (ConnectionUtils.isOnline(mContext)) {
           syncSchedules(exploreSwipeRefreshView);
-
-
         } else {
           hideRefreshProgress(exploreSwipeRefreshView);
           Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)

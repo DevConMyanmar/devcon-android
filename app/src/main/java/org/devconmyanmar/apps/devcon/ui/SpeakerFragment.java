@@ -21,6 +21,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
@@ -30,13 +31,13 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
  */
 public class SpeakerFragment extends BaseFragment {
 
+  private final static String SCREEN_LABEL = "Speaker List";
   @InjectView(R.id.my_list) ListView speakerList;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
   private BaseActivity mActivity;
 
   public SpeakerFragment() {
-
   }
 
   public static SpeakerFragment getInstance() {
@@ -47,6 +48,8 @@ public class SpeakerFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     mActivity = (BaseActivity) getActivity();
     setHasOptionsMenu(true);
+
+    AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -73,6 +76,9 @@ public class SpeakerFragment extends BaseFragment {
   @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(int position) {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
+
+    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
+
     i.putExtra(POSITION, id);
     startActivity(i);
   }

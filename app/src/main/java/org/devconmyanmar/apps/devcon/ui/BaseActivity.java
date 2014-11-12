@@ -10,6 +10,7 @@ import android.view.View;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
+import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -26,6 +27,8 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
+
+    AnalyticsManager.initializeAnalyticsTracker(getApplicationContext());
   }
 
   @Override public void onResume() {

@@ -51,7 +51,7 @@ public class TalkListActivity extends BaseActivity
         fragment = MyScheduleFragment.getInstance();
         break;
       case 1:
-        fragment = TalkFragment.getInstance();
+        fragment = ExploreFragment.getInstance();
         break;
       case 2:
         fragment = SpeakerFragment.getInstance();
