@@ -33,7 +33,6 @@ public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2014-11-15";
-  private static final int MENU_REFRESH = 10000;
   private List<Talk> mTalks = new ArrayList<Talk>();
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
   private ScheduleAdapter mScheduleAdapter;
@@ -68,6 +67,7 @@ public class FirstDayFragment extends BaseFragment {
     exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
 
+    exploreSwipeRefreshView.setRefreshing(false);
     exploreSwipeRefreshView.setStickyListHeadersListView(firstDayList);
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -102,10 +102,8 @@ public class FirstDayFragment extends BaseFragment {
     return rootView;
   }
 
-
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-
       case R.id.action_refresh:
         if (ConnectionUtils.isOnline(mContext)) {
           syncSchedules(exploreSwipeRefreshView);
@@ -122,7 +120,6 @@ public class FirstDayFragment extends BaseFragment {
         return super.onOptionsItemSelected(item);
     }
   }
-
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
     mTalks = talkDao.getTalkByDay(FIRST_DAY);

@@ -19,15 +19,14 @@ public class TalkListActivity extends BaseActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
   private static final String TAG = makeLogTag(TalkListActivity.class);
-
-  private NavigationDrawerFragment mNavigationDrawerFragment;
+  Fragment fragment = null;
   private Bundle mBundle;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_list);
 
-    mNavigationDrawerFragment =
+    NavigationDrawerFragment mNavigationDrawerFragment =
         (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(
             R.id.navigation_drawer);
 
@@ -46,7 +45,7 @@ public class TalkListActivity extends BaseActivity
   @Override
   public void onNavigationDrawerItemSelected(int position) {
     // update the main content by replacing fragments
-    Fragment fragment = null;
+
     switch (position) {
       case 0:
         fragment = MyScheduleFragment.getInstance();
@@ -59,12 +58,11 @@ public class TalkListActivity extends BaseActivity
         break;
     }
 
-    final Fragment finalFragment = fragment;
     new Handler().postDelayed(new Runnable() {
       @Override
       public void run() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, finalFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
       }
     }, 200);
   }

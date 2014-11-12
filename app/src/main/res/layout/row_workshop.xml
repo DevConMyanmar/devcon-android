@@ -2,14 +2,13 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/keynote_row"
     android:background="@drawable/card_background"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="120dp">
 
   <org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView
-      android:id="@+id/keynote_background"
+      android:id="@+id/workshop_background"
       style="@style/KeynoteView.KeynoteImageStyle"
       android:src="@drawable/dc14"
       android:foreground="@drawable/image_overlay"
@@ -25,14 +24,14 @@
       android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/keynote_title"
+        android:id="@+id/workshop_title"
         style="@style/KeynoteView.KeynoteTitleStyle"
-        tools:text="Keynote by Mr. Ravi Chhabra"
+        tools:text="Android Workshop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/keynote_time_and_place"
+        android:id="@+id/workshop_time_and_place"
         style="@style/KeynoteView.KeynoteTimeAndPlace"
         tools:text="@string/talk_detail_time_and_place"
         android:background="@drawable/gradient_overlay"
