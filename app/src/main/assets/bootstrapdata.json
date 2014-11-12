@@ -558,5 +558,105 @@
       "description": "",
       "photo": ""
     }
+  ],
+  "my_schedules": [
+    {
+      "id": "0",
+      "title": "Browse Sessions",
+      "start": "10:00",
+      "end": "11:00",
+      "clickBlock": "false",
+      "sub_title": "click to view",
+      "date": "0",
+      "associated_talk": [
+        "7",
+        "13",
+        "19"
+      ]
+    },
+    {
+      "id": "1",
+      "title": "Browse Sessions",
+      "start": "11:00",
+      "end": "12:00",
+      "clickBlock": "false",
+      "sub_title": "click to view",
+      "date": "0",
+      "associated_talk": [
+        "11",
+        "14",
+        "20"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Lunch Break",
+      "start": "12:00",
+      "end": "13:00",
+      "clickBlock": "true",
+      "sub_title": "",
+      "date": "0",
+      "associated_talk": []
+    },
+    {
+      "id": "3",
+      "title": "Browse Sessions",
+      "start": "13:00",
+      "end": "14:00",
+      "clickBlock": "false",
+      "sub_title": "",
+      "date": "0",
+      "associated_talk": [
+        "9",
+        "15",
+        "21",
+        "25"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Browse Sessions",
+      "start": "14:00",
+      "end": "15:00",
+      "clickBlock": "false",
+      "sub_title": "",
+      "date": "0",
+      "associated_talk": [
+        "10",
+        "16",
+        "22",
+        "25"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Browse Sessions",
+      "start": "15:00",
+      "end": "16:00",
+      "clickBlock": "false",
+      "sub_title": "",
+      "date": "0",
+      "associated_talk": [
+        "11",
+        "17",
+        "23",
+        "25"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Browse Sessions",
+      "start": "16:00",
+      "end": "17:00",
+      "clickBlock": "false",
+      "sub_title": "",
+      "date": "0",
+      "associated_talk": [
+        "12",
+        "18",
+        "24",
+        "25"
+      ]
+    }
   ]
 }
