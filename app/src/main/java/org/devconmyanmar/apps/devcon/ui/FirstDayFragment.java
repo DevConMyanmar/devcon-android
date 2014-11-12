@@ -100,7 +100,7 @@ public class FirstDayFragment extends BaseFragment {
 
         // GA
         AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
-            mTalks.get(position).getTitle(), 0L);
+            mTalks.get(position).getTitle());
 
         Intent i = new Intent(getActivity(), TalkDetailActivity.class);
         i.putExtra(POSITION, id);

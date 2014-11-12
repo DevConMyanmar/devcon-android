@@ -77,8 +77,7 @@ public class SpeakerFragment extends BaseFragment {
     int id = mSpeakers.get(position).getId();
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
 
-    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle(),
-        0L);
+    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
 
     i.putExtra(POSITION, id);
     startActivity(i);
