@@ -3,8 +3,12 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -17,6 +21,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
@@ -48,7 +53,11 @@ public class SpeakerFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.inject(this, rootView);
-    mToolbar.setTitle(R.string.speakers);
+    mActivity.setSupportActionBar(mToolbar);
+    ActionBar actionBar = mActivity.getSupportActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    actionBar.setTitle(R.string.speakers);
     try {
       mSpeakers = speakerDao.getAll();
       SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
@@ -66,5 +75,22 @@ public class SpeakerFragment extends BaseFragment {
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
     i.putExtra(POSITION, id);
     startActivity(i);
+  }
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.schedule_menu,menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.action_about:
+        HelpUtils.showAbout(mActivity);
+        return true;
+      case android.R.id.home:
+        mActivity.finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }

@@ -4,8 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
@@ -13,6 +17,7 @@ import butterknife.InjectView;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
+import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -44,8 +49,11 @@ private BaseActivity mActivity;
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.inject(this, view);
-    mToolbar.setTitle(mActivity.getResources().getString(R.string.schedule_activity));
     mActivity.setSupportActionBar(mToolbar);
+    ActionBar actionBar = mActivity.getSupportActionBar();
+    actionBar.setTitle(R.string.explore_title);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
@@ -64,4 +72,23 @@ private BaseActivity mActivity;
   public void onDestroyView() {
     super.onDestroyView();
   }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.schedule_menu,menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.action_about:
+        HelpUtils.showAbout(mActivity);
+        return true;
+      case android.R.id.home:
+        mActivity.finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
 }
+

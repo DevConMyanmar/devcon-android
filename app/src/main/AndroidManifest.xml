@@ -13,36 +13,14 @@
     <activity
         android:name=".ui.TalkListActivity"
         android:label="@string/app_name"
-<<<<<<< HEAD
         android:theme="@style/AppTheme" >
-        <activity android:name="com.facebook.LoginActivity" />
-        <activity
-            android:name=".ui.TalkListActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.ScheduleActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-=======
-        android:theme="@style/AppTheme.ScheduleActivity">
+
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
->>>>>>> b204be24b8153382cbb9a37531d53a9e3927483b
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-
-    <activity
-        android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
-        android:label="@string/title_activity_schedule_detail"
-        android:theme="@style/TalkDetailTheme">
-    </activity>
-    <activity
-        android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
-        android:label="@string/title_activity_speaker_detail"
-        android:theme="@style/TalkDetailTheme">
-
-<<<<<<< HEAD
         <activity
             android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
             android:label="@string/title_activity_schedule_detail"
@@ -55,9 +33,4 @@
 
         </activity>
     </application>
-=======
-    </activity>
-  </application>
->>>>>>> b204be24b8153382cbb9a37531d53a9e3927483b
-
 </manifest>

@@ -5,11 +5,8 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
-import android.view.MenuItem;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.utils.DataUtils;
-import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
@@ -70,25 +67,5 @@ public class TalkListActivity extends BaseActivity
         fragmentManager.beginTransaction().replace(R.id.container, finalFragment).commit();
       }
     }, 200);
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.schedule_menu, menu);
-    if (mNavigationDrawerFragment.isDrawerOpen()) {
-      menu.clear();
-      return true;
-    }
-    return super.onCreateOptionsMenu(menu);
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    int id = item.getItemId();
-    switch (id) {
-      case R.id.action_about:
-        HelpUtils.showAbout(this);
-        return true;
-    }
-    return super.onOptionsItemSelected(item);
   }
 }
