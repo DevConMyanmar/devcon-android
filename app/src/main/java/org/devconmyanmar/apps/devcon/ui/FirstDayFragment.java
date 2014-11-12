@@ -20,7 +20,6 @@ import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
-import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
@@ -110,6 +109,8 @@ public class FirstDayFragment extends BaseFragment {
       case R.id.action_refresh:
         if (ConnectionUtils.isOnline(mContext)) {
           syncSchedules(exploreSwipeRefreshView);
+
+
         } else {
           hideRefreshProgress(exploreSwipeRefreshView);
           Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)

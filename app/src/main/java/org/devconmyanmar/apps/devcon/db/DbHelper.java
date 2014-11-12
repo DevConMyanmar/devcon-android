@@ -7,6 +7,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
+import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
@@ -26,6 +27,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
   private static String TAG = makeLogTag(DbHelper.class);
   private Dao<Speaker, Integer> mSpeakerDao = null;
   private Dao<Talk, Integer> mTalkDao = null;
+  private Dao<MySchedule,Integer> mFavDao = null;
 
   public DbHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -37,6 +39,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
       LOGI(TAG, "onCreate -- creating");
       TableUtils.createTable(connectionSource, Speaker.class);
       TableUtils.createTable(connectionSource, Talk.class);
+      TableUtils.createTable(connectionSource,MySchedule.class);
     } catch (SQLException e) {
       LOGE(TAG, "Can't create database", e);
       e.printStackTrace();
@@ -50,6 +53,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     try {
       TableUtils.dropTable(connectionSource, Speaker.class, true);
       TableUtils.dropTable(connectionSource, Talk.class, true);
+      TableUtils.dropTable(connectionSource,MySchedule.class,true);
       onCreate(sqLiteDatabase, connectionSource);
     } catch (SQLException e) {
       LOGE(TAG, "Can't drop databases", e);
@@ -71,10 +75,18 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     return mTalkDao;
   }
 
+  public Dao<MySchedule,Integer> getFavDao() throws SQLException {
+    if(mFavDao == null){
+      mFavDao = getDao(MySchedule.class);
+    }
+    return mFavDao;
+  }
+
   @Override public void close() {
     super.close();
     mSpeakerDao = null;
     mTalkDao = null;
+    mFavDao = null;
   }
 }
 

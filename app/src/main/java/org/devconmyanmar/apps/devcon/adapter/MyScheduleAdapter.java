@@ -1,6 +1,8 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
+import android.os.Build;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,7 @@ import butterknife.InjectView;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 
 /**
@@ -21,7 +23,7 @@ import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 public class MyScheduleAdapter extends BaseAdapter {
   private Context mContext;
   private LayoutInflater mLayoutInflater;
-  private List<Talk> mTalks = new ArrayList<Talk>();
+  private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
   private static final int VIEW_TYPE_FAVORITE = 1;
   private static final int VIEW_TYPE_BROWSE = 2;
 
@@ -30,17 +32,17 @@ public class MyScheduleAdapter extends BaseAdapter {
     mLayoutInflater = LayoutInflater.from(mContext);
   }
 
-  public void replaceWith(List<Talk> talks) {
-    mTalks = talks;
+  public void replaceWith(List<MySchedule> mySchedules) {
+    mMySchedules = mySchedules;
     notifyDataSetChanged();
   }
 
   @Override public int getCount() {
-    return mTalks.size();
+    return mMySchedules.size();
   }
 
   @Override public Object getItem(int i) {
-    return mTalks.get(i);
+    return mMySchedules.get(i);
   }
 
   @Override public long getItemId(int i) {
@@ -49,7 +51,9 @@ public class MyScheduleAdapter extends BaseAdapter {
 
   @Override public View getView(int i, View view, ViewGroup viewGroup) {
     ViewHolder holder;
-    Talk mTalk = (Talk) getItem(i);
+    MySchedule mySchedule = (MySchedule) getItem(i);
+    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
+        mContext.getResources().getDisplayMetrics());
     if (view != null) {
       holder = (ViewHolder) view.getTag();
     } else {
@@ -57,16 +61,15 @@ public class MyScheduleAdapter extends BaseAdapter {
       holder = new ViewHolder(view);
       view.setTag(holder);
     }
-    switch(mTalk.getTalk_type()) {
-      case VIEW_TYPE_FAVORITE:
-        String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
-        String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
-        holder.mFavoriteScheduleTitle.setText(mTalk.getTitle());
-        holder.mFavoriteScheduleFromTime.setText(normalFormattedFrom);
-        holder.mFavoriteScheduleToTime.setText(normalFormattedTo);
-        holder.mFavoriteScheduleSpeakers.setText(mTalk.getSpeakers());
+    String lFormattedFrom = TimeUtils.parseDateString(mySchedule.getStart());
+    String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
+      holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
+      holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
+      holder.mFavoriteScheduleToTime.setText(lFormattedTo);
+      holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
+    if (Build.VERSION.SDK_INT >= 21) {
+      holder.mFavoriteCardContainer.setPadding(0, px, 0, 0);
 
-        
     }
 
     return view;

@@ -17,18 +17,20 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.adapter.SlidingTabAdapter;
+import org.devconmyanmar.apps.devcon.adapter.MyScheduleSlidingAdapter;
 import org.devconmyanmar.apps.devcon.ui.widget.SlidingTabLayout;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
+
 /**
- * Created by Ye Lin Aung on 14/11/10.
+ * Created by Ye Lin Aung on 14/10/05.
  */
 public class MyScheduleFragment extends BaseFragment {
   private BaseActivity mActivity;
-
+  private static final String TAG = makeLogTag(TalkFragment.class);
   @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
-  @InjectView(R.id.view_pager) ViewPager mViewPager;
+  @InjectView(R.id.favorite_view_pager) ViewPager mViewPager;
   @InjectView(R.id.toolbar) Toolbar mToolbar;
 
   public MyScheduleFragment() {
@@ -38,31 +40,30 @@ public class MyScheduleFragment extends BaseFragment {
     return new MyScheduleFragment();
   }
 
-  @Override public void onCreate(Bundle savedInstanceState) {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mActivity = (BaseActivity)getActivity();
     setHasOptionsMenu(true);
+    mActivity = (BaseActivity) getActivity();
   }
 
-  @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View rootView = inflater.inflate(R.layout.fragment_my_schedule, container, false);
-    ButterKnife.inject(this, rootView);
-
+    View view = inflater.inflate(R.layout.fragment_my_schedule, container, false);
+    ButterKnife.inject(this, view);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
     actionBar.setTitle(R.string.my_schedule_title);
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-
-
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
     int mPrimaryColor = getResources().getColor(R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
 
     mViewPager.setAdapter(
-        new SlidingTabAdapter(getActivity().getSupportFragmentManager(), mContext));
+        new MyScheduleSlidingAdapter(getActivity().getSupportFragmentManager(), mContext));
 
     mSlidingTabLayout.setDistributeEvenly(true);
     mSlidingTabLayout.setViewPager(mViewPager);
@@ -74,26 +75,33 @@ public class MyScheduleFragment extends BaseFragment {
       tintManager.setNavigationBarTintEnabled(false);
       tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
     }
-
-    return rootView;
+    return view;
   }
+
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+  }
+
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    inflater.inflate(R.menu.schedule_menu,menu);
+    inflater.inflate(R.menu.refresh_menu,menu);
     super.onCreateOptionsMenu(menu, inflater);
 
   }
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-    switch (id) {
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch(item.getItemId()){
       case R.id.action_about:
-        HelpUtils.showAbout(mActivity);
+        HelpUtils.showAbout(getActivity());
+        return true;
+      case android.R.id.home:
+        getActivity().finish();
         return true;
       default:
         return super.onOptionsItemSelected(item);
     }
-  }
 
+  }
 }
+

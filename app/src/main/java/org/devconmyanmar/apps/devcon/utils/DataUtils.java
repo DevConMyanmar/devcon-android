@@ -10,8 +10,10 @@ import com.google.gson.stream.JsonReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import org.devconmyanmar.apps.devcon.db.FavoriteDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
+import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
@@ -27,12 +29,14 @@ public class DataUtils {
   private Context mContext;
   private SpeakerDao mSpeakerDao;
   private TalkDao mTalkDao;
+  private FavoriteDao mFavDao;
   private Gson gson = new Gson();
 
   public DataUtils(Context context) {
     this.mContext = context;
     mSpeakerDao = new SpeakerDao(mContext);
     mTalkDao = new TalkDao(mContext);
+    mFavDao = new FavoriteDao(mContext);
   }
 
   public void loadFromAssets() {
@@ -70,6 +74,54 @@ public class DataUtils {
         talk.setSpeakers(speakers.toString());
         mTalkDao.create(talk);
       }
+
+      for (int i = 0; i <= 6; i++) {
+          MySchedule schedule = new MySchedule();
+          schedule.setId(i);
+          if(i == 4){
+            schedule.setTitle("Lunch Break");
+            schedule.setClickBlock(true);
+          }
+          else{
+            schedule.setTitle("Browse Sessions");
+            schedule.setClickBlock(false);
+            schedule.setSubTitle("click to View");
+          }
+          switch(i){
+            case 0:
+              schedule.setStart("0900");
+              schedule.setEnd("1000");
+              break;
+            case 1:
+              schedule.setStart("1000");
+              schedule.setEnd("1100");
+              break;
+            case 2:
+              schedule.setStart("1100");
+              schedule.setEnd("1200");
+              break;
+            case 3:
+              schedule.setStart("1200");
+              schedule.setEnd("1300");
+              break;
+            case 4:
+              schedule.setStart("1300");
+              schedule.setEnd("1400");
+              break;
+            case 5:
+              schedule.setStart("1400");
+              schedule.setEnd("1500");
+              break;
+            case 6:
+              schedule.setStart("1500");
+              schedule.setEnd("1600");
+              break;
+
+          }
+        mFavDao.create(schedule);
+
+        }
+
 
       LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {

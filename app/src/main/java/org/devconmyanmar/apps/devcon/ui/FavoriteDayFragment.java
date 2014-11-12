@@ -8,12 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.MyScheduleAdapter;
+import org.devconmyanmar.apps.devcon.db.FavoriteDao;
+import org.devconmyanmar.apps.devcon.model.MySchedule;
 
 /**
  * Created by yemyatthu on 11/12/14.
  */
 public class FavoriteDayFragment extends BaseFragment {
+  private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
+  private FavoriteDao mFavoriteDao;
   private static final String POSITION_ARGS = "position args";
   @InjectView(R.id.favorite_list) ListView mFavoriteList;
   public FavoriteDayFragment(){
@@ -30,6 +38,16 @@ public class FavoriteDayFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_favorite, container, false);
     ButterKnife.inject(this, v);
+    mFavoriteDao = new FavoriteDao(getActivity());
+    try {
+      mMySchedules = mFavoriteDao.getAll();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    MyScheduleAdapter adapter = new MyScheduleAdapter(getActivity());
+    adapter.replaceWith(mMySchedules);
+    mFavoriteList.setAdapter(adapter);
     return v;
   }
 }
