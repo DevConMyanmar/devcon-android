@@ -13,7 +13,7 @@
     <activity
         android:name=".ui.TalkListActivity"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -21,16 +21,20 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-        <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
-            android:label="@string/title_activity_schedule_detail"
-            android:theme="@style/AppTheme.ScheduleActivity"  >
-        </activity>
-        <activity
-            android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
-            android:label="@string/title_activity_speaker_detail"
-            android:theme="@style/AppTheme.ScheduleActivity" >
+    <activity
+        android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
+        android:label="@string/title_activity_schedule_detail"
+        android:theme="@style/AppTheme.ScheduleActivity">
+    </activity>
+    <activity
+        android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
+        android:label="@string/title_activity_speaker_detail"
+        android:theme="@style/AppTheme.ScheduleActivity">
 
-        </activity>
-    </application>
+      <activity android:name=".ui.ContributorsActivity"
+          android:label="@string/about_contributors"/>
+
+    </activity>
+  </application>
+
 </manifest>

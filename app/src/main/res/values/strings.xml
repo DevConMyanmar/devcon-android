@@ -96,6 +96,7 @@
         <b>Devcon Myanmar 2014</b><br>
         Version %s<br><br>
     ]]></string>
+  <string name="about_contributors">Contributors</string>
 
   <!-- Shown as a link in the About screen of the app; user can click it to see the licenses. -->
   <string name="about_licenses">Open Source Licenses</string>
