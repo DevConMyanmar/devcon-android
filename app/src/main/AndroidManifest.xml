@@ -31,10 +31,9 @@
         android:label="@string/title_activity_speaker_detail"
         android:theme="@style/AppTheme.ScheduleActivity">
 
-      <activity android:name=".ui.ContributorsActivity"
-          android:label="@string/about_contributors"/>
-
     </activity>
+    <activity android:name=".ui.ContributorsActivity"
+        android:label="@string/about_contributors"/>
   </application>
 
 </manifest>
