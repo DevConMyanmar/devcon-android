@@ -58,8 +58,8 @@
     },
     {
       "id": "5",
-      "title": "HR Opportunities, Challenges and State in Myanmar",
-      "description": "Software industry updates and about SIDC",
+      "title": "Key success to become professionals",
+      "description": "Key success to become professionals",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "true",
@@ -101,22 +101,17 @@
     },
     {
       "id": "8",
-      "title": "Lightening Talks",
-      "description": "-",
+      "title": "Project risk management  - an essential factor for successful project",
+      "description": "Project risk management  - an essential factor for successful project",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
-      "talk_type": "3",
+      "talk_type": "2",
       "room": "conference",
       "from_time": "11:00",
       "to_time": "12:00",
       "speakers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6"
+        "11"
       ]
     },
     {
@@ -151,8 +146,8 @@
     },
     {
       "id": "11",
-      "title": "Software Project Management & best practices",
-      "description": "-",
+      "title": "Security",
+      "description": "Security",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -161,13 +156,13 @@
       "from_time": "15:00",
       "to_time": "16:00",
       "speakers": [
-        "11"
+        "4"
       ]
     },
     {
       "id": "12",
-      "title": "Dreams Do Come True",
-      "description": "-",
+      "title": "Have a nice dream",
+      "description": "Have a nice dream",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -181,8 +176,8 @@
     },
     {
       "id": "13",
-      "title": "Crashing an app 40 times a day: A dev's Lessons.",
-      "description": "-",
+      "title": "Crashing an app 40 times a day: A dev's Lessons",
+      "description": "Crashing an app 40 times a day: A dev's Lessons",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -196,8 +191,8 @@
     },
     {
       "id": "14",
-      "title": "Common Back-End Server Architecture Design",
-      "description": "-",
+      "title": "Cocos2DX Game Development Engine",
+      "description": "Cocos2DX Game Development Engine",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -206,13 +201,13 @@
       "from_time": "11:00",
       "to_time": "12:00",
       "speakers": [
-        "4"
+        "25"
       ]
     },
     {
       "id": "15",
-      "title": "Be a programmer for real",
-      "description": "-",
+      "title": "Be a programmer, for real",
+      "description": "Be a programmer, for real",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -226,10 +221,321 @@
     },
     {
       "id": "16",
-      "title": "Artificial Intelligence: A Brief History",
+      "title": "Lightening Talks",
       "description": "-",
       "photo": "",
       "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "3",
+      "room": "205",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "The Art of killing bugs",
+      "description": "The Art of killing bugs",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "29"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "What's new in Android 5.0 ?",
+      "description": "What's new in Android 5.0 ?",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "16:00",
+      "to_time": "17:00",
+      "speakers": [
+        "32"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "KISS",
+      "description": "KISS",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "17"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Quick Intro to Node.js",
+      "description": "Quick Intro to Node.js",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "22"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Hello Zephir",
+      "description": "Hello Zephir",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "19"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "My First Contact With Functional Programming",
+      "description": "My First Contact With Functional Programming",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "20"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Introduction to Elixir and concurrency",
+      "description": "Introduction to Elixir and concurrency",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "21"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Web Browser Automation",
+      "description": "Introduction to Elixir and concurrency",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "102",
+      "from_time": "16:00",
+      "to_time": "17:00",
+      "speakers": [
+        "14"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Hands on experience with Unity3D",
+      "description": "Hands on experience with Unity3D",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "4",
+      "room": "mcf",
+      "from_time": "13:00",
+      "to_time": "16:00",
+      "speakers": [
+        "13",
+        "42"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Web and Mobile: The best of both",
+      "description": "Web and Mobile: The best of both",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "09:00",
+      "to_time": "10:00",
+      "speakers": [
+        "1"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Startup Ecosystem in Myanmar.",
+      "description": "Startup Ecosystem in Myanmar.",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "2"
+      ]
+    },
+    {
+      "id": "28",
+      "title": " -  ",
+      "description": " - ",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "23"
+      ]
+    },
+    {
+      "id": "29",
+      "title": "e-Government (Developer's perspective)",
+      "description": "e-Government (Developer's perspective)",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "24"
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Your business with Open Source software and Open Hardware",
+      "description": "Your business with Open Source software and Open Hardware",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "15"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Mobile & Web",
+      "description": "Mobile & Web",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "43",
+        "44",
+        "5",
+        "4"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "How to build simple analytics system using Ruby and MongoDB",
+      "description": "How to build simple analytics system using Ruby and MongoDB",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "09:00",
+      "to_time": "10:00",
+      "speakers": [
+        "5"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "How to become a JEDI master at Continuous Integration ?",
+      "description": "How to become a JEDI master at Continuous Integration ?",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "26"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "Enterprise Mobile Application – challenges and solutions",
+      "description": "Enterprise Mobile Application – challenges and solutions",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "27"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Crawling and precise data extraction with Apache Nutch",
+      "description": "Crawling and precise data extraction with Apache Nutch",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "28"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Artificial Intelligence: A Brief History",
+      "description": "-",
+      "photo": "",
+      "date": "2014-11-16",
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
@@ -240,34 +546,108 @@
       ]
     },
     {
-      "id": "17",
-      "title": "Web Browser Automation",
+      "id": "37",
+      "title": "App Development for Web and Mobile with AngularJS",
       "description": "-",
       "photo": "",
-      "date": "2014-11-15",
+      "date": "2014-11-16",
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
       "from_time": "15:00",
       "to_time": "16:00",
       "speakers": [
-        "14"
+        "18"
       ]
     },
     {
-      "id": "18",
-      "title": "Your business with Open Source software and Open Hardware",
-      "description": "-",
+      "id": "38",
+      "title": "Mobile Value Added Services Development",
+      "description": "Mobile Value Added Services Development",
       "photo": "",
-      "date": "2014-11-15",
+      "date": "2014-11-16",
       "favourite": "false",
       "talk_type": "2",
       "room": "205",
-      "from_time": "16:00",
-      "to_time": "17:00",
+      "from_time": "09:00",
+      "to_time": "10:00",
       "speakers": [
-        "15"
+        "38"
       ]
+    },
+    {
+      "id": "39",
+      "title": "Distributed POS System",
+      "description": "Distributed POS System",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "45"
+      ]
+    },
+    {
+      "id": "40",
+      "title": "Use of Digital Certificate in Web applications",
+      "description": "Use of Digital Certificate in Web applications",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "33",
+        "34"
+      ]
+    },
+    {
+      "id": "41",
+      "title": "Finished a Responsive Website within 16 hours with Bootstrap",
+      "description": "Finished a Responsive Website within 16 hours with Bootstrap",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "35"
+      ]
+    },
+    {
+      "id": "42",
+      "title": "User authentication & authorization",
+      "description": "User authentication & authorization",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "36"
+      ]
+    },
+    {
+      "id": "43",
+      "title": "Android Workshop",
+      "description": "Android Workshop",
+      "photo": "",
+      "date": "2014-11-16",
+      "favourite": "false",
+      "talk_type": "4",
+      "room": "mcf",
+      "from_time": "09:00",
+      "to_time": "12:00",
+      "speakers": []
     }
   ],
   "speakers": [
@@ -532,7 +912,7 @@
     },
     {
       "id": "38",
-      "name": "Ravi",
+      "name": "Ravi Abeysekera",
       "title": "",
       "description": "",
       "photo": ""
@@ -553,7 +933,35 @@
     },
     {
       "id": "41",
-      "name": "U Win Htein Win",
+      "name": "U Nyein Oo",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "42",
+      "name": "Thet Naing Swe",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "43",
+      "name": "Htoo Myint Naung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "44",
+      "name": "Thant Thet Khin Zaw",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "45",
+      "name": "Wai Phyo Thwin",
       "title": "",
       "description": "",
       "photo": ""
@@ -565,7 +973,7 @@
       "title": "Browse Sessions",
       "start": "10:00",
       "end": "11:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "click to view",
       "date": "0",
       "associated_talk": [
@@ -579,7 +987,7 @@
       "title": "Browse Sessions",
       "start": "11:00",
       "end": "12:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "click to view",
       "date": "0",
       "associated_talk": [
@@ -593,7 +1001,7 @@
       "title": "Lunch Break",
       "start": "12:00",
       "end": "13:00",
-      "clickBlock": "true",
+      "click_block": "true",
       "sub_title": "",
       "date": "0",
       "associated_talk": []
@@ -603,7 +1011,7 @@
       "title": "Browse Sessions",
       "start": "13:00",
       "end": "14:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "",
       "date": "0",
       "associated_talk": [
@@ -618,7 +1026,7 @@
       "title": "Browse Sessions",
       "start": "14:00",
       "end": "15:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "",
       "date": "0",
       "associated_talk": [
@@ -633,7 +1041,7 @@
       "title": "Browse Sessions",
       "start": "15:00",
       "end": "16:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "",
       "date": "0",
       "associated_talk": [
@@ -648,7 +1056,7 @@
       "title": "Browse Sessions",
       "start": "16:00",
       "end": "17:00",
-      "clickBlock": "false",
+      "click_block": "false",
       "sub_title": "",
       "date": "0",
       "associated_talk": [
@@ -656,6 +1064,102 @@
         "18",
         "24",
         "25"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Browse Sessions",
+      "start": "09:00",
+      "end": "10:00",
+      "click_block": "false",
+      "sub_title": "click to view",
+      "date": "1",
+      "associated_talk": [
+        "26",
+        "32",
+        "38",
+        "43"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Browse Sessions",
+      "start": "10:00",
+      "end": "11:00",
+      "click_block": "false",
+      "sub_title": "click to view",
+      "date": "1",
+      "associated_talk": [
+        "27",
+        "33",
+        "39",
+        "43"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Browse Sessions",
+      "start": "11:00",
+      "end": "12:00",
+      "click_block": "false",
+      "sub_title": "click to view",
+      "date": "1",
+      "associated_talk": [
+        "28",
+        "34",
+        "40",
+        "43"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Lunch Break",
+      "start": "12:00",
+      "end": "13:00",
+      "click_block": "true",
+      "sub_title": "",
+      "date": "1",
+      "associated_talk": []
+    },
+    {
+      "id": "11",
+      "title": "Browse Sessions",
+      "start": "13:00",
+      "end": "14:00",
+      "click_block": "false",
+      "sub_title": "",
+      "date": "1",
+      "associated_talk": [
+        "29",
+        "35",
+        "41"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Browse Sessions",
+      "start": "14:00",
+      "end": "15:00",
+      "click_block": "false",
+      "sub_title": "",
+      "date": "1",
+      "associated_talk": [
+        "30",
+        "36",
+        "42"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Browse Sessions",
+      "start": "15:00",
+      "end": "16:00",
+      "click_block": "false",
+      "sub_title": "",
+      "date": "1",
+      "associated_talk": [
+        "31",
+        "37"
       ]
     }
   ]
