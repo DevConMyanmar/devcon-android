@@ -8,17 +8,13 @@ import android.support.v4.widget.DrawerLayout;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
-
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public class TalkListActivity extends BaseActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-  private static final String TAG = makeLogTag(TalkListActivity.class);
-  Fragment fragment = null;
-  private Bundle mBundle;
+  private Fragment fragment = null;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,28 +27,28 @@ public class TalkListActivity extends BaseActivity
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
-    int fragmentNo = getIntent().getIntExtra("Fragment",1);{
-      switch(fragmentNo){
-        case 0: fragment = MyScheduleFragment.getInstance();
-          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(0);
-          break;
-        case 1: fragment = ExploreFragment.getInstance();
-          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
-          break;
-        case 2: fragment = SpeakerFragment.getInstance();
-          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
-          break;
-        default:
-          break;
-      }
+    int fragmentNo = getIntent().getIntExtra("Fragment", 1);
+    switch (fragmentNo) {
+      case 0:
+        fragment = MyScheduleFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(0);
+        break;
+      case 1:
+        fragment = ExploreFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
+        break;
+      case 2:
+        fragment = SpeakerFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
+        break;
+      default:
+        break;
     }
-
   }
 
   @Override
   public void onNavigationDrawerItemSelected(int position) {
     // update the main content by replacing fragments
-
     switch (position) {
       case 0:
         fragment = MyScheduleFragment.getInstance();
