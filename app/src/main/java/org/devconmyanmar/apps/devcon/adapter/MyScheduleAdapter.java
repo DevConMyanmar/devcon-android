@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
@@ -79,10 +80,16 @@ public class MyScheduleAdapter extends BaseAdapter {
       holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
     }
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
+    String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
     holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
     holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
-
+    holder.mToTime.setText("");
+    holder.mFrameLayout.setBackgroundColor(mContext.getResources().getColor(android.R.color.transparent));
+    mySchedule.setId(mySchedule.getId());
+    mySchedule.setHasFavorite(false);
+    mySchedule.setFavoriteTalkId(0);
+    myScheduleDao.createOrUpdate(mySchedule);
     List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
     if (favTalks.size() == 1) {
       Talk talk = favTalks.get(0);
@@ -91,6 +98,9 @@ public class MyScheduleAdapter extends BaseAdapter {
       mySchedule.setFavoriteTalkId(talk.getId());
       myScheduleDao.createOrUpdate(mySchedule);
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
+      holder.mToTime.setText(lFormattedTo);
+      holder.mFrameLayout.setBackgroundColor(mContext.getResources().getColor(R.color.theme_accent_1_light));
+
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
       StringBuilder stringBuilder = new StringBuilder();
       for (int j = 0; j < speakers.size(); j++) {
@@ -131,6 +141,8 @@ public class MyScheduleAdapter extends BaseAdapter {
     @InjectView(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
     @InjectView(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
     @InjectView(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
+    @InjectView(R.id.favorite_card_closer) FrameLayout mFrameLayout;
+    @InjectView(R.id.favorite_schedule_to_time) TextView mToTime;
 
     ViewHolder(View view) {
       ButterKnife.inject(this, view);

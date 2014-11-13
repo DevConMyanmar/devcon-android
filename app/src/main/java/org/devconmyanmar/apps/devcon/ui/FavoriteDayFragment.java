@@ -19,7 +19,6 @@ import org.devconmyanmar.apps.devcon.adapter.MyScheduleAdapter;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -103,35 +102,5 @@ public class FavoriteDayFragment extends BaseFragment {
     return v;
   }
 
-  @Override public void onResume() {
-    super.onResume();
-    LOGD(TAG, "reloading data");
-    try {
-      mMySchedules = mMyScheduleDao.getAll();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    final MyScheduleAdapter adapter = new MyScheduleAdapter(getActivity());
-    ArrayList<MySchedule> firstDay = new ArrayList<MySchedule>();
-    ArrayList<MySchedule> secondDay = new ArrayList<MySchedule>();
-    for (MySchedule mySchedule : mMySchedules) {
-      if (mySchedule.getDate() == 0) {
-        firstDay.add(mySchedule);
-      }
-      if (mySchedule.getDate() == 1) {
-        secondDay.add(mySchedule);
-      }
-    }
-
-    if (getArguments().getInt(POSITION_ARGS) == 0) {
-      adapter.replaceWith(firstDay);
-    }
-    if (getArguments().getInt(POSITION_ARGS) == 1) {
-      adapter.replaceWith(secondDay);
-    }
-
-    mFavoriteList.setAdapter(adapter);
-  }
 }
 

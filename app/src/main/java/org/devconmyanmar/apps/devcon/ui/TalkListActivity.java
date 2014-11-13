@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -33,10 +34,13 @@ public class TalkListActivity extends BaseActivity
     int fragmentNo = getIntent().getIntExtra("Fragment",1);{
       switch(fragmentNo){
         case 0: fragment = MyScheduleFragment.getInstance();
+          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(0);
           break;
         case 1: fragment = ExploreFragment.getInstance();
+          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
           break;
         case 2: fragment = SpeakerFragment.getInstance();
+          ((DrawerListAdapter)mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
           break;
         default:
           break;

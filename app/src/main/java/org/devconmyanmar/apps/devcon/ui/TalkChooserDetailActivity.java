@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import org.devconmyanmar.apps.devcon.R;
 
@@ -20,5 +21,13 @@ public class TalkChooserDetailActivity extends BaseActivity {
     LOGD(TAG,talkId+"");
     getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
         TalkChooserDetailFragment.newInstance(String.valueOf(talkId))).commit();
+  }
+
+  @Override public void onBackPressed() {
+    super.onBackPressed();
+    Intent i = new Intent(mContext,TalkListActivity.class);
+    i.putExtra("Fragment",0);
+    startActivity(i);
+
   }
 }
