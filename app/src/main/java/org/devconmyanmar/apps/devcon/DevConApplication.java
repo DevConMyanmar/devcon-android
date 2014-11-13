@@ -6,7 +6,9 @@ import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
 import com.bumptech.glide.load.model.GlideUrl;
+import com.crashlytics.android.Crashlytics;
 import com.squareup.okhttp.OkHttpClient;
+import io.fabric.sdk.android.Fabric;
 import java.io.InputStream;
 
 /**
@@ -19,7 +21,9 @@ public class DevConApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    //Fabric.with(this, new Crashlytics());
+    if (BuildConfig.DEBUG) {
+      Fabric.with(this, new Crashlytics());
+    }
 
     okHttpClient = new OkHttpClient();
 
