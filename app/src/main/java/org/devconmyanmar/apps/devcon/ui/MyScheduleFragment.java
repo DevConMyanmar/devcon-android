@@ -88,6 +88,10 @@ public class MyScheduleFragment extends BaseFragment {
     super.onDestroyView();
   }
 
+  @Override public void onResume() {
+    super.onResume();
+  }
+
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.refresh_menu, menu);
     super.onCreateOptionsMenu(menu, inflater);

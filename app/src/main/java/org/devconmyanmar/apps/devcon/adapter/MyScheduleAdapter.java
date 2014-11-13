@@ -11,11 +11,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
+import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
+import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
+import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by yemyatthu on 11/11/14.
@@ -23,14 +30,20 @@ import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 public class MyScheduleAdapter extends BaseAdapter {
   private static final int VIEW_TYPE_FAVORITE = 1;
   private static final int VIEW_TYPE_BROWSE = 2;
+
+  private static final String TAG = makeLogTag(MyScheduleAdapter.class);
+
   private Context mContext;
   private LayoutInflater mLayoutInflater;
   private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
-  private MySchedule mySchedule;
+  private MyScheduleDao myScheduleDao;
+  private SpeakerDao speakerDao;
 
   public MyScheduleAdapter(Context context) {
-    mContext = context;
-    mLayoutInflater = LayoutInflater.from(mContext);
+    this.mContext = context;
+    this.mLayoutInflater = LayoutInflater.from(mContext);
+    this.myScheduleDao = new MyScheduleDao(context);
+    this.speakerDao = new SpeakerDao(context);
   }
 
   public void replaceWith(List<MySchedule> mySchedules) {
@@ -52,7 +65,7 @@ public class MyScheduleAdapter extends BaseAdapter {
 
   @Override public View getView(int i, View view, ViewGroup viewGroup) {
     ViewHolder holder;
-    mySchedule = (MySchedule) getItem(i);
+    MySchedule mySchedule = (MySchedule) getItem(i);
     int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
         mContext.getResources().getDisplayMetrics());
     if (view != null) {
@@ -70,10 +83,26 @@ public class MyScheduleAdapter extends BaseAdapter {
     holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
 
-
-      return view;
+    List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
+    if (favTalks.size() == 1) {
+      Talk talk = favTalks.get(0);
+      holder.mFavoriteScheduleTitle.setText(talk.getTitle());
+      ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
+      holder.mFavoriteScheduleSpeakers.setText(speakers.get(0).getTitle());
     }
 
+    return view;
+  }
+
+  private ArrayList<Speaker> flatternSpeakers(String speakers) {
+    ArrayList<Speaker> mSpeakers = new ArrayList<Speaker>();
+    String id[] = new Gson().fromJson(speakers, String[].class);
+    for (String anId : id) {
+      mSpeakers.add(speakerDao.getSpeakerById(anId));
+    }
+
+    return mSpeakers;
+  }
 
   /**
    * This class contains all butterknife-injected Views & Layouts from layout file
