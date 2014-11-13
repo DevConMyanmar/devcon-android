@@ -1,10 +1,12 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -45,7 +47,7 @@ public class FavoriteDayFragment extends BaseFragment {
       e.printStackTrace();
     }
 
-    MyScheduleAdapter adapter = new MyScheduleAdapter(getActivity());
+    final MyScheduleAdapter adapter = new MyScheduleAdapter(getActivity());
     ArrayList<MySchedule> firstDay = new ArrayList<MySchedule>();
     ArrayList<MySchedule> secondDay = new ArrayList<MySchedule>();
     for(MySchedule mySchedule:mMySchedules){
@@ -64,6 +66,17 @@ public class FavoriteDayFragment extends BaseFragment {
       adapter.replaceWith(secondDay);
     }
     mFavoriteList.setAdapter(adapter);
+    mFavoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if(!(((MySchedule)adapter.getItem(i)).isClickBlock())){
+        Intent intent = new Intent(mContext, TalkChooserActivity.class);
+        intent.putExtra("START_TIME",((MySchedule)adapter.getItem(i)).getStart() );
+        intent.putExtra("END_TIME", ((MySchedule)adapter.getItem(i)).getEnd());
+        intent.putExtra("TALK_ID", ((MySchedule)adapter.getItem(i)).getAssociatedTalkId());
+        mContext.startActivity(intent);}
+
+      }
+    });
     return v;
   }
 }

@@ -79,6 +79,7 @@ public class MyScheduleFragment extends BaseFragment {
       tintManager.setNavigationBarTintEnabled(false);
       tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
     }
+
     return view;
   }
 
