@@ -85,7 +85,8 @@ public class MyScheduleAdapter extends BaseAdapter {
     holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
     holder.mToTime.setText("");
-    holder.mFrameLayout.setBackgroundColor(mContext.getResources().getColor(android.R.color.transparent));
+    holder.mFrameLayout.setBackgroundColor(
+        mContext.getResources().getColor(android.R.color.transparent));
     mySchedule.setId(mySchedule.getId());
     mySchedule.setHasFavorite(false);
     mySchedule.setFavoriteTalkId(0);
@@ -112,6 +113,10 @@ public class MyScheduleAdapter extends BaseAdapter {
 
         holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
       }
+    }
+    if(favTalks.size()>1){
+      holder.mFavoriteScheduleTitle.setText("You have chosen more than one sessions in the same time \n"
+          + "Please remove one first.");
     }
 
     return view;

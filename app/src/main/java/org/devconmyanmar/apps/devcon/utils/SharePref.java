@@ -14,6 +14,7 @@ public class SharePref {
   /** Boolean to check if the app is launched for the first time * */
   private static final String PREF_FIRST_TIME_CHECK = "pref_first_time_check";
   private static final String PREF_MENU_CHECK = "pref_menu_check";
+  private static final String PREF_ID = "ids";
 
   private static final String TAG = makeLogTag(SharePref.class);
   private static SharePref pref;
@@ -41,5 +42,13 @@ public class SharePref {
 
   public void noLongerFirstTime() {
     mEditor.putBoolean(PREF_FIRST_TIME_CHECK, false).apply();
+  }
+
+  public void saveFavIds(String ids){
+    mEditor.putString(PREF_ID,ids).apply();
+  }
+
+  public String geFavIds(){
+    return mSharedPreferences.getString(PREF_ID,"");
   }
 }

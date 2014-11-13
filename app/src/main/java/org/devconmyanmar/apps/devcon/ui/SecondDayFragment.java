@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -105,5 +106,21 @@ public class SecondDayFragment extends BaseFragment {
     mTalks = talkDao.getTalkByDay(SECOND_DAY);
     mScheduleAdapter.replaceWith(mTalks);
     secondDayList.setAdapter(mScheduleAdapter);
+  }
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_refresh:
+        if (ConnectionUtils.isOnline(mContext)) {
+          syncSchedules(exploreSwipeRefreshView);
+        } else {
+          hideRefreshProgress(exploreSwipeRefreshView);
+          Toast.makeText(mContext, R.string.no_connection_cannot_connect, Toast.LENGTH_SHORT)
+              .show();
+        }
+        return true;
+
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }

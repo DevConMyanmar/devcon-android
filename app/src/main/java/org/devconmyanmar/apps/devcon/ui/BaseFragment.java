@@ -3,11 +3,14 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.squareup.okhttp.OkHttpClient;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
@@ -17,6 +20,7 @@ import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import org.devconmyanmar.apps.devcon.utils.SharePref;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -70,6 +74,13 @@ public abstract class BaseFragment extends Fragment {
   }
 
   protected void syncSchedules(final CustomSwipeRefreshLayout exploreSwipeRefreshView) {
+    List<Talk> favTalk = new ArrayList<Talk>();
+      favTalk= talkDao.getFavTalks();
+    ArrayList<Integer> talkIds = new ArrayList<Integer>();
+    for(Talk talk:favTalk){
+      talkIds.add(talk.getId());
+    }
+    SharePref.getInstance(mContext).saveFavIds(talkIds.toString());
     showRefreshProgress(exploreSwipeRefreshView);
 
     RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
@@ -86,6 +97,8 @@ public abstract class BaseFragment extends Fragment {
         } catch (SQLException e) {
           e.printStackTrace();
         }
+
+
         for (JsonElement j : scheduleArray) {
           Talk talk = new Talk();
           talk.setId(j.getAsJsonObject().get("id").getAsInt());
@@ -102,6 +115,25 @@ public abstract class BaseFragment extends Fragment {
           talk.setSpeakers(speakers.toString());
           talkDao.create(talk);
         }
+        List<Talk> talks = new ArrayList<Talk>();
+        try {
+          talks = talkDao.getAll();
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+        ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
+        ArrayList<Integer> talkIds = new ArrayList<Integer>();
+        for (Talk talk:favTalk){
+          talkIds.add(talk.getId());
+        }
+        
+        for(Talk talk: talks){
+          if(talkIds.contains(talk.getId())){
+            talk.setFavourite(true);
+            talk.setId(talk.getId());
+            talkDao.createOrUpdate(talk);
+          }
+        }
         hideRefreshProgress(exploreSwipeRefreshView);
         BusProvider.getInstance().post(new SyncSuccessEvent());
       }
@@ -110,5 +142,14 @@ public abstract class BaseFragment extends Fragment {
         hideRefreshProgress(exploreSwipeRefreshView);
       }
     });
+  }
+  private ArrayList<Talk> flattenFav(String talkIds) {
+    ArrayList<Talk> mTalks = new ArrayList<Talk>();
+    String id[] = new Gson().fromJson(talkIds, String[].class);
+    for (String anId : id) {
+      mTalks.add(talkDao.getTalkById(Integer.valueOf(anId)));
+    }
+
+    return mTalks;
   }
 }
