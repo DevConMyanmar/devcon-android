@@ -88,7 +88,16 @@ public class MyScheduleAdapter extends BaseAdapter {
       Talk talk = favTalks.get(0);
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
-      holder.mFavoriteScheduleSpeakers.setText(speakers.get(0).getTitle());
+      StringBuilder stringBuilder = new StringBuilder();
+      for (int j = 0; j < speakers.size(); j++) {
+        stringBuilder.append(speakers.get(j).getName());
+        // Do not append comma at the end of last element
+        if (j < (speakers.size() - 1)) {
+          stringBuilder.append(", ");
+        }
+
+        holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
+      }
     }
 
     return view;
