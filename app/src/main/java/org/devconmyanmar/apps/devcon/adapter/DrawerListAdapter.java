@@ -26,6 +26,7 @@ public class DrawerListAdapter extends BaseAdapter {
 
   public void setChecked(int currentSelectedPosition) {
     mCurrentSelectedPosition = currentSelectedPosition;
+    notifyDataSetChanged();
   }
 
   @Override public int getCount() {
