@@ -11,10 +11,8 @@
       android:label="@string/app_name"
       android:theme="@style/AppTheme">
     <activity
-        android:name=".ui.TalkListActivity"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme.ScheduleActivity">
-
+        android:name=".ui.InitialActivity"
+        android:theme="@style/AppTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -22,16 +20,17 @@
       </intent-filter>
     </activity>
     <activity
+        android:name=".ui.TalkListActivity"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.ScheduleActivity"/>
+    <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
         android:label="@string/title_activity_schedule_detail"
-        android:theme="@style/AppTheme.ScheduleActivity">
-    </activity>
+        android:theme="@style/AppTheme.ScheduleActivity"/>
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
         android:label="@string/title_activity_speaker_detail"
-        android:theme="@style/AppTheme.ScheduleActivity">
-
-    </activity>
+        android:theme="@style/AppTheme.ScheduleActivity"/>
     <activity android:name=".ui.ContributorsActivity"
         android:label="@string/about_contributors"/>
     <activity
@@ -39,10 +38,11 @@
         android:theme="@style/AppTheme.ScheduleActivity">
     </activity>
     <activity
-    android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserDetailActivity"
-    android:theme="@style/AppTheme.ScheduleActivity">
-  </activity>
-    <meta-data android:name="com.crashlytics.ApiKey" android:value="3156a941ed9d890a7b2faa705726aa4e4d16fae2"/>
+        android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserDetailActivity"
+        android:theme="@style/AppTheme.ScheduleActivity">
+    </activity>
+    <meta-data android:name="com.crashlytics.ApiKey"
+        android:value="3156a941ed9d890a7b2faa705726aa4e4d16fae2"/>
   </application>
 
 </manifest>
