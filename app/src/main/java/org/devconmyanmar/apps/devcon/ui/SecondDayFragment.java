@@ -107,6 +107,7 @@ public class SecondDayFragment extends BaseFragment {
     mScheduleAdapter.replaceWith(mTalks);
     secondDayList.setAdapter(mScheduleAdapter);
   }
+
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_refresh:

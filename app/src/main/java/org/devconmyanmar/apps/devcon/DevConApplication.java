@@ -21,7 +21,7 @@ public class DevConApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    if (BuildConfig.DEBUG) {
+    if (!BuildConfig.DEBUG) {
       Fabric.with(this, new Crashlytics());
     }
 

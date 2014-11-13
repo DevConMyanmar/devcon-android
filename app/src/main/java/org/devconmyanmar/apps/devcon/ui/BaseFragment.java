@@ -3,6 +3,7 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -17,8 +18,10 @@ import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
+import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
+import org.devconmyanmar.apps.devcon.sync.SyncSpeakerService;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
 import retrofit.Callback;
@@ -26,6 +29,8 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -74,14 +79,40 @@ public abstract class BaseFragment extends Fragment {
   }
 
   protected void syncSchedules(final CustomSwipeRefreshLayout exploreSwipeRefreshView) {
-    List<Talk> favTalk = new ArrayList<Talk>();
-      favTalk= talkDao.getFavTalks();
+
+    showRefreshProgress(exploreSwipeRefreshView);
+
+    RestAdapter speakerRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
+        .setLogLevel(RestAdapter.LogLevel.BASIC)
+        .setClient(new OkClient(okHttpClient))
+        .build();
+
+    SyncSpeakerService syncSpeakerService = speakerRestAdapter.create(SyncSpeakerService.class);
+    syncSpeakerService.getSpeakers(new Callback<List<Speaker>>() {
+      @Override public void success(List<Speaker> speakers, Response response) {
+        try {
+          speakerDao.deleteAll();
+          for (Speaker s : speakers) {
+            LOGD("speaker", "creating " + s.getName());
+            speakerDao.create(s);
+          }
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+
+      @Override public void failure(RetrofitError error) {
+        Toast.makeText(getActivity(), error.getResponse().getReason(), Toast.LENGTH_SHORT).show();
+        hideRefreshProgress(exploreSwipeRefreshView);
+      }
+    });
+
+    List<Talk> favTalk = talkDao.getFavTalks();
     ArrayList<Integer> talkIds = new ArrayList<Integer>();
-    for(Talk talk:favTalk){
+    for (Talk talk : favTalk) {
       talkIds.add(talk.getId());
     }
     SharePref.getInstance(mContext).saveFavIds(talkIds.toString());
-    showRefreshProgress(exploreSwipeRefreshView);
 
     RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
         .setLogLevel(RestAdapter.LogLevel.BASIC)
@@ -97,7 +128,6 @@ public abstract class BaseFragment extends Fragment {
         } catch (SQLException e) {
           e.printStackTrace();
         }
-
 
         for (JsonElement j : scheduleArray) {
           Talk talk = new Talk();
@@ -123,12 +153,12 @@ public abstract class BaseFragment extends Fragment {
         }
         ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
         ArrayList<Integer> talkIds = new ArrayList<Integer>();
-        for (Talk talk:favTalk){
+        for (Talk talk : favTalk) {
           talkIds.add(talk.getId());
         }
-        
-        for(Talk talk: talks){
-          if(talkIds.contains(talk.getId())){
+
+        for (Talk talk : talks) {
+          if (talkIds.contains(talk.getId())) {
             talk.setFavourite(true);
             talk.setId(talk.getId());
             talkDao.createOrUpdate(talk);
@@ -143,6 +173,7 @@ public abstract class BaseFragment extends Fragment {
       }
     });
   }
+
   private ArrayList<Talk> flattenFav(String talkIds) {
     ArrayList<Talk> mTalks = new ArrayList<Talk>();
     String id[] = new Gson().fromJson(talkIds, String[].class);
