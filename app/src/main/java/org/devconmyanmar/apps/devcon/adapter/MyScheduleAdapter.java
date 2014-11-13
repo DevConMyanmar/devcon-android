@@ -1,6 +1,7 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
+import org.devconmyanmar.apps.devcon.ui.TalkChooserActivity;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 
 /**
@@ -51,7 +53,7 @@ public class MyScheduleAdapter extends BaseAdapter {
 
   @Override public View getView(int i, View view, ViewGroup viewGroup) {
     ViewHolder holder;
-    MySchedule mySchedule = (MySchedule) getItem(i);
+    final MySchedule mySchedule = (MySchedule) getItem(i);
     int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
         mContext.getResources().getDisplayMetrics());
     if (view != null) {
@@ -62,22 +64,34 @@ public class MyScheduleAdapter extends BaseAdapter {
       view.setTag(holder);
     }
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
-    String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
     holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
     holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
     if (Build.VERSION.SDK_INT >= 21) {
       holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
     }
-    if (mySchedule.getTitle().equals("Lunch Break")) {
-      RelativeLayout.LayoutParams layoutParams =
-          new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-              RelativeLayout.LayoutParams.WRAP_CONTENT);
-      holder.mFavoriteCardContainer.setLayoutParams(layoutParams);
+    holder.mFavoriteCardContainer.setOnClickListener(new View.OnClickListener() {
+
+      @Override public void onClick(View view) {
+        Intent i = new Intent(mContext, TalkChooserActivity.class);
+        i.putExtra("START_TIME", mySchedule.getStart());
+        i.putExtra("END_TIME", mySchedule.getEnd());
+        i.putExtra("TALK_ID", mySchedule.getAssociatedTalkId());
+        mContext.startActivity(i);
+      }
+    });
+
+      if (mySchedule.getTitle().equals("Lunch Break")) {
+        RelativeLayout.LayoutParams layoutParams =
+            new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        holder.mFavoriteCardContainer.setLayoutParams(layoutParams);
+        holder.mFavoriteCardContainer.setClickable(false);
+        holder.mFavoriteCardContainer.setEnabled(false);
+      }
+
+      return view;
     }
 
-    return view;
-  }
 
   /**
    * This class contains all butterknife-injected Views & Layouts from layout file

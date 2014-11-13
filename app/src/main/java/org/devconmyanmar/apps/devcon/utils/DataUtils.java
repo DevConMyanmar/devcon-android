@@ -50,8 +50,10 @@ public class DataUtils {
       JsonObject data = parser.parse(reader).getAsJsonObject();
       JsonArray sessionsArray = data.getAsJsonArray("sessions");
       JsonArray speakerArray = data.getAsJsonArray("speakers");
+      JsonArray favArray = data.getAsJsonArray("my_schedules");
       LOGD(TAG, "sessions : " + sessionsArray.size());
       LOGD(TAG, "speakers : " + speakerArray.size());
+      LOGD(TAG, "my_schedules : " + favArray.size());
 
       for (JsonElement k : speakerArray) {
         Speaker speaker = gson.fromJson(k, Speaker.class);
@@ -75,52 +77,19 @@ public class DataUtils {
         mTalkDao.create(talk);
       }
 
-      for (int i = 0; i <= 6; i++) {
-        MySchedule schedule = new MySchedule();
-        schedule.setId(i);
-        if (i == 4) {
-          schedule.setTitle("Lunch Break");
-          schedule.setClickBlock(true);
-        } else {
-          schedule.setTitle("Browse Sessions");
-          schedule.setClickBlock(false);
-          schedule.setSubTitle("click to View");
-        }
-        switch (i) {
-          case 0:
-            schedule.setStart("09:00");
-            schedule.setEnd("10:00");
-            break;
-          case 1:
-            schedule.setStart("10:00");
-            schedule.setEnd("11:00");
-            break;
-          case 2:
-            schedule.setStart("11:00");
-            schedule.setEnd("12:00");
-            break;
-          case 3:
-            schedule.setStart("12:00");
-            schedule.setEnd("13:00");
-            break;
-          case 4:
-            schedule.setStart("13:00");
-            schedule.setEnd("14:00");
-            break;
-          case 5:
-            schedule.setStart("14:00");
-            schedule.setEnd("15:00");
-            break;
-          case 6:
-            schedule.setStart("15:00");
-            schedule.setEnd("16:00");
-            break;
-          default:
-            break;
-        }
-        mFavDao.create(schedule);
-      }
-
+     for(JsonElement l:favArray ){
+       MySchedule mySchedule = new MySchedule();
+       mySchedule.setTitle(l.getAsJsonObject().get("title").getAsString());
+       mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
+       mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
+       mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
+       mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
+       mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
+       mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
+       JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
+       mySchedule.setAssociatedTalkId(talkIds.toString());
+       mFavDao.create(mySchedule);
+     }
       LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {
       e.printStackTrace();
