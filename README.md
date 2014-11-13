@@ -7,7 +7,7 @@ Check the [releases](https://github.com/DevConMyanmar/devcon-android-2014/releas
 
 It's also available on Play Store.
 
-<a href="https://play.google.com/store/apps/details?id=https://play.google.com/store/apps/details?id=org.devconmyanmar.apps.devcon">
+<a href="https://play.google.com/store/apps/details?id=org.devconmyanmar.apps.devcon">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>
 
