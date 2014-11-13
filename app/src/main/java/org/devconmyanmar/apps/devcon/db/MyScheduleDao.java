@@ -6,14 +6,12 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -116,8 +114,4 @@ public class MyScheduleDao {
     }
   }
 
-  public void deleteAll() throws SQLException {
-    LOGD(TAG, "deleting ..");
-    TableUtils.clearTable(source, MySchedule.class);
-  }
 }
