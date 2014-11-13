@@ -11,7 +11,10 @@ public class TalkChooserActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_talk_chooser);
 
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,TalkChooserFragment.getInstance(getIntent().getStringExtra("START_TIME"),getIntent().getStringExtra("END_TIME"),getIntent().getStringExtra("TALK_ID"))).commit();
-
+    getSupportFragmentManager().beginTransaction()
+        .add(R.id.fragment_container,
+            TalkChooserFragment.getInstance(getIntent().getStringExtra("START_TIME"),
+                getIntent().getStringExtra("END_TIME"), getIntent().getStringExtra("TALK_ID")))
+        .commit();
   }
 }

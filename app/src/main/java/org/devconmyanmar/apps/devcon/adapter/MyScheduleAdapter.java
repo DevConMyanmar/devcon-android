@@ -79,12 +79,16 @@ public class MyScheduleAdapter extends BaseAdapter {
     if (Build.VERSION.SDK_INT >= 21) {
       holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
     }
+
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
     String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
+
     holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
-    holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
+    holder.mFromTime.setText(lFormattedFrom);
+    holder.mToTime.setText("to " + lFormattedTo);
+
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
-    holder.mToTime.setText("");
+
     holder.mFrameLayout.setBackgroundColor(
         mContext.getResources().getColor(android.R.color.transparent));
     mySchedule.setId(mySchedule.getId());
@@ -92,15 +96,19 @@ public class MyScheduleAdapter extends BaseAdapter {
     mySchedule.setFavoriteTalkId(0);
     myScheduleDao.createOrUpdate(mySchedule);
     List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
+
     if (favTalks.size() == 1) {
       Talk talk = favTalks.get(0);
       mySchedule.setId(((MySchedule) getItem(i)).getId());
       mySchedule.setHasFavorite(true);
       mySchedule.setFavoriteTalkId(talk.getId());
+
       myScheduleDao.createOrUpdate(mySchedule);
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
-      holder.mToTime.setText(lFormattedTo);
-      holder.mFrameLayout.setBackgroundColor(mContext.getResources().getColor(R.color.theme_accent_1_light));
+      holder.mFromTime.setText(lFormattedFrom);
+      holder.mToTime.setText("to " + lFormattedTo);
+      holder.mFrameLayout.setBackgroundColor(
+          mContext.getResources().getColor(R.color.theme_accent_1_light));
 
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
       StringBuilder stringBuilder = new StringBuilder();
@@ -114,9 +122,11 @@ public class MyScheduleAdapter extends BaseAdapter {
         holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
       }
     }
-    if(favTalks.size()>1){
-      holder.mFavoriteScheduleTitle.setText("You have chosen more than one sessions in the same time \n"
-          + "Please remove one first.");
+
+    if (favTalks.size() > 1) {
+      holder.mFavoriteScheduleTitle.setText(
+          "You have chosen more than one sessions in the same time \n"
+              + "Please remove one first.");
     }
 
     return view;
@@ -142,11 +152,11 @@ public class MyScheduleAdapter extends BaseAdapter {
    */
 
   class ViewHolder {
-    @InjectView(R.id.favorite_schedule_from_time) TextView mFavoriteScheduleFromTime;
     @InjectView(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
     @InjectView(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
     @InjectView(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
     @InjectView(R.id.favorite_card_closer) FrameLayout mFrameLayout;
+    @InjectView(R.id.favorite_schedule_from_time) TextView mFromTime;
     @InjectView(R.id.favorite_schedule_to_time) TextView mToTime;
 
     ViewHolder(View view) {
