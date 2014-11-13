@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
+import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
@@ -30,13 +31,14 @@ import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public abstract class BaseFragment extends Fragment {
 
+  private static final String TAG = makeLogTag(BaseFragment.class);
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
   protected MyScheduleDao favDao;
@@ -93,7 +95,6 @@ public abstract class BaseFragment extends Fragment {
         try {
           speakerDao.deleteAll();
           for (Speaker s : speakers) {
-            LOGD("speaker", "creating " + s.getName());
             speakerDao.create(s);
           }
         } catch (SQLException e) {
@@ -102,7 +103,7 @@ public abstract class BaseFragment extends Fragment {
       }
 
       @Override public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), error.getResponse().getReason(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
         hideRefreshProgress(exploreSwipeRefreshView);
       }
     });
