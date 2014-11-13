@@ -10,7 +10,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import org.devconmyanmar.apps.devcon.db.FavoriteDao;
+import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
@@ -29,14 +29,14 @@ public class DataUtils {
   private Context mContext;
   private SpeakerDao mSpeakerDao;
   private TalkDao mTalkDao;
-  private FavoriteDao mFavDao;
+  private MyScheduleDao mFavDao;
   private Gson gson = new Gson();
 
   public DataUtils(Context context) {
     this.mContext = context;
     mSpeakerDao = new SpeakerDao(mContext);
     mTalkDao = new TalkDao(mContext);
-    mFavDao = new FavoriteDao(mContext);
+    mFavDao = new MyScheduleDao(mContext);
   }
 
   public void loadFromAssets() {

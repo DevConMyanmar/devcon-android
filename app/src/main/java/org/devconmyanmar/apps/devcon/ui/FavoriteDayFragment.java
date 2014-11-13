@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyScheduleAdapter;
-import org.devconmyanmar.apps.devcon.db.FavoriteDao;
+import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 
 /**
@@ -21,7 +21,7 @@ import org.devconmyanmar.apps.devcon.model.MySchedule;
  */
 public class FavoriteDayFragment extends BaseFragment {
   private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
-  private FavoriteDao mFavoriteDao;
+  private MyScheduleDao mMyScheduleDao;
   private static final String POSITION_ARGS = "position args";
   @InjectView(R.id.favorite_list) ListView mFavoriteList;
   public FavoriteDayFragment(){
@@ -38,9 +38,9 @@ public class FavoriteDayFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_favorite, container, false);
     ButterKnife.inject(this, v);
-    mFavoriteDao = new FavoriteDao(getActivity());
+    mMyScheduleDao = new MyScheduleDao(getActivity());
     try {
-      mMySchedules = mFavoriteDao.getAll();
+      mMySchedules = mMyScheduleDao.getAll();
     } catch (SQLException e) {
       e.printStackTrace();
     }
