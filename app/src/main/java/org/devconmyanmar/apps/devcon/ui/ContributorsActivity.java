@@ -2,8 +2,11 @@ package org.devconmyanmar.apps.devcon.ui;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import java.util.List;
@@ -12,6 +15,7 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ContributorAdapter;
 import org.devconmyanmar.apps.devcon.model.Contributor;
 import org.devconmyanmar.apps.devcon.sync.SyncContributorsService;
+import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -31,6 +35,7 @@ public class ContributorsActivity extends BaseActivity {
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   @InjectView(R.id.contributor_list) ListView contributorList;
   @InjectView(R.id.contributor_loading_progress) ProgressBar loadingProgress;
+  @InjectView(R.id.no_connection_msg) TextView noConnectionMsg;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,7 +43,16 @@ public class ContributorsActivity extends BaseActivity {
     ButterKnife.inject(this);
     setSupportActionBar(mToolbar);
     mToolbar.setTitle(getString(R.string.about_contributors));
-    getContrib();
+    getSupportActionBar().setHomeButtonEnabled(true);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
+
+    if (ConnectionUtils.isOnline(this)) {
+      getContrib();
+    } else {
+      noConnectionMsg.setVisibility(View.VISIBLE);
+      contributorList.setEmptyView(noConnectionMsg);
+    }
   }
 
   private void getContrib() {
@@ -60,5 +74,15 @@ public class ContributorsActivity extends BaseActivity {
         showProgress(false, contributorList, loadingProgress);
       }
     });
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        finish();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }
