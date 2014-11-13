@@ -21,11 +21,11 @@ import org.devconmyanmar.apps.devcon.utils.TimeUtils;
  * Created by yemyatthu on 11/11/14.
  */
 public class MyScheduleAdapter extends BaseAdapter {
+  private static final int VIEW_TYPE_FAVORITE = 1;
+  private static final int VIEW_TYPE_BROWSE = 2;
   private Context mContext;
   private LayoutInflater mLayoutInflater;
   private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
-  private static final int VIEW_TYPE_FAVORITE = 1;
-  private static final int VIEW_TYPE_BROWSE = 2;
 
   public MyScheduleAdapter(Context context) {
     mContext = context;
@@ -63,17 +63,16 @@ public class MyScheduleAdapter extends BaseAdapter {
     }
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
     String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
-    System.out.println(lFormattedFrom);
-      holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
-      holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
-      holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
+    holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
+    holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
+    holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
     if (Build.VERSION.SDK_INT >= 21) {
       holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
-
     }
-    if(mySchedule.getTitle().equals("Lunch Break")){
-      RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-          RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+    if (mySchedule.getTitle().equals("Lunch Break")) {
+      RelativeLayout.LayoutParams layoutParams =
+          new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+              RelativeLayout.LayoutParams.WRAP_CONTENT);
       holder.mFavoriteCardContainer.setLayoutParams(layoutParams);
     }
 
@@ -81,10 +80,12 @@ public class MyScheduleAdapter extends BaseAdapter {
   }
 
   /**
-   * This class contains all butterknife-injected Views & Layouts from layout file 'my_schedule_items.xml'
+   * This class contains all butterknife-injected Views & Layouts from layout file
+   * 'my_schedule_items.xml'
    * for easy to all layout elements.
    *
-   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers (http://inmite.github.io)
+   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers
+   *         (http://inmite.github.io)
    */
 
   class ViewHolder {
