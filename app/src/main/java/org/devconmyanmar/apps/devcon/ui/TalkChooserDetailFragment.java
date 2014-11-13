@@ -1,5 +1,6 @@
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -205,7 +206,9 @@ public class TalkChooserDetailFragment extends BaseFragment {
         HelpUtils.showAbout(mActivity);
         return true;
       case android.R.id.home:
-        mActivity.finish();
+        Intent i = new Intent(mContext,TalkListActivity.class);
+        i.putExtra("Fragment",0);
+        startActivity(i);
         return true;
       default:
         return super.onOptionsItemSelected(item);

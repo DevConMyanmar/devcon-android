@@ -6,10 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.utils.DataUtils;
-import org.devconmyanmar.apps.devcon.utils.SharePref;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -33,6 +30,18 @@ public class TalkListActivity extends BaseActivity
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
+    int fragmentNo = getIntent().getIntExtra("Fragment",1);{
+      switch(fragmentNo){
+        case 0: fragment = MyScheduleFragment.getInstance();
+          break;
+        case 1: fragment = ExploreFragment.getInstance();
+          break;
+        case 2: fragment = SpeakerFragment.getInstance();
+          break;
+        default:
+          break;
+      }
+    }
 
   }
 
