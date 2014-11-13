@@ -71,6 +71,6 @@ public class TalkListActivity extends BaseActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
       }
-    }, 200);
+    }, 300);
   }
 }

@@ -73,7 +73,6 @@ public class MyScheduleFragment extends BaseFragment {
     mSlidingTabLayout.setViewPager(mViewPager);
 
     if (Build.VERSION.SDK_INT >= 19) {
-
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
