@@ -13,6 +13,7 @@ import butterknife.InjectView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyScheduleAdapter;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
@@ -48,7 +49,6 @@ public class FavoriteDayFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     mMyScheduleDao = new MyScheduleDao(mContext);
   }
-
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_favorite, container, false);
@@ -82,12 +82,21 @@ public class FavoriteDayFragment extends BaseFragment {
     mFavoriteList.setAdapter(adapter);
     mFavoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        System.out.println(((MySchedule) adapter.getItem(i)).isHasFavorite());
         if (!(((MySchedule) adapter.getItem(i)).isClickBlock())) {
           Intent intent = new Intent(mContext, TalkChooserActivity.class);
           intent.putExtra("START_TIME", ((MySchedule) adapter.getItem(i)).getStart());
           intent.putExtra("END_TIME", ((MySchedule) adapter.getItem(i)).getEnd());
           intent.putExtra("TALK_ID", ((MySchedule) adapter.getItem(i)).getAssociatedTalkId());
           mContext.startActivity(intent);
+        }
+
+        if(((MySchedule) adapter.getItem(i)).isHasFavorite()){
+          if(((MySchedule) adapter.getItem(i)).getFavoriteTalkId()!=0){
+            Intent intent = new Intent(mContext,TalkChooserDetailActivity.class);
+            intent.putExtra(Config.POSITION,((MySchedule) adapter.getItem(i)).getFavoriteTalkId());
+            mContext.startActivity(intent);
+          }
         }
       }
     });

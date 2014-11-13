@@ -86,6 +86,10 @@ public class MyScheduleAdapter extends BaseAdapter {
     List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
     if (favTalks.size() == 1) {
       Talk talk = favTalks.get(0);
+      mySchedule.setId(((MySchedule) getItem(i)).getId());
+      mySchedule.setHasFavorite(true);
+      mySchedule.setFavoriteTalkId(talk.getId());
+      myScheduleDao.createOrUpdate(mySchedule);
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
       StringBuilder stringBuilder = new StringBuilder();

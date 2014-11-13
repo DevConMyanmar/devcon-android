@@ -9,7 +9,7 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable(tableName = "my_schedule")
 public class MySchedule {
-  @DatabaseField private int id;
+  @DatabaseField(id = true) private int id;
   @DatabaseField private String title;
   @DatabaseField private String start;
   @DatabaseField private String end;
@@ -17,6 +17,25 @@ public class MySchedule {
   @DatabaseField @SerializedName("sub_title") private String subTitle;
   @DatabaseField private int date;
   @DatabaseField @SerializedName("associated_talk") private String associatedTalkId;
+
+  public boolean isHasFavorite() {
+    return hasFavorite;
+  }
+
+  public void setHasFavorite(boolean hasFavorite) {
+    this.hasFavorite = hasFavorite;
+  }
+
+  public int getFavoriteTalkId() {
+    return favoriteTalkId;
+  }
+
+  public void setFavoriteTalkId(int favoriteTalkId) {
+    this.favoriteTalkId = favoriteTalkId;
+  }
+
+  @DatabaseField @SerializedName("has_favorite") private boolean hasFavorite;
+  @DatabaseField @SerializedName("favorite_talk") private int favoriteTalkId;
 
   public MySchedule() {
   }

@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.squareup.okhttp.OkHttpClient;
 import java.sql.SQLException;
 import org.devconmyanmar.apps.devcon.Config;
+import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
@@ -29,6 +30,7 @@ public abstract class BaseFragment extends Fragment {
 
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
+  protected MyScheduleDao favDao;
   protected Context mContext;
   protected OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -38,6 +40,7 @@ public abstract class BaseFragment extends Fragment {
 
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
+    favDao = new MyScheduleDao(mContext);
   }
 
   public void showRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {

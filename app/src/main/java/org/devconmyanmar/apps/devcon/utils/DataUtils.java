@@ -88,6 +88,8 @@ public class DataUtils {
        mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
        JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
        mySchedule.setAssociatedTalkId(talkIds.toString());
+       mySchedule.setHasFavorite(false);
+       mySchedule.setFavoriteTalkId(0);
        mFavDao.create(mySchedule);
      }
       LOGD(TAG, "I am done ~ ");

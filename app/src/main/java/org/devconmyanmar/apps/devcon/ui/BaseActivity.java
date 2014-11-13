@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
+  protected MyScheduleDao favDao;
   protected Context mContext;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
+    favDao = new MyScheduleDao(mContext);
 
     AnalyticsManager.initializeAnalyticsTracker(getApplicationContext());
   }

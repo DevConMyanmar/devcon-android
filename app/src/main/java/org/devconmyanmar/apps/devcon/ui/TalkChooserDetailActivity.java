@@ -4,15 +4,21 @@ import android.os.Bundle;
 import org.devconmyanmar.apps.devcon.R;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
-
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by yemyatthu on 11/13/14.
  */
 public class TalkChooserDetailActivity extends BaseActivity {
+  private String TAG = makeLogTag(TalkChooserDetailActivity.class);
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_talk_chooser);
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,TalkChooserDetailFragment.newInstance(String.valueOf(getIntent().getIntExtra(POSITION,0)))).commit();
+    Integer talkId = getIntent().getIntExtra(POSITION, 0);
+    LOGD(TAG,talkId+"");
+    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
+        TalkChooserDetailFragment.newInstance(String.valueOf(talkId))).commit();
   }
 }
