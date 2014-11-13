@@ -17,6 +17,7 @@
 
   <TextView
       android:id="@+id/contributor_name"
+      android:textColor="@android:color/black"
       android:layout_toRightOf="@+id/contributor_image"
       android:layout_toEndOf="@+id/contributor_image"
       tools:text="@string/placeholder_title"
