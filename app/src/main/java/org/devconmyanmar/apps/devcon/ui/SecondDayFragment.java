@@ -86,6 +86,8 @@ public class SecondDayFragment extends BaseFragment {
 
     secondDayList.setAdapter(mScheduleAdapter);
 
+    secondDayList.setDivider(null);
+
     secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
           long l) {

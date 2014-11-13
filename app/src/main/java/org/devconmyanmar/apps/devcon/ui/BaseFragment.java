@@ -3,7 +3,6 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -13,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
-import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
@@ -103,7 +101,7 @@ public abstract class BaseFragment extends Fragment {
       }
 
       @Override public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
         hideRefreshProgress(exploreSwipeRefreshView);
       }
     });
