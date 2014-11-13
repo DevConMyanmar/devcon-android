@@ -38,6 +38,10 @@
         android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserActivity"
         android:theme="@style/AppTheme.ScheduleActivity">
     </activity>
+    <activity
+    android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserDetailActivity"
+    android:theme="@style/AppTheme.ScheduleActivity">
+  </activity>
     <meta-data android:name="com.crashlytics.ApiKey" android:value="3156a941ed9d890a7b2faa705726aa4e4d16fae2"/>
   </application>
 

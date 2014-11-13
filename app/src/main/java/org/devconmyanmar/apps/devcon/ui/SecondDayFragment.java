@@ -90,7 +90,6 @@ public class SecondDayFragment extends BaseFragment {
           long l) {
         int id = mTalks.get(position).getId();
         Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-
         AnalyticsManager.sendEvent("Explore Second Day", "selecttalk",
             mTalks.get(position).getTitle());
 

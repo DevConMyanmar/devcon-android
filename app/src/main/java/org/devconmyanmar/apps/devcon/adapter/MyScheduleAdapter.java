@@ -64,7 +64,6 @@ public class MyScheduleAdapter extends BaseAdapter {
       view.setTag(holder);
     }
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
-    System.out.println(lFormattedFrom);
       holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
       holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
       holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
@@ -78,12 +77,12 @@ public class MyScheduleAdapter extends BaseAdapter {
         Intent i = new Intent(mContext, TalkChooserActivity.class);
         i.putExtra("START_TIME",mySchedule.getStart());
         i.putExtra("END_TIME",mySchedule.getEnd());
+        i.putExtra("TALK_ID",mySchedule.getAssociatedTalkId());
         mContext.startActivity(i);
 
       }
     });
-    holder.mFavoriteCardContainer.setBackgroundColor(android.R.attr.selectableItemBackground);
-    if(mySchedule.getTitle().equals("Lunch Break")){
+    if(mySchedule.isClickBlock()){
       RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
           RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
       holder.mFavoriteCardContainer.setLayoutParams(layoutParams);

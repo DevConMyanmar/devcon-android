@@ -46,7 +46,23 @@ public class FavoriteDayFragment extends BaseFragment {
     }
 
     MyScheduleAdapter adapter = new MyScheduleAdapter(getActivity());
-    adapter.replaceWith(mMySchedules);
+    ArrayList<MySchedule> firstDay = new ArrayList<MySchedule>();
+    ArrayList<MySchedule> secondDay = new ArrayList<MySchedule>();
+    for(MySchedule mySchedule:mMySchedules){
+      if(mySchedule.getDate() == 0){
+        firstDay.add(mySchedule);
+      }
+      if(mySchedule.getDate() == 1){
+        secondDay.add(mySchedule);
+      }
+    }
+
+    if(getArguments().getInt(POSITION_ARGS) == 0){
+      adapter.replaceWith(firstDay);
+    }
+    if(getArguments().getInt(POSITION_ARGS)==1){
+      adapter.replaceWith(secondDay);
+    }
     mFavoriteList.setAdapter(adapter);
     return v;
   }

@@ -16,8 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -36,10 +36,11 @@ public class TalkChooserFragment extends BaseFragment {
   @InjectView(R.id.toolbar) Toolbar mToolbar;
   @InjectView(R.id.my_list) ListView mMyList;
 
-  public static TalkChooserFragment getInstance(String start, String end){
+  public static TalkChooserFragment getInstance(String start, String end,String talkId){
     Bundle bundle = new Bundle();
     bundle.putString("START_TIME",start);
     bundle.putString("END_TIME",end);
+    bundle.putString("TALK_ID",talkId);
     TalkChooserFragment talkChooserFragment = new TalkChooserFragment();
     talkChooserFragment.setArguments(bundle);
     return talkChooserFragment;
@@ -62,19 +63,15 @@ public class TalkChooserFragment extends BaseFragment {
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
-    lists = new ArrayList<Talk>();
-    try {
-      lists = talkDao.getAll();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    lists = flattenTalks(getArguments().getString("TALK_ID"));
+
     scheduleAdapter.replaceWith(lists);
     mMyList.setAdapter(scheduleAdapter);
     mMyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         int id = lists.get(i).getId();
 
-        Intent intent = new Intent(getActivity(), TalkDetailActivity.class);
+        Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
         intent.putExtra(POSITION, id);
         startActivity(intent);
       }
@@ -106,4 +103,14 @@ public class TalkChooserFragment extends BaseFragment {
         return super.onOptionsItemSelected(item);
     }
   }
+  private ArrayList<Talk> flattenTalks(String talks) {
+    ArrayList<Talk> mTalks = new ArrayList<Talk>();
+    String id[] = new Gson().fromJson(talks, String[].class);
+    for (String anId : id) {
+      mTalks.add(talkDao.getTalkById(Integer.valueOf(anId)));
+    }
+
+    return mTalks;
+  }
+
 }

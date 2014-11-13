@@ -53,6 +53,7 @@ public class DataUtils {
       JsonArray favArray = data.getAsJsonArray("my_schedules");
       LOGD(TAG, "sessions : " + sessionsArray.size());
       LOGD(TAG, "speakers : " + speakerArray.size());
+      LOGD(TAG, "my_schedules : " + favArray.size());
 
       for (JsonElement k : speakerArray) {
         Speaker speaker = gson.fromJson(k, Speaker.class);
@@ -82,7 +83,7 @@ public class DataUtils {
        mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
        mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
        mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
-       mySchedule.setClickBlock(l.getAsJsonObject().get("clickBlock").getAsBoolean());
+       mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
        mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
        mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
        JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
