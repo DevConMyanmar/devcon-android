@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -153,6 +152,7 @@ public abstract class BaseFragment extends Fragment {
           e.printStackTrace();
         }
 
+        List<Talk> talks = new ArrayList<Talk>();
         for (JsonElement j : scheduleArray) {
           Talk talk = new Talk();
           talk.setId(j.getAsJsonObject().get("id").getAsInt());
@@ -167,14 +167,10 @@ public abstract class BaseFragment extends Fragment {
           talk.setTo_time(j.getAsJsonObject().get("to_time").getAsString());
           JsonArray speakers = j.getAsJsonObject().getAsJsonArray("speakers");
           talk.setSpeakers(speakers.toString());
+          talks.add(talk);
           talkDao.create(talk);
         }
-        List<Talk> talks = new ArrayList<Talk>();
-        try {
-          talks = talkDao.getAll();
-        } catch (SQLException e) {
-          e.printStackTrace();
-        }
+
         ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
         ArrayList<Integer> talkIds = new ArrayList<Integer>();
         for (Talk talk : favTalk) {
