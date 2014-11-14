@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -96,10 +95,9 @@ public class TalkChooserDetailFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
       mTalkId = Integer.valueOf(getArguments().getString(ARG_TALK_ID));
-
     }
     setHasOptionsMenu(true);
-    mActivity = (BaseActivity)getActivity();
+    mActivity = (BaseActivity) getActivity();
     mLUtils = LUtils.getInstance(getActivity());
   }
 
@@ -231,14 +229,12 @@ public class TalkChooserDetailFragment extends BaseFragment {
         HelpUtils.showAbout(mActivity);
         return true;
       case android.R.id.home:
-        Intent i = new Intent(mContext,TalkListActivity.class);
-        i.putExtra("Fragment",0);
+        Intent i = new Intent(mContext, TalkListActivity.class);
+        i.putExtra("Fragment", 0);
         startActivity(i);
         return true;
       default:
         return super.onOptionsItemSelected(item);
     }
   }
-
-
 }

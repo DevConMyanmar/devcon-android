@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -49,6 +48,7 @@ import org.devconmyanmar.apps.devcon.adapter.MyScheduleAdapter;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -65,6 +65,8 @@ public class FavoriteDayFragment extends BaseFragment {
   private MyScheduleDao mMyScheduleDao;
   private MyScheduleAdapter myScheduleAdapter;
 
+  private LazyLoadData lazyLoadTask;
+
   public FavoriteDayFragment() {
   }
 
@@ -80,6 +82,9 @@ public class FavoriteDayFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     mMyScheduleDao = new MyScheduleDao(mContext);
     myScheduleAdapter = new MyScheduleAdapter(mContext);
+
+    LOGD(TAG, "I am on onCreate");
+    lazyLoadTask = new LazyLoadData(getArguments());
   }
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -87,13 +92,26 @@ public class FavoriteDayFragment extends BaseFragment {
     View v = inflater.inflate(R.layout.fragment_favorite, container, false);
     ButterKnife.inject(this, v);
 
-    new LazyLoadData(getArguments()).execute();
+    LOGD(TAG, "I am on onCreateView");
+    if (!(lazyLoadTask.getStatus() == AsyncTask.Status.RUNNING)) {
+      lazyLoadTask.execute();
+    }
 
     return v;
   }
 
-  @SuppressWarnings("unused")
-  @OnItemClick(R.id.favorite_list) void onItemClick(int position) {
+  @Override public void onPause() {
+    super.onPause();
+    if (lazyLoadTask != null) {
+      lazyLoadTask.cancel(true);
+    }
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+  }
+
+  @SuppressWarnings("unused") @OnItemClick(R.id.favorite_list) void onItemClick(int position) {
     MySchedule mySchedule = (MySchedule) myScheduleAdapter.getItem(position);
     if (!mySchedule.isClickBlock()) {
       Intent intent = new Intent(mContext, TalkChooserActivity.class);
@@ -126,7 +144,6 @@ public class FavoriteDayFragment extends BaseFragment {
     }
 
     @Override protected MyScheduleAdapter doInBackground(Void... voids) {
-      showProgress(true, mFavoriteList, mLoadingProgress);
 
       MyScheduleAdapter adapter = new MyScheduleAdapter(mContext);
       try {

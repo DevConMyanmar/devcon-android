@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -43,16 +42,19 @@ public class TalkChooserDetailActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_talk_chooser);
     Integer talkId = getIntent().getIntExtra(POSITION, 0);
-    LOGD(TAG,talkId+"");
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
-        TalkChooserDetailFragment.newInstance(String.valueOf(talkId))).commit();
+    LOGD(TAG, talkId + "");
+    if (savedInstanceState == null) {
+      getSupportFragmentManager().beginTransaction()
+          .add(R.id.fragment_container,
+              TalkChooserDetailFragment.newInstance(String.valueOf(talkId)))
+          .commit();
+    }
   }
 
   @Override public void onBackPressed() {
     super.onBackPressed();
-    Intent i = new Intent(mContext,TalkListActivity.class);
-    i.putExtra("Fragment",0);
+    Intent i = new Intent(mContext, TalkListActivity.class);
+    i.putExtra("Fragment", 0);
     startActivity(i);
-
   }
 }
