@@ -1,32 +1,6 @@
-
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2014 Devcon Contributors
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 package org.devconmyanmar.apps.devcon.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -34,13 +8,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
-import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
+import org.devconmyanmar.apps.devcon.adapter.LighteningTalkAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
@@ -48,28 +21,28 @@ import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
-import static org.devconmyanmar.apps.devcon.Config.POSITION;
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
-
 /**
- * Created by Ye Lin Aung on 14/10/05.
+ * Created by yemyatthu on 11/15/14.
  */
-public class FirstDayFragment extends BaseFragment {
-
-  private static final String TAG = makeLogTag(FirstDayFragment.class);
+public class LighteningTalkDaysFragment extends BaseFragment{
   private static final String FIRST_DAY = "2014-11-15";
+  private static final String SECOND_DAY = "2014-11-16";
   private final static String SCREEN_LABEL = "Explore First Day";
   private List<Talk> mTalks = new ArrayList<Talk>();
+  private List<Talk> mLighteningTalks = new ArrayList<Talk>();
   private CustomSwipeRefreshLayout exploreSwipeRefreshView;
-  private ScheduleAdapter mScheduleAdapter;
+  private LighteningTalkAdapter lighteningTalkAdapter;
   private StickyListHeadersListView firstDayList;
 
-  public FirstDayFragment() {
+  public LighteningTalkDaysFragment() {
   }
 
-  public static FirstDayFragment getInstance() {
-    return new FirstDayFragment();
+  public static LighteningTalkDaysFragment getInstance(int position) {
+    Bundle bundle = new Bundle();
+    bundle.putInt("Day",position);
+    LighteningTalkDaysFragment lighteningTalkDaysFragment = new LighteningTalkDaysFragment();
+    lighteningTalkDaysFragment.setArguments(bundle);
+    return lighteningTalkDaysFragment;
   }
 
   @Override public void onAttach(Activity activity) {
@@ -78,7 +51,7 @@ public class FirstDayFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mScheduleAdapter = new ScheduleAdapter(mContext);
+    lighteningTalkAdapter = new LighteningTalkAdapter(mContext);
     setHasOptionsMenu(true);
 
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
@@ -112,34 +85,19 @@ public class FirstDayFragment extends BaseFragment {
     });
 
     firstDayList.setDivider(null);
-
-    mTalks = talkDao.getTalkByDay(FIRST_DAY);
-    ArrayList<Talk> tempTalks = new ArrayList<Talk>();
-    for (Talk talk:mTalks){
-      if(talk.getTalk_type() ==3){
-        tempTalks.add(talk);
+    if(getArguments().getInt("Day") == 1) {
+      mTalks = talkDao.getTalkByDay(FIRST_DAY);
+    }
+    if(getArguments().getInt("Day") == 2){
+      mTalks = talkDao.getTalkByDay(SECOND_DAY);
+    }
+    for(Talk talk:mTalks){
+      if(talk.getTalk_type() == 3){
+        mLighteningTalks.add(talk);
       }
     }
-    mTalks.removeAll(tempTalks);
-    mScheduleAdapter.replaceWith(mTalks);
-    firstDayList.setAdapter(mScheduleAdapter);
-
-    firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
-          long l) {
-        int id = mTalks.get(position).getId();
-        LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
-
-        // GA
-        AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
-            mTalks.get(position).getTitle());
-
-        Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-        i.putExtra(POSITION, id);
-        startActivity(i);
-      }
-    });
-
+    lighteningTalkAdapter.replaceWith(mLighteningTalks);
+    firstDayList.setAdapter(lighteningTalkAdapter);
     return rootView;
   }
 
@@ -161,8 +119,19 @@ public class FirstDayFragment extends BaseFragment {
   }
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
-    mTalks = talkDao.getTalkByDay(FIRST_DAY);
-    mScheduleAdapter.replaceWith(mTalks);
-    firstDayList.setAdapter(mScheduleAdapter);
+    if(getArguments().getInt("Day") == 1) {
+      mTalks = talkDao.getTalkByDay(FIRST_DAY);
+    }
+    if(getArguments().getInt("Day") == 2){
+      mTalks = talkDao.getTalkByDay(SECOND_DAY);
+    }
+    for(Talk talk:mTalks){
+      if(talk.getTalk_type() == 3){
+        mLighteningTalks.add(talk);
+      }
+    }
+    lighteningTalkAdapter.replaceWith(mLighteningTalks);
+    firstDayList.setAdapter(
+        lighteningTalkAdapter);
   }
 }

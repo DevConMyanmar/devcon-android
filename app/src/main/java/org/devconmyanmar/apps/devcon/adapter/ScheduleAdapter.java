@@ -19,7 +19,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * OUT OF OR IN CONNECTION WpeITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
 
@@ -59,7 +59,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
   private static final int VIEW_TYPE_KEYNOTE = 1;
   private static final int VIEW_TYPE_NORMAL = 2;
-  private static final int VIEW_TYPE_LIGHTNING = 3;
   private static final int VIEW_TYPE_WORKSHOP = 4;
 
   private static final String TAG = makeLogTag(ScheduleAdapter.class);
@@ -112,7 +111,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
     KeynoteViewHolder keynoteViewHolder;
     NormalViewHolder normalViewHolder;
-    LightningViewHolder lightningViewHolder;
     WorkshopViewHolder workshopViewHolder;
 
     LayoutInflater mInflater =
@@ -174,28 +172,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         normalViewHolder.mScheduleSpeakers.setText(speakers);
 
         return rootView;
-      case VIEW_TYPE_LIGHTNING:
-        if (rootView != null) {
-          lightningViewHolder = (LightningViewHolder) rootView.getTag();
-        } else {
-          rootView = mInflater.inflate(R.layout.row_lightning_schedule, parent, false);
-          lightningViewHolder = new LightningViewHolder(rootView);
-          rootView.setTag(lightningViewHolder);
-        }
-
-        String lFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
-        String lFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
-        if (Build.VERSION.SDK_INT >= 21) {
-          lightningViewHolder.mLightContainer.setPadding(0, px, 0, 0);
-        }
-        lightningViewHolder.mLightFromTime.setText(lFormattedFrom);
-        lightningViewHolder.mLightToTime.setText(lFormattedTo);
-        lightningViewHolder.mLightScheduleTitle.setText(mTalk.getTitle());
-
-        String lightSpeakers = flatternSpeakerNames(mTalk.getSpeakers());
-        lightningViewHolder.mLightSpeaker.setText(lightSpeakers);
-
-        return rootView;
       case VIEW_TYPE_WORKSHOP:
         if (rootView != null) {
           workshopViewHolder = (WorkshopViewHolder) rootView.getTag();
@@ -227,9 +203,10 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
         return rootView;
 
       default:
+        return rootView;
     }
 
-    return rootView;
+
   }
 
   @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
@@ -288,18 +265,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     @InjectView(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
 
     public NormalViewHolder(View view) {
-      ButterKnife.inject(this, view);
-    }
-  }
-
-  static class LightningViewHolder {
-    @InjectView(R.id.lightning_card_container) FrameLayout mLightContainer;
-    @InjectView(R.id.lightning_schedule_from_time) TextView mLightFromTime;
-    @InjectView(R.id.lightning_schedule_to_time) TextView mLightToTime;
-    @InjectView(R.id.lightning_schedule_title) TextView mLightScheduleTitle;
-    @InjectView(R.id.lightning_schedule_speaker) TextView mLightSpeaker;
-
-    public LightningViewHolder(View view) {
       ButterKnife.inject(this, view);
     }
   }

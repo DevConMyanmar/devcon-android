@@ -220,28 +220,6 @@
       ]
     },
     {
-      "id": "16",
-      "title": "Lightening Talks",
-      "description": "-",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "3",
-      "room": "205",
-      "from_time": "14:00",
-      "to_time": "15:00",
-      "speakers": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "23",
-        "6",
-        "7",
-        "8"
-      ]
-    },
-    {
       "id": "17",
       "title": "The Art of killing bugs",
       "description": "The Art of killing bugs",
@@ -648,7 +626,87 @@
       "from_time": "09:00",
       "to_time": "12:00",
       "speakers": []
-    }
+    },
+    {
+          "id": "44",
+          "title": "12 Factor App: A modern methodology for building modern web apps",
+          "description": "Lightening Talk",
+          "photo": "",
+          "date": "2014-11-15",
+          "favourite": "false",
+          "talk_type": "3",
+          "room": "205",
+          "from_time": "14:00",
+          "to_time": "15:00",
+          "speakers": ["6"]
+        },
+
+    {
+          "id": "45",
+          "title": "Sitting Ducks",
+          "description": "Lightening Talk",
+          "photo": "",
+          "date": "2014-11-15",
+          "favourite": "false",
+          "talk_type": "3",
+          "room": "205",
+          "from_time": "14:00",
+          "to_time": "15:00",
+          "speakers": ["1"]
+        },
+
+      {
+        "id": "46",
+        "title": "Single, and Secure? Security Issues in Single Page Web Applications",
+        "description": "Lightening Talk",
+        "photo": "",
+        "date": "2014-11-15",
+        "favourite": "false",
+        "talk_type": "3",
+        "room": "205",
+        "from_time": "14:00",
+        "to_time": "15:00",
+        "speakers": []
+        },
+      {
+        "id": "47",
+        "title": "Using Regex in Pattern Recognition",
+        "description": "Lightening Talk",
+        "photo": "",
+        "date": "2014-11-15",
+        "favourite": "false",
+        "talk_type": "3",
+        "room": "205",
+        "from_time": "14:00",
+        "to_time": "15:00",
+        "speakers": ["2"]
+      },
+      {
+        "id": "48",
+        "title": "Common Back-End Server Architecture Design",
+        "description": "Lightening Talk",
+        "photo": "",
+        "date": "2014-11-15",
+        "favourite": "false",
+        "talk_type": "3",
+        "room": "205",
+        "from_time": "14:00",
+        "to_time": "15:00",
+        "speakers": ["4"]
+      },
+      {
+        "id": "49",
+        "title": "My Recent Mistakes that Forever Changed How I Develop",
+        "description": "Lightening Talk",
+        "photo": "",
+        "date": "2014-11-15",
+        "favourite": "false",
+        "talk_type": "3",
+        "room": "205",
+        "from_time": "14:00",
+        "to_time": "15:00",
+        "speakers": ["7"]
+      }
   ],
   "speakers": [
     {

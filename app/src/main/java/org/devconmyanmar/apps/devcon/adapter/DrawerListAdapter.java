@@ -55,7 +55,7 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   @Override public int getCount() {
-    return 3;
+    return 4;
   }
 
   @Override public Object getItem(int i) {
@@ -70,6 +70,7 @@ public class DrawerListAdapter extends BaseAdapter {
     mNavDrawerItems = mContext.getResources().getStringArray(R.array.nav_drawer_items);
     ArrayList<Integer> drawerIcons = new ArrayList<Integer>();
     drawerIcons.add(R.drawable.ic_drawer_my_schedule);
+    drawerIcons.add(R.drawable.ic_drawer_social);
     drawerIcons.add(R.drawable.ic_drawer_explore);
     drawerIcons.add(R.drawable.ic_drawer_people_met);
 
