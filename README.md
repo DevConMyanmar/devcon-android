@@ -5,6 +5,8 @@ This is a WIP Project and changing really fast.
 
 Check the [releases](https://github.com/DevConMyanmar/devcon-android-2014/releases).
 
+![Devcon](https://raw.githubusercontent.com/DevConMyanmar/devcon-android-2014/master/devcon_screenshot.png)
+
 It's also available on Play Store.
 
 <a href="https://play.google.com/store/apps/details?id=org.devconmyanmar.apps.devcon">
