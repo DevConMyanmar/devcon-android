@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -57,6 +56,7 @@ import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -144,6 +144,7 @@ public class SpeakerFragment extends BaseFragment {
 
   @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(int position) {
     int id = mSpeakers.get(position).getId();
+    LOGD("speakers ", "id " + id);
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
 
     AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());

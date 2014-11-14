@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -41,6 +40,7 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class SpeakerDetailFragment extends BaseFragment {
@@ -73,6 +73,7 @@ public class SpeakerDetailFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
       mSpeakerId = getArguments().getString(ARG_TALK_ID);
+      LOGD(TAG, "speaker id in detail : " + mSpeakerId);
     }
   }
 
@@ -90,6 +91,7 @@ public class SpeakerDetailFragment extends BaseFragment {
       tintManager.setNavigationBarTintEnabled(false);
       tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
     }
+
     Speaker speaker = speakerDao.getSpeakerById(mSpeakerId);
 
     if (speaker != null) {
