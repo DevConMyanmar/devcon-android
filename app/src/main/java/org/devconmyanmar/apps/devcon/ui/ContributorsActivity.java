@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -25,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -34,6 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
@@ -77,6 +78,13 @@ public class ContributorsActivity extends BaseActivity {
     } else {
       noConnectionMsg.setVisibility(View.VISIBLE);
       contributorList.setEmptyView(noConnectionMsg);
+    }
+
+    if (Build.VERSION.SDK_INT >= 19) {
+      SystemBarTintManager tintManager = new SystemBarTintManager(this);
+      tintManager.setStatusBarTintEnabled(true);
+      tintManager.setNavigationBarTintEnabled(false);
+      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
     }
   }
 

@@ -100,7 +100,6 @@ public class TalkDetailFragment extends BaseFragment {
 
     ButterKnife.inject(this, rootView);
     if (Build.VERSION.SDK_INT >= 19) {
-
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
