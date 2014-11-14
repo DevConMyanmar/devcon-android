@@ -220,6 +220,36 @@
       ]
     },
     {
+      "id": "17",
+      "title": "The Art of killing bugs",
+      "description": "The Art of killing bugs",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "29"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Cocos2DX Game Development Engine",
+      "description": "Cocos2DX Game Development Engine",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "25"
+      ]
+    },
+    {
       "id": "16",
       "title": "Lightening Talks",
       "description": "-",
@@ -235,25 +265,10 @@
         "2",
         "3",
         "4",
-        "5",
+        "23",
         "6",
         "7",
         "8"
-      ]
-    },
-    {
-      "id": "17",
-      "title": "The Art of killing bugs",
-      "description": "The Art of killing bugs",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "29"
       ]
     },
     {
