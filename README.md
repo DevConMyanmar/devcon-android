@@ -3,10 +3,15 @@ DevCon Myanmar 2014 Android Client
 
 This is a WIP Project and changing really fast.
 
-Please see [Trello board](https://trello.com/b/Y4vcQ4zg/devcon-2014) for the features and help wanted!
+Check the [releases](https://github.com/DevConMyanmar/devcon-android-2014/releases).
 
-If you see `io.realm.exceptions.RealmMigrationNeededException`, uninstall the existing app from your device and install it again.
-We're not doing any auto migration works since we haven't finalized the models. Once stable, it will have proper migration support.
+![Devcon](https://raw.githubusercontent.com/DevConMyanmar/devcon-android-2014/master/devcon_screenshot.png)
+
+It's also available on Play Store.
+
+<a href="https://play.google.com/store/apps/details?id=org.devconmyanmar.apps.devcon">
+  <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+</a>
 
 ## Contributing
 

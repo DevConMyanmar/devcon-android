@@ -1,3 +1,28 @@
+
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Devcon Contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package org.devconmyanmar.apps.devcon.ui;
 
 import android.content.Context;
@@ -17,8 +42,10 @@ import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
+import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
+import org.devconmyanmar.apps.devcon.sync.SyncSpeakerService;
 import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
 import retrofit.Callback;
@@ -27,11 +54,14 @@ import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
 public abstract class BaseFragment extends Fragment {
 
+  private static final String TAG = makeLogTag(BaseFragment.class);
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
   protected MyScheduleDao favDao;
@@ -74,14 +104,39 @@ public abstract class BaseFragment extends Fragment {
   }
 
   protected void syncSchedules(final CustomSwipeRefreshLayout exploreSwipeRefreshView) {
-    List<Talk> favTalk = new ArrayList<Talk>();
-      favTalk= talkDao.getFavTalks();
+
+    showRefreshProgress(exploreSwipeRefreshView);
+
+    RestAdapter speakerRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
+        .setLogLevel(RestAdapter.LogLevel.BASIC)
+        .setClient(new OkClient(okHttpClient))
+        .build();
+
+    SyncSpeakerService syncSpeakerService = speakerRestAdapter.create(SyncSpeakerService.class);
+    syncSpeakerService.getSpeakers(new Callback<List<Speaker>>() {
+      @Override public void success(List<Speaker> speakers, Response response) {
+        try {
+          speakerDao.deleteAll();
+          for (Speaker s : speakers) {
+            speakerDao.create(s);
+          }
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+
+      @Override public void failure(RetrofitError error) {
+        //Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
+        hideRefreshProgress(exploreSwipeRefreshView);
+      }
+    });
+
+    List<Talk> favTalk = talkDao.getFavTalks();
     ArrayList<Integer> talkIds = new ArrayList<Integer>();
-    for(Talk talk:favTalk){
+    for (Talk talk : favTalk) {
       talkIds.add(talk.getId());
     }
     SharePref.getInstance(mContext).saveFavIds(talkIds.toString());
-    showRefreshProgress(exploreSwipeRefreshView);
 
     RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
         .setLogLevel(RestAdapter.LogLevel.BASIC)
@@ -97,7 +152,6 @@ public abstract class BaseFragment extends Fragment {
         } catch (SQLException e) {
           e.printStackTrace();
         }
-
 
         for (JsonElement j : scheduleArray) {
           Talk talk = new Talk();
@@ -123,12 +177,12 @@ public abstract class BaseFragment extends Fragment {
         }
         ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
         ArrayList<Integer> talkIds = new ArrayList<Integer>();
-        for (Talk talk:favTalk){
+        for (Talk talk : favTalk) {
           talkIds.add(talk.getId());
         }
-        
-        for(Talk talk: talks){
-          if(talkIds.contains(talk.getId())){
+
+        for (Talk talk : talks) {
+          if (talkIds.contains(talk.getId())) {
             talk.setFavourite(true);
             talk.setId(talk.getId());
             talkDao.createOrUpdate(talk);
@@ -143,6 +197,7 @@ public abstract class BaseFragment extends Fragment {
       }
     });
   }
+
   private ArrayList<Talk> flattenFav(String talkIds) {
     ArrayList<Talk> mTalks = new ArrayList<Talk>();
     String id[] = new Gson().fromJson(talkIds, String[].class);

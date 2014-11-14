@@ -1,3 +1,28 @@
+
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Devcon Contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
@@ -79,12 +104,16 @@ public class MyScheduleAdapter extends BaseAdapter {
     if (Build.VERSION.SDK_INT >= 21) {
       holder.mFavoriteCardContainer.setPadding(0, px, 0, px);
     }
+
     String lFormattedFrom = TimeUtils.parseFromToString(mySchedule.getStart());
     String lFormattedTo = TimeUtils.parseFromToString(mySchedule.getEnd());
+
     holder.mFavoriteScheduleTitle.setText(mySchedule.getTitle());
-    holder.mFavoriteScheduleFromTime.setText(lFormattedFrom);
+    holder.mFromTime.setText(lFormattedFrom);
+    holder.mToTime.setText("to " + lFormattedTo);
+
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
-    holder.mToTime.setText("");
+
     holder.mFrameLayout.setBackgroundColor(
         mContext.getResources().getColor(android.R.color.transparent));
     mySchedule.setId(mySchedule.getId());
@@ -92,15 +121,19 @@ public class MyScheduleAdapter extends BaseAdapter {
     mySchedule.setFavoriteTalkId(0);
     myScheduleDao.createOrUpdate(mySchedule);
     List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
+
     if (favTalks.size() == 1) {
       Talk talk = favTalks.get(0);
       mySchedule.setId(((MySchedule) getItem(i)).getId());
       mySchedule.setHasFavorite(true);
       mySchedule.setFavoriteTalkId(talk.getId());
+
       myScheduleDao.createOrUpdate(mySchedule);
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
-      holder.mToTime.setText(lFormattedTo);
-      holder.mFrameLayout.setBackgroundColor(mContext.getResources().getColor(R.color.theme_accent_1_light));
+      holder.mFromTime.setText(lFormattedFrom);
+      holder.mToTime.setText("to " + lFormattedTo);
+      holder.mFrameLayout.setBackgroundColor(
+          mContext.getResources().getColor(R.color.theme_accent_1_light));
 
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
       StringBuilder stringBuilder = new StringBuilder();
@@ -114,9 +147,11 @@ public class MyScheduleAdapter extends BaseAdapter {
         holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
       }
     }
-    if(favTalks.size()>1){
-      holder.mFavoriteScheduleTitle.setText("You have chosen more than one sessions in the same time \n"
-          + "Please remove one first.");
+
+    if (favTalks.size() > 1) {
+      holder.mFavoriteScheduleTitle.setText(
+          "You have chosen more than one sessions in the same time \n"
+              + "Please remove one first.");
     }
 
     return view;
@@ -142,11 +177,11 @@ public class MyScheduleAdapter extends BaseAdapter {
    */
 
   class ViewHolder {
-    @InjectView(R.id.favorite_schedule_from_time) TextView mFavoriteScheduleFromTime;
     @InjectView(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
     @InjectView(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
     @InjectView(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
     @InjectView(R.id.favorite_card_closer) FrameLayout mFrameLayout;
+    @InjectView(R.id.favorite_schedule_from_time) TextView mFromTime;
     @InjectView(R.id.favorite_schedule_to_time) TextView mToTime;
 
     ViewHolder(View view) {

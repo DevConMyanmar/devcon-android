@@ -220,6 +220,36 @@
       ]
     },
     {
+      "id": "17",
+      "title": "The Art of killing bugs",
+      "description": "The Art of killing bugs",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "29"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Cocos2DX Game Development Engine",
+      "description": "Cocos2DX Game Development Engine",
+      "photo": "",
+      "date": "2014-11-15",
+      "favourite": "false",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "25"
+      ]
+    },
+    {
       "id": "16",
       "title": "Lightening Talks",
       "description": "-",
@@ -235,25 +265,10 @@
         "2",
         "3",
         "4",
-        "5",
+        "23",
         "6",
         "7",
         "8"
-      ]
-    },
-    {
-      "id": "17",
-      "title": "The Art of killing bugs",
-      "description": "The Art of killing bugs",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "29"
       ]
     },
     {
@@ -319,7 +334,7 @@
     {
       "id": "22",
       "title": "My First Contact With Functional Programming",
-      "description": "My First Contact With Functional Programming",
+      "description": "This talk is based on the experience of a developer when he ventured into the world of functional programming with Haskell. Haskell is a profound language and learning it is a hugely rewarding experience. Coding in Haskell changes the way you think when you are approaching problems. Haskell helps to create software that is short, fast, and safe. Learning Haskell is whole lot of fun and you will have a wonderful experience learning it. One will have a better vision of functional paradigm in the course of learning Haskell and can venture into other functional programming languages too.",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -518,7 +533,7 @@
     {
       "id": "35",
       "title": "Crawling and precise data extraction with Apache Nutch",
-      "description": "Crawling and precise data extraction with Apache Nutch",
+      "description": "Since internet and online media are become matured, the collection and analysis of data from varieties of internet sources play a very important role for businesses to make better decision and to serve their users with more relevant information. Here in this talk, the audience will gain knowledge on web crawler and html parsing to archive and analyze the content from the websites. The presentation will focus on matured and opensource web crawler called Apache Nutch and its weakness and strength in production systems.",
       "photo": "",
       "date": "2014-11-16",
       "favourite": "false",
@@ -548,7 +563,7 @@
     {
       "id": "37",
       "title": "App Development for Web and Mobile with AngularJS",
-      "description": "-",
+      "description": "AngularJS has become favourite choice for front-end developers for its low learning curve and large sets of features with solid support for both Web and Mobile Web. With the help of Ionic Framework, developing mobile web app or hybrid app has become swift and smooth. This talk will cover some basic technique and concept to create a simple yet interactive mobile and web app using AngularJS and Ionic Framework.",
       "photo": "",
       "date": "2014-11-16",
       "favourite": "false",
@@ -653,7 +668,7 @@
   "speakers": [
     {
       "id": "1",
-      "name": "Wai Lin Tun",
+      "name": "Wayne Tun Myint",
       "title": "",
       "description": "",
       "photo": ""
@@ -663,7 +678,7 @@
       "name": "Ravi Chhabra",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "https://scontent-a.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/1619393_10151838336577714_1930747688_n.jpg?oh=cb2b947f52da5c1e81103d14a7f2f47e&oe=54EA6BC2"
     },
     {
       "id": "3",
@@ -683,22 +698,22 @@
       "id": "5",
       "name": "Thar Htet",
       "title": "",
-      "description": "",
+      "description": "https://scontent-b.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/156561_4351520317534_1917272354_n.jpg?oh=adc4f17a865a2f61582425009e88af5a&oe=551B1251",
       "photo": ""
     },
     {
       "id": "6",
       "name": "Ye Lin Aung",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "title": "A curious programmer @ Zwenexsys. World class procrastinator.",
+      "description": "A curious programmer @ Zwenexsys. Highly motivated and result-oriented. World class procrastinator. Software architect-wannabe. Live and breathe open source. Love Calvin & Hobbes.",
+      "photo": "https://avatars.githubusercontent.com/u/275120?v=3"
     },
     {
       "id": "7",
       "name": "Myat Min Han",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/Myat_Min_Han.jpg"
     },
     {
       "id": "8",
@@ -712,7 +727,7 @@
       "name": "Thet Aung Min Latt",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/ThetAung.jpg"
     },
     {
       "id": "10",
@@ -747,7 +762,7 @@
       "name": "Ye Maung",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/YeMaung.png"
     },
     {
       "id": "15",
@@ -757,53 +772,46 @@
       "photo": ""
     },
     {
-      "id": "16",
-      "name": "",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
       "id": "17",
       "name": "Poe Poe Myint Swe",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "title": "Software Engineer at Zwenexsys",
+      "description": "Working as an Android Developer. Personally, I've made apps such as Internet Watch, Speak Your Wishes, etc. \nMy website is at http://poepoemyintswe.com. \nCheck my codes at https://github.com/PoePoeMyintSwe",
+      "photo": "http://devconmyanmar.org/2014/img/Poe_Poe_Myint_Swe.jpg"
     },
     {
       "id": "18",
       "name": "Sean Lin",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "title": "Web Evangelist",
+      "description": "Sean Lin is developer, entrepreneurs and web evangelist. He has been in Web Industry for past 10 years, working and consulting for companies like Six Apart, Google, Zoho and Salesforce. He spends most of his time working on front-end web projects for various start-ups using cutting edge languages and frameworks. He has recently relocated Myanmar to lay foundation for his enterprise start-up.",
+      "photo": "https://lh6.googleusercontent.com/1EZPNLmBd-RKDHWzBcx135P7bdZUj46zec87w_yfGrZ-P0mvvPMFDevZRh4QuSxZdARG=w2560-h1246"
     },
     {
       "id": "19",
       "name": "Nyan Lynn Htut",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/nyan_%20Lynn_Htut.jpg"
     },
     {
       "id": "20",
       "name": "Arkar Min Aung",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "title": "iOS developer @ Nex",
+      "description": "Arkar is an iOS developer and he currently works at Nex. At Nex, Arkar and his team happily collaborate to build awesome mobile apps. \nArkar is a curious explorer and loves to indulge his free time finding new things out. \nThat’s how he found out about functional programming paradigm and saw a whole new world which he has never seen before. \nHe loves not just Computer Science but also various other fields, including Neuroscience, Mathematics, Astrophysics, Cryptography and Cars. \n\nTwitter: @ark_aung \nLinkedIn: http://www.linkedin.com/pub/arkar-aung/30/b01/8a0",
+      "photo": "http://devconmyanmar.org/2014/img/Arkar_Min_Aung(Nex).jpg"
     },
     {
       "id": "21",
       "name": "Soe Thiha",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/Soe_Thiha.jpg"
     },
     {
       "id": "22",
       "name": "Thura Myo Nyunt",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/ThuyaMyoNyunt.jpg"
     },
     {
       "id": "23",
@@ -817,63 +825,49 @@
       "name": "Aung Win Myat",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/Aung_Win_Myat.jpg"
     },
     {
       "id": "25",
-      "name": "Htoo Lin",
+      "name": "Htoon Lin",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/Htoon_Lin.jpg"
     },
     {
       "id": "26",
       "name": "Tin Aung Lin",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/TinAungLin.jpg"
     },
     {
       "id": "27",
       "name": "Tran Tuan Anh",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/TranTuanAnh.png"
     },
     {
       "id": "28",
       "name": "Ye Wint Ko",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "title": "CTO @ Bindez",
+      "description": "Cofounder and Chief Architect at a startup called Bindez. He has been in IT industry since 6 years ago developing information systems in the area of information retrieval, web archiving and content analysis. ",
+      "photo": "https://lh6.googleusercontent.com/3fK5OP27QHIO9jElqIKq8SBki0Gas0JDh06gch3Ot4JRT5FdQjXPiV6Nb5LothbYHXFO=w2560-h1246"
     },
     {
       "id": "29",
       "name": "Zaw Thet Aung",
       "title": "",
       "description": "",
-      "photo": ""
-    },
-    {
-      "id": "30",
-      "name": "Set Kyar Wa Lar",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "31",
-      "name": "Hein Zaw Htet",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/ZawThetAung.jpg"
     },
     {
       "id": "32",
       "name": "Swan Htet Aung",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/SwanHtetAung.jpg"
     },
     {
       "id": "33",
@@ -901,14 +895,7 @@
       "name": "Htoo Myat Aung",
       "title": "",
       "description": "",
-      "photo": ""
-    },
-    {
-      "id": "37",
-      "name": "Naing Win",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2014/img/HtooMyatAung.jpg"
     },
     {
       "id": "38",

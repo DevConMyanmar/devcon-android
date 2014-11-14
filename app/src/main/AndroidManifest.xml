@@ -32,7 +32,8 @@
         android:label="@string/title_activity_speaker_detail"
         android:theme="@style/AppTheme.ScheduleActivity"/>
     <activity android:name=".ui.ContributorsActivity"
-        android:label="@string/about_contributors"/>
+        android:label="@string/about_contributors"
+        android:theme="@style/AppTheme.ScheduleActivity"/>
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserActivity"
         android:theme="@style/AppTheme.ScheduleActivity">
