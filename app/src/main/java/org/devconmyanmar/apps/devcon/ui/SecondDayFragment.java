@@ -106,7 +106,13 @@ public class SecondDayFragment extends BaseFragment {
     });
 
     mTalks = talkDao.getTalkByDay(SECOND_DAY);
-
+    ArrayList<Talk> tempTalks = new ArrayList<Talk>();
+    for (Talk talk:mTalks){
+      if(talk.getTalk_type() ==3){
+        tempTalks.add(talk);
+      }
+    }
+    mTalks.removeAll(tempTalks);
     mScheduleAdapter.replaceWith(mTalks);
 
     secondDayList.setAdapter(mScheduleAdapter);

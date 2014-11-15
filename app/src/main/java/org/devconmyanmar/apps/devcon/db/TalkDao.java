@@ -92,6 +92,17 @@ public class TalkDao {
     }
     return null;
   }
+  public List<Talk> getTalkByType(String type) {
+    try {
+      QueryBuilder<Talk, Integer> qb = talkDao.queryBuilder();
+      qb.where().eq("talk_type", type);
+      PreparedQuery<Talk> pq = qb.prepare();
+      return talkDao.query(pq);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
   public List<Talk> getFavTalks() {
     try {

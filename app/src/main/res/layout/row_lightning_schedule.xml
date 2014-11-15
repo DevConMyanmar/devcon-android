@@ -15,43 +15,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-      <LinearLayout
-          android:orientation="vertical"
-          android:paddingLeft="@dimen/spacing_minor"
-          android:paddingRight="@dimen/spacing_minor"
-          android:paddingStart="@dimen/spacing_minor"
-          android:layout_gravity="center"
-          android:gravity="center_horizontal"
-          android:layout_width="@dimen/talk_time_column_width"
-          android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/lightning_schedule_from_time"
-            tools:text="10:00 AM"
-            style="@style/ScheduleView.TitleStyle"
-            android:layout_width="wrap_content"/>
-
-        <TextView
-            android:id="@+id/lightning_schedule_to_time"
-            style="@style/ScheduleView.TitleStyle"
-            tools:text="10:45 AM"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/text_size_small"
-            android:layout_gravity="left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-      </LinearLayout>
 
       <LinearLayout
           android:orientation="vertical"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="16dp"
+          android:paddingRight="12dp"
+          android:paddingLeft="4dp">
 
         <TextView
             android:id="@+id/lightning_schedule_title"
             style="@style/ScheduleView.LightningTitle"
-            tools:text="Bringing Silicon Valley to Yangon"
-            android:textSize="@dimen/text_size_small"
+            tools:text="Bringing Silicon Valley to Yajhsdddon d"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

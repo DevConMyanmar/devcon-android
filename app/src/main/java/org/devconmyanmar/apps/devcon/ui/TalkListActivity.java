@@ -52,19 +52,23 @@ public class TalkListActivity extends BaseActivity
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
-    int fragmentNo = getIntent().getIntExtra("Fragment", 1);
+    int fragmentNo = getIntent().getIntExtra("Fragment", 2);
     switch (fragmentNo) {
       case 0:
         fragment = MyScheduleFragment.getInstance();
         ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(0);
         break;
       case 1:
-        fragment = ExploreFragment.getInstance();
-        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
+        fragment = LighteningTalksFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
         break;
       case 2:
-        fragment = SpeakerFragment.getInstance();
+        fragment = ExploreFragment.getInstance();
         ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
+        break;
+      case 3:
+        fragment = SpeakerFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(3);
         break;
       default:
         break;
@@ -79,9 +83,12 @@ public class TalkListActivity extends BaseActivity
         fragment = MyScheduleFragment.getInstance();
         break;
       case 1:
-        fragment = ExploreFragment.getInstance();
+        fragment = LighteningTalksFragment.getInstance();
         break;
       case 2:
+        fragment = ExploreFragment.getInstance();
+        break;
+      case 3:
         fragment = SpeakerFragment.getInstance();
         break;
     }
