@@ -27,6 +27,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <include android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
 
   <se.emilsjolander.stickylistheaders.StickyListHeadersListView
       android:id="@+id/sponsor_list"

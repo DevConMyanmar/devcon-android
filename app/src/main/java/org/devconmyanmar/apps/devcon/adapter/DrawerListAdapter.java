@@ -54,7 +54,7 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   @Override public int getCount() {
-    return mNavDrawerItems.length;
+    return 5;
   }
 
   @Override public Object getItem(int i) {
