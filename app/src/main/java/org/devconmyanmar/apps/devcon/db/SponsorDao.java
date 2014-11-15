@@ -39,19 +39,16 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class SponsorDao {
   private static final String TAG = makeLogTag(SponsorDao.class);
   private Dao<Sponsor, Integer> sponsorDao;
-  private TalkDao talkDao;
-  private ConnectionSource source;
 
   public SponsorDao(Context ctx) {
     DbMgr dbManager = new DbMgr();
     DbHelper dbHelper = dbManager.getHelper(ctx);
     try {
       sponsorDao = dbHelper.getSponorDao();
-      source = dbHelper.getConnectionSource();
+      ConnectionSource source = dbHelper.getConnectionSource();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    talkDao = new TalkDao(ctx);
   }
 
   public int create(Sponsor Sponsor) {
