@@ -22,44 +22,48 @@
  * THE SOFTWARE.
  */
 
-package org.devconmyanmar.apps.devcon.model;
+package org.devconmyanmar.apps.devcon.db;
 
-import com.google.gson.annotations.SerializedName;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import android.content.Context;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.support.ConnectionSource;
+import java.sql.SQLException;
+import java.util.List;
+import org.devconmyanmar.apps.devcon.model.Sponsor;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
- * Created by Ye Lin Aung on 14/11/15.
+ * Created by Ye Lin Aung on 14/11/10.
  */
+public class SponsorDao {
+  private static final String TAG = makeLogTag(SponsorDao.class);
+  private Dao<Sponsor, Integer> sponsorDao;
+  private TalkDao talkDao;
+  private ConnectionSource source;
 
-@DatabaseTable(tableName = "sponsors")
-public class Sponsor {
-  @DatabaseField(id = true) private int id;
-  @DatabaseField private String name;
-  @DatabaseField private int logo;
-  @DatabaseField @SerializedName("sponsor_type") private String sponsorType;
-
-  public String getName() {
-    return name;
+  public SponsorDao(Context ctx) {
+    DbMgr dbManager = new DbMgr();
+    DbHelper dbHelper = dbManager.getHelper(ctx);
+    try {
+      sponsorDao = dbHelper.getSponorDao();
+      source = dbHelper.getConnectionSource();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    talkDao = new TalkDao(ctx);
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public int create(Sponsor Sponsor) {
+    try {
+      return sponsorDao.create(Sponsor);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return 0;
   }
 
-  public int getLogo() {
-    return logo;
-  }
-
-  public void setLogo(int logo) {
-    this.logo = logo;
-  }
-
-  public String getSponsorType() {
-    return sponsorType;
-  }
-
-  public void setSponsorType(String sponsorType) {
-    this.sponsorType = sponsorType;
+  public List<Sponsor> getAll() throws SQLException {
+    return sponsorDao.queryBuilder().query();
   }
 }
