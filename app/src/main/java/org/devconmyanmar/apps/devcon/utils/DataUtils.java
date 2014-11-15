@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -102,21 +101,23 @@ public class DataUtils {
         mTalkDao.create(talk);
       }
 
-     for(JsonElement l:favArray ){
-       MySchedule mySchedule = new MySchedule();
-       mySchedule.setTitle(l.getAsJsonObject().get("title").getAsString());
-       mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
-       mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
-       mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
-       mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
-       mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
-       mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
-       JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
-       mySchedule.setAssociatedTalkId(talkIds.toString());
-       mySchedule.setHasFavorite(false);
-       mySchedule.setFavoriteTalkId(0);
-       mFavDao.create(mySchedule);
-     }
+      for (JsonElement l : favArray) {
+        MySchedule mySchedule = new MySchedule();
+        mySchedule.setTitle(l.getAsJsonObject().get("title").getAsString());
+        mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
+        mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
+        mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
+        mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
+        mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
+        mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
+        JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
+        mySchedule.setAssociatedTalkId(talkIds.toString());
+        mySchedule.setHasFavorite(false);
+        mySchedule.setFavoriteTalkId(0);
+        mFavDao.create(mySchedule);
+      }
+
+
       LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {
       e.printStackTrace();

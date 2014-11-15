@@ -78,7 +78,7 @@ public class InitialActivity extends BaseActivity {
 
     @Override protected Void doInBackground(Void... voids) {
       try {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         if (SharePref.getInstance(InitialActivity.this).isFirstTime()) {
           new DataUtils(InitialActivity.this).loadFromAssets();
           SharePref.getInstance(InitialActivity.this).noLongerFirstTime();

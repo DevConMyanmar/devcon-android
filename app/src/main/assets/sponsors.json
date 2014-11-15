@@ -1,0 +1,114 @@
+{
+  "sponsors": [
+    {
+      "name": "ACE",
+      "logo": "ace",
+      "sponsor_type": "diamond"
+    },
+    {
+      "name": "MIT",
+      "logo": "mit",
+      "sponsor_type": "diamond"
+    },
+    {
+      "name": "Bindez",
+      "logo": "bindez",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "FPT",
+      "logo": "fpt",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "Infomation Matrix",
+      "logo": "infomax",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "MCC",
+      "logo": "mcc",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "Nex",
+      "logo": "nex",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "Ahtar Oo",
+      "logo": "ath",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "GMIT",
+      "logo": "gmit",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "On The Go",
+      "logo": "otg",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "Zwenexsys",
+      "logo": "zwenexsys",
+      "sponsor_type": "gold"
+    },
+    {
+      "name": "MIT",
+      "logo": "mit",
+      "sponsor_type": "diamond"
+    },
+    {
+      "name": "MIT",
+      "logo": "mit",
+      "sponsor_type": "diamond"
+    },
+    {
+      "name": "100 Plus",
+      "logo": "100",
+      "sponsor_type": "food"
+    },
+    {
+      "name": "Premier Espresso Ice",
+      "logo": "premier",
+      "sponsor_type": "food"
+    },
+    {
+      "name": "Yum Yum",
+      "logo": "yum",
+      "sponsor_type": "food"
+    },
+    {
+      "name": "Internet Journal",
+      "logo": "ij",
+      "sponsor_type": "media"
+    },
+    {
+      "name": "Itizen Journal",
+      "logo": "itj",
+      "sponsor_type": "media"
+    },
+    {
+      "name": "TechSpace Journal",
+      "logo": "techspace",
+      "sponsor_type": "media"
+    },
+    {
+      "name": "MCF",
+      "logo": "mcf",
+      "sponsor_type": "association"
+    },
+    {
+      "name": "MCIA",
+      "logo": "mcia",
+      "sponsor_type": "association"
+    },
+    {
+      "name": "Myanmar ICT Development Corporation Limited",
+      "logo": "mictdc",
+      "sponsor_type": "venue"
+    }
+  ]
+}
