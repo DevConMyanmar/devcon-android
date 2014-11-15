@@ -38,6 +38,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
+import org.devconmyanmar.apps.devcon.db.SponsorDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
@@ -64,6 +65,7 @@ public abstract class BaseFragment extends Fragment {
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
   protected MyScheduleDao favDao;
+  protected SponsorDao sponsorDao;
   protected Context mContext;
   protected OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -74,6 +76,7 @@ public abstract class BaseFragment extends Fragment {
     speakerDao = new SpeakerDao(mContext);
     talkDao = new TalkDao(mContext);
     favDao = new MyScheduleDao(mContext);
+    sponsorDao = new SponsorDao(mContext);
   }
 
   public void showRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {

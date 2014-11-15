@@ -23,24 +23,18 @@
   ~ THE SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-  <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-      android:id="@+id/sponsor_list"
-      android:layout_marginLeft="@dimen/spacing_minor"
-      android:layout_marginStart="@dimen/spacing_minor"
-      android:layout_marginRight="@dimen/spacing_minor"
-      android:divider="@null"
-      android:focusable="false"
-      android:focusableInTouchMode="false"
-      android:clickable="true"
-      android:scrollbarStyle="outsideOverlay"
-      android:scrollbarSize="10dp"
-      android:scrollbarThumbVertical="@drawable/theme_scrollbar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
-
-</LinearLayout>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sponsor_type"
+    tools:text="Conference Room"
+    android:textColor="@android:color/white"
+    android:background="#B3000000"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_micro"
+    android:padding="@dimen/spacing_minor"
+    />

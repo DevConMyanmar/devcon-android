@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -55,7 +54,7 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   @Override public int getCount() {
-    return 4;
+    return mNavDrawerItems.length;
   }
 
   @Override public Object getItem(int i) {
@@ -73,6 +72,7 @@ public class DrawerListAdapter extends BaseAdapter {
     drawerIcons.add(R.drawable.ic_drawer_social);
     drawerIcons.add(R.drawable.ic_drawer_explore);
     drawerIcons.add(R.drawable.ic_drawer_people_met);
+    drawerIcons.add(R.drawable.ic_drawer_explore);
 
     ViewHolder holder;
     if (view != null) {

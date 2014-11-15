@@ -36,7 +36,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Sponsor {
   @DatabaseField(id = true) private int id;
   @DatabaseField private String name;
-  @DatabaseField private int logo;
+  @DatabaseField private String logo;
   @DatabaseField @SerializedName("sponsor_type") private String sponsorType;
 
   public String getName() {
@@ -47,11 +47,11 @@ public class Sponsor {
     this.name = name;
   }
 
-  public int getLogo() {
+  public String getLogo() {
     return logo;
   }
 
-  public void setLogo(int logo) {
+  public void setLogo(String logo) {
     this.logo = logo;
   }
 

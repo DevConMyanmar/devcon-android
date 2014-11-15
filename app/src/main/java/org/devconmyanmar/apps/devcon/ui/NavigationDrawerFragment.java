@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -77,7 +76,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
     mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
-    mActivity = (ActionBarActivity)getActivity();
+    mActivity = (ActionBarActivity) getActivity();
 
     if (savedInstanceState != null) {
       mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -134,7 +133,6 @@ public class NavigationDrawerFragment extends BaseFragment {
     // set a custom shadow that overlays the main content when the drawer opens
     mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
     // set up the drawer's list view with items and click listener
-
 
     // ActionBarDrawerToggle ties together the the proper interactions
     // between the navigation drawer and the action bar app icon.

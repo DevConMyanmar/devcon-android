@@ -1,111 +1,133 @@
 {
   "sponsors": [
     {
+      "id": "1",
       "name": "ACE",
       "logo": "ace",
       "sponsor_type": "diamond"
     },
     {
+      "id": "2",
       "name": "MIT",
       "logo": "mit",
       "sponsor_type": "diamond"
     },
     {
+      "id": "3",
       "name": "Bindez",
       "logo": "bindez",
       "sponsor_type": "gold"
     },
     {
+      "id": "4",
       "name": "FPT",
       "logo": "fpt",
       "sponsor_type": "gold"
     },
     {
+      "id": "5",
       "name": "Infomation Matrix",
       "logo": "infomax",
       "sponsor_type": "gold"
     },
     {
+      "id": "6",
       "name": "MCC",
       "logo": "mcc",
       "sponsor_type": "gold"
     },
     {
+      "id": "7",
       "name": "Nex",
       "logo": "nex",
       "sponsor_type": "gold"
     },
     {
+      "id": "8",
       "name": "Ahtar Oo",
       "logo": "ato",
       "sponsor_type": "gold"
     },
     {
+      "id": "9",
       "name": "GMIT",
       "logo": "gmit",
       "sponsor_type": "gold"
     },
     {
+      "id": "10",
       "name": "On The Go",
       "logo": "otg",
       "sponsor_type": "gold"
     },
     {
+      "id": "11",
       "name": "Zwenexsys",
       "logo": "zwenexsys",
       "sponsor_type": "gold"
     },
     {
+      "id": "12",
       "name": "MIT",
       "logo": "mit",
       "sponsor_type": "diamond"
     },
     {
+      "id": "13",
       "name": "MIT",
       "logo": "mit",
       "sponsor_type": "diamond"
     },
     {
+      "id": "14",
       "name": "100 Plus",
       "logo": "plus",
       "sponsor_type": "food"
     },
     {
+      "id": "15",
       "name": "Premier Espresso Ice",
       "logo": "premier",
       "sponsor_type": "food"
     },
     {
+      "id": "16",
       "name": "Yum Yum",
       "logo": "yum",
       "sponsor_type": "food"
     },
     {
+      "id": "17",
       "name": "Internet Journal",
       "logo": "ij",
       "sponsor_type": "media"
     },
     {
+      "id": "18",
       "name": "Itizen Journal",
       "logo": "itj",
       "sponsor_type": "media"
     },
     {
+      "id": "19",
       "name": "TechSpace Journal",
       "logo": "techspace",
       "sponsor_type": "media"
     },
     {
+      "id": "20",
       "name": "MCF",
       "logo": "mcf",
       "sponsor_type": "association"
     },
     {
+      "id": "21",
       "name": "MCIA",
       "logo": "mcia",
       "sponsor_type": "association"
     },
     {
+      "id": "22",
       "name": "Myanmar ICT Development Corporation Limited",
       "logo": "mictdc",
       "sponsor_type": "venue"
