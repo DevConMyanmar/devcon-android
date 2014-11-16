@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -23,39 +22,44 @@
  * THE SOFTWARE.
  */
 
-package org.devconmyanmar.apps.devcon;
+package org.devconmyanmar.apps.devcon.model;
 
-import android.app.Application;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
-import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.squareup.okhttp.OkHttpClient;
-import java.io.InputStream;
+import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * Created by Ye Lin Aung on 14/10/04.
+ * Created by Ye Lin Aung on 14/11/15.
  */
-public class DevConApplication extends Application {
 
-  public static GlideBuilder builder;
-  public static OkHttpClient okHttpClient;
+@DatabaseTable(tableName = "sponsors")
+public class Sponsor {
+  @DatabaseField(id = true) private int id;
+  @DatabaseField private String name;
+  @DatabaseField private String logo;
+  @DatabaseField @SerializedName("sponsor_type") private String sponsorType;
 
-  @Override public void onCreate() {
-    super.onCreate();
-    if (!BuildConfig.DEBUG) {
-      //Fabric.with(this, new Crashlytics());
-    }
+  public String getName() {
+    return name;
+  }
 
-    okHttpClient = new OkHttpClient();
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    builder = new GlideBuilder(this).setDiskCache(
-        DiskLruCacheWrapper.get(Glide.getPhotoCacheDir(this), 50 * 1024 * 1024));
-    Glide.get(this)
-        .register(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(okHttpClient));
-    if (!Glide.isSetup()) {
-      Glide.setup(builder);
-    }
+  public String getLogo() {
+    return logo;
+  }
+
+  public void setLogo(String logo) {
+    this.logo = logo;
+  }
+
+  public String getSponsorType() {
+    return sponsorType;
+  }
+
+  public void setSponsorType(String sponsorType) {
+    this.sponsorType = sponsorType;
   }
 }

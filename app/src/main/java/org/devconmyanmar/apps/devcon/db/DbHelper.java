@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -34,6 +33,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.model.Sponsor;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGE;
@@ -47,17 +47,17 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
   private static final String DATABASE_NAME = "devcon.db";
 
-  private static final int DATABASE_VERSION = 1;
+  private static final int DATABASE_VERSION = 2;
 
   private static String TAG = makeLogTag(DbHelper.class);
   private Dao<Speaker, Integer> mSpeakerDao = null;
   private Dao<Talk, Integer> mTalkDao = null;
-  private Dao<MySchedule, Integer> mMyScheeduleDao = null;
+  private Dao<MySchedule, Integer> mMyScheduleDao = null;
+  private Dao<Sponsor, Integer> mSponsorDao = null;
 
   public DbHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
   }
-
 
   @Override
   public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
@@ -66,6 +66,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
       TableUtils.createTable(connectionSource, Speaker.class);
       TableUtils.createTable(connectionSource, Talk.class);
       TableUtils.createTable(connectionSource, MySchedule.class);
+      TableUtils.createTable(connectionSource, Sponsor.class);
     } catch (SQLException e) {
       LOGE(TAG, "Can't create database", e);
       e.printStackTrace();
@@ -102,17 +103,25 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
   }
 
   public Dao<MySchedule, Integer> getFavDao() throws SQLException {
-    if (mMyScheeduleDao == null) {
-      mMyScheeduleDao = getDao(MySchedule.class);
+    if (mMyScheduleDao == null) {
+      mMyScheduleDao = getDao(MySchedule.class);
     }
-    return mMyScheeduleDao;
+    return mMyScheduleDao;
+  }
+
+  public Dao<Sponsor, Integer> getSponorDao() throws SQLException {
+    if (mSponsorDao == null) {
+      mSponsorDao = getDao(Sponsor.class);
+    }
+    return mSponsorDao;
   }
 
   @Override public void close() {
     super.close();
     mSpeakerDao = null;
     mTalkDao = null;
-    mMyScheeduleDao = null;
+    mMyScheduleDao = null;
+    mSpeakerDao = null;
   }
 }
 

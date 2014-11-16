@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -77,6 +76,24 @@ public class TimeUtils {
       return "Room 102";
     } else if (room.equalsIgnoreCase("mcf")) {
       return "MCF Meeting Room";
+    }
+
+    return "N/A";
+  }
+
+  public static String getSponsorName(String room) {
+    if (room.equalsIgnoreCase("diamond")) {
+      return "Diamond Sponsors";
+    } else if (room.equalsIgnoreCase("gold")) {
+      return "Gold Sponsors";
+    } else if (room.equalsIgnoreCase("silver")) {
+      return "Silver Sponsors";
+    } else if (room.equalsIgnoreCase("food")) {
+      return "Food and Beverages Partner";
+    } else if (room.equalsIgnoreCase("media")) {
+      return "Media Partner";
+    } else if (room.equalsIgnoreCase("venue")) {
+      return "Venue Sponsors";
     }
 
     return "N/A";

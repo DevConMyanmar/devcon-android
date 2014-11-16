@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -37,9 +36,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
+import org.devconmyanmar.apps.devcon.db.SponsorDao;
 import org.devconmyanmar.apps.devcon.db.TalkDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.model.Sponsor;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
@@ -55,6 +56,7 @@ public class DataUtils {
   private SpeakerDao mSpeakerDao;
   private TalkDao mTalkDao;
   private MyScheduleDao mFavDao;
+  private SponsorDao mSponsorDao;
   private Gson gson = new Gson();
 
   public DataUtils(Context context) {
@@ -62,6 +64,7 @@ public class DataUtils {
     mSpeakerDao = new SpeakerDao(mContext);
     mTalkDao = new TalkDao(mContext);
     mFavDao = new MyScheduleDao(mContext);
+    mSponsorDao = new SponsorDao(mContext);
   }
 
   public void loadFromAssets() {
@@ -102,21 +105,35 @@ public class DataUtils {
         mTalkDao.create(talk);
       }
 
-     for(JsonElement l:favArray ){
-       MySchedule mySchedule = new MySchedule();
-       mySchedule.setTitle(l.getAsJsonObject().get("title").getAsString());
-       mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
-       mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
-       mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
-       mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
-       mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
-       mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
-       JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
-       mySchedule.setAssociatedTalkId(talkIds.toString());
-       mySchedule.setHasFavorite(false);
-       mySchedule.setFavoriteTalkId(0);
-       mFavDao.create(mySchedule);
-     }
+      for (JsonElement l : favArray) {
+        MySchedule mySchedule = new MySchedule();
+        mySchedule.setTitle(l.getAsJsonObject().get("title").getAsString());
+        mySchedule.setSubTitle(l.getAsJsonObject().get("sub_title").getAsString());
+        mySchedule.setStart(l.getAsJsonObject().get("start").getAsString());
+        mySchedule.setEnd(l.getAsJsonObject().get("end").getAsString());
+        mySchedule.setClickBlock(l.getAsJsonObject().get("click_block").getAsBoolean());
+        mySchedule.setDate(l.getAsJsonObject().get("date").getAsInt());
+        mySchedule.setId(l.getAsJsonObject().get("id").getAsInt());
+        JsonArray talkIds = l.getAsJsonObject().getAsJsonArray("associated_talk");
+        mySchedule.setAssociatedTalkId(talkIds.toString());
+        mySchedule.setHasFavorite(false);
+        mySchedule.setFavoriteTalkId(0);
+        mFavDao.create(mySchedule);
+      }
+
+      InputStream sponsorJson = mContext.getAssets().open("sponsors.json");
+      JsonParser sponsorParser = new JsonParser();
+      JsonReader sponsorReader = new JsonReader(new InputStreamReader(sponsorJson));
+      reader.setLenient(true);
+
+      JsonObject sponsorData = sponsorParser.parse(sponsorReader).getAsJsonObject();
+      JsonArray sponsorArray = sponsorData.getAsJsonArray("sponsors");
+
+      for (JsonElement k : sponsorArray) {
+        Sponsor sponsor = gson.fromJson(k, Sponsor.class);
+        mSponsorDao.create(sponsor);
+      }
+
       LOGD(TAG, "I am done ~ ");
     } catch (IOException e) {
       e.printStackTrace();

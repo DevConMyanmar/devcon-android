@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -69,6 +68,9 @@ public class TalkListActivity extends BaseActivity
       case 3:
         fragment = SpeakerFragment.getInstance();
         ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(3);
+      case 4:
+        fragment = SpeakerFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(4);
         break;
       default:
         break;
@@ -90,6 +92,9 @@ public class TalkListActivity extends BaseActivity
         break;
       case 3:
         fragment = SpeakerFragment.getInstance();
+        break;
+      case 4:
+        fragment = SponsorFragment.getInstance();
         break;
     }
 

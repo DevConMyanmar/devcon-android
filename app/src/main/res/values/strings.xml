@@ -40,6 +40,7 @@
     <item>Lightening Talks</item>
     <item>Explore</item>
     <item>Speakers</item>
+    <item>Sponsors</item>
   </array>
 
   <!-- Speaker Item -->
@@ -118,4 +119,6 @@
   <string name="no_connection_cannot_connect">No connection. Cannot sync right now.</string>
   <string name="oops">Oops. Something went wrong. Please check your connection.</string>
   <string name="lightening_title">Lightening Talks</string>
+
+  <string name="sponsors">Sponsors</string>
 </resources>

@@ -327,7 +327,7 @@
     {
       "id": "23",
       "title": "Web Browser Automation",
-      "description": "Introduction to Elixir and concurrency",
+      "description": "Web Broswer Automation",
       "photo": "",
       "date": "2014-11-15",
       "favourite": "false",
@@ -819,7 +819,7 @@
       "name": "David Madden",
       "title": "Founder of Code for Change Myanmar",
       "description": "David Madden is an entrepreneur specializing in technology, new media & innovation. He is the Founder of Code for Change Myanmar, an initiative to harness the transformative potential of Myanmar's connectivity revolution. He is also the Co-Founder of Parami Road, a marketing strategy agency in Yangon.\nPrior to moving to Myanmar, David was the Co-Founder of Purpose, a digital strategy agency with offices in New York, London and Rio. David is also the Co-Founder of two major advocacy groups, Avaaz.org and GetUp.org.\nDavid holds a Masters in Public Policy from Harvard University and has degrees in Law and Arts from the University of New South Wales. \ne. david@codeforchangemyanmar.org  \n t. @davidmadden",
-      "photo": "https://lh4.googleusercontent.com/aFT-gRzImP1y94EosvD9MIac3movlcCVR0CCprs9DzMNE7NcUBsAC_EtIg5Pct6N7imzF8RB1lc=w1416-h646"
+      "photo": "https://i.imgur.com/Hx8CBKG.jpg"
     },
     {
       "id": "17",
@@ -833,7 +833,7 @@
       "name": "Sean Lin",
       "title": "Web Evangelist",
       "description": "Sean Lin is developer, entrepreneurs and web evangelist. He has been in Web Industry for past 10 years, working and consulting for companies like Six Apart, Google, Zoho and Salesforce. He spends most of his time working on front-end web projects for various start-ups using cutting edge languages and frameworks. He has recently relocated Myanmar to lay foundation for his enterprise start-up.",
-      "photo": "https://lh6.googleusercontent.com/1EZPNLmBd-RKDHWzBcx135P7bdZUj46zec87w_yfGrZ-P0mvvPMFDevZRh4QuSxZdARG=w2560-h1246"
+      "photo": "http://i.imgur.com/YFmYF4a.jpg"
     },
     {
       "id": "19",
@@ -903,7 +903,7 @@
       "name": "Ye Wint Ko",
       "title": "CTO @ Bindez",
       "description": "Cofounder and Chief Architect at a startup called Bindez. He has been in IT industry since 6 years ago developing information systems in the area of information retrieval, web archiving and content analysis. ",
-      "photo": "https://lh6.googleusercontent.com/3fK5OP27QHIO9jElqIKq8SBki0Gas0JDh06gch3Ot4JRT5FdQjXPiV6Nb5LothbYHXFO=w2560-h1246"
+      "photo": "http://i.imgur.com/1rRT4xs.png"
     },
     {
       "id": "29",
@@ -1016,7 +1016,7 @@
       "associated_talk": [
         "7",
         "13",
-        "19"
+        "18"
       ]
     },
     {
@@ -1028,9 +1028,9 @@
       "sub_title": "Click to view",
       "date": "0",
       "associated_talk": [
-        "11",
+        "8",
         "14",
-        "20"
+        "19"
       ]
     },
     {
@@ -1054,8 +1054,8 @@
       "associated_talk": [
         "9",
         "15",
-        "21",
-        "25"
+        "20",
+        "24"
       ]
     },
     {
@@ -1068,8 +1068,8 @@
       "date": "0",
       "associated_talk": [
         "10",
-        "22",
-        "25"
+        "21",
+        "24"
       ]
     },
     {
@@ -1082,9 +1082,9 @@
       "date": "0",
       "associated_talk": [
         "11",
-        "17",
-        "23",
-        "25"
+        "16",
+        "22",
+        "24"
       ]
     },
     {
@@ -1097,9 +1097,9 @@
       "date": "0",
       "associated_talk": [
         "12",
-        "18",
-        "24",
-        "25"
+        "17",
+        "23",
+        "24"
       ]
     },
     {
@@ -1111,10 +1111,10 @@
       "sub_title": "Click to view",
       "date": "1",
       "associated_talk": [
-        "26",
-        "32",
-        "38",
-        "43"
+        "25",
+        "31",
+        "37",
+        "42"
       ]
     },
     {
@@ -1126,10 +1126,10 @@
       "sub_title": "Click to view",
       "date": "1",
       "associated_talk": [
-        "27",
-        "33",
-        "39",
-        "43"
+        "26",
+        "32",
+        "38",
+        "42"
       ]
     },
     {
@@ -1141,10 +1141,10 @@
       "sub_title": "Click to view",
       "date": "1",
       "associated_talk": [
-        "28",
-        "34",
-        "40",
-        "43"
+        "27",
+        "33",
+        "39",
+        "42"
       ]
     },
     {
@@ -1166,9 +1166,9 @@
       "sub_title": "Click to View",
       "date": "1",
       "associated_talk": [
-        "29",
-        "35",
-        "41"
+        "28",
+        "34",
+        "40"
       ]
     },
     {
@@ -1180,9 +1180,9 @@
       "sub_title": "Click to View",
       "date": "1",
       "associated_talk": [
-        "30",
-        "36",
-        "42"
+        "29",
+        "35",
+        "41"
       ]
     },
     {
@@ -1194,8 +1194,8 @@
       "sub_title": "Click to View",
       "date": "1",
       "associated_talk": [
-        "31",
-        "37"
+        "30",
+        "36"
       ]
     }
   ]
