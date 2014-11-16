@@ -220,7 +220,7 @@
       ]
     },
     {
-      "id": "17",
+      "id": "16",
       "title": "The Art of killing bugs",
       "description": "The Art of killing bugs",
       "photo": "",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "id": "18",
+      "id": "17",
       "title": "What's new in Android 5.0 ?",
       "description": "What's new in Android 5.0 ?",
       "photo": "",
@@ -250,7 +250,7 @@
       ]
     },
     {
-      "id": "19",
+      "id": "18",
       "title": "KISS",
       "description": "KISS",
       "photo": "",
@@ -265,7 +265,7 @@
       ]
     },
     {
-      "id": "20",
+      "id": "19",
       "title": "Quick Intro to Node.js",
       "description": "Quick Intro to Node.js",
       "photo": "",
@@ -280,7 +280,7 @@
       ]
     },
     {
-      "id": "21",
+      "id": "20",
       "title": "Hello Zephir",
       "description": "Hello Zephir",
       "photo": "",
@@ -295,7 +295,7 @@
       ]
     },
     {
-      "id": "22",
+      "id": "21",
       "title": "My First Contact With Functional Programming",
       "description": "This talk is based on the experience of a developer when he ventured into the world of functional programming with Haskell. Haskell is a profound language and learning it is a hugely rewarding experience. Coding in Haskell changes the way you think when you are approaching problems. Haskell helps to create software that is short, fast, and safe. Learning Haskell is whole lot of fun and you will have a wonderful experience learning it. One will have a better vision of functional paradigm in the course of learning Haskell and can venture into other functional programming languages too.",
       "photo": "",
@@ -310,7 +310,7 @@
       ]
     },
     {
-      "id": "23",
+      "id": "22",
       "title": "Introduction to Elixir and concurrency",
       "description": "Introduction to Elixir and concurrency",
       "photo": "",
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "id": "24",
+      "id": "23",
       "title": "Web Browser Automation",
       "description": "Introduction to Elixir and concurrency",
       "photo": "",
@@ -340,7 +340,7 @@
       ]
     },
     {
-      "id": "25",
+      "id": "24",
       "title": "Hands on experience with Unity3D",
       "description": "Hands on experience with Unity3D",
       "photo": "",
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "id": "26",
+      "id": "25",
       "title": "Web and Mobile: The best of both",
       "description": "Web and Mobile: The best of both",
       "photo": "",
@@ -371,7 +371,7 @@
       ]
     },
     {
-      "id": "27",
+      "id": "26",
       "title": "Startup Ecosystem in Myanmar.",
       "description": "Startup Ecosystem in Myanmar.",
       "photo": "",
@@ -386,7 +386,7 @@
       ]
     },
     {
-      "id": "28",
+      "id": "27",
       "title": " -  ",
       "description": " - ",
       "photo": "",
@@ -401,7 +401,7 @@
       ]
     },
     {
-      "id": "29",
+      "id": "28",
       "title": "e-Government (Developer's perspective)",
       "description": "e-Government (Developer's perspective)",
       "photo": "",
@@ -416,7 +416,7 @@
       ]
     },
     {
-      "id": "30",
+      "id": "29",
       "title": "Your business with Open Source software and Open Hardware",
       "description": "Your business with Open Source software and Open Hardware",
       "photo": "",
@@ -431,7 +431,7 @@
       ]
     },
     {
-      "id": "31",
+      "id": "30",
       "title": "Mobile & Web",
       "description": "Mobile & Web",
       "photo": "",
@@ -449,7 +449,7 @@
       ]
     },
     {
-      "id": "32",
+      "id": "31",
       "title": "How to build simple analytics system using Ruby and MongoDB",
       "description": "How to build simple analytics system using Ruby and MongoDB",
       "photo": "",
@@ -464,7 +464,7 @@
       ]
     },
     {
-      "id": "33",
+      "id": "32",
       "title": "How to become a JEDI master at Continuous Integration ?",
       "description": "How to become a JEDI master at Continuous Integration ?",
       "photo": "",
@@ -479,7 +479,7 @@
       ]
     },
     {
-      "id": "34",
+      "id": "33",
       "title": "Enterprise Mobile Application – challenges and solutions",
       "description": "Enterprise Mobile Application – challenges and solutions",
       "photo": "",
@@ -494,7 +494,7 @@
       ]
     },
     {
-      "id": "35",
+      "id": "34",
       "title": "Crawling and precise data extraction with Apache Nutch",
       "description": "Since internet and online media are become matured, the collection and analysis of data from varieties of internet sources play a very important role for businesses to make better decision and to serve their users with more relevant information. Here in this talk, the audience will gain knowledge on web crawler and html parsing to archive and analyze the content from the websites. The presentation will focus on matured and opensource web crawler called Apache Nutch and its weakness and strength in production systems.",
       "photo": "",
@@ -509,7 +509,7 @@
       ]
     },
     {
-      "id": "36",
+      "id": "35",
       "title": "Artificial Intelligence: A Brief History",
       "description": "-",
       "photo": "",
@@ -524,7 +524,7 @@
       ]
     },
     {
-      "id": "37",
+      "id": "36",
       "title": "App Development for Web and Mobile with AngularJS",
       "description": "AngularJS has become favourite choice for front-end developers for its low learning curve and large sets of features with solid support for both Web and Mobile Web. With the help of Ionic Framework, developing mobile web app or hybrid app has become swift and smooth. This talk will cover some basic technique and concept to create a simple yet interactive mobile and web app using AngularJS and Ionic Framework.",
       "photo": "",
@@ -539,7 +539,7 @@
       ]
     },
     {
-      "id": "38",
+      "id": "37",
       "title": "Mobile Value Added Services Development",
       "description": "Mobile Value Added Services Development",
       "photo": "",
@@ -554,7 +554,7 @@
       ]
     },
     {
-      "id": "39",
+      "id": "38",
       "title": "Distributed POS System",
       "description": "Distributed POS System",
       "photo": "",
@@ -569,7 +569,7 @@
       ]
     },
     {
-      "id": "40",
+      "id": "39",
       "title": "Use of Digital Certificate in Web applications",
       "description": "Use of Digital Certificate in Web applications",
       "photo": "",
@@ -585,7 +585,7 @@
       ]
     },
     {
-      "id": "41",
+      "id": "40",
       "title": "Finished a Responsive Website within 16 hours with Bootstrap",
       "description": "Finished a Responsive Website within 16 hours with Bootstrap",
       "photo": "",
@@ -600,7 +600,7 @@
       ]
     },
     {
-      "id": "42",
+      "id": "41",
       "title": "User authentication & authorization",
       "description": "User authentication & authorization",
       "photo": "",
@@ -615,7 +615,7 @@
       ]
     },
     {
-      "id": "43",
+      "id": "42",
       "title": "Android Workshop",
       "description": "Android Workshop",
       "photo": "",
@@ -628,7 +628,7 @@
       "speakers": []
     },
     {
-          "id": "44",
+          "id": "43",
           "title": "12 Factor App: A modern methodology for building modern web apps",
           "description": "Lightening Talk",
           "photo": "",
@@ -642,7 +642,7 @@
         },
 
     {
-          "id": "45",
+          "id": "44",
           "title": "Sitting Ducks",
           "description": "Lightening Talk",
           "photo": "",
@@ -656,7 +656,7 @@
         },
 
       {
-        "id": "46",
+        "id": "45",
         "title": "Single, and Secure? Security Issues in Single Page Web Applications",
         "description": "Lightening Talk",
         "photo": "",
@@ -669,7 +669,7 @@
         "speakers": []
         },
       {
-        "id": "47",
+        "id": "46",
         "title": "Using Regex in Pattern Recognition",
         "description": "Lightening Talk",
         "photo": "",
@@ -682,7 +682,7 @@
         "speakers": ["2"]
       },
       {
-        "id": "48",
+        "id": "47",
         "title": "Common Back-End Server Architecture Design",
         "description": "Lightening Talk",
         "photo": "",
@@ -695,7 +695,7 @@
         "speakers": ["4"]
       },
       {
-        "id": "49",
+        "id": "48",
         "title": "My Recent Mistakes that Forever Changed How I Develop",
         "description": "Lightening Talk",
         "photo": "",
@@ -1068,7 +1068,6 @@
       "date": "0",
       "associated_talk": [
         "10",
-        "16",
         "22",
         "25"
       ]
