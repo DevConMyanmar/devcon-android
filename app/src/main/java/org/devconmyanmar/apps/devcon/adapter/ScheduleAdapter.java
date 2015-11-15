@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -36,8 +35,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -205,8 +204,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
       default:
         return rootView;
     }
-
-
   }
 
   @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
