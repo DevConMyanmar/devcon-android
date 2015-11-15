@@ -33,7 +33,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,8 +40,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
@@ -76,7 +75,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     super.onCreate(savedInstanceState);
     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
     mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
-    mActivity = (ActionBarActivity) getActivity();
+    mActivity = getActivity();
 
     if (savedInstanceState != null) {
       mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -97,8 +96,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     View v = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
     ButterKnife.bind(this, v);
     mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+      @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selectItem(position);
         ((DrawerListAdapter) mDrawerListView.getAdapter()).setChecked(mCurrentSelectedPosition);
         ((DrawerListAdapter) mDrawerListView.getAdapter()).notifyDataSetChanged();
@@ -138,8 +136,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     // between the navigation drawer and the action bar app icon.
     mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.drawable.ic_drawer,
         R.string.drawer_open, R.string.drawer_close) {
-      @Override
-      public void onDrawerClosed(View drawerView) {
+      @Override public void onDrawerClosed(View drawerView) {
         super.onDrawerClosed(drawerView);
         if (!isAdded()) {
           return;
@@ -148,8 +145,7 @@ public class NavigationDrawerFragment extends BaseFragment {
         getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
       }
 
-      @Override
-      public void onDrawerOpened(View drawerView) {
+      @Override public void onDrawerOpened(View drawerView) {
         super.onDrawerOpened(drawerView);
         if (!isAdded()) {
           return;
@@ -175,8 +171,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     // Defer code dependent on restoration of previous instance state.
     mDrawerLayout.post(new Runnable() {
-      @Override
-      public void run() {
+      @Override public void run() {
         mDrawerToggle.syncState();
       }
     });

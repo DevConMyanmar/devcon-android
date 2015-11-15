@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -30,7 +29,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
@@ -41,7 +40,7 @@ import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
   protected SpeakerDao speakerDao;
   protected TalkDao talkDao;
@@ -81,8 +80,7 @@ public abstract class BaseActivity extends ActionBarActivity {
           .setDuration(shortAnimTime)
           .alpha(show ? 0 : 1)
           .setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
+            @Override public void onAnimationEnd(Animator animation) {
               listView.setVisibility(show ? View.GONE : View.VISIBLE);
             }
           });
@@ -92,8 +90,7 @@ public abstract class BaseActivity extends ActionBarActivity {
           .setDuration(shortAnimTime)
           .alpha(show ? 1 : 0)
           .setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
+            @Override public void onAnimationEnd(Animator animation) {
               progressView.setVisibility(show ? View.VISIBLE : View.GONE);
             }
           });
