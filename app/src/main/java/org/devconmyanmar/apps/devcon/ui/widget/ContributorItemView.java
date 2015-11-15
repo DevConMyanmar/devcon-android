@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.bumptech.glide.Glide;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Contributor;
@@ -19,8 +19,8 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
  */
 public class ContributorItemView extends RelativeLayout {
 
-  @InjectView(R.id.contributor_image) ImageView mSpeakerImage;
-  @InjectView(R.id.contributor_name) TextView mSpeakerTitle;
+  @Bind(R.id.contributor_image) ImageView mSpeakerImage;
+  @Bind(R.id.contributor_name) TextView mSpeakerTitle;
 
   public ContributorItemView(Context context) {
     super(context);
@@ -36,7 +36,7 @@ public class ContributorItemView extends RelativeLayout {
 
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
   }
 
   public void bindTo(final Contributor contributor, Context context) {

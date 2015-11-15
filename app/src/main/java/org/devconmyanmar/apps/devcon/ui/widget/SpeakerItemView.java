@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.bumptech.glide.Glide;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
@@ -17,9 +17,9 @@ import org.devconmyanmar.apps.devcon.transformer.CircleTransformer;
  */
 public class SpeakerItemView extends RelativeLayout {
 
-  @InjectView(R.id.speaker_image) ImageView mSpeakerImage;
-  @InjectView(R.id.speaker_title) TextView mSpeakerTitle;
-  @InjectView(R.id.speaker_abstract) TextView mSpeakerAbstract;
+  @Bind(R.id.speaker_image) ImageView mSpeakerImage;
+  @Bind(R.id.speaker_title) TextView mSpeakerTitle;
+  @Bind(R.id.speaker_abstract) TextView mSpeakerAbstract;
 
   public SpeakerItemView(Context context) {
     super(context);
@@ -35,7 +35,7 @@ public class SpeakerItemView extends RelativeLayout {
 
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
   }
 
   public void bindTo(final Speaker speaker, Context context) {

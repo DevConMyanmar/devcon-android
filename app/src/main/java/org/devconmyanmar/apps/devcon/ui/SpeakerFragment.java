@@ -40,7 +40,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnItemClick;
 import com.squareup.otto.Subscribe;
 import java.sql.SQLException;
@@ -65,9 +65,9 @@ public class SpeakerFragment extends BaseFragment {
 
   private final static String SCREEN_LABEL = "Speaker List";
 
-  @InjectView(R.id.speaker_swipe_refresh_view) CustomSwipeRefreshLayout speakerSRView;
-  @InjectView(R.id.my_list) ListView speakerList;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.speaker_swipe_refresh_view) CustomSwipeRefreshLayout speakerSRView;
+  @Bind(R.id.my_list) ListView speakerList;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
 
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
   private BaseActivity mActivity;
@@ -90,7 +90,7 @@ public class SpeakerFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_speaker, container, false);
-    ButterKnife.inject(this, rootView);
+    ButterKnife.bind(this, rootView);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);

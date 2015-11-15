@@ -34,7 +34,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +48,14 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
 public class SpeakerDetailActivity extends BaseActivity {
 
-  @InjectView(R.id.speaker_pager) ViewPager mSpeakerViewPager;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.speaker_pager) ViewPager mSpeakerViewPager;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_speaker_detail);
 
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     ActionBar actionBar = getSupportActionBar();
     actionBar.setTitle(R.string.speaker_profile);

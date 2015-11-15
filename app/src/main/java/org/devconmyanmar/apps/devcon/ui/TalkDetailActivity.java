@@ -34,7 +34,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +48,14 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
 
 public class TalkDetailActivity extends BaseActivity {
 
-  @InjectView(R.id.schedule_pager) ViewPager mScheduleViewPager;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.schedule_pager) ViewPager mScheduleViewPager;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_detail);
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     ActionBar actionBar = getSupportActionBar();
     actionBar.setTitle(R.string.title_activity_schedule_detail);

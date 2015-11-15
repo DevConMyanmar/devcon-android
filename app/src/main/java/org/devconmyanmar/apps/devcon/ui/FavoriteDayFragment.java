@@ -37,7 +37,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnItemClick;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -58,8 +58,8 @@ public class FavoriteDayFragment extends BaseFragment {
   private static final String POSITION_ARGS = "position args";
   private static final String TAG = makeLogTag(FavoriteDayFragment.class);
 
-  @InjectView(R.id.favorite_list) ListView mFavoriteList;
-  @InjectView(R.id.loading_progress_bar) ProgressBar mLoadingProgress;
+  @Bind(R.id.favorite_list) ListView mFavoriteList;
+  @Bind(R.id.loading_progress_bar) ProgressBar mLoadingProgress;
 
   private List<MySchedule> mMySchedules = new ArrayList<MySchedule>();
   private MyScheduleDao mMyScheduleDao;
@@ -90,7 +90,7 @@ public class FavoriteDayFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_favorite, container, false);
-    ButterKnife.inject(this, v);
+    ButterKnife.bind(this, v);
 
     LOGD(TAG, "I am on onCreateView");
     if (!(lazyLoadTask.getStatus() == AsyncTask.Status.RUNNING)) {

@@ -33,7 +33,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -121,11 +121,11 @@ public class SponsorAdapter extends BaseAdapter implements StickyListHeadersAdap
   }
 
   static class SponsorVH {
-    @InjectView(R.id.sponsor_img) ImageView sponsorImage;
-    @InjectView(R.id.sponsor_name) TextView sponsorName;
+    @Bind(R.id.sponsor_img) ImageView sponsorImage;
+    @Bind(R.id.sponsor_name) TextView sponsorName;
 
     public SponsorVH(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 

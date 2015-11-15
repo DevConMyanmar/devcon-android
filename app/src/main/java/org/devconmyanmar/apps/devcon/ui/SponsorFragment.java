@@ -35,7 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import java.sql.SQLException;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
@@ -52,8 +52,8 @@ public class SponsorFragment extends BaseFragment {
 
   private final static String SCREEN_LABEL = "Sponsor List";
 
-  @InjectView(R.id.sponsor_list) StickyListHeadersListView speakerList;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.sponsor_list) StickyListHeadersListView speakerList;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
 
   private BaseActivity mActivity;
 
@@ -75,7 +75,7 @@ public class SponsorFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_sponsor, container, false);
-    ButterKnife.inject(this, rootView);
+    ButterKnife.bind(this, rootView);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
     actionBar.setDisplayHomeAsUpEnabled(true);

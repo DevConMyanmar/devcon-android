@@ -37,7 +37,7 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -247,35 +247,35 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   }
 
   static class KeynoteViewHolder {
-    @InjectView(R.id.keynote_row) FrameLayout mKeynoteWrapper;
-    @InjectView(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
-    @InjectView(R.id.keynote_title) TextView mKeynoteTitle;
-    @InjectView(R.id.keynote_time_and_place) TextView mKeyNoteTime;
+    @Bind(R.id.keynote_row) FrameLayout mKeynoteWrapper;
+    @Bind(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
+    @Bind(R.id.keynote_title) TextView mKeynoteTitle;
+    @Bind(R.id.keynote_time_and_place) TextView mKeyNoteTime;
 
     public KeynoteViewHolder(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 
   static class NormalViewHolder {
-    @InjectView(R.id.normal_card_container) FrameLayout mNormalContainer;
-    @InjectView(R.id.normal_schedule_from_time) TextView mFromTime;
-    @InjectView(R.id.normal_schedule_to_time) TextView mToTime;
-    @InjectView(R.id.normal_schedule_title) TextView mScheduleTitle;
-    @InjectView(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
+    @Bind(R.id.normal_card_container) FrameLayout mNormalContainer;
+    @Bind(R.id.normal_schedule_from_time) TextView mFromTime;
+    @Bind(R.id.normal_schedule_to_time) TextView mToTime;
+    @Bind(R.id.normal_schedule_title) TextView mScheduleTitle;
+    @Bind(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
 
     public NormalViewHolder(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 
   static class WorkshopViewHolder {
-    @InjectView(R.id.workshop_background) ForegroundImageView mWorkshopBackground;
-    @InjectView(R.id.workshop_title) TextView mWorkshopTitle;
-    @InjectView(R.id.workshop_time_and_place) TextView mWorkshopTime;
+    @Bind(R.id.workshop_background) ForegroundImageView mWorkshopBackground;
+    @Bind(R.id.workshop_title) TextView mWorkshopTitle;
+    @Bind(R.id.workshop_time_and_place) TextView mWorkshopTime;
 
     public WorkshopViewHolder(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 

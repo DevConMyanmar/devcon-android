@@ -42,7 +42,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
@@ -54,8 +54,8 @@ public class NavigationDrawerFragment extends BaseFragment {
 
   private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
   private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-  @InjectView(R.id.drawer_list) ListView mDrawerListView;
-  @InjectView(R.id.drawer_title) TextView mDrawerTitle;
+  @Bind(R.id.drawer_list) ListView mDrawerListView;
+  @Bind(R.id.drawer_title) TextView mDrawerTitle;
   private int mCurrentSelectedPosition = 1;
   private boolean mFromSavedInstanceState;
   private boolean mUserLearnedDrawer;
@@ -95,7 +95,7 @@ public class NavigationDrawerFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-    ButterKnife.inject(this, v);
+    ButterKnife.bind(this, v);
     mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

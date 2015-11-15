@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnClick;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -60,12 +60,12 @@ public class TalkDetailFragment extends BaseFragment {
   private static final String TAG = makeLogTag(TalkDetailFragment.class);
   private static final String SCREEN_LABEL = "Talk Detail";
 
-  @InjectView(R.id.talk_title) TextView mTalkTitle;
-  @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
-  @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
-  @InjectView(R.id.talk_description) TextView talkDescription;
-  @InjectView(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
-  @InjectView(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
+  @Bind(R.id.talk_title) TextView mTalkTitle;
+  @Bind(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
+  @Bind(R.id.talk_time_and_room) TextView talkTimeAndRoom;
+  @Bind(R.id.talk_description) TextView talkDescription;
+  @Bind(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
+  @Bind(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
 
   private LUtils mLUtils;
   private int mTalkId;
@@ -98,7 +98,7 @@ public class TalkDetailFragment extends BaseFragment {
     // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_talk_detail, container, false);
 
-    ButterKnife.inject(this, rootView);
+    ButterKnife.bind(this, rootView);
     if (Build.VERSION.SDK_INT >= 19) {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);

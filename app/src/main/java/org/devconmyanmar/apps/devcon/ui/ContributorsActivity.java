@@ -33,7 +33,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
@@ -58,15 +58,15 @@ public class ContributorsActivity extends BaseActivity {
   private static final String ORG = "DevConMyanmar";
   private static final String REPO = "devcon-android-2014";
   private static final String TAG = makeLogTag(ContributorsActivity.class);
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
-  @InjectView(R.id.contributor_list) ListView contributorList;
-  @InjectView(R.id.contributor_loading_progress) ProgressBar loadingProgress;
-  @InjectView(R.id.no_connection_msg) TextView noConnectionMsg;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.contributor_list) ListView contributorList;
+  @Bind(R.id.contributor_loading_progress) ProgressBar loadingProgress;
+  @Bind(R.id.no_connection_msg) TextView noConnectionMsg;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_contributors);
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     mToolbar.setTitle(getString(R.string.about_contributors));
     getSupportActionBar().setHomeButtonEnabled(true);

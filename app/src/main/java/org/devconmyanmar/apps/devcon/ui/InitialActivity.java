@@ -32,7 +32,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.utils.DataUtils;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
@@ -42,13 +42,13 @@ import org.devconmyanmar.apps.devcon.utils.SharePref;
  */
 public class InitialActivity extends BaseActivity {
 
-  @InjectView(R.id.initial_progress_bar) ProgressBar mInitialProgress;
-  @InjectView(R.id.initial_progress_text) TextView mLoadingText;
+  @Bind(R.id.initial_progress_bar) ProgressBar mInitialProgress;
+  @Bind(R.id.initial_progress_text) TextView mLoadingText;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_initial);
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
     mInitialProgress.setVisibility(View.GONE);
     if (!SharePref.getInstance(InitialActivity.this).isFirstTime()) {
       goToTalkList();

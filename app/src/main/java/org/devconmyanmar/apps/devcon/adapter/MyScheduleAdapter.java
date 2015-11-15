@@ -36,7 +36,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -168,7 +168,7 @@ public class MyScheduleAdapter extends BaseAdapter {
   }
 
   /**
-   * This class contains all butterknife-injected Views & Layouts from layout file
+   * This class contains all butterknife-binded Views & Layouts from layout file
    * 'my_schedule_items.xml'
    * for easy to all layout elements.
    *
@@ -177,15 +177,15 @@ public class MyScheduleAdapter extends BaseAdapter {
    */
 
   class ViewHolder {
-    @InjectView(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
-    @InjectView(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
-    @InjectView(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
-    @InjectView(R.id.favorite_card_closer) FrameLayout mFrameLayout;
-    @InjectView(R.id.favorite_schedule_from_time) TextView mFromTime;
-    @InjectView(R.id.favorite_schedule_to_time) TextView mToTime;
+    @Bind(R.id.favorite_schedule_title) TextView mFavoriteScheduleTitle;
+    @Bind(R.id.favorite_schedule_speakers) TextView mFavoriteScheduleSpeakers;
+    @Bind(R.id.favorite_card_container) RelativeLayout mFavoriteCardContainer;
+    @Bind(R.id.favorite_card_closer) FrameLayout mFrameLayout;
+    @Bind(R.id.favorite_schedule_from_time) TextView mFromTime;
+    @Bind(R.id.favorite_schedule_to_time) TextView mToTime;
 
     ViewHolder(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 }

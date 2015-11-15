@@ -32,7 +32,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import java.util.ArrayList;
 import org.devconmyanmar.apps.devcon.R;
 
@@ -100,7 +100,7 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   /**
-   * This class contains all butterknife-injected Views & Layouts from layout file
+   * This class contains all butterknife-binded Views & Layouts from layout file
    * 'drawer_list_item.xml'
    * for easy to all layout elements.
    *
@@ -108,11 +108,11 @@ public class DrawerListAdapter extends BaseAdapter {
    *         (http://inmite.github.io)
    */
   static class ViewHolder {
-    @InjectView(android.R.id.text1) TextView mText1;
-    @InjectView(R.id.drawer_icon) ImageView mDrawerIcon;
+    @Bind(android.R.id.text1) TextView mText1;
+    @Bind(R.id.drawer_icon) ImageView mDrawerIcon;
 
     ViewHolder(View view) {
-      ButterKnife.inject(this, view);
+      ButterKnife.bind(this, view);
     }
   }
 }

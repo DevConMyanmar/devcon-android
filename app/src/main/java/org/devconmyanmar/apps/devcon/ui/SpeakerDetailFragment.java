@@ -32,7 +32,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.bumptech.glide.Glide;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
@@ -49,10 +49,10 @@ public class SpeakerDetailFragment extends BaseFragment {
 
   private static final String SCREEN_LABEL = "Speaker Detail";
 
-  @InjectView(R.id.speaker_detail_name) TextView mSpeakerName;
-  @InjectView(R.id.speaker_detail_title) TextView mSpeakerTitle;
-  @InjectView(R.id.speaker_detail_profile_image) ImageView mSpeakerProfileImage;
-  @InjectView(R.id.speaker_detail_description) TextView mSpeakerDescription;
+  @Bind(R.id.speaker_detail_name) TextView mSpeakerName;
+  @Bind(R.id.speaker_detail_title) TextView mSpeakerTitle;
+  @Bind(R.id.speaker_detail_profile_image) ImageView mSpeakerProfileImage;
+  @Bind(R.id.speaker_detail_description) TextView mSpeakerDescription;
 
   private String mSpeakerId;
 
@@ -83,7 +83,7 @@ public class SpeakerDetailFragment extends BaseFragment {
     // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_speaker_detail, container, false);
 
-    ButterKnife.inject(this, rootView);
+    ButterKnife.bind(this, rootView);
     if (Build.VERSION.SDK_INT >= 19) {
 
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());

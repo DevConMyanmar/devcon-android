@@ -39,7 +39,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnClick;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -65,13 +65,13 @@ public class TalkChooserDetailFragment extends BaseFragment {
   private static final String TAG = makeLogTag(TalkDetailFragment.class);
   private static final String SCREEN_LABEL = "Talk Detail";
 
-  @InjectView(R.id.talk_title) TextView mTalkTitle;
-  @InjectView(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
-  @InjectView(R.id.talk_time_and_room) TextView talkTimeAndRoom;
-  @InjectView(R.id.talk_description) TextView talkDescription;
-  @InjectView(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
-  @InjectView(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.talk_title) TextView mTalkTitle;
+  @Bind(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
+  @Bind(R.id.talk_time_and_room) TextView talkTimeAndRoom;
+  @Bind(R.id.talk_description) TextView talkDescription;
+  @Bind(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
+  @Bind(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
 
   private LUtils mLUtils;
   private int mTalkId;
@@ -106,7 +106,7 @@ public class TalkChooserDetailFragment extends BaseFragment {
     // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_talk_chooser_detail, container, false);
 
-    ButterKnife.inject(this, rootView);
+    ButterKnife.bind(this, rootView);
     mActivity.setSupportActionBar(mToolbar);
     mActivity.getSupportActionBar().setTitle(R.string.title_activity_schedule_detail);
     mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -40,7 +40,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.ArrayList;
@@ -58,8 +58,8 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
 public class TalkChooserFragment extends BaseFragment {
   private List<Talk> lists;
   private BaseActivity mBaseActivity;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
-  @InjectView(R.id.my_list) ListView mMyList;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.my_list) ListView mMyList;
 
   public static TalkChooserFragment getInstance(String start, String end,String talkId){
     Bundle bundle = new Bundle();
@@ -79,7 +79,7 @@ public class TalkChooserFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_speaker, container, false);
-    ButterKnife.inject(this, v);
+    ButterKnife.bind(this, v);
     mBaseActivity = (BaseActivity)getActivity();
     ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getActivity());
     mBaseActivity.setSupportActionBar(mToolbar);

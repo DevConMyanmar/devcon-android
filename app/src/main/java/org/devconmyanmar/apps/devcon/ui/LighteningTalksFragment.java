@@ -39,7 +39,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.LighteningSlidingAdapter;
@@ -51,9 +51,9 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class LighteningTalksFragment extends BaseFragment {
   private static final String TAG = makeLogTag(ExploreFragment.class);
-  @InjectView(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
-  @InjectView(R.id.view_pager) ViewPager mViewPager;
-  @InjectView(R.id.toolbar) Toolbar mToolbar;
+  @Bind(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
+  @Bind(R.id.view_pager) ViewPager mViewPager;
+  @Bind(R.id.toolbar) Toolbar mToolbar;
   private BaseActivity mActivity;
 
   private final static String SCREEN_LABEL = "Lightening Talks";
@@ -78,7 +78,7 @@ public class LighteningTalksFragment extends BaseFragment {
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
-    ButterKnife.inject(this, view);
+    ButterKnife.bind(this, view);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
     actionBar.setTitle(mActivity.getString(R.string.lightening_title));
