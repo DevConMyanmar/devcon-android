@@ -60,7 +60,6 @@ public class TalkDetailActivity extends BaseActivity {
     ActionBar actionBar = getSupportActionBar();
     actionBar.setTitle(R.string.title_activity_schedule_detail);
     actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;
 

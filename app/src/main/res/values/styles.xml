@@ -1,6 +1,7 @@
 <resources>
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="AppTheme"
+      parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="toolbarStyle">@style/myToolbarStyle</item>
     <item name="toolbarNavigationButtonStyle">@style/myToolbarNavigationButtonStyle</item>
@@ -10,6 +11,7 @@
     <item name="colorAccent">@color/theme_accent_1</item>
 
   </style>
+
   <style name="myToolbarNavigationButtonStyle"
       parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
     <item name="android:src">@drawable/ic_drawer_explore</item>
@@ -19,12 +21,14 @@
     <item name="android:layout_gravity">center_vertical</item>
   </style>
 
-  <style name="myToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+  <style name="myToolbarStyle"
+      parent="@style/Widget.AppCompat.Toolbar">
     <item name="android:paddingRight">10dp</item>
     <item name="android:gravity">center_vertical</item>
   </style>
 
-  <style name="AppTheme.ScheduleActivity" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="AppTheme.ScheduleActivity"
+      parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowContentOverlay">@null</item>
 
     <item name="colorPrimary">@color/theme_primary</item>
@@ -32,10 +36,6 @@
     <item name="colorAccent">@color/theme_accent_1</item>
   </style>
 
-  <style name="myToolbarActionOverflowButtonStyle" parent="">
-    <item name="android:src">@drawable/ic_menu_moreoverflow_mtrl_alpha</item>
-    <item name="android:layout_gravity">center_vertical</item>
-  </style>
   <style name="KeynoteView"/>
 
   <style name="KeynoteView.KeynoteImageStyle">
@@ -63,7 +63,8 @@
     <item name="android:background">?android:selectableItemBackground</item>
   </style>
 
-  <style name="KeynoteView.KeynoteTimeAndPlace" parent="KeynoteView.KeynoteTitleStyle">
+  <style name="KeynoteView.KeynoteTimeAndPlace"
+      parent="KeynoteView.KeynoteTitleStyle">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>
 
@@ -109,7 +110,8 @@
 
   </style>
 
-  <style name="ScheduleView.LightningTitle" parent="ScheduleView.TitleStyle">
+  <style name="ScheduleView.LightningTitle"
+      parent="ScheduleView.TitleStyle">
     <item name="android:textSize">@dimen/text_size_small</item>
   </style>
 

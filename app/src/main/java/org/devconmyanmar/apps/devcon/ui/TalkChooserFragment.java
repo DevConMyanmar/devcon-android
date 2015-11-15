@@ -86,7 +86,6 @@ public class TalkChooserFragment extends BaseFragment {
     ActionBar actionBar = mBaseActivity.getSupportActionBar();
     actionBar.setTitle(getArguments().getString("START_TIME")+"-"+getArguments().getString("END_TIME"));
     actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
     lists = flattenTalks(getArguments().getString("TALK_ID"));
 

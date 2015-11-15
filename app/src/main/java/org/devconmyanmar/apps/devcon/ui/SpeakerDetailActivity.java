@@ -59,7 +59,6 @@ public class SpeakerDetailActivity extends BaseActivity {
     setSupportActionBar(mToolbar);
     ActionBar actionBar = getSupportActionBar();
     actionBar.setTitle(R.string.speaker_profile);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
     actionBar.setDisplayHomeAsUpEnabled(true);
 
     Intent intent = getIntent();

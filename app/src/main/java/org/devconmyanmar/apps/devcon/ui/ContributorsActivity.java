@@ -71,7 +71,6 @@ public class ContributorsActivity extends BaseActivity {
     mToolbar.setTitle(getString(R.string.about_contributors));
     getSupportActionBar().setHomeButtonEnabled(true);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
 
     if (ConnectionUtils.isOnline(this)) {
       getContrib();

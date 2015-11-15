@@ -110,7 +110,6 @@ public class TalkChooserDetailFragment extends BaseFragment {
     mActivity.setSupportActionBar(mToolbar);
     mActivity.getSupportActionBar().setTitle(R.string.title_activity_schedule_detail);
     mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    mActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_ab_back_mtrl_am_alpha);
     if (Build.VERSION.SDK_INT >= 19) {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
