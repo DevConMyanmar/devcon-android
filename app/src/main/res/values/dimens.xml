@@ -16,7 +16,7 @@
   <dimen name="text_size_large">18sp</dimen>
   <dimen name="text_size_xlarge">20sp</dimen>
 
-  <dimen name="navigation_drawer_width">240dp</dimen>
+  <dimen name="navigation_drawer_width">320dp</dimen>
 
   <dimen name="speaker_image_size">48dp</dimen>
   <dimen name="speaker_detail_image_size">96dp</dimen>
