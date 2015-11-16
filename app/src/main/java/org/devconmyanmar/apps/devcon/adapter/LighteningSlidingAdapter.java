@@ -19,8 +19,7 @@ public class LighteningSlidingAdapter extends FragmentStatePagerAdapter {
   }
 
   @Override public Fragment getItem(int position) {
-    return LighteningTalkDaysFragment.getInstance(position+1);
-
+    return LighteningTalkDaysFragment.getInstance(position + 1);
   }
 
   @Override public int getCount() {

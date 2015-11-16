@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -69,11 +68,11 @@ public class SharePref {
     mEditor.putBoolean(PREF_FIRST_TIME_CHECK, false).apply();
   }
 
-  public void saveFavIds(String ids){
-    mEditor.putString(PREF_ID,ids).apply();
+  public void saveFavIds(String ids) {
+    mEditor.putString(PREF_ID, ids).apply();
   }
 
-  public String geFavIds(){
-    return mSharedPreferences.getString(PREF_ID,"");
+  public String geFavIds() {
+    return mSharedPreferences.getString(PREF_ID, "");
   }
 }

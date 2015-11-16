@@ -32,10 +32,9 @@ import android.view.View;
 import android.widget.ImageView;
 import org.devconmyanmar.apps.devcon.R;
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class LUtils {
+@TargetApi(Build.VERSION_CODES.LOLLIPOP) public class LUtils {
   private static final int[] STATE_CHECKED = new int[] { android.R.attr.state_checked };
-  private static final int[] STATE_UNCHECKED = new int[] { };
+  private static final int[] STATE_UNCHECKED = new int[] {};
 
   private static Typeface sMediumTypeface;
 
@@ -98,8 +97,7 @@ public class LUtils {
       Animator outAnimator = ObjectAnimator.ofFloat(imageView, View.ALPHA, 0f);
       outAnimator.setDuration(duration / 2);
       outAnimator.addListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
+        @Override public void onAnimationEnd(Animator animation) {
           imageView.setImageResource(imageResId);
         }
       });
@@ -113,8 +111,7 @@ public class LUtils {
       AnimatorSet set = new AnimatorSet();
       set.playSequentially(outAnimator, inAnimator);
       set.addListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
+        @Override public void onAnimationEnd(Animator animation) {
           imageView.setTag(null);
         }
       });
@@ -122,8 +119,7 @@ public class LUtils {
       set.start();
     } else {
       mHandler.post(new Runnable() {
-        @Override
-        public void run() {
+        @Override public void run() {
           imageView.setImageResource(imageResId);
         }
       });

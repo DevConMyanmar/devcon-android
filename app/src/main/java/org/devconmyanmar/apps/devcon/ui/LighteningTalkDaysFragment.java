@@ -24,7 +24,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 /**
  * Created by yemyatthu on 11/15/14.
  */
-public class LighteningTalkDaysFragment extends BaseFragment{
+public class LighteningTalkDaysFragment extends BaseFragment {
   private static final String FIRST_DAY = "2014-11-15";
   private static final String SECOND_DAY = "2014-11-16";
   private final static String SCREEN_LABEL = "Explore First Day";
@@ -39,7 +39,7 @@ public class LighteningTalkDaysFragment extends BaseFragment{
 
   public static LighteningTalkDaysFragment getInstance(int position) {
     Bundle bundle = new Bundle();
-    bundle.putInt("Day",position);
+    bundle.putInt("Day", position);
     LighteningTalkDaysFragment lighteningTalkDaysFragment = new LighteningTalkDaysFragment();
     lighteningTalkDaysFragment.setArguments(bundle);
     return lighteningTalkDaysFragment;
@@ -85,14 +85,14 @@ public class LighteningTalkDaysFragment extends BaseFragment{
     });
 
     firstDayList.setDivider(null);
-    if(getArguments().getInt("Day") == 1) {
+    if (getArguments().getInt("Day") == 1) {
       mTalks = talkDao.getTalkByDay(FIRST_DAY);
     }
-    if(getArguments().getInt("Day") == 2){
+    if (getArguments().getInt("Day") == 2) {
       mTalks = talkDao.getTalkByDay(SECOND_DAY);
     }
-    for(Talk talk:mTalks){
-      if(talk.getTalk_type() == 3){
+    for (Talk talk : mTalks) {
+      if (talk.getTalk_type() == 3) {
         mLighteningTalks.add(talk);
       }
     }
@@ -119,19 +119,18 @@ public class LighteningTalkDaysFragment extends BaseFragment{
   }
 
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
-    if(getArguments().getInt("Day") == 1) {
+    if (getArguments().getInt("Day") == 1) {
       mTalks = talkDao.getTalkByDay(FIRST_DAY);
     }
-    if(getArguments().getInt("Day") == 2){
+    if (getArguments().getInt("Day") == 2) {
       mTalks = talkDao.getTalkByDay(SECOND_DAY);
     }
-    for(Talk talk:mTalks){
-      if(talk.getTalk_type() == 3){
+    for (Talk talk : mTalks) {
+      if (talk.getTalk_type() == 3) {
         mLighteningTalks.add(talk);
       }
     }
     lighteningTalkAdapter.replaceWith(mLighteningTalks);
-    firstDayList.setAdapter(
-        lighteningTalkAdapter);
+    firstDayList.setAdapter(lighteningTalkAdapter);
   }
 }

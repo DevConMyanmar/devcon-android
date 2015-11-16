@@ -92,6 +92,7 @@ public class TalkDao {
     }
     return null;
   }
+
   public List<Talk> getTalkByType(String type) {
     try {
       QueryBuilder<Talk, Integer> qb = talkDao.queryBuilder();

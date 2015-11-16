@@ -32,8 +32,8 @@ import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import org.devconmyanmar.apps.devcon.R;
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
+@TargetApi(Build.VERSION_CODES.LOLLIPOP) public class AddToScheduleFABFrameLayout
+    extends CheckableFrameLayout {
   private View mRevealView;
   private float mHotSpotX, mHotSpotY;
   private int mRevealViewOffColor;
@@ -61,8 +61,7 @@ public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
     mRevealViewOffColor = getResources().getColor(R.color.theme_accent_1);
   }
 
-  @Override
-  public boolean onTouchEvent(MotionEvent event) {
+  @Override public boolean onTouchEvent(MotionEvent event) {
     if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
       mHotSpotX = event.getX();
       mHotSpotY = event.getY();
@@ -70,12 +69,10 @@ public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
     return super.onTouchEvent(event);
   }
 
-  @Override
-  protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+  @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
     super.onSizeChanged(w, h, oldw, oldh);
     ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() {
-      @Override
-      public void getOutline(View view, Outline outline) {
+      @Override public void getOutline(View view, Outline outline) {
         outline.setOval(0, 0, view.getWidth(), view.getHeight());
       }
     };
@@ -83,8 +80,7 @@ public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
     setClipToOutline(true);
   }
 
-  @Override
-  public void setChecked(boolean checked, boolean allowAnimate) {
+  @Override public void setChecked(boolean checked, boolean allowAnimate) {
     super.setChecked(checked, allowAnimate);
     if (allowAnimate) {
       // _TODO_: switch to mHotSpotX/mHotSpotY/getWidth if/when nested reveals can be clipped
@@ -92,8 +88,7 @@ public class AddToScheduleFABFrameLayout extends CheckableFrameLayout {
       Animator animator = ViewAnimationUtils.createCircularReveal(mRevealView, (int) getWidth() / 2,
           (int) getHeight() / 2, 0, getWidth() / 2);
       animator.addListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
+        @Override public void onAnimationEnd(Animator animation) {
           setChecked(mChecked, false);
         }
       });

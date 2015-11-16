@@ -27,8 +27,7 @@ public class CustomSwipeRefreshLayout extends SwipeRefreshLayout {
     mStickyListHeadersListView = stickyListHeadersListView;
   }
 
-  @Override
-  public boolean canChildScrollUp() {
+  @Override public boolean canChildScrollUp() {
     if (mStickyListHeadersListView != null) {
       // In order to scroll a StickyListHeadersListView up:
       // Firstly, the wrapped ListView must have at least one item

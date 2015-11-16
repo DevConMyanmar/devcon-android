@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -34,6 +33,5 @@ import retrofit.http.GET;
  * Created by Ye Lin Aung on 14/11/09.
  */
 public interface SyncSpeakerService {
-  @GET("/speakers")
-  void getSpeakers(Callback<List<Speaker>> speakers);
+  @GET("/speakers") void getSpeakers(Callback<List<Speaker>> speakers);
 }

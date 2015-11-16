@@ -17,15 +17,6 @@ public class CircleTransformer extends BitmapTransformation {
     super(context);
   }
 
-  @Override protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth,
-      int outHeight) {
-    return getCircularBitmapImage(toTransform);
-  }
-
-  @Override public String getId() {
-    return "Glide_Circle_Transformation";
-  }
-
   public static Bitmap getCircularBitmapImage(Bitmap source) {
     int size = Math.min(source.getWidth(), source.getHeight());
     int x = (source.getWidth() - size) / 2;
@@ -45,5 +36,14 @@ public class CircleTransformer extends BitmapTransformation {
     canvas.drawCircle(r, r, r, paint);
     squaredBitmap.recycle();
     return bitmap;
+  }
+
+  @Override
+  protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+    return getCircularBitmapImage(toTransform);
+  }
+
+  @Override public String getId() {
+    return "Glide_Circle_Transformation";
   }
 }

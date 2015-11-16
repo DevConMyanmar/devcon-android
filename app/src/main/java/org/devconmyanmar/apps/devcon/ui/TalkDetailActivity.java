@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -33,8 +32,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +50,7 @@ public class TalkDetailActivity extends BaseActivity {
   @Bind(R.id.schedule_pager) ViewPager mScheduleViewPager;
   @Bind(R.id.toolbar) Toolbar mToolbar;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_detail);
     ButterKnife.bind(this);
@@ -71,15 +69,13 @@ public class TalkDetailActivity extends BaseActivity {
     mScheduleViewPager.setCurrentItem(position);
   }
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.schedule_menu, menu);
     return super.onCreateOptionsMenu(menu);
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.

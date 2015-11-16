@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -35,8 +34,8 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;

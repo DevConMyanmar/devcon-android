@@ -76,8 +76,7 @@ public class HelpUtils {
     public AboutDialog() {
     }
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
       // Get app version
       PackageManager pm = getActivity().getPackageManager();
       String packageName = getActivity().getPackageName();
@@ -97,8 +96,7 @@ public class HelpUtils {
           new SpannableString(getString(R.string.about_contributors));
 
       contributorsLink.setSpan(new ClickableSpan() {
-        @Override
-        public void onClick(View view) {
+        @Override public void onClick(View view) {
           Intent i = new Intent(getActivity(), ContributorsActivity.class);
           i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
           startActivity(i);
@@ -109,8 +107,7 @@ public class HelpUtils {
 
       SpannableString licensesLink = new SpannableString(getString(R.string.about_licenses));
       licensesLink.setSpan(new ClickableSpan() {
-        @Override
-        public void onClick(View view) {
+        @Override public void onClick(View view) {
           HelpUtils.showOpenSourceLicenses(getActivity());
         }
       }, 0, licensesLink.length(), 0);
@@ -139,8 +136,7 @@ public class HelpUtils {
     public OpenSourceLicensesDialog() {
     }
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
       WebView webView = new WebView(getActivity());
       webView.loadUrl("file:///android_asset/licenses.html");
 

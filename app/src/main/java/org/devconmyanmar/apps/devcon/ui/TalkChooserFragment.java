@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -29,6 +28,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -39,8 +39,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.ArrayList;
@@ -56,16 +56,16 @@ import static org.devconmyanmar.apps.devcon.Config.POSITION;
  * Created by yemyatthu on 11/13/14.
  */
 public class TalkChooserFragment extends BaseFragment {
-  private List<Talk> lists;
-  private BaseActivity mBaseActivity;
   @Bind(R.id.toolbar) Toolbar mToolbar;
   @Bind(R.id.my_list) ListView mMyList;
+  private List<Talk> lists;
+  private BaseActivity mBaseActivity;
 
-  public static TalkChooserFragment getInstance(String start, String end,String talkId){
+  public static TalkChooserFragment getInstance(String start, String end, String talkId) {
     Bundle bundle = new Bundle();
-    bundle.putString("START_TIME",start);
-    bundle.putString("END_TIME",end);
-    bundle.putString("TALK_ID",talkId);
+    bundle.putString("START_TIME", start);
+    bundle.putString("END_TIME", end);
+    bundle.putString("TALK_ID", talkId);
     TalkChooserFragment talkChooserFragment = new TalkChooserFragment();
     talkChooserFragment.setArguments(bundle);
     return talkChooserFragment;
@@ -80,11 +80,12 @@ public class TalkChooserFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.bind(this, v);
-    mBaseActivity = (BaseActivity)getActivity();
+    mBaseActivity = (BaseActivity) getActivity();
     ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getActivity());
     mBaseActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mBaseActivity.getSupportActionBar();
-    actionBar.setTitle(getArguments().getString("START_TIME")+"-"+getArguments().getString("END_TIME"));
+    actionBar.setTitle(
+        getArguments().getString("START_TIME") + "-" + getArguments().getString("END_TIME"));
     actionBar.setDisplayHomeAsUpEnabled(true);
 
     lists = flattenTalks(getArguments().getString("TALK_ID"));
@@ -106,10 +107,12 @@ public class TalkChooserFragment extends BaseFragment {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
-      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+      tintManager.setTintColor(
+          ContextCompat.getColor(getActivity(), R.color.translucent_actionbar_background));
     }
     return v;
   }
+
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
     inflater.inflate(R.menu.schedule_menu, menu);
@@ -127,6 +130,7 @@ public class TalkChooserFragment extends BaseFragment {
         return super.onOptionsItemSelected(item);
     }
   }
+
   private ArrayList<Talk> flattenTalks(String talks) {
     ArrayList<Talk> mTalks = new ArrayList<Talk>();
     String id[] = new Gson().fromJson(talks, String[].class);
@@ -136,5 +140,4 @@ public class TalkChooserFragment extends BaseFragment {
 
     return mTalks;
   }
-
 }

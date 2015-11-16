@@ -10,6 +10,14 @@ import android.view.View;
 public abstract class BaseTransformer implements ViewPager.PageTransformer {
 
   /**
+   * Same as {@link Math#min(double, double)} without double casting, zero closest to infinity
+   * handling, or NaN support.
+   */
+  protected static final float min(float val, float min) {
+    return val < min ? min : val;
+  }
+
+  /**
    * Called each {@link #transformPage(View, float)}.
    *
    * @param page Apply the transformation to this page
@@ -29,8 +37,7 @@ public abstract class BaseTransformer implements ViewPager.PageTransformer {
    * pager. 0 is front and
    * center. 1 is one full page position to the right, and -1 is one page position to the left.
    */
-  @Override
-  public void transformPage(View page, float position) {
+  @Override public void transformPage(View page, float position) {
     onPreTransform(page, position);
     onTransform(page, position);
     onPostTransform(page, position);
@@ -98,13 +105,5 @@ public abstract class BaseTransformer implements ViewPager.PageTransformer {
    * center. 1 is one full page position to the right, and -1 is one page position to the left.
    */
   protected void onPostTransform(View page, float position) {
-  }
-
-  /**
-   * Same as {@link Math#min(double, double)} without double casting, zero closest to infinity
-   * handling, or NaN support.
-   */
-  protected static final float min(float val, float min) {
-    return val < min ? min : val;
   }
 }

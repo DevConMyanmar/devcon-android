@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -115,8 +114,8 @@ public class FirstDayFragment extends BaseFragment {
 
     mTalks = talkDao.getTalkByDay(FIRST_DAY);
     ArrayList<Talk> tempTalks = new ArrayList<Talk>();
-    for (Talk talk:mTalks){
-      if(talk.getTalk_type() ==3){
+    for (Talk talk : mTalks) {
+      if (talk.getTalk_type() == 3) {
         tempTalks.add(talk);
       }
     }
@@ -125,8 +124,8 @@ public class FirstDayFragment extends BaseFragment {
     firstDayList.setAdapter(mScheduleAdapter);
 
     firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
-          long l) {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         int id = mTalks.get(position).getId();
         LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
 

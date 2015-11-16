@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -31,8 +30,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.utils.DataUtils;
 import org.devconmyanmar.apps.devcon.utils.SharePref;

@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -29,6 +28,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -38,8 +38,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.LighteningSlidingAdapter;
@@ -51,12 +51,11 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class LighteningTalksFragment extends BaseFragment {
   private static final String TAG = makeLogTag(ExploreFragment.class);
+  private final static String SCREEN_LABEL = "Lightening Talks";
   @Bind(R.id.sliding_tabs) SlidingTabLayout mSlidingTabLayout;
   @Bind(R.id.view_pager) ViewPager mViewPager;
   @Bind(R.id.toolbar) Toolbar mToolbar;
   private BaseActivity mActivity;
-
-  private final static String SCREEN_LABEL = "Lightening Talks";
 
   public LighteningTalksFragment() {
   }
@@ -65,8 +64,7 @@ public class LighteningTalksFragment extends BaseFragment {
     return new LighteningTalksFragment();
   }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
+  @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     mActivity = (BaseActivity) getActivity();
@@ -74,8 +72,7 @@ public class LighteningTalksFragment extends BaseFragment {
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+  @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_schedule, container, false);
     ButterKnife.bind(this, view);
@@ -100,13 +97,13 @@ public class LighteningTalksFragment extends BaseFragment {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
-      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+      tintManager.setTintColor(
+          ContextCompat.getColor(getActivity(), R.color.translucent_actionbar_background));
     }
     return view;
   }
 
-  @Override
-  public void onDestroyView() {
+  @Override public void onDestroyView() {
     super.onDestroyView();
   }
 

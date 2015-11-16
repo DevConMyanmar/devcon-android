@@ -77,8 +77,7 @@ public class TalkListActivity extends BaseActivity
     }
   }
 
-  @Override
-  public void onNavigationDrawerItemSelected(int position) {
+  @Override public void onNavigationDrawerItemSelected(int position) {
     // update the main content by replacing fragments
     switch (position) {
       case 0:
@@ -99,8 +98,7 @@ public class TalkListActivity extends BaseActivity
     }
 
     new Handler().postDelayed(new Runnable() {
-      @Override
-      public void run() {
+      @Override public void run() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
       }

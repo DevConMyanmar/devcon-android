@@ -26,14 +26,15 @@ package org.devconmyanmar.apps.devcon.ui;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
@@ -83,7 +84,8 @@ public class ContributorsActivity extends BaseActivity {
       SystemBarTintManager tintManager = new SystemBarTintManager(this);
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
-      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+      tintManager.setTintColor(
+          ContextCompat.getColor(this, R.color.translucent_actionbar_background));
     }
   }
 

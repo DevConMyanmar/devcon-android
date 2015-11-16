@@ -39,8 +39,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import com.squareup.otto.Subscribe;
 import java.sql.SQLException;
@@ -124,12 +124,10 @@ public class SpeakerFragment extends BaseFragment {
     }
 
     speakerList.setOnScrollListener(new AbsListView.OnScrollListener() {
-      @Override
-      public void onScrollStateChanged(AbsListView view, int scrollState) {
+      @Override public void onScrollStateChanged(AbsListView view, int scrollState) {
       }
 
-      @Override
-      public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+      @Override public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
           int totalItemCount) {
         if (firstVisibleItem == 0) {
           speakerSRView.setEnabled(true);

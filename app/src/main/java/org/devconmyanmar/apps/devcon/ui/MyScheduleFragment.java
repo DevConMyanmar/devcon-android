@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -29,6 +28,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -38,8 +38,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.MyScheduleSlidingAdapter;
@@ -67,8 +67,7 @@ public class MyScheduleFragment extends BaseFragment {
     return new MyScheduleFragment();
   }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
+  @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
     mActivity = (BaseActivity) getActivity();
@@ -76,8 +75,7 @@ public class MyScheduleFragment extends BaseFragment {
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+  @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_my_schedule, container, false);
     ButterKnife.bind(this, view);
@@ -87,7 +85,7 @@ public class MyScheduleFragment extends BaseFragment {
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-    int mPrimaryColor = getResources().getColor(R.color.theme_primary);
+    int mPrimaryColor = ContextCompat.getColor(getActivity(), R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
 
@@ -101,14 +99,14 @@ public class MyScheduleFragment extends BaseFragment {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
-      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+      tintManager.setTintColor(
+          ContextCompat.getColor(getActivity(), R.color.translucent_actionbar_background));
     }
 
     return view;
   }
 
-  @Override
-  public void onDestroyView() {
+  @Override public void onDestroyView() {
     super.onDestroyView();
   }
 

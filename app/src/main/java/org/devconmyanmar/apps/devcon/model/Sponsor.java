@@ -32,8 +32,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by Ye Lin Aung on 14/11/15.
  */
 
-@DatabaseTable(tableName = "sponsors")
-public class Sponsor {
+@DatabaseTable(tableName = "sponsors") public class Sponsor {
   @DatabaseField(id = true) private int id;
   @DatabaseField private String name;
   @DatabaseField private String logo;

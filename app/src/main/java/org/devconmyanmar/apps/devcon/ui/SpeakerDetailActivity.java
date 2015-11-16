@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -33,8 +32,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,12 +88,12 @@ public class SpeakerDetailActivity extends BaseActivity {
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.schedule_menu,menu);
+    getMenuInflater().inflate(R.menu.schedule_menu, menu);
     return super.onCreateOptionsMenu(menu);
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()){
+    switch (item.getItemId()) {
       case R.id.action_about:
         HelpUtils.showAbout(this);
         return true;

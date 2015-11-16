@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -31,8 +30,7 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-@DatabaseTable(tableName = "talks")
-public class Talk {
+@DatabaseTable(tableName = "talks") public class Talk {
 
   @DatabaseField(id = true) private int id;
   @DatabaseField private String title;

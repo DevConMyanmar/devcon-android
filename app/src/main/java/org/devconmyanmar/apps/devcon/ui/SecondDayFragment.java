@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -107,8 +106,8 @@ public class SecondDayFragment extends BaseFragment {
 
     mTalks = talkDao.getTalkByDay(SECOND_DAY);
     ArrayList<Talk> tempTalks = new ArrayList<Talk>();
-    for (Talk talk:mTalks){
-      if(talk.getTalk_type() ==3){
+    for (Talk talk : mTalks) {
+      if (talk.getTalk_type() == 3) {
         tempTalks.add(talk);
       }
     }
@@ -120,8 +119,8 @@ public class SecondDayFragment extends BaseFragment {
     secondDayList.setDivider(null);
 
     secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
-          long l) {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         int id = mTalks.get(position).getId();
         Intent i = new Intent(getActivity(), TalkDetailActivity.class);
         AnalyticsManager.sendEvent("Explore Second Day", "selecttalk",

@@ -36,8 +36,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -192,8 +192,7 @@ public class FavoriteDayFragment extends BaseFragment {
             .setDuration(shortAnimTime)
             .alpha(show ? 0 : 1)
             .setListener(new AnimatorListenerAdapter() {
-              @Override
-              public void onAnimationEnd(Animator animation) {
+              @Override public void onAnimationEnd(Animator animation) {
                 listView.setVisibility(show ? View.GONE : View.VISIBLE);
               }
             });
@@ -203,8 +202,7 @@ public class FavoriteDayFragment extends BaseFragment {
             .setDuration(shortAnimTime)
             .alpha(show ? 1 : 0)
             .setListener(new AnimatorListenerAdapter() {
-              @Override
-              public void onAnimationEnd(Animator animation) {
+              @Override public void onAnimationEnd(Animator animation) {
                 progressView.setVisibility(show ? View.VISIBLE : View.GONE);
               }
             });

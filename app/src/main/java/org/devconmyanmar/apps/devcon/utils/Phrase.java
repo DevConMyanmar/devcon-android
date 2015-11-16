@@ -47,25 +47,36 @@ import java.util.Set;
  */
 public final class Phrase {
 
+  /** Indicates parsing is complete. */
+  private static final int EOF = 0;
   /** The unmodified original pattern. */
   private final CharSequence pattern;
-
   /** All keys parsed from the original pattern, sans braces. */
   private final Set<String> keys = new HashSet<String>();
   private final Map<String, CharSequence> keysToValues = new HashMap<String, CharSequence>();
-
   /** Cached result after replacing all keys with corresponding values. */
   private CharSequence formatted;
-
   /** The constructor parses the original pattern into this doubly-linked list of tokens. */
   private Token head;
-
   /** When parsing, this is the current character. */
   private char curChar;
   private int curCharIndex;
 
-  /** Indicates parsing is complete. */
-  private static final int EOF = 0;
+  private Phrase(CharSequence pattern) {
+    curChar = (pattern.length() > 0) ? pattern.charAt(0) : EOF;
+
+    this.pattern = pattern;
+
+    // A hand-coded lexer based on the idioms in "Building Recognizers By Hand".
+    // http://www.antlr2.org/book/byhand.pdf.
+    Token prev = null;
+    Token next;
+    while ((next = token(prev)) != null) {
+      // Creates a doubly-linked list of tokens starting with head.
+      if (head == null) head = next;
+      prev = next;
+    }
+  }
 
   /**
    * Entry point into this API.
@@ -188,22 +199,6 @@ public final class Phrase {
    */
   @Override public String toString() {
     return pattern.toString();
-  }
-
-  private Phrase(CharSequence pattern) {
-    curChar = (pattern.length() > 0) ? pattern.charAt(0) : EOF;
-
-    this.pattern = pattern;
-
-    // A hand-coded lexer based on the idioms in "Building Recognizers By Hand".
-    // http://www.antlr2.org/book/byhand.pdf.
-    Token prev = null;
-    Token next;
-    while ((next = token(prev)) != null) {
-      // Creates a doubly-linked list of tokens starting with head.
-      if (head == null) head = next;
-      prev = next;
-    }
   }
 
   /** Returns the next token from the input pattern, or null when finished parsing. */

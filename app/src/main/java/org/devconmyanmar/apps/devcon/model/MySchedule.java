@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -32,8 +31,7 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by Ye Lin Aung on 14/11/12.
  */
-@DatabaseTable(tableName = "my_schedule")
-public class MySchedule {
+@DatabaseTable(tableName = "my_schedule") public class MySchedule {
   @DatabaseField(id = true) private int id;
   @DatabaseField private String title;
   @DatabaseField private String start;
@@ -42,6 +40,11 @@ public class MySchedule {
   @DatabaseField @SerializedName("sub_title") private String subTitle;
   @DatabaseField private int date;
   @DatabaseField @SerializedName("associated_talk") private String associatedTalkId;
+  @DatabaseField @SerializedName("has_favorite") private boolean hasFavorite;
+  @DatabaseField @SerializedName("favorite_talk") private int favoriteTalkId;
+
+  public MySchedule() {
+  }
 
   public boolean isHasFavorite() {
     return hasFavorite;
@@ -57,12 +60,6 @@ public class MySchedule {
 
   public void setFavoriteTalkId(int favoriteTalkId) {
     this.favoriteTalkId = favoriteTalkId;
-  }
-
-  @DatabaseField @SerializedName("has_favorite") private boolean hasFavorite;
-  @DatabaseField @SerializedName("favorite_talk") private int favoriteTalkId;
-
-  public MySchedule() {
   }
 
   public String getTitle() {

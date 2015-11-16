@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +70,6 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
       viewHolder.mLightningCardContainer.setPadding(0, px, 0, px);
     }
     return view;
-
-
   }
 
   @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
@@ -89,10 +87,9 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
     holder.header.setText(headerChar);
     String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalks.get(i).getFrom_time());
     String keynoteFormattedTo = TimeUtils.parseFromToString(mTalks.get(i).getTo_time());
-    holder.time.setText(keynoteFormattedFrom+" to "+keynoteFormattedTo);
+    holder.time.setText(keynoteFormattedFrom + " to " + keynoteFormattedTo);
     holder.time.invalidate();
     holder.header.invalidate();
-
 
     return view;
   }
@@ -101,29 +98,6 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
     return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
   }
 
-
-  /**
-   * This class contains all butterknife-binded Views & Layouts from layout file 'row_lightning_schedule.xml'
-   * for easy to all layout elements.
-   *
-   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers (http://inmite.github.io)
-   */
-  static class HeaderViewHolder {
-    @Bind(R.id.room_name) TextView header;
-    @Bind(R.id.time_name) TextView time;
-    HeaderViewHolder(View view){
-      ButterKnife.bind(this,view);
-    }
-  }
-  static class ViewHolder {
-    @Bind(R.id.lightning_schedule_title) TextView mLightningScheduleTitle;
-    @Bind(R.id.lightning_schedule_speaker) TextView mLightningScheduleSpeaker;
-    @Bind(R.id.lightning_card_container) FrameLayout mLightningCardContainer;
-
-    ViewHolder(View view) {
-      ButterKnife.bind(this, view);
-    }
-  }
   private String flatternSpeakerNames(String speakers) {
     SpeakerDao speakerDao = new SpeakerDao(mContext);
     String id[] = new Gson().fromJson(speakers, String[].class);
@@ -137,5 +111,32 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
     }
 
     return s;
+  }
+
+  /**
+   * This class contains all butterknife-binded Views & Layouts from layout file
+   * 'row_lightning_schedule.xml'
+   * for easy to all layout elements.
+   *
+   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers
+   *         (http://inmite.github.io)
+   */
+  static class HeaderViewHolder {
+    @Bind(R.id.room_name) TextView header;
+    @Bind(R.id.time_name) TextView time;
+
+    HeaderViewHolder(View view) {
+      ButterKnife.bind(this, view);
+    }
+  }
+
+  static class ViewHolder {
+    @Bind(R.id.lightning_schedule_title) TextView mLightningScheduleTitle;
+    @Bind(R.id.lightning_schedule_speaker) TextView mLightningScheduleSpeaker;
+    @Bind(R.id.lightning_card_container) FrameLayout mLightningCardContainer;
+
+    ViewHolder(View view) {
+      ButterKnife.bind(this, view);
+    }
   }
 }

@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -61,6 +60,4 @@ public class MyScheduleSlidingAdapter extends FragmentStatePagerAdapter {
     }
     return super.getPageTitle(position);
   }
-
-
 }

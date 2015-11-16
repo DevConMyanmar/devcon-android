@@ -31,8 +31,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import java.util.ArrayList;
 import org.devconmyanmar.apps.devcon.R;
 

@@ -59,8 +59,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
   }
 
-  @Override
-  public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
+  @Override public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
     try {
       LOGI(TAG, "onCreate -- creating");
       TableUtils.createTable(connectionSource, Speaker.class);

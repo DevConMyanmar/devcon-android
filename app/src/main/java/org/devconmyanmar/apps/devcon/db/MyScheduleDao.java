@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -138,5 +137,4 @@ public class MyScheduleDao {
       e.printStackTrace();
     }
   }
-
 }
