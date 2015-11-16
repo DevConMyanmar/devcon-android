@@ -55,11 +55,11 @@ public class AnalyticsManager {
           .setValue(value)
           .build());
 
-      LOGD(TAG, "Event recorded:");
-      LOGD(TAG, "\tCategory: " + category);
-      LOGD(TAG, "\tAction: " + action);
-      LOGD(TAG, "\tLabel: " + label);
-      LOGD(TAG, "\tValue: " + value);
+      //LOGD(TAG, "Event recorded:");
+      //LOGD(TAG, "\tCategory: " + category);
+      //LOGD(TAG, "\tAction: " + action);
+      //LOGD(TAG, "\tLabel: " + label);
+      //LOGD(TAG, "\tValue: " + value);
     } else {
       LOGD(TAG, "Analytics event ignored (analytics disabled or not ready).");
     }

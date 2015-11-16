@@ -44,9 +44,12 @@ import org.devconmyanmar.apps.devcon.transformer.StackTransformer;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 public class SpeakerDetailActivity extends BaseActivity {
 
+  private static final String TAG = makeLogTag(SpeakerDetailActivity.class);
   @Bind(R.id.speaker_pager) ViewPager mSpeakerViewPager;
   @Bind(R.id.toolbar) Toolbar mToolbar;
 
@@ -57,22 +60,26 @@ public class SpeakerDetailActivity extends BaseActivity {
     ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     ActionBar actionBar = getSupportActionBar();
-    actionBar.setTitle(R.string.speaker_profile);
-    actionBar.setDisplayHomeAsUpEnabled(true);
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.speaker_profile);
+      actionBar.setDisplayHomeAsUpEnabled(true);
+    }
 
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;
+    LOGD(TAG, "position " + position);
 
     List<Fragment> fragments = getTalkFragments();
     MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager(), fragments);
 
     mSpeakerViewPager.setPageTransformer(true, new StackTransformer());
     mSpeakerViewPager.setAdapter(mAdapter);
+
     mSpeakerViewPager.setCurrentItem(position);
   }
 
   private List<Fragment> getTalkFragments() {
-    List<Fragment> fList = new ArrayList<Fragment>();
+    List<Fragment> fList = new ArrayList<>();
 
     try {
       List<Speaker> speakers = speakerDao.getAll();

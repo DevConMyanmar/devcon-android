@@ -44,6 +44,8 @@ import butterknife.ButterKnife;
 import com.squareup.otto.Subscribe;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
@@ -56,6 +58,7 @@ import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
 import static org.devconmyanmar.apps.devcon.Config.POSITION;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -63,6 +66,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 public class SpeakerFragment extends BaseFragment implements SpeakerClickListener {
 
   private final static String SCREEN_LABEL = "Speaker List";
+  private static final String TAG = makeLogTag(SpeakerFragment.class);
 
   @Bind(R.id.speaker_swipe_refresh_view) CustomSwipeRefreshLayout speakerSRView;
   @Bind(R.id.my_list) RecyclerView speakerList;
@@ -119,6 +123,7 @@ public class SpeakerFragment extends BaseFragment implements SpeakerClickListene
       mSpeakers = speakerDao.getAll();
       SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext, this);
       speakerAdapter.replaceWith(mSpeakers);
+      //sort((ArrayList<Speaker>) mSpeakers, speakerAdapter);
       speakerList.setAdapter(speakerAdapter);
     } catch (SQLException e) {
       e.printStackTrace();
@@ -161,12 +166,22 @@ public class SpeakerFragment extends BaseFragment implements SpeakerClickListene
 
   @Override public void onSpeakerClick(Speaker speaker, View v, int position) {
     int id = mSpeakers.get(position).getId();
-    LOGD("speakers ", "id " + id);
+    LOGD(TAG, "speaker id " + id);
     Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
-
-    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
-
     i.putExtra(POSITION, id);
     startActivity(i);
+
+    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
+  }
+
+  public static void sort(ArrayList<Speaker> speakers, SpeakerAdapter speakerAdapter) {
+    Collections.sort(speakers, new CustomComparator());
+    speakerAdapter.notifyDataSetChanged();
+  }
+
+  public static class CustomComparator implements Comparator<Speaker> {
+    @Override public int compare(Speaker s1, Speaker s2) {
+      return s1.getName().compareToIgnoreCase(s2.getName());
+    }
   }
 }
