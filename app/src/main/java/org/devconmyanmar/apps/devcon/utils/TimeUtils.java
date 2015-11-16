@@ -24,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.utils;
 
+import android.text.TextUtils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,17 +52,21 @@ public class TimeUtils {
   }
 
   public static String parseFromToString(String dateString) {
-    // 08:30:00Z
-    DateFormat readFormat = new SimpleDateFormat("HH:mm");
-    DateFormat writeFormat = new SimpleDateFormat("hh:mm a");
-    Date date = null;
-    try {
-      date = readFormat.parse(dateString);
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }
-    if (date != null) {
-      return writeFormat.format(date);
+    if (!TextUtils.isEmpty(dateString)) {
+      // 08:30:00Z
+      DateFormat readFormat = new SimpleDateFormat("HH:mm");
+      DateFormat writeFormat = new SimpleDateFormat("hh:mm a");
+      Date date = null;
+      try {
+        date = readFormat.parse(dateString);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+      if (date != null) {
+        return writeFormat.format(date);
+      }
+    } else {
+      return "N/A";
     }
 
     return null;
