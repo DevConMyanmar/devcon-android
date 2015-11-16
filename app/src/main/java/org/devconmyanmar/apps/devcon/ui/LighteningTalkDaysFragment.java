@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +17,8 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.LighteningTalkAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 /**
  * Created by yemyatthu on 11/15/14.
@@ -30,9 +29,9 @@ public class LighteningTalkDaysFragment extends BaseFragment {
   private final static String SCREEN_LABEL = "Explore First Day";
   private List<Talk> mTalks = new ArrayList<Talk>();
   private List<Talk> mLighteningTalks = new ArrayList<Talk>();
-  private CustomSwipeRefreshLayout exploreSwipeRefreshView;
+  private SwipeRefreshLayout exploreSwipeRefreshView;
   private LighteningTalkAdapter lighteningTalkAdapter;
-  private StickyListHeadersListView firstDayList;
+  private RecyclerView firstDayList;
 
   public LighteningTalkDaysFragment() {
   }
@@ -61,16 +60,15 @@ public class LighteningTalkDaysFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
 
     View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
-    firstDayList = (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
+    firstDayList = (RecyclerView) rootView.findViewById(R.id.explore_list_view);
 
     exploreSwipeRefreshView =
-        (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
+        (SwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
 
     exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
 
     exploreSwipeRefreshView.setRefreshing(false);
-    exploreSwipeRefreshView.setStickyListHeadersListView(firstDayList);
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
@@ -84,7 +82,6 @@ public class LighteningTalkDaysFragment extends BaseFragment {
       }
     });
 
-    firstDayList.setDivider(null);
     if (getArguments().getInt("Day") == 1) {
       mTalks = talkDao.getTalkByDay(FIRST_DAY);
     }
@@ -97,7 +94,7 @@ public class LighteningTalkDaysFragment extends BaseFragment {
       }
     }
     lighteningTalkAdapter.replaceWith(mLighteningTalks);
-    firstDayList.setAdapter(lighteningTalkAdapter);
+    //firstDayList.setAdapter(lighteningTalkAdapter);
     return rootView;
   }
 
@@ -131,6 +128,6 @@ public class LighteningTalkDaysFragment extends BaseFragment {
       }
     }
     lighteningTalkAdapter.replaceWith(mLighteningTalks);
-    firstDayList.setAdapter(lighteningTalkAdapter);
+    //firstDayList.setAdapter(lighteningTalkAdapter);
   }
 }

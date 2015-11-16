@@ -45,6 +45,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
+import org.devconmyanmar.apps.devcon.adapter.SectionAdapter;
 import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Speaker;
@@ -73,6 +74,8 @@ public class FirstDayFragment extends BaseFragment {
   private final static String SCREEN_LABEL = "Explore First Day";
   private List<Talk> mTalks = new ArrayList<Talk>();
   private ScheduleAdapter mScheduleAdapter;
+
+  private SectionAdapter mSectionedAdapter;
 
   @Bind(R.id.explore_swipe_refresh_view) SwipeRefreshLayout exploreSwipeRefreshView;
   @Bind(R.id.explore_list_view) RecyclerView firstDayList;
@@ -126,6 +129,25 @@ public class FirstDayFragment extends BaseFragment {
 
     LOGD(TAG, "mTalks -> " + mTalks.size());
     mScheduleAdapter.replaceWith(mTalks);
+
+    //List<SectionAdapter.Section> sections = new ArrayList<>();
+    //for (int i = 0; i < mTalks.size(); i++) {
+    //  String roomType = mTalks.get(i).getRoom();
+    //  if (sections.size() > 0) {
+    //    if (!checkSection(sections, translateRoomType(roomType))) {
+    //      sections.add(new SectionAdapter.Section(i, translateRoomType(roomType)));
+    //    }
+    //  } else {
+    //    sections.add(new SectionAdapter.Section(0, translateRoomType(roomType)));
+    //  }
+    //}
+    //
+    //SectionAdapter.Section[] dummy = new SectionAdapter.Section[sections.size()];
+    //mSectionedAdapter =
+    //    new SectionAdapter(mContext, R.layout.room_header, R.id.room_name, mScheduleAdapter);
+    //mSectionedAdapter.setSections(sections.toArray(dummy));
+    //firstDayList.setAdapter(mSectionedAdapter);
+
     firstDayList.setAdapter(mScheduleAdapter);
 
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
@@ -147,6 +169,28 @@ public class FirstDayFragment extends BaseFragment {
     //});
 
     return rootView;
+  }
+
+  private boolean checkSection(List<SectionAdapter.Section> sections, String s) {
+    for (SectionAdapter.Section section : sections) {
+      if (s.equalsIgnoreCase(section.getTitle().toString())) return true;
+    }
+    return false;
+  }
+
+  private String translateRoomType(String roomType) {
+    switch (roomType) {
+      case "conference":
+        return "Conference Room";
+      case "205":
+        return "Room 205";
+      case "102":
+        return "Room 102";
+      case "mcf":
+        return "MCF Meeting room";
+      default:
+        return "Room 205";
+    }
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {

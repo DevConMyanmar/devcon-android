@@ -18,13 +18,11 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.utils.TimeUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
  * Created by yemyatthu on 11/15/14.
  */
-public class LighteningTalkAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class LighteningTalkAdapter extends BaseAdapter {
   private List<Talk> mTalks = new ArrayList<Talk>();
   private Context mContext;
   private LayoutInflater mLayoutInflater;
@@ -72,32 +70,32 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
     return view;
   }
 
-  @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
-    HeaderViewHolder holder;
-    if (view == null) {
-
-      view = mLayoutInflater.inflate(R.layout.room_header, viewGroup, false);
-      holder = new HeaderViewHolder(view);
-      view.setTag(holder);
-    } else {
-      holder = (HeaderViewHolder) view.getTag();
-    }
-
-    CharSequence headerChar = TimeUtils.getProperRoomName(mTalks.get(i).getRoom());
-    holder.header.setText(headerChar);
-    String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalks.get(i).getFrom_time());
-    String keynoteFormattedTo = TimeUtils.parseFromToString(mTalks.get(i).getTo_time());
-    holder.time.setText(keynoteFormattedFrom + " to " + keynoteFormattedTo);
-    holder.time.invalidate();
-    holder.header.invalidate();
-
-    return view;
-  }
-
-  @Override public long getHeaderId(int i) {
-    return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
-  }
-
+  //@Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
+  //  HeaderViewHolder holder;
+  //  if (view == null) {
+  //
+  //    view = mLayoutInflater.inflate(R.layout.room_header, viewGroup, false);
+  //    holder = new HeaderViewHolder(view);
+  //    view.setTag(holder);
+  //  } else {
+  //    holder = (HeaderViewHolder) view.getTag();
+  //  }
+  //
+  //  CharSequence headerChar = TimeUtils.getProperRoomName(mTalks.get(i).getRoom());
+  //  holder.header.setText(headerChar);
+  //  String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalks.get(i).getFrom_time());
+  //  String keynoteFormattedTo = TimeUtils.parseFromToString(mTalks.get(i).getTo_time());
+  //  holder.time.setText(keynoteFormattedFrom + " to " + keynoteFormattedTo);
+  //  holder.time.invalidate();
+  //  holder.header.invalidate();
+  //
+  //  return view;
+  //}
+  //
+  //@Override public long getHeaderId(int i) {
+  //  return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
+  //}
+  //
   private String flatternSpeakerNames(String speakers) {
     SpeakerDao speakerDao = new SpeakerDao(mContext);
     String id[] = new Gson().fromJson(speakers, String[].class);
@@ -121,14 +119,6 @@ public class LighteningTalkAdapter extends BaseAdapter implements StickyListHead
    * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers
    *         (http://inmite.github.io)
    */
-  static class HeaderViewHolder {
-    @Bind(R.id.room_name) TextView header;
-    @Bind(R.id.time_name) TextView time;
-
-    HeaderViewHolder(View view) {
-      ButterKnife.bind(this, view);
-    }
-  }
 
   static class ViewHolder {
     @Bind(R.id.lightning_schedule_title) TextView mLightningScheduleTitle;
