@@ -21,6 +21,12 @@
         android:value="@integer/google_play_services_version"
     />
 
+    <!-- Glide -->
+    <meta-data
+        android:name="org.devconmyanmar.apps.devcon.utils.MyGlideModule"
+        android:value="GlideModule"
+    />
+
     <receiver
         android:name="com.google.android.gms.analytics.AnalyticsReceiver"
         android:enabled="true"
