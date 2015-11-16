@@ -5,7 +5,7 @@
       "title": "Opening Announcement",
       "description": "Opening Announcement",
       "photo": "",
-      "date": "2014-11-15",
+      "date": "2014-11-21",
       "favourite": "true",
       "talk_type": "1",
       "room": "conference",
@@ -18,7 +18,7 @@
       "title": "DevCon Welcome Speech",
       "description": "DevCon Welcome Speech",
       "photo": "",
-      "date": "2014-11-15",
+      "date": "2014-11-21",
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
@@ -33,7 +33,7 @@
       "title": "Opening Speech (VIP)",
       "description": "Opening Announcement",
       "photo": "",
-      "date": "2014-11-15",
+      "date": "2014-11-21",
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
@@ -43,965 +43,331 @@
     },
     {
       "id": "4",
-      "title": "Software industry updates and about SIDC",
-      "description": "Software industry updates and about SIDC",
+      "title": "Systems for the age of the Internet of Things",
+      "description": "Systems for the age of the Internet of Things",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "true",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "08:30",
-      "to_time": "08:33",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "40"
+        "9"
       ]
     },
     {
       "id": "5",
-      "title": "Key success to become professionals",
-      "description": "Key success to become professionals",
+      "title": "Code with Security or Secure Coding",
+      "description": "Code with Security or Secure Coding",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "true",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "09:00",
-      "to_time": "09:20",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "41"
+        "10"
       ]
     },
     {
       "id": "6",
-      "title": "Photo Section",
-      "description": "Photo Section",
+      "title": "Function the Ultimate (JavaScript)",
+      "description": "Function the Ultimate (JavaScript)",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "true",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "09:40",
-      "to_time": "10:00",
-      "speakers": []
+      "from_time": "",
+      "to_time": "",
+      "speakers": [
+        "8"
+      ]
     },
     {
       "id": "7",
-      "title": "Cross country, cross culture product development",
-      "description": "Cross country, cross culture product development",
+      "title": "Next Hot Key Technology of the Web Application",
+      "description": "Next Hot Key Technology of the Web Application",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "10:00",
-      "to_time": "11:00",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "3"
+        "6"
       ]
     },
     {
       "id": "8",
-      "title": "Project risk management  - an essential factor for successful project",
-      "description": "Project risk management  - an essential factor for successful project",
+      "title": "Wire up with Japanese Outsourcing",
+      "description": "Wire up with Japanese Outsourcing",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "11:00",
-      "to_time": "12:00",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
         "11"
       ]
     },
     {
       "id": "9",
-      "title": "Web Security",
-      "description": "-",
+      "title": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
+      "description": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "9"
-      ]
-    },
-    {
-      "id": "10",
-      "title": "Exploitations of the most critical applications security risks",
-      "description": "-",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "14:00",
-      "to_time": "15:00",
-      "speakers": [
-        "10"
-      ]
-    },
-    {
-      "id": "11",
-      "title": "Security",
-      "description": "Security",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "4"
-      ]
-    },
-    {
-      "id": "12",
-      "title": "Have a nice dream",
-      "description": "Have a nice dream",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "16:00",
-      "to_time": "17:00",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
         "12"
       ]
     },
     {
-      "id": "13",
-      "title": "Crashing an app 40 times a day: A dev's Lessons",
-      "description": "Crashing an app 40 times a day: A dev's Lessons",
+      "id": "10",
+      "title": "A Large-scale Study of Statistical Machine Translation Methods for Myanmar Language",
+      "description": "A Large-scale Study of Statistical Machine Translation Methods for Myanmar Language",
       "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "10:00",
-      "to_time": "11:00",
-      "speakers": [
-        "6"
-      ]
-    },
-    {
-      "id": "14",
-      "title": "Cocos2DX Game Development Engine",
-      "description": "Cocos2DX Game Development Engine",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "11:00",
-      "to_time": "12:00",
-      "speakers": [
-        "25"
-      ]
-    },
-    {
-      "id": "15",
-      "title": "Be a programmer, for real",
-      "description": "Be a programmer, for real",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "7"
-      ]
-    },
-    {
-      "id": "16",
-      "title": "The Art of killing bugs",
-      "description": "The Art of killing bugs",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "29"
-      ]
-    },
-    {
-      "id": "17",
-      "title": "What's new in Android 5.0 ?",
-      "description": "What's new in Android 5.0 ?",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "16:00",
-      "to_time": "17:00",
-      "speakers": [
-        "32"
-      ]
-    },
-    {
-      "id": "18",
-      "title": "KISS",
-      "description": "KISS",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "10:00",
-      "to_time": "11:00",
-      "speakers": [
-        "17"
-      ]
-    },
-    {
-      "id": "19",
-      "title": "Quick Intro to Node.js",
-      "description": "Quick Intro to Node.js",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "11:00",
-      "to_time": "12:00",
-      "speakers": [
-        "22"
-      ]
-    },
-    {
-      "id": "20",
-      "title": "Hello Zephir",
-      "description": "Hello Zephir",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "19"
-      ]
-    },
-    {
-      "id": "21",
-      "title": "My First Contact With Functional Programming",
-      "description": "This talk is based on the experience of a developer when he ventured into the world of functional programming with Haskell. Haskell is a profound language and learning it is a hugely rewarding experience. Coding in Haskell changes the way you think when you are approaching problems. Haskell helps to create software that is short, fast, and safe. Learning Haskell is whole lot of fun and you will have a wonderful experience learning it. One will have a better vision of functional paradigm in the course of learning Haskell and can venture into other functional programming languages too.",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "14:00",
-      "to_time": "15:00",
-      "speakers": [
-        "20"
-      ]
-    },
-    {
-      "id": "22",
-      "title": "Introduction to Elixir and concurrency",
-      "description": "Introduction to Elixir and concurrency",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "21"
-      ]
-    },
-    {
-      "id": "23",
-      "title": "Web Browser Automation",
-      "description": "Web Broswer Automation",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "16:00",
-      "to_time": "17:00",
-      "speakers": [
-        "14"
-      ]
-    },
-    {
-      "id": "24",
-      "title": "Hands on experience with Unity3D",
-      "description": "Hands on experience with Unity3D",
-      "photo": "",
-      "date": "2014-11-15",
-      "favourite": "false",
-      "talk_type": "4",
-      "room": "mcf",
-      "from_time": "13:00",
-      "to_time": "16:00",
-      "speakers": [
-        "13",
-        "42"
-      ]
-    },
-    {
-      "id": "25",
-      "title": "Web and Mobile: The best of both",
-      "description": "Web and Mobile: The best of both",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "09:00",
-      "to_time": "10:00",
-      "speakers": [
-        "1"
-      ]
-    },
-    {
-      "id": "26",
-      "title": "Startup Ecosystem in Myanmar.",
-      "description": "Startup Ecosystem in Myanmar.",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "10:00",
-      "to_time": "11:00",
-      "speakers": [
-        "2"
-      ]
-    },
-    {
-      "id": "27",
-      "title": " -  ",
-      "description": " - ",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "11:00",
-      "to_time": "12:00",
-      "speakers": [
-        "23"
-      ]
-    },
-    {
-      "id": "28",
-      "title": "e-Government (Developer's perspective)",
-      "description": "e-Government (Developer's perspective)",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "24"
-      ]
-    },
-    {
-      "id": "29",
-      "title": "Your business with Open Source software and Open Hardware",
-      "description": "Your business with Open Source software and Open Hardware",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "14:00",
-      "to_time": "15:00",
-      "speakers": [
-        "15"
-      ]
-    },
-    {
-      "id": "30",
-      "title": "Mobile & Web",
-      "description": "Mobile & Web",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "15:00",
-      "to_time": "16:00",
-      "speakers": [
-        "43",
-        "44",
-        "5",
-        "4"
-      ]
-    },
-    {
-      "id": "31",
-      "title": "How to build simple analytics system using Ruby and MongoDB",
-      "description": "How to build simple analytics system using Ruby and MongoDB",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "09:00",
-      "to_time": "10:00",
-      "speakers": [
-        "5"
-      ]
-    },
-    {
-      "id": "32",
-      "title": "How to become a JEDI master at Continuous Integration ?",
-      "description": "How to become a JEDI master at Continuous Integration ?",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "10:00",
-      "to_time": "11:00",
-      "speakers": [
-        "26"
-      ]
-    },
-    {
-      "id": "33",
-      "title": "Enterprise Mobile Application – challenges and solutions",
-      "description": "Enterprise Mobile Application – challenges and solutions",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "11:00",
-      "to_time": "12:00",
-      "speakers": [
-        "27"
-      ]
-    },
-    {
-      "id": "34",
-      "title": "Crawling and precise data extraction with Apache Nutch",
-      "description": "Since internet and online media are become matured, the collection and analysis of data from varieties of internet sources play a very important role for businesses to make better decision and to serve their users with more relevant information. Here in this talk, the audience will gain knowledge on web crawler and html parsing to archive and analyze the content from the websites. The presentation will focus on matured and opensource web crawler called Apache Nutch and its weakness and strength in production systems.",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "28"
-      ]
-    },
-    {
-      "id": "35",
-      "title": "Artificial Intelligence: A Brief History",
-      "description": "-",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "14:00",
-      "to_time": "15:00",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
         "13"
       ]
     },
     {
-      "id": "36",
-      "title": "App Development for Web and Mobile with AngularJS",
-      "description": "AngularJS has become favourite choice for front-end developers for its low learning curve and large sets of features with solid support for both Web and Mobile Web. With the help of Ionic Framework, developing mobile web app or hybrid app has become swift and smooth. This talk will cover some basic technique and concept to create a simple yet interactive mobile and web app using AngularJS and Ionic Framework.",
+      "id": "11",
+      "title": "Software Project Management 101",
+      "description": "Software Project Management 101",
       "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
-      "room": "205",
-      "from_time": "15:00",
-      "to_time": "16:00",
+      "room": "conference",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "18"
+        "3"
       ]
     },
     {
-      "id": "37",
-      "title": "Mobile Value Added Services Development",
-      "description": "Mobile Value Added Services Development",
+      "id": "12",
+      "title": "Experiences on Teaching and Mentoring Technology in Myanmar",
+      "description": "Experiences on Teaching and Mentoring Technology in Myanmar",
       "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
-      "room": "102",
-      "from_time": "09:00",
-      "to_time": "10:00",
+      "room": "conference",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "38"
+        "15"
       ]
     },
     {
-      "id": "38",
-      "title": "Distributed POS System",
-      "description": "Distributed POS System",
+      "id": "13",
+      "title": "Developer တစ်ယောက် အမှား တစ်သိန်း",
+      "description": "Developer တစ်ယောက် အမှား တစ်သိန်း",
       "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
-      "room": "102",
-      "from_time": "10:00",
-      "to_time": "11:00",
+      "room": "conference",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "45"
+        "1"
       ]
     },
     {
-      "id": "39",
-      "title": "Use of Digital Certificate in Web applications",
-      "description": "Use of Digital Certificate in Web applications",
+      "id": "14",
+      "title": "Developer တစ်ယောက် အမှား တစ်သိန်း",
+      "description": "Developer တစ်ယောက် အမှား တစ်သိန်း",
       "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
+      "date": "2014-11-21",
+      "favourite": "",
       "talk_type": "2",
-      "room": "102",
-      "from_time": "11:00",
-      "to_time": "12:00",
+      "room": "conference",
+      "from_time": "",
+      "to_time": "",
       "speakers": [
-        "33",
-        "34"
+        "7"
       ]
-    },
-    {
-      "id": "40",
-      "title": "Finished a Responsive Website within 16 hours with Bootstrap",
-      "description": "Finished a Responsive Website within 16 hours with Bootstrap",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "13:00",
-      "to_time": "14:00",
-      "speakers": [
-        "35"
-      ]
-    },
-    {
-      "id": "41",
-      "title": "User authentication & authorization",
-      "description": "User authentication & authorization",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "2",
-      "room": "102",
-      "from_time": "14:00",
-      "to_time": "15:00",
-      "speakers": [
-        "36"
-      ]
-    },
-    {
-      "id": "42",
-      "title": "Android Workshop",
-      "description": "Android Workshop",
-      "photo": "",
-      "date": "2014-11-16",
-      "favourite": "false",
-      "talk_type": "4",
-      "room": "mcf",
-      "from_time": "09:00",
-      "to_time": "12:00",
-      "speakers": []
-    },
-    {
-          "id": "43",
-          "title": "12 Factor App: A modern methodology for building modern web apps",
-          "description": "Lightening Talk",
-          "photo": "",
-          "date": "2014-11-15",
-          "favourite": "false",
-          "talk_type": "3",
-          "room": "205",
-          "from_time": "14:00",
-          "to_time": "15:00",
-          "speakers": ["6"]
-        },
-
-    {
-          "id": "44",
-          "title": "Sitting Ducks",
-          "description": "Lightening Talk",
-          "photo": "",
-          "date": "2014-11-15",
-          "favourite": "false",
-          "talk_type": "3",
-          "room": "205",
-          "from_time": "14:00",
-          "to_time": "15:00",
-          "speakers": ["1"]
-        },
-
-      {
-        "id": "45",
-        "title": "Single, and Secure? Security Issues in Single Page Web Applications",
-        "description": "Lightening Talk",
-        "photo": "",
-        "date": "2014-11-15",
-        "favourite": "false",
-        "talk_type": "3",
-        "room": "205",
-        "from_time": "14:00",
-        "to_time": "15:00",
-        "speakers": []
-        },
-      {
-        "id": "46",
-        "title": "Using Regex in Pattern Recognition",
-        "description": "Lightening Talk",
-        "photo": "",
-        "date": "2014-11-15",
-        "favourite": "false",
-        "talk_type": "3",
-        "room": "205",
-        "from_time": "14:00",
-        "to_time": "15:00",
-        "speakers": ["2"]
-      },
-      {
-        "id": "47",
-        "title": "Common Back-End Server Architecture Design",
-        "description": "Lightening Talk",
-        "photo": "",
-        "date": "2014-11-15",
-        "favourite": "false",
-        "talk_type": "3",
-        "room": "205",
-        "from_time": "14:00",
-        "to_time": "15:00",
-        "speakers": ["4"]
-      },
-      {
-        "id": "48",
-        "title": "My Recent Mistakes that Forever Changed How I Develop",
-        "description": "Lightening Talk",
-        "photo": "",
-        "date": "2014-11-15",
-        "favourite": "false",
-        "talk_type": "3",
-        "room": "205",
-        "from_time": "14:00",
-        "to_time": "15:00",
-        "speakers": ["7"]
-      }
+    }
   ],
   "speakers": [
     {
-      "id": "1",
-      "name": "Wayne Tun Myint",
+      "id": "9",
+      "name": "Khine Wai Oo",
+      "title": "Software Engineer at Acroquest Myanmar",
+      "description": "",
+      "photo": "http://devconmyanmar.org/2015/photos/khinewaioo.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Sai Tin Min Lu",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "2",
-      "name": "Ravi Chhabra",
+      "id": "8",
+      "name": "Thuya Myo Nyunt",
       "title": "",
       "description": "",
-      "photo": "https://scontent-a.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/1619393_10151838336577714_1930747688_n.jpg?oh=cb2b947f52da5c1e81103d14a7f2f47e&oe=54EA6BC2"
+      "photo": ""
+    },
+    {
+      "id": "6",
+      "name": "Win Htoo Myint",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "11",
+      "name": "Zaw Win Htun",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "12",
+      "name": "Win Pa Pa",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "13",
+      "name": "Ye Kyaw Thu",
+      "title": "",
+      "description": "",
+      "photo": ""
     },
     {
       "id": "3",
-      "name": "Aung Aung",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "4",
       "name": "Ei Maung",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "5",
-      "name": "Thar Htet",
-      "title": "",
-      "description": "https://scontent-b.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/156561_4351520317534_1917272354_n.jpg?oh=adc4f17a865a2f61582425009e88af5a&oe=551B1251",
-      "photo": ""
-    },
-    {
-      "id": "6",
-      "name": "Ye Lin Aung",
-      "title": "A curious programmer @ Zwenexsys. World class procrastinator.",
-      "description": "A curious programmer @ Zwenexsys. Highly motivated and result-oriented. World class procrastinator. Software architect-wannabe. Live and breathe open source. Love Calvin & Hobbes.",
-      "photo": "https://avatars.githubusercontent.com/u/275120?v=3"
-    },
-    {
-      "id": "7",
-      "name": "Myat Min Han",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/Myat_Min_Han.jpg"
-    },
-    {
-      "id": "8",
-      "name": "Yadanar Tun",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "9",
-      "name": "Thet Aung Min Latt",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/ThetAung.jpg"
-    },
-    {
-      "id": "10",
-      "name": "Ye Thura Thet",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "11",
-      "name": "Hoang Thi Thu Huong",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "12",
-      "name": "Khin Mrat Noe",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "13",
-      "name": "Myint Kyaw Thu",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "14",
-      "name": "Ye Maung",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/YeMaung.png"
-    },
-    {
       "id": "15",
-      "name": "Ko Ko Ye",
+      "name": "Soe Thiha Naung",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "16",
-      "name": "David Madden",
-      "title": "Founder of Code for Change Myanmar",
-      "description": "David Madden is an entrepreneur specializing in technology, new media & innovation. He is the Founder of Code for Change Myanmar, an initiative to harness the transformative potential of Myanmar's connectivity revolution. He is also the Co-Founder of Parami Road, a marketing strategy agency in Yangon.\nPrior to moving to Myanmar, David was the Co-Founder of Purpose, a digital strategy agency with offices in New York, London and Rio. David is also the Co-Founder of two major advocacy groups, Avaaz.org and GetUp.org.\nDavid holds a Masters in Public Policy from Harvard University and has degrees in Law and Arts from the University of New South Wales. \ne. david@codeforchangemyanmar.org  \n t. @davidmadden",
-      "photo": "https://i.imgur.com/Hx8CBKG.jpg"
-    },
-    {
-      "id": "17",
-      "name": "Poe Poe Myint Swe",
-      "title": "Software Engineer at Zwenexsys",
-      "description": "Working as an Android Developer. Personally, I've made apps such as Internet Watch, Speak Your Wishes, etc. \nMy website is at http://poepoemyintswe.com. \nCheck my codes at https://github.com/PoePoeMyintSwe",
-      "photo": "http://devconmyanmar.org/2014/img/Poe_Poe_Myint_Swe.jpg"
-    },
-    {
-      "id": "18",
-      "name": "Sean Lin",
-      "title": "Web Evangelist",
-      "description": "Sean Lin is developer, entrepreneurs and web evangelist. He has been in Web Industry for past 10 years, working and consulting for companies like Six Apart, Google, Zoho and Salesforce. He spends most of his time working on front-end web projects for various start-ups using cutting edge languages and frameworks. He has recently relocated Myanmar to lay foundation for his enterprise start-up.",
-      "photo": "http://i.imgur.com/YFmYF4a.jpg"
-    },
-    {
-      "id": "19",
-      "name": "Nyan Lynn Htut",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/nyan_%20Lynn_Htut.jpg"
-    },
-    {
-      "id": "20",
-      "name": "Arkar Min Aung",
-      "title": "iOS developer @ Nex",
-      "description": "Arkar is an iOS developer and he currently works at Nex. At Nex, Arkar and his team happily collaborate to build awesome mobile apps. \nArkar is a curious explorer and loves to indulge his free time finding new things out. \nThat’s how he found out about functional programming paradigm and saw a whole new world which he has never seen before. \nHe loves not just Computer Science but also various other fields, including Neuroscience, Mathematics, Astrophysics, Cryptography and Cars. \n\nTwitter: @ark_aung \nLinkedIn: http://www.linkedin.com/pub/arkar-aung/30/b01/8a0",
-      "photo": "http://devconmyanmar.org/2014/img/Arkar_Min_Aung(Nex).jpg"
-    },
-    {
-      "id": "21",
-      "name": "Soe Thiha",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/Soe_Thiha.jpg"
-    },
-    {
-      "id": "22",
-      "name": "Thura Myo Nyunt",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/ThuyaMyoNyunt.jpg"
-    },
-    {
-      "id": "23",
-      "name": "Mon Mon Myint Thu",
+      "id": "5",
+      "name": "Noe Noe",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
       "id": "24",
-      "name": "Aung Win Myat",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/Aung_Win_Myat.jpg"
-    },
-    {
-      "id": "25",
-      "name": "Htoon Lin",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/Htoon_Lin.jpg"
-    },
-    {
-      "id": "26",
-      "name": "Tin Aung Lin",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/TinAungLin.jpg"
-    },
-    {
-      "id": "27",
-      "name": "Tran Tuan Anh",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/TranTuanAnh.png"
-    },
-    {
-      "id": "28",
-      "name": "Ye Wint Ko",
-      "title": "CTO @ Bindez",
-      "description": "Cofounder and Chief Architect at a startup called Bindez. He has been in IT industry since 6 years ago developing information systems in the area of information retrieval, web archiving and content analysis. ",
-      "photo": "http://i.imgur.com/1rRT4xs.png"
-    },
-    {
-      "id": "29",
-      "name": "Zaw Thet Aung",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/ZawThetAung.jpg"
-    },
-    {
-      "id": "32",
-      "name": "Swan Htet Aung",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/SwanHtetAung.jpg"
-    },
-    {
-      "id": "33",
-      "name": "Aye Aye Thin",
+      "name": "Wai Phyo Thwin",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "34",
-      "name": "Nan Aye Me",
+      "id": "23",
+      "name": "Peter Phone",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "35",
+      "id": "22",
+      "name": "Ye Wint Htoo",
+      "title": "",
+      "description": "",
+      "photo": "http://devconmyanmar.org/2015/photos/yewinthtoo.jpg"
+    },
+    {
+      "id": "21",
+      "name": "U Aung Soe Moe",
+      "title": "",
+      "description": "",
+      "photo": "http://devconmyanmar.org/2015/photos/aungsoemoe.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Ye Linn Wai",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "1",
+      "name": "Wai Lin Tun",
+      "title": "",
+      "description": "",
+      "photo": "http://devconmyanmar.org/2015/photos/wailintun.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Ye Myat Min",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "7",
+      "name": "Ye Min Tun (Ko Ko Ye)",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "4",
+      "name": "Thar Htet",
+      "title": "",
+      "description": "http://devconmyanmar.org/2015/photos/tharhtet.jpg",
+      "photo": ""
+    },
+    {
+      "id": "19",
+      "name": "Tin Maung Maung Yin",
+      "title": "",
+      "description": "",
+      "photo": "http://devconmyanmar.org/2015/photos/tinmgmgyin.jpg"
+    },
+    {
+      "id": "16",
       "name": "Phyo Zaw Tun",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "36",
-      "name": "Htoo Myat Aung",
-      "title": "",
-      "description": "",
-      "photo": "http://devconmyanmar.org/2014/img/HtooMyatAung.jpg"
-    },
-    {
-      "id": "38",
-      "name": "Ravi Abeysekera",
+      "id": "17",
+      "name": "U Thet Aung Soe",
       "title": "",
       "description": "",
       "photo": ""
     },
     {
-      "id": "39",
-      "name": "U Ye Yint Win",
+      "id": "18",
+      "name": "Myat Min Soe",
       "title": "",
       "description": "",
-      "photo": ""
-    },
-    {
-      "id": "40",
-      "name": "Dr Tun Thura Thet",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "41",
-      "name": "U Nyein Oo",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "42",
-      "name": "Thet Naing Swe",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "43",
-      "name": "Htoo Myint Naung",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "44",
-      "name": "Thant Thet Khin Zaw",
-      "title": "",
-      "description": "",
-      "photo": ""
-    },
-    {
-      "id": "45",
-      "name": "Wai Phyo Thwin",
-      "title": "",
-      "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2015/photos/myatminsoe.jpg"
     }
   ],
   "my_schedules": [
