@@ -24,30 +24,42 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
-import com.squareup.otto.Subscribe;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
+import org.devconmyanmar.apps.devcon.event.BusProvider;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
+import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
+import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
+import org.devconmyanmar.apps.devcon.sync.SyncSpeakerService;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+import org.devconmyanmar.apps.devcon.utils.SharePref;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.OkClient;
+import retrofit.client.Response;
 
-import static org.devconmyanmar.apps.devcon.Config.POSITION;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -57,22 +69,19 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class FirstDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
-  private static final String FIRST_DAY = "2014-11-15";
+  private static final String FIRST_DAY = "2015-11-21";
   private final static String SCREEN_LABEL = "Explore First Day";
   private List<Talk> mTalks = new ArrayList<Talk>();
-  private CustomSwipeRefreshLayout exploreSwipeRefreshView;
   private ScheduleAdapter mScheduleAdapter;
-  private StickyListHeadersListView firstDayList;
+
+  @Bind(R.id.explore_swipe_refresh_view) SwipeRefreshLayout exploreSwipeRefreshView;
+  @Bind(R.id.explore_list_view) RecyclerView firstDayList;
 
   public FirstDayFragment() {
   }
 
   public static FirstDayFragment getInstance() {
     return new FirstDayFragment();
-  }
-
-  @Override public void onAttach(Activity activity) {
-    super.onAttach(activity);
   }
 
   @Override public void onCreate(Bundle savedInstanceState) {
@@ -85,18 +94,13 @@ public class FirstDayFragment extends BaseFragment {
 
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-
     View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
-    firstDayList = (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
-
-    exploreSwipeRefreshView =
-        (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
+    ButterKnife.bind(this, rootView);
 
     exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
 
     exploreSwipeRefreshView.setRefreshing(false);
-    exploreSwipeRefreshView.setStickyListHeadersListView(firstDayList);
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
@@ -110,8 +114,6 @@ public class FirstDayFragment extends BaseFragment {
       }
     });
 
-    firstDayList.setDivider(null);
-
     mTalks = talkDao.getTalkByDay(FIRST_DAY);
     ArrayList<Talk> tempTalks = new ArrayList<Talk>();
     for (Talk talk : mTalks) {
@@ -119,25 +121,30 @@ public class FirstDayFragment extends BaseFragment {
         tempTalks.add(talk);
       }
     }
+
     mTalks.removeAll(tempTalks);
+
+    LOGD(TAG, "mTalks -> " + mTalks.size());
     mScheduleAdapter.replaceWith(mTalks);
     firstDayList.setAdapter(mScheduleAdapter);
 
-    firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        int id = mTalks.get(position).getId();
-        LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    firstDayList.setLayoutManager(linearLayoutManager);
 
-        // GA
-        AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
-            mTalks.get(position).getTitle());
-
-        Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-        i.putExtra(POSITION, id);
-        startActivity(i);
-      }
-    });
+    //firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() { @Override public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+    //    int id = mTalks.get(position).getId();
+    //    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+    //
+    //    // GA
+    //    AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
+    //        mTalks.get(position).getTitle());
+    //
+    //    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+    //    i.putExtra(POSITION, id);
+    //    startActivity(i);
+    //  }
+    //});
 
     return rootView;
   }
@@ -159,9 +166,101 @@ public class FirstDayFragment extends BaseFragment {
     }
   }
 
-  @Subscribe public void syncSuccess(SyncSuccessEvent event) {
-    mTalks = talkDao.getTalkByDay(FIRST_DAY);
-    mScheduleAdapter.replaceWith(mTalks);
-    firstDayList.setAdapter(mScheduleAdapter);
+  protected void syncSchedules(final SwipeRefreshLayout exploreSwipeRefreshView) {
+
+    showRefreshProgress(exploreSwipeRefreshView);
+
+    RestAdapter speakerRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
+        .setLogLevel(RestAdapter.LogLevel.BASIC)
+        .setClient(new OkClient(okHttpClient))
+        .build();
+
+    SyncSpeakerService syncSpeakerService = speakerRestAdapter.create(SyncSpeakerService.class);
+    syncSpeakerService.getSpeakers(new Callback<List<Speaker>>() {
+      @Override public void success(List<Speaker> speakers, Response response) {
+        try {
+          speakerDao.deleteAll();
+          for (Speaker s : speakers) {
+            speakerDao.create(s);
+          }
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+
+      @Override public void failure(RetrofitError error) {
+        //Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
+        hideRefreshProgress(exploreSwipeRefreshView);
+      }
+    });
+
+    List<Talk> favTalk = talkDao.getFavTalks();
+    ArrayList<Integer> talkIds = new ArrayList<Integer>();
+    for (Talk talk : favTalk) {
+      talkIds.add(talk.getId());
+    }
+    SharePref.getInstance(mContext).saveFavIds(talkIds.toString());
+
+    RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
+        .setLogLevel(RestAdapter.LogLevel.BASIC)
+        .setClient(new OkClient(okHttpClient))
+        .build();
+
+    SyncScheduleService syncScheduleService = scheduleRestAdapter.create(SyncScheduleService.class);
+    syncScheduleService.getSchedules(new Callback<JsonObject>() {
+      @Override public void success(JsonObject jsonObj, Response response) {
+        JsonArray scheduleArray = jsonObj.getAsJsonArray("sessions");
+        try {
+          talkDao.deleteAll();
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+
+        List<Talk> talks = new ArrayList<>();
+        for (JsonElement j : scheduleArray) {
+          Talk talk = new Talk();
+          talk.setId(j.getAsJsonObject().get("id").getAsInt());
+          talk.setTitle(j.getAsJsonObject().get("title").getAsString());
+          talk.setDescription(j.getAsJsonObject().get("description").getAsString());
+          talk.setPhoto(j.getAsJsonObject().get("photo").getAsString());
+          talk.setDate(j.getAsJsonObject().get("date").getAsString());
+          talk.setFavourite(j.getAsJsonObject().get("favourite").getAsBoolean());
+          talk.setTalk_type(j.getAsJsonObject().get("talk_type").getAsInt());
+          talk.setRoom(j.getAsJsonObject().get("room").getAsString());
+          talk.setFrom_time(j.getAsJsonObject().get("from_time").getAsString());
+          talk.setTo_time(j.getAsJsonObject().get("to_time").getAsString());
+          JsonArray speakers = j.getAsJsonObject().getAsJsonArray("speakers");
+          talk.setSpeakers(speakers.toString());
+          talks.add(talk);
+          talkDao.create(talk);
+        }
+
+        ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
+        ArrayList<Integer> talkIds = new ArrayList<Integer>();
+        for (Talk talk : favTalk) {
+          talkIds.add(talk.getId());
+        }
+
+        for (Talk talk : talks) {
+          if (talkIds.contains(talk.getId())) {
+            talk.setFavourite(true);
+            talk.setId(talk.getId());
+            talkDao.createOrUpdate(talk);
+          }
+        }
+        hideRefreshProgress(exploreSwipeRefreshView);
+        BusProvider.getInstance().post(new SyncSuccessEvent());
+
+        mTalks = talkDao.getTalkByDay(FIRST_DAY);
+
+        LOGD(TAG, "mTalks -> " + mTalks.size());
+        mScheduleAdapter.replaceWith(mTalks);
+        firstDayList.setAdapter(mScheduleAdapter);
+      }
+
+      @Override public void failure(RetrofitError error) {
+        hideRefreshProgress(exploreSwipeRefreshView);
+      }
+    });
   }
 }

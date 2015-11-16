@@ -28,13 +28,19 @@ import android.app.Application;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGI;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Ye Lin Aung on 14/10/04.
  */
 public class DevConApplication extends Application {
 
+  private static final String TAG = makeLogTag(DevConApplication.class);
+
   @Override public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
+    LOGI(TAG, "on create from " + getClass().getCanonicalName());
   }
 }

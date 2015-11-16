@@ -27,6 +27,7 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -46,7 +47,6 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
 import org.devconmyanmar.apps.devcon.sync.SyncSpeakerService;
-import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.SharePref;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -79,19 +79,19 @@ public abstract class BaseFragment extends Fragment {
     sponsorDao = new SponsorDao(mContext);
   }
 
-  public void showRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+  public void showRefreshProgress(SwipeRefreshLayout mSwipeRefreshWidget) {
     mSwipeRefreshWidget.setRefreshing(true);
   }
 
-  public void hideRefreshProgress(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+  public void hideRefreshProgress(SwipeRefreshLayout mSwipeRefreshWidget) {
     mSwipeRefreshWidget.setRefreshing(false);
   }
 
-  public void enableSwipe(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+  public void enableSwipe(SwipeRefreshLayout mSwipeRefreshWidget) {
     mSwipeRefreshWidget.setEnabled(true);
   }
 
-  public void disableSwipe(CustomSwipeRefreshLayout mSwipeRefreshWidget) {
+  public void disableSwipe(SwipeRefreshLayout mSwipeRefreshWidget) {
     mSwipeRefreshWidget.setEnabled(false);
   }
 
@@ -105,7 +105,7 @@ public abstract class BaseFragment extends Fragment {
     BusProvider.getInstance().unregister(this);
   }
 
-  protected void syncSchedules(final CustomSwipeRefreshLayout exploreSwipeRefreshView) {
+  protected void syncSchedules(final SwipeRefreshLayout exploreSwipeRefreshView) {
 
     showRefreshProgress(exploreSwipeRefreshView);
 
@@ -197,7 +197,7 @@ public abstract class BaseFragment extends Fragment {
     });
   }
 
-  private ArrayList<Talk> flattenFav(String talkIds) {
+  public ArrayList<Talk> flattenFav(String talkIds) {
     ArrayList<Talk> mTalks = new ArrayList<Talk>();
     String id[] = new Gson().fromJson(talkIds, String[].class);
     for (String anId : id) {

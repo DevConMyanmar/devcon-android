@@ -24,15 +24,15 @@
 
 package org.devconmyanmar.apps.devcon.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -46,7 +46,6 @@ import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
@@ -54,7 +53,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
  * Created by Ye Lin Aung on 14/10/05.
  */
 
-public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private static final int VIEW_TYPE_KEYNOTE = 1;
   private static final int VIEW_TYPE_NORMAL = 2;
@@ -70,8 +69,6 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
   private LayoutInflater mInflater;
   private SpeakerDao speakerDao;
 
-  private String formattedDate;
-
   public ScheduleAdapter(Context mContext) {
     this.mContext = mContext;
     this.mInflater = LayoutInflater.from(mContext);
@@ -83,57 +80,47 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     notifyDataSetChanged();
   }
 
-  @Override public int getCount() {
-    return mTalks.size();
-  }
-
-  @Override public Talk getItem(int position) {
-    return mTalks.get(position);
-  }
-
   @Override public long getItemId(int position) {
     return mTalks.get(position).getId();
   }
 
-  @Override public int getViewTypeCount() {
-    return VIEW_TYPE_COUNT;
+  @Override public int getItemCount() {
+    return mTalks.size();
   }
 
   @Override public int getItemViewType(int position) {
-    // return position % VIEW_TYPE_COUNT;
     return mTalks.get(position).getTalk_type() % VIEW_TYPE_COUNT;
   }
 
-  @Override public View getView(int position, View view, ViewGroup parent) {
+  @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    switch (viewType) {
+      case VIEW_TYPE_KEYNOTE:
+        View keynoteView = mInflater.inflate(R.layout.row_keynote, viewGroup, false);
+        return new KeynoteViewHolder(keynoteView);
+      case VIEW_TYPE_NORMAL:
+        View scheduleView = mInflater.inflate(R.layout.row_normal_schedule, viewGroup, false);
+        return new NormalViewHolder(scheduleView);
+      case VIEW_TYPE_WORKSHOP:
+        View workshopView = mInflater.inflate(R.layout.row_workshop, viewGroup, false);
+        return new WorkshopViewHolder(workshopView);
+      default:
+        View defaultView = mInflater.inflate(R.layout.row_normal_schedule, viewGroup, false);
+        return new NormalViewHolder(defaultView);
+    }
+  }
 
-    Talk mTalk = getItem(position);
-
-    KeynoteViewHolder keynoteViewHolder;
-    NormalViewHolder normalViewHolder;
-    WorkshopViewHolder workshopViewHolder;
-
-    LayoutInflater mInflater =
-        (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-
-    View rootView = view;
+  @Override public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    Talk mTalk = mTalks.get(position);
     Resources r = mContext.getResources();
     int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
-
-    switch (mTalk.getTalk_type()) {
+    switch (viewHolder.getItemViewType()) {
       case VIEW_TYPE_KEYNOTE:
-        if (rootView != null) {
-          keynoteViewHolder = (KeynoteViewHolder) rootView.getTag();
-        } else {
-          rootView = mInflater.inflate(R.layout.row_keynote, parent, false);
-          keynoteViewHolder = new KeynoteViewHolder(rootView);
-          rootView.setTag(keynoteViewHolder);
-        }
-
+        KeynoteViewHolder keynoteViewHolder = (KeynoteViewHolder) viewHolder;
         keynoteViewHolder.mKeynoteTitle.setText(mTalk.getTitle());
 
         String dateString = mTalk.getDate();
 
-        formattedDate = TimeUtils.parseDateString(dateString);
+        String formattedDate = TimeUtils.parseDateString(dateString);
         String keynoteFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String keynoteFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
         String keynoteRoom = TimeUtils.getProperRoomName(mTalk.getRoom());
@@ -146,20 +133,14 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
                 .put("room", keynoteRoom)
                 .format();
         keynoteViewHolder.mKeyNoteTime.setText(keyNoteTimeAndPlace);
-
-        return rootView;
+        break;
       case VIEW_TYPE_NORMAL:
-        if (rootView != null) {
-          normalViewHolder = (NormalViewHolder) rootView.getTag();
-        } else {
-          rootView = mInflater.inflate(R.layout.row_normal_schedule, parent, false);
-          normalViewHolder = new NormalViewHolder(rootView);
-          rootView.setTag(normalViewHolder);
-        }
+        NormalViewHolder normalViewHolder = (NormalViewHolder) viewHolder;
 
         if (Build.VERSION.SDK_INT >= 21) {
           normalViewHolder.mNormalContainer.setPadding(0, px, 0, 0);
         }
+
         String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
 
@@ -169,19 +150,11 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
 
         String speakers = flatternSpeakerNames(mTalk.getSpeakers());
         normalViewHolder.mScheduleSpeakers.setText(speakers);
-
-        return rootView;
+        break;
       case VIEW_TYPE_WORKSHOP:
-        if (rootView != null) {
-          workshopViewHolder = (WorkshopViewHolder) rootView.getTag();
-        } else {
-          rootView = mInflater.inflate(R.layout.row_workshop, parent, false);
-          workshopViewHolder = new WorkshopViewHolder(rootView);
-          rootView.setTag(workshopViewHolder);
-        }
-
+        WorkshopViewHolder workshopViewHolder = (WorkshopViewHolder) viewHolder;
         workshopViewHolder.mWorkshopBackground.setBackgroundColor(
-            mContext.getResources().getColor(R.color.fb_button_background));
+            ContextCompat.getColor(mContext, R.color.fb_button_background));
         workshopViewHolder.mWorkshopTitle.setText(mTalk.getTitle());
 
         String workshopDate = mTalk.getDate();
@@ -198,35 +171,8 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
             .put("room", wsRoom)
             .format();
         workshopViewHolder.mWorkshopTime.setText(wsNoteTimeAndPlace);
-
-        return rootView;
-
-      default:
-        return rootView;
+        break;
     }
-  }
-
-  @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
-    HeaderViewHolder holder;
-    if (view == null) {
-      holder = new HeaderViewHolder();
-      view = mInflater.inflate(R.layout.room_header, viewGroup, false);
-      assert view != null;
-      holder.header = (TextView) view.findViewById(R.id.room_name);
-      view.setTag(holder);
-    } else {
-      holder = (HeaderViewHolder) view.getTag();
-    }
-
-    CharSequence headerChar = TimeUtils.getProperRoomName(mTalks.get(i).getRoom());
-    holder.header.setText(headerChar);
-    holder.header.invalidate();
-
-    return view;
-  }
-
-  @Override public long getHeaderId(int i) {
-    return mTalks.get(i).getRoom().subSequence(0, 1).charAt(0);
   }
 
   private String flatternSpeakerNames(String speakers) {
@@ -243,18 +189,19 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     return s;
   }
 
-  static class KeynoteViewHolder {
+  static class KeynoteViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.keynote_row) FrameLayout mKeynoteWrapper;
     @Bind(R.id.keynote_background) ForegroundImageView mKeynoteBackground;
     @Bind(R.id.keynote_title) TextView mKeynoteTitle;
     @Bind(R.id.keynote_time_and_place) TextView mKeyNoteTime;
 
     public KeynoteViewHolder(View view) {
+      super(view);
       ButterKnife.bind(this, view);
     }
   }
 
-  static class NormalViewHolder {
+  static class NormalViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.normal_card_container) FrameLayout mNormalContainer;
     @Bind(R.id.normal_schedule_from_time) TextView mFromTime;
     @Bind(R.id.normal_schedule_to_time) TextView mToTime;
@@ -262,21 +209,19 @@ public class ScheduleAdapter extends BaseAdapter implements StickyListHeadersAda
     @Bind(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
 
     public NormalViewHolder(View view) {
+      super(view);
       ButterKnife.bind(this, view);
     }
   }
 
-  static class WorkshopViewHolder {
+  static class WorkshopViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.workshop_background) ForegroundImageView mWorkshopBackground;
     @Bind(R.id.workshop_title) TextView mWorkshopTitle;
     @Bind(R.id.workshop_time_and_place) TextView mWorkshopTime;
 
     public WorkshopViewHolder(View view) {
+      super(view);
       ButterKnife.bind(this, view);
     }
-  }
-
-  static class HeaderViewHolder {
-    TextView header;
   }
 }

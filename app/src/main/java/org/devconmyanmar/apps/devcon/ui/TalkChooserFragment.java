@@ -24,12 +24,13 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,8 +38,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.google.gson.Gson;
@@ -50,14 +49,12 @@ import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 
-import static org.devconmyanmar.apps.devcon.Config.POSITION;
-
 /**
  * Created by yemyatthu on 11/13/14.
  */
 public class TalkChooserFragment extends BaseFragment {
   @Bind(R.id.toolbar) Toolbar mToolbar;
-  @Bind(R.id.my_list) ListView mMyList;
+  @Bind(R.id.my_list) RecyclerView mTalkChooserList;
   private List<Talk> lists;
   private BaseActivity mBaseActivity;
 
@@ -84,23 +81,27 @@ public class TalkChooserFragment extends BaseFragment {
     ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getActivity());
     mBaseActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mBaseActivity.getSupportActionBar();
-    actionBar.setTitle(
-        getArguments().getString("START_TIME") + "-" + getArguments().getString("END_TIME"));
-    actionBar.setDisplayHomeAsUpEnabled(true);
+    if (actionBar != null) {
+      actionBar.setTitle(
+          getArguments().getString("START_TIME") + "-" + getArguments().getString("END_TIME"));
+      actionBar.setDisplayHomeAsUpEnabled(true);
+    }
 
     lists = flattenTalks(getArguments().getString("TALK_ID"));
 
     scheduleAdapter.replaceWith(lists);
-    mMyList.setAdapter(scheduleAdapter);
-    mMyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        int id = lists.get(i).getId();
 
-        Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
-        intent.putExtra(POSITION, id);
-        startActivity(intent);
-      }
-    });
+    mTalkChooserList.setLayoutManager(new LinearLayoutManager(mContext));
+    mTalkChooserList.setAdapter(scheduleAdapter);
+    //mTalkChooserList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    //  @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    //    int id = lists.get(i).getId();
+    //
+    //    Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
+    //    intent.putExtra(POSITION, id);
+    //    startActivity(intent);
+    //  }
+    //});
 
     if (Build.VERSION.SDK_INT >= 19) {
 

@@ -24,16 +24,18 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +43,9 @@ import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
-import static org.devconmyanmar.apps.devcon.Config.POSITION;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -55,13 +54,13 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 public class SecondDayFragment extends BaseFragment {
 
   private static final String TAG = makeLogTag(SecondDayFragment.class);
-  private static final String SECOND_DAY = "2014-11-16";
+  private static final String SECOND_DAY = "2015-11-22";
 
   private final static String SCREEN_LABEL = "Explore Second Day";
 
-  private CustomSwipeRefreshLayout exploreSwipeRefreshView;
+  @Bind(R.id.explore_swipe_refresh_view) SwipeRefreshLayout exploreSwipeRefreshView;
+  @Bind(R.id.explore_list_view) RecyclerView secondDayList;
   private ScheduleAdapter mScheduleAdapter;
-  private StickyListHeadersListView secondDayList;
 
   private List<Talk> mTalks = new ArrayList<Talk>();
 
@@ -81,16 +80,10 @@ public class SecondDayFragment extends BaseFragment {
   @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
-
-    secondDayList = (StickyListHeadersListView) rootView.findViewById(R.id.explore_list_view);
-
-    exploreSwipeRefreshView =
-        (CustomSwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
+    ButterKnife.bind(this, rootView);
 
     exploreSwipeRefreshView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
-
-    exploreSwipeRefreshView.setStickyListHeadersListView(secondDayList);
 
     exploreSwipeRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
@@ -116,20 +109,22 @@ public class SecondDayFragment extends BaseFragment {
 
     secondDayList.setAdapter(mScheduleAdapter);
 
-    secondDayList.setDivider(null);
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    secondDayList.setLayoutManager(linearLayoutManager);
 
-    secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        int id = mTalks.get(position).getId();
-        Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-        AnalyticsManager.sendEvent("Explore Second Day", "selecttalk",
-            mTalks.get(position).getTitle());
-
-        i.putExtra(POSITION, id);
-        startActivity(i);
-      }
-    });
+    //secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    //  @Override
+    //  public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+    //    int id = mTalks.get(position).getId();
+    //    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+    //    AnalyticsManager.sendEvent("Explore Second Day", "selecttalk",
+    //        mTalks.get(position).getTitle());
+    //
+    //    i.putExtra(POSITION, id);
+    //    startActivity(i);
+    //  }
+    //});
 
     return rootView;
   }

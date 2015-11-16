@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="org.devconmyanmar.apps.devcon"
->
+    >
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
 
   <application
       android:name="org.devconmyanmar.apps.devcon.DevConApplication"
@@ -14,23 +13,23 @@
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:theme="@style/AppTheme"
-  >
+      >
     <!-- Play Services -->
     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version"
-    />
+        />
 
     <!-- Glide -->
     <meta-data
         android:name="org.devconmyanmar.apps.devcon.utils.MyGlideModule"
         android:value="GlideModule"
-    />
+        />
 
     <receiver
         android:name="com.google.android.gms.analytics.AnalyticsReceiver"
         android:enabled="true"
-    >
+        >
       <intent-filter>
         <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH"/>
       </intent-filter>
@@ -40,19 +39,19 @@
         android:name="com.google.android.gms.analytics.AnalyticsService"
         android:enabled="true"
         android:exported="false"
-    />
+        />
 
     <provider
         tools:replace="android:authorities"
         android:name="com.google.android.gms.measurement.AppMeasurementContentProvider"
         android:authorities="${applicationId}.google_measurement_service"
         android:exported="false"
-    />
+        />
 
     <activity
         android:name=".ui.InitialActivity"
         android:theme="@style/AppTheme"
-    >
+        >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -63,37 +62,37 @@
         android:name=".ui.TalkListActivity"
         android:label="@string/app_name"
         android:theme="@style/AppTheme.ScheduleActivity"
-    />
+        />
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkDetailActivity"
         android:label="@string/title_activity_schedule_detail"
         android:theme="@style/AppTheme.ScheduleActivity"
-    />
+        />
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.SpeakerDetailActivity"
         android:label="@string/title_activity_speaker_detail"
         android:theme="@style/AppTheme.ScheduleActivity"
-    />
+        />
     <activity
         android:name=".ui.ContributorsActivity"
         android:label="@string/about_contributors"
         android:theme="@style/AppTheme.ScheduleActivity"
-    />
+        />
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserActivity"
         android:theme="@style/AppTheme.ScheduleActivity"
-    >
+        >
     </activity>
     <activity
         android:name="org.devconmyanmar.apps.devcon.ui.TalkChooserDetailActivity"
         android:theme="@style/AppTheme.ScheduleActivity"
-    >
+        >
     </activity>
 
     <meta-data
         android:name="com.crashlytics.ApiKey"
         android:value="3156a941ed9d890a7b2faa705726aa4e4d16fae2"
-    />
+        />
   </application>
 
 </manifest>
