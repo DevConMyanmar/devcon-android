@@ -78,11 +78,14 @@ public class LighteningTalksFragment extends BaseFragment {
     ButterKnife.bind(this, view);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
-    actionBar.setTitle(mActivity.getString(R.string.lightening_title));
-    actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    if (actionBar != null) {
+      actionBar.setTitle(mActivity.getString(R.string.lightening_title));
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    }
+
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-    int mPrimaryColor = getResources().getColor(R.color.theme_primary);
+    int mPrimaryColor = ContextCompat.getColor(mContext, R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
     mSlidingTabLayout.setBackgroundColor(mPrimaryColor);
 

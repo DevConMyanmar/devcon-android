@@ -3,11 +3,11 @@ package org.devconmyanmar.apps.devcon.adapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
+import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -22,14 +22,12 @@ import org.devconmyanmar.apps.devcon.model.Talk;
 /**
  * Created by yemyatthu on 11/15/14.
  */
-public class LighteningTalkAdapter extends BaseAdapter {
-  private List<Talk> mTalks = new ArrayList<Talk>();
+public class LighteningTalkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+  private List<Talk> mTalks = new ArrayList<>();
   private Context mContext;
-  private LayoutInflater mLayoutInflater;
 
   public LighteningTalkAdapter(Context context) {
     mContext = context;
-    mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
   }
 
   public void replaceWith(List<Talk> talks) {
@@ -37,37 +35,31 @@ public class LighteningTalkAdapter extends BaseAdapter {
     notifyDataSetChanged();
   }
 
-  @Override public int getCount() {
-    return mTalks.size();
+  @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    LayoutInflater mInflater = LayoutInflater.from(mContext);
+    View keynoteView = mInflater.inflate(R.layout.row_keynote, parent, false);
+    return new ViewHolder(keynoteView);
   }
 
-  @Override public Object getItem(int i) {
-    return mTalks.get(i);
+  @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    Talk mTalk = mTalks.get(position);
+    Resources r = mContext.getResources();
+    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+    ViewHolder mViewHolder = (ViewHolder) holder;
+    mViewHolder.mLightningScheduleTitle.setText(mTalk.getTitle());
+    String speakers = flatternSpeakerNames(mTalk.getSpeakers());
+    mViewHolder.mLightningScheduleSpeaker.setText(speakers);
+    if (Build.VERSION.SDK_INT >= 21) {
+      mViewHolder.mLightningCardContainer.setPadding(0, px, 0, px);
+    }
   }
 
   @Override public long getItemId(int i) {
     return mTalks.get(i).getId();
   }
 
-  @Override public View getView(int i, View view, ViewGroup viewGroup) {
-    ViewHolder viewHolder;
-    Talk talk = (Talk) getItem(i);
-    Resources r = mContext.getResources();
-    int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
-    if (view != null) {
-      viewHolder = (ViewHolder) view.getTag();
-    } else {
-      view = mLayoutInflater.inflate(R.layout.row_lightning_schedule, viewGroup, false);
-      viewHolder = new ViewHolder(view);
-      view.setTag(viewHolder);
-    }
-    viewHolder.mLightningScheduleTitle.setText(talk.getTitle());
-    String speakers = flatternSpeakerNames(talk.getSpeakers());
-    viewHolder.mLightningScheduleSpeaker.setText(speakers);
-    if (Build.VERSION.SDK_INT >= 21) {
-      viewHolder.mLightningCardContainer.setPadding(0, px, 0, px);
-    }
-    return view;
+  @Override public int getItemCount() {
+    return 0;
   }
 
   //@Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
@@ -111,21 +103,13 @@ public class LighteningTalkAdapter extends BaseAdapter {
     return s;
   }
 
-  /**
-   * This class contains all butterknife-binded Views & Layouts from layout file
-   * 'row_lightning_schedule.xml'
-   * for easy to all layout elements.
-   *
-   * @author ButterKnifeZelezny, plugin for Android Studio by Inmite Developers
-   *         (http://inmite.github.io)
-   */
-
-  static class ViewHolder {
+  static class ViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.lightning_schedule_title) TextView mLightningScheduleTitle;
     @Bind(R.id.lightning_schedule_speaker) TextView mLightningScheduleSpeaker;
     @Bind(R.id.lightning_card_container) FrameLayout mLightningCardContainer;
 
     ViewHolder(View view) {
+      super(view);
       ButterKnife.bind(this, view);
     }
   }
