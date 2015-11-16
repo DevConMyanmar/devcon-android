@@ -25,26 +25,34 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Speaker;
+import org.devconmyanmar.apps.devcon.ui.SpeakerClickListener;
+import org.devconmyanmar.apps.devcon.ui.SpeakerViewHolder;
 import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
 
 /**
  * Created by Ye Lin Aung on 14/10/09.
  */
-public class SpeakerAdapter extends BindableAdapter<Speaker> {
+public class SpeakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   public Context mContext;
 
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
 
+  private SpeakerClickListener speakerClickListener;
+
+  public SpeakerAdapter(Context context, SpeakerClickListener speakerClickListener) {
+    this.mContext = context;
+    this.speakerClickListener = speakerClickListener;
+  }
+
   public SpeakerAdapter(Context context) {
-    super(context);
     this.mContext = context;
   }
 
@@ -53,23 +61,23 @@ public class SpeakerAdapter extends BindableAdapter<Speaker> {
     notifyDataSetChanged();
   }
 
-  @Override public int getCount() {
-    return mSpeakers.size();
+  @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
+    SpeakerItemView itemView =
+        (SpeakerItemView) mInflater.inflate(R.layout.speaker_layout, parent, false);
+    return new SpeakerViewHolder(mContext, itemView, speakerClickListener);
   }
 
-  @Override public Speaker getItem(int position) {
-    return mSpeakers.get(position);
+  @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    SpeakerViewHolder speakerViewHolder = (SpeakerViewHolder) holder;
+    speakerViewHolder.bindTo(mSpeakers.get(position));
   }
 
   @Override public long getItemId(int position) {
     return position;
   }
 
-  @Override public View newView(LayoutInflater inflater, int position, ViewGroup container) {
-    return inflater.inflate(R.layout.speaker_layout, container, false);
-  }
-
-  @Override public void bindView(Speaker speaker, int position, View view) {
-    ((SpeakerItemView) view).bindTo(speaker, mContext);
+  @Override public int getItemCount() {
+    return mSpeakers.size();
   }
 }

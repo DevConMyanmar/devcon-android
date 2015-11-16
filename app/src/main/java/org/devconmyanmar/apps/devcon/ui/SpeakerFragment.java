@@ -29,6 +29,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,12 +38,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.ListView;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnItemClick;
 import com.squareup.otto.Subscribe;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -61,12 +60,12 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class SpeakerFragment extends BaseFragment {
+public class SpeakerFragment extends BaseFragment implements SpeakerClickListener {
 
   private final static String SCREEN_LABEL = "Speaker List";
 
   @Bind(R.id.speaker_swipe_refresh_view) CustomSwipeRefreshLayout speakerSRView;
-  @Bind(R.id.my_list) ListView speakerList;
+  @Bind(R.id.my_list) RecyclerView speakerList;
   @Bind(R.id.toolbar) Toolbar mToolbar;
 
   private List<Speaker> mSpeakers = new ArrayList<Speaker>();
@@ -93,9 +92,11 @@ public class SpeakerFragment extends BaseFragment {
     ButterKnife.bind(this, rootView);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
-    actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-    actionBar.setTitle(R.string.speakers);
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+      actionBar.setTitle(R.string.speakers);
+    }
 
     speakerSRView.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3,
         R.color.color4);
@@ -116,39 +117,18 @@ public class SpeakerFragment extends BaseFragment {
 
     try {
       mSpeakers = speakerDao.getAll();
-      SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
+      SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext, this);
       speakerAdapter.replaceWith(mSpeakers);
       speakerList.setAdapter(speakerAdapter);
     } catch (SQLException e) {
       e.printStackTrace();
     }
 
-    speakerList.setOnScrollListener(new AbsListView.OnScrollListener() {
-      @Override public void onScrollStateChanged(AbsListView view, int scrollState) {
-      }
-
-      @Override public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-          int totalItemCount) {
-        if (firstVisibleItem == 0) {
-          speakerSRView.setEnabled(true);
-        } else {
-          speakerSRView.setEnabled(false);
-        }
-      }
-    });
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    speakerList.setLayoutManager(linearLayoutManager);
 
     return rootView;
-  }
-
-  @SuppressWarnings("unused") @OnItemClick(R.id.my_list) void speakerListItemClick(int position) {
-    int id = mSpeakers.get(position).getId();
-    LOGD("speakers ", "id " + id);
-    Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
-
-    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
-
-    i.putExtra(POSITION, id);
-    startActivity(i);
   }
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -172,10 +152,21 @@ public class SpeakerFragment extends BaseFragment {
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
     try {
       mSpeakers = speakerDao.getAll();
-      SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext);
+      SpeakerAdapter speakerAdapter = new SpeakerAdapter(mContext, this);
       speakerAdapter.replaceWith(mSpeakers);
     } catch (SQLException e) {
       e.printStackTrace();
     }
+  }
+
+  @Override public void onSpeakerClick(Speaker speaker, View v, int position) {
+    int id = mSpeakers.get(position).getId();
+    LOGD("speakers ", "id " + id);
+    Intent i = new Intent(getActivity(), SpeakerDetailActivity.class);
+
+    AnalyticsManager.sendEvent("Speaker List", "selectspeaker", mSpeakers.get(position).getTitle());
+
+    i.putExtra(POSITION, id);
+    startActivity(i);
   }
 }
