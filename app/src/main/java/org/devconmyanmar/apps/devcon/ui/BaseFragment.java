@@ -28,6 +28,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.DisplayMetrics;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -205,5 +206,10 @@ public abstract class BaseFragment extends Fragment {
     }
 
     return mTalks;
+  }
+
+  public int dpToPx(int dp) {
+    DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+    return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
   }
 }

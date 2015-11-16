@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,9 @@ public class LighteningTalkDaysFragment extends BaseFragment {
   private List<Talk> mLighteningTalks = new ArrayList<Talk>();
   private SwipeRefreshLayout exploreSwipeRefreshView;
   private LighteningTalkAdapter lighteningTalkAdapter;
-  private RecyclerView firstDayList;
+
+  @Bind(R.id.explore_list_view) RecyclerView talkRecyclerView;
+  @Bind(R.id.empty_text) TextView emptyTextView;
 
   public LighteningTalkDaysFragment() {
   }
@@ -56,7 +61,7 @@ public class LighteningTalkDaysFragment extends BaseFragment {
       @Nullable Bundle savedInstanceState) {
 
     View rootView = inflater.inflate(R.layout.fragment_explore_list, container, false);
-    firstDayList = (RecyclerView) rootView.findViewById(R.id.explore_list_view);
+    ButterKnife.bind(this, rootView);
 
     exploreSwipeRefreshView =
         (SwipeRefreshLayout) rootView.findViewById(R.id.explore_swipe_refresh_view);
@@ -89,13 +94,19 @@ public class LighteningTalkDaysFragment extends BaseFragment {
         mLighteningTalks.add(talk);
       }
     }
-   
-    lighteningTalkAdapter.replaceWith(mLighteningTalks);
-    firstDayList.setAdapter(lighteningTalkAdapter);
+
+    if (mLighteningTalks.size() > 0) {
+      talkRecyclerView.setVisibility(View.VISIBLE);
+      emptyTextView.setVisibility(View.GONE);
+      lighteningTalkAdapter.replaceWith(mLighteningTalks);
+      talkRecyclerView.setAdapter(lighteningTalkAdapter);
+    } else {
+      setEmptyView();
+    }
 
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-    firstDayList.setLayoutManager(linearLayoutManager);
+    talkRecyclerView.setLayoutManager(linearLayoutManager);
 
     return rootView;
   }
@@ -120,8 +131,7 @@ public class LighteningTalkDaysFragment extends BaseFragment {
   @Subscribe public void syncSuccess(SyncSuccessEvent event) {
     if (getArguments().getInt("Day") == 1) {
       mTalks = talkDao.getTalkByDay(FIRST_DAY);
-    }
-    if (getArguments().getInt("Day") == 2) {
+    } else if (getArguments().getInt("Day") == 2) {
       mTalks = talkDao.getTalkByDay(SECOND_DAY);
     }
     for (Talk talk : mTalks) {
@@ -129,7 +139,25 @@ public class LighteningTalkDaysFragment extends BaseFragment {
         mLighteningTalks.add(talk);
       }
     }
-    lighteningTalkAdapter.replaceWith(mLighteningTalks);
-    firstDayList.setAdapter(lighteningTalkAdapter);
+
+    if (mLighteningTalks.size() > 0) {
+      talkRecyclerView.setVisibility(View.VISIBLE);
+      emptyTextView.setVisibility(View.GONE);
+      lighteningTalkAdapter.replaceWith(mLighteningTalks);
+      talkRecyclerView.setAdapter(lighteningTalkAdapter);
+    } else {
+      setEmptyView();
+    }
+  }
+
+  private void setEmptyView() {
+    talkRecyclerView.setVisibility(View.GONE);
+    emptyTextView.setVisibility(View.VISIBLE);
+    emptyTextView.setText(getString(R.string.error_no_lightening_talk_try_again));
+    emptyTextView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        syncSchedules(exploreSwipeRefreshView);
+      }
+    });
   }
 }

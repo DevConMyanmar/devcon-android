@@ -3,8 +3,9 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/drawer_wrapper"
     tools:context="org.devconmyanmar.apps.devcon.ui.NavigationDrawerFragment"
->
+    >
   <TextView
       android:id="@+id/drawer_title"
       android:layout_width="match_parent"
@@ -15,7 +16,7 @@
       android:textColor="@android:color/white"
       android:layout_gravity="center"
       android:gravity="center"
-  />
+      />
   <ListView
       android:id="@+id/drawer_list"
       android:layout_width="match_parent"
@@ -24,5 +25,5 @@
       android:background="@color/navigation_drawer_background"
       android:choiceMode="singleChoice"
       android:divider="@null"
-  />
+      />
 </LinearLayout>

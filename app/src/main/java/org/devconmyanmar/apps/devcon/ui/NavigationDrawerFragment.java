@@ -31,6 +31,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -53,6 +55,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
   private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
   private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
+  @Bind(R.id.drawer_wrapper) LinearLayout mDrawerWrapper;
   @Bind(R.id.drawer_list) ListView mDrawerListView;
   @Bind(R.id.drawer_title) TextView mDrawerTitle;
   private int mCurrentSelectedPosition = 1;
@@ -114,7 +117,8 @@ public class NavigationDrawerFragment extends BaseFragment {
       SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
       tintManager.setStatusBarTintEnabled(true);
       tintManager.setNavigationBarTintEnabled(false);
-      tintManager.setTintColor(getResources().getColor(R.color.translucent_actionbar_background));
+      tintManager.setTintColor(
+          ContextCompat.getColor(mContext, R.color.translucent_actionbar_background));
     }
 
     return v;

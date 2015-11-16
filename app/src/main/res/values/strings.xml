@@ -123,4 +123,8 @@
   <string name="lightening_title">Lightening Talks</string>
 
   <string name="sponsors">Sponsors</string>
+
+  <string name="error_no_lightening_talk_try_again">
+    No Lightening talks right now. Tap to try again.
+  </string>
 </resources>

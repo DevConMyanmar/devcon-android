@@ -29,8 +29,12 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.DisplayMetrics;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -38,11 +42,18 @@ import org.devconmyanmar.apps.devcon.adapter.DrawerListAdapter;
 public class TalkListActivity extends BaseActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+  private static final String TAG = makeLogTag(TalkListActivity.class);
   private Fragment fragment = null;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_schedule_list);
+
+    DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+    float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+    float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+    LOGD(TAG, "Height -> " + dpHeight);
+    LOGD(TAG, "Width -> " + dpWidth);
 
     NavigationDrawerFragment mNavigationDrawerFragment =
         (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(

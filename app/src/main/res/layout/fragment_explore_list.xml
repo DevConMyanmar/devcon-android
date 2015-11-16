@@ -2,27 +2,48 @@
 
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/explore_swipe_refresh_view"
     android:background="#ffebebeb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    >
 
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/explore_list_view"
-      android:layout_marginLeft="@dimen/spacing_minor"
-      android:layout_marginStart="@dimen/spacing_minor"
-      android:layout_marginRight="@dimen/spacing_minor"
-      android:divider="@null"
-      android:focusable="false"
-      android:focusableInTouchMode="false"
-      android:clickable="true"
-      android:scrollbarStyle="outsideOverlay"
-      android:scrollbarSize="10dp"
-      android:scrollbarThumbVertical="@drawable/theme_scrollbar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-  />
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/explore_list_view"
+        android:layout_marginLeft="@dimen/spacing_minor"
+        android:layout_marginStart="@dimen/spacing_minor"
+        android:layout_marginRight="@dimen/spacing_minor"
+        android:divider="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/theme_scrollbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        android:padding="@dimen/spacing_major"
+        android:visibility="gone"
+        android:gravity="center"
+        android:background="?android:attr/selectableItemBackground"
+        tools:text="No talks right now. Tap to retry"
+        />
+
+  </FrameLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>
 
