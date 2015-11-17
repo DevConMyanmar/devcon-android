@@ -24,12 +24,11 @@
 
 package org.devconmyanmar.apps.devcon.adapter;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -38,24 +37,33 @@ import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.model.Sponsor;
-import org.devconmyanmar.apps.devcon.utils.TimeUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
  * Created by Ye Lin Aung on 14/11/15.
  */
-public class SponsorAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorVH> {
 
   private List<Sponsor> mSponsors = new ArrayList<Sponsor>();
   private LayoutInflater mInflater;
   private Context mContext;
 
-  public SponsorAdapter() {
-  }
-
   public SponsorAdapter(Context mContext) {
     this.mContext = mContext;
     mInflater = LayoutInflater.from(mContext);
+  }
+
+  @Override public SponsorVH onCreateViewHolder(ViewGroup parent, int viewType) {
+    LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
+    View mView = mInflater.inflate(R.layout.row_sponsor, parent, false);
+    return new SponsorVH(mView);
+  }
+
+  @Override public void onBindViewHolder(SponsorVH holder, int position) {
+    Sponsor s = mSponsors.get(position);
+    holder.sponsorName.setText(s.getName());
+    int id =
+        mContext.getResources().getIdentifier(s.getLogo(), "drawable", mContext.getPackageName());
+    holder.sponsorImage.setImageResource(id);
   }
 
   public void replaceWith(List<Sponsor> sponsors) {
@@ -63,73 +71,21 @@ public class SponsorAdapter extends BaseAdapter implements StickyListHeadersAdap
     notifyDataSetChanged();
   }
 
-  @Override public int getCount() {
-    return mSponsors.size();
-  }
-
-  @Override public Object getItem(int i) {
-    return mSponsors.get(i);
-  }
-
   @Override public long getItemId(int i) {
     return 0;
   }
 
-  @Override public View getView(int i, View view, ViewGroup viewGroup) {
-    LayoutInflater mInflater =
-        (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-    View rootView = view;
-    SponsorVH sponsorVH;
-    if (rootView != null) {
-      sponsorVH = (SponsorVH) rootView.getTag();
-    } else {
-      rootView = mInflater.inflate(R.layout.row_sponsor, viewGroup, false);
-      sponsorVH = new SponsorVH(rootView);
-      rootView.setTag(sponsorVH);
-    }
-    Sponsor s = (Sponsor) getItem(i);
-    sponsorVH.sponsorName.setText(s.getName());
-    int id =
-        mContext.getResources().getIdentifier(s.getName(), "drawable", mContext.getPackageName());
-
-    sponsorVH.sponsorImage.setImageResource(id);
-
-    return rootView;
+  @Override public int getItemCount() {
+    return mSponsors.size();
   }
 
-  @Override public View getHeaderView(int i, View view, ViewGroup viewGroup) {
-    HeaderViewHolder holder;
-    if (view == null) {
-      holder = new HeaderViewHolder();
-      view = mInflater.inflate(R.layout.sponsor_header, viewGroup, false);
-      assert view != null;
-      holder.header = (TextView) view.findViewById(R.id.room_name);
-      view.setTag(holder);
-    } else {
-      holder = (HeaderViewHolder) view.getTag();
-    }
-
-    CharSequence headerChar = TimeUtils.getSponsorName(mSponsors.get(i).getSponsorType());
-    holder.header.setText(headerChar);
-    holder.header.invalidate();
-
-    return view;
-  }
-
-  @Override public long getHeaderId(int i) {
-    return mSponsors.get(i).getSponsorType().subSequence(0, 1).charAt(0);
-  }
-
-  static class SponsorVH {
+  static class SponsorVH extends RecyclerView.ViewHolder {
     @Bind(R.id.sponsor_img) ImageView sponsorImage;
     @Bind(R.id.sponsor_name) TextView sponsorName;
 
     public SponsorVH(View view) {
+      super(view);
       ButterKnife.bind(this, view);
     }
-  }
-
-  static class HeaderViewHolder {
-    TextView header;
   }
 }

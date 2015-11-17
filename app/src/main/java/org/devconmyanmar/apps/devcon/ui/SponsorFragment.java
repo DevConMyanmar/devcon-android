@@ -27,6 +27,8 @@ package org.devconmyanmar.apps.devcon.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,7 +45,8 @@ import org.devconmyanmar.apps.devcon.adapter.SponsorAdapter;
 import org.devconmyanmar.apps.devcon.model.Sponsor;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 
 /**
  * Created by Ye Lin Aung on 14/10/05.
@@ -52,10 +55,11 @@ public class SponsorFragment extends BaseFragment {
 
   private final static String SCREEN_LABEL = "Sponsor List";
 
-  @Bind(R.id.sponsor_list) StickyListHeadersListView speakerList;
+  @Bind(R.id.sponsor_list) RecyclerView sponsorList;
   @Bind(R.id.toolbar) Toolbar mToolbar;
 
   private BaseActivity mActivity;
+  private SponsorAdapter sponsorAdapter;
 
   public SponsorFragment() {
   }
@@ -69,6 +73,8 @@ public class SponsorFragment extends BaseFragment {
     mActivity = (BaseActivity) getActivity();
     setHasOptionsMenu(true);
 
+    sponsorAdapter = new SponsorAdapter(mContext);
+
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
@@ -78,19 +84,24 @@ public class SponsorFragment extends BaseFragment {
     ButterKnife.bind(this, rootView);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
-    actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-    actionBar.setTitle(R.string.sponsors);
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+      actionBar.setTitle(R.string.sponsors);
+    }
 
     try {
       List<Sponsor> mSponsors = sponsorDao.getAll();
-      SponsorAdapter sponsorAdapter = new SponsorAdapter(mContext);
+      LOGD("s", "sponsors " + mSponsors.size());
       sponsorAdapter.replaceWith(mSponsors);
-      speakerList.setAdapter(sponsorAdapter);
+      sponsorList.setAdapter(sponsorAdapter);
     } catch (SQLException e) {
       e.printStackTrace();
     }
 
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    sponsorList.setLayoutManager(linearLayoutManager);
     return rootView;
   }
 
