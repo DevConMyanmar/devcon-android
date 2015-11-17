@@ -43,6 +43,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.Talk;
+import org.devconmyanmar.apps.devcon.ui.TalkClickListener;
 import org.devconmyanmar.apps.devcon.ui.widget.ForegroundImageView;
 import org.devconmyanmar.apps.devcon.utils.Phrase;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
@@ -68,11 +69,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
   private LayoutInflater mInflater;
   private SpeakerDao speakerDao;
+  private TalkClickListener talkClickListener;
 
-  public ScheduleAdapter(Context mContext) {
+  public ScheduleAdapter(Context mContext, TalkClickListener talkClickListener) {
     this.mContext = mContext;
     this.mInflater = LayoutInflater.from(mContext);
     this.speakerDao = new SpeakerDao(mContext);
+    this.talkClickListener = talkClickListener;
   }
 
   public void replaceWith(List<Talk> talks) {
@@ -96,7 +99,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     switch (viewType) {
       case VIEW_TYPE_KEYNOTE:
         View keynoteView = mInflater.inflate(R.layout.row_keynote, viewGroup, false);
-        return new KeynoteViewHolder(keynoteView);
+        return new KeynoteViewHolder(keynoteView, talkClickListener);
       case VIEW_TYPE_NORMAL:
         View scheduleView = mInflater.inflate(R.layout.row_normal_schedule, viewGroup, false);
         return new NormalViewHolder(scheduleView);
@@ -195,9 +198,16 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Bind(R.id.keynote_title) TextView mKeynoteTitle;
     @Bind(R.id.keynote_time_and_place) TextView mKeyNoteTime;
 
-    public KeynoteViewHolder(View view) {
+    Talk mTalk;
+
+    public KeynoteViewHolder(View view, final TalkClickListener talkClickListener) {
       super(view);
       ButterKnife.bind(this, view);
+      mKeynoteWrapper.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          talkClickListener.onTalkClick(mTalk, v, getAdapterPosition());
+        }
+      });
     }
   }
 

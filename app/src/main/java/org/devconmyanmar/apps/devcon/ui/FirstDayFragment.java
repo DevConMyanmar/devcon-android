@@ -24,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -36,30 +37,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.adapter.SectionAdapter;
-import org.devconmyanmar.apps.devcon.event.BusProvider;
-import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
-import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
-import org.devconmyanmar.apps.devcon.sync.SyncScheduleService;
-import org.devconmyanmar.apps.devcon.sync.SyncSpeakerService;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.ConnectionUtils;
-import org.devconmyanmar.apps.devcon.utils.SharePref;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.OkClient;
-import retrofit.client.Response;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -67,12 +53,12 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class FirstDayFragment extends BaseFragment {
+public class FirstDayFragment extends BaseFragment implements TalkClickListener {
 
   private static final String TAG = makeLogTag(FirstDayFragment.class);
   private static final String FIRST_DAY = "2015-11-21";
   private final static String SCREEN_LABEL = "Explore First Day";
-  private List<Talk> mTalks = new ArrayList<Talk>();
+  private List<Talk> mTalks = new ArrayList<>();
   private ScheduleAdapter mScheduleAdapter;
 
   private SectionAdapter mSectionedAdapter;
@@ -89,7 +75,7 @@ public class FirstDayFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mScheduleAdapter = new ScheduleAdapter(mContext);
+    mScheduleAdapter = new ScheduleAdapter(mContext, this);
     setHasOptionsMenu(true);
 
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
@@ -154,7 +140,9 @@ public class FirstDayFragment extends BaseFragment {
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     firstDayList.setLayoutManager(linearLayoutManager);
 
-    //firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() { @Override public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+    //firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    // @Override public void onItemClick(AdapterView<?> adapterView, View view,
+    // int position, long l) {
     //    int id = mTalks.get(position).getId();
     //    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
     //
@@ -210,101 +198,14 @@ public class FirstDayFragment extends BaseFragment {
     }
   }
 
-  protected void syncSchedules(final SwipeRefreshLayout exploreSwipeRefreshView) {
+  @Override public void onTalkClick(Talk talk, View v, int position) {
+    int id = mTalks.get(position).getId();
+    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
+    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+    i.putExtra(Config.POSITION, id);
+    startActivity(i);
 
-    showRefreshProgress(exploreSwipeRefreshView);
-
-    RestAdapter speakerRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
-        .setLogLevel(RestAdapter.LogLevel.BASIC)
-        .setClient(new OkClient(okHttpClient))
-        .build();
-
-    SyncSpeakerService syncSpeakerService = speakerRestAdapter.create(SyncSpeakerService.class);
-    syncSpeakerService.getSpeakers(new Callback<List<Speaker>>() {
-      @Override public void success(List<Speaker> speakers, Response response) {
-        try {
-          speakerDao.deleteAll();
-          for (Speaker s : speakers) {
-            speakerDao.create(s);
-          }
-        } catch (SQLException e) {
-          e.printStackTrace();
-        }
-      }
-
-      @Override public void failure(RetrofitError error) {
-        //Toast.makeText(getActivity(), getString(R.string.oops), Toast.LENGTH_SHORT).show();
-        hideRefreshProgress(exploreSwipeRefreshView);
-      }
-    });
-
-    List<Talk> favTalk = talkDao.getFavTalks();
-    ArrayList<Integer> talkIds = new ArrayList<Integer>();
-    for (Talk talk : favTalk) {
-      talkIds.add(talk.getId());
-    }
-    SharePref.getInstance(mContext).saveFavIds(talkIds.toString());
-
-    RestAdapter scheduleRestAdapter = new RestAdapter.Builder().setEndpoint(Config.BASE_URL)
-        .setLogLevel(RestAdapter.LogLevel.BASIC)
-        .setClient(new OkClient(okHttpClient))
-        .build();
-
-    SyncScheduleService syncScheduleService = scheduleRestAdapter.create(SyncScheduleService.class);
-    syncScheduleService.getSchedules(new Callback<JsonObject>() {
-      @Override public void success(JsonObject jsonObj, Response response) {
-        JsonArray scheduleArray = jsonObj.getAsJsonArray("sessions");
-        try {
-          talkDao.deleteAll();
-        } catch (SQLException e) {
-          e.printStackTrace();
-        }
-
-        List<Talk> talks = new ArrayList<>();
-        for (JsonElement j : scheduleArray) {
-          Talk talk = new Talk();
-          talk.setId(j.getAsJsonObject().get("id").getAsInt());
-          talk.setTitle(j.getAsJsonObject().get("title").getAsString());
-          talk.setDescription(j.getAsJsonObject().get("description").getAsString());
-          talk.setPhoto(j.getAsJsonObject().get("photo").getAsString());
-          talk.setDate(j.getAsJsonObject().get("date").getAsString());
-          talk.setFavourite(j.getAsJsonObject().get("favourite").getAsBoolean());
-          talk.setTalk_type(j.getAsJsonObject().get("talk_type").getAsInt());
-          talk.setRoom(j.getAsJsonObject().get("room").getAsString());
-          talk.setFrom_time(j.getAsJsonObject().get("from_time").getAsString());
-          talk.setTo_time(j.getAsJsonObject().get("to_time").getAsString());
-          JsonArray speakers = j.getAsJsonObject().getAsJsonArray("speakers");
-          talk.setSpeakers(speakers.toString());
-          talks.add(talk);
-          talkDao.create(talk);
-        }
-
-        ArrayList<Talk> favTalk = flattenFav(SharePref.getInstance(mContext).geFavIds());
-        ArrayList<Integer> talkIds = new ArrayList<Integer>();
-        for (Talk talk : favTalk) {
-          talkIds.add(talk.getId());
-        }
-
-        for (Talk talk : talks) {
-          if (talkIds.contains(talk.getId())) {
-            talk.setFavourite(true);
-            talk.setId(talk.getId());
-            talkDao.createOrUpdate(talk);
-          }
-        }
-        hideRefreshProgress(exploreSwipeRefreshView);
-        BusProvider.getInstance().post(new SyncSuccessEvent());
-
-        mTalks = talkDao.getTalkByDay(FIRST_DAY);
-
-        LOGD(TAG, "mTalks -> " + mTalks.size());
-        mScheduleAdapter.replaceWith(mTalks);
-        firstDayList.setAdapter(mScheduleAdapter);
-      }
-
-      @Override public void failure(RetrofitError error) {
-        hideRefreshProgress(exploreSwipeRefreshView);
-      }
-    });
+    // GA
+    AnalyticsManager.sendEvent("Explore First Day", "selecttalk", mTalks.get(position).getTitle());
   }
 }

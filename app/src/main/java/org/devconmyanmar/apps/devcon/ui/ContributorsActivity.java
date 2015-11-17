@@ -70,8 +70,10 @@ public class ContributorsActivity extends BaseActivity {
     ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     mToolbar.setTitle(getString(R.string.about_contributors));
-    getSupportActionBar().setHomeButtonEnabled(true);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setHomeButtonEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     if (ConnectionUtils.isOnline(this)) {
       getContrib();

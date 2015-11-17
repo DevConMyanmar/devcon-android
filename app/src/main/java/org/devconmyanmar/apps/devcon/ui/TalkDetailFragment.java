@@ -24,7 +24,6 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -45,7 +44,6 @@ import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
-import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
@@ -142,21 +140,23 @@ public class TalkDetailFragment extends BaseFragment {
     speakerAdapter.replaceWith(flatternSpeakers(mTalk.getSpeakers()));
 
     ArrayList<Speaker> mSpeakers = flatternSpeakers(mTalk.getSpeakers());
-
-    for (Speaker s : mSpeakers) {
-      final SpeakerItemView speakerItemView =
-          (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
-
-      speakerItemView.setId(s.getId());
-      speakerItemView.setBackgroundColor(Color.WHITE);
-      TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
-      TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
-
-      speakerName.setText(s.getName());
-      speakerAbstract.setText(s.getTitle());
-
-      realatedSpeakerWrapper.addView(speakerItemView);
-    }
+    LOGD(TAG, "mSpeakers " + mSpeakers.size());
+    //if (mSpeakers.size() > 0) {
+    //  for (Speaker s : mSpeakers) {
+    //    final SpeakerItemView speakerItemView =
+    //        (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
+    //
+    //    speakerItemView.setId(s.getId());
+    //    speakerItemView.setBackgroundColor(Color.WHITE);
+    //    TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
+    //    TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
+    //
+    //    speakerName.setText(s.getName());
+    //    speakerAbstract.setText(s.getTitle());
+    //
+    //    realatedSpeakerWrapper.addView(speakerItemView);
+    //  }
+    //}
 
     return rootView;
   }

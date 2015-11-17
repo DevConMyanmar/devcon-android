@@ -24,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,6 +45,7 @@ import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.ArrayList;
 import java.util.List;
+import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.model.Talk;
@@ -52,7 +54,7 @@ import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 /**
  * Created by yemyatthu on 11/13/14.
  */
-public class TalkChooserFragment extends BaseFragment {
+public class TalkChooserFragment extends BaseFragment implements TalkClickListener {
   @Bind(R.id.toolbar) Toolbar mToolbar;
   @Bind(R.id.my_list) RecyclerView mTalkChooserList;
   private List<Talk> lists;
@@ -78,7 +80,7 @@ public class TalkChooserFragment extends BaseFragment {
     View v = inflater.inflate(R.layout.fragment_speaker, container, false);
     ButterKnife.bind(this, v);
     mBaseActivity = (BaseActivity) getActivity();
-    ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getActivity());
+    ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getActivity(), this);
     mBaseActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mBaseActivity.getSupportActionBar();
     if (actionBar != null) {
@@ -95,11 +97,7 @@ public class TalkChooserFragment extends BaseFragment {
     mTalkChooserList.setAdapter(scheduleAdapter);
     //mTalkChooserList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     //  @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-    //    int id = lists.get(i).getId();
-    //
-    //    Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
-    //    intent.putExtra(POSITION, id);
-    //    startActivity(intent);
+
     //  }
     //});
 
@@ -140,5 +138,12 @@ public class TalkChooserFragment extends BaseFragment {
     }
 
     return mTalks;
+  }
+
+  @Override public void onTalkClick(Talk talk, View v, int position) {
+    int id = lists.get(position).getId();
+    Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
+    intent.putExtra(Config.POSITION, id);
+    startActivity(intent);
   }
 }

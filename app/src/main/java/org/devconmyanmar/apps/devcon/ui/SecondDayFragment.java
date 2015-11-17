@@ -24,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -39,6 +40,7 @@ import butterknife.ButterKnife;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
+import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.ScheduleAdapter;
 import org.devconmyanmar.apps.devcon.event.SyncSuccessEvent;
@@ -51,7 +53,7 @@ import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 /**
  * Created by Ye Lin Aung on 14/10/05.
  */
-public class SecondDayFragment extends BaseFragment {
+public class SecondDayFragment extends BaseFragment implements TalkClickListener {
 
   private static final String TAG = makeLogTag(SecondDayFragment.class);
   private static final String SECOND_DAY = "2015-11-22";
@@ -73,7 +75,7 @@ public class SecondDayFragment extends BaseFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mScheduleAdapter = new ScheduleAdapter(mContext);
+    mScheduleAdapter = new ScheduleAdapter(mContext, this);
     AnalyticsManager.sendScreenView(SCREEN_LABEL);
   }
 
@@ -113,19 +115,6 @@ public class SecondDayFragment extends BaseFragment {
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     secondDayList.setLayoutManager(linearLayoutManager);
 
-    //secondDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    //  @Override
-    //  public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-    //    int id = mTalks.get(position).getId();
-    //    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-    //    AnalyticsManager.sendEvent("Explore Second Day", "selecttalk",
-    //        mTalks.get(position).getTitle());
-    //
-    //    i.putExtra(POSITION, id);
-    //    startActivity(i);
-    //  }
-    //});
-
     return rootView;
   }
 
@@ -150,5 +139,14 @@ public class SecondDayFragment extends BaseFragment {
       default:
         return super.onOptionsItemSelected(item);
     }
+  }
+
+  @Override public void onTalkClick(Talk talk, View v, int position) {
+    int id = mTalks.get(position).getId();
+    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
+    AnalyticsManager.sendEvent("Explore Second Day", "selecttalk", mTalks.get(position).getTitle());
+
+    i.putExtra(Config.POSITION, id);
+    startActivity(i);
   }
 }
