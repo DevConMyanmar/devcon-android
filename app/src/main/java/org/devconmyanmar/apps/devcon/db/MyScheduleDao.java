@@ -36,6 +36,7 @@ import java.util.List;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Talk;
 
+import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -109,9 +110,10 @@ public class MyScheduleDao {
   }
 
   public List<Talk> favedTalk(MySchedule mySchedule) {
-    ArrayList<Talk> mTalks = new ArrayList<Talk>();
+    ArrayList<Talk> mTalks = new ArrayList<>();
     ArrayList<Talk> tempTalks = flatternSpeakers(mySchedule.getAssociatedTalkId());
     for (Talk talk : tempTalks) {
+      LOGD(TAG, "talk isFavourite ? " + talk.isFavourite());
       if (talk.isFavourite()) {
         mTalks.add(talk);
       }

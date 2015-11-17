@@ -26,6 +26,7 @@ package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,6 @@ import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.MySchedule;
 import org.devconmyanmar.apps.devcon.model.Speaker;
-import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
@@ -114,44 +114,44 @@ public class MyScheduleAdapter extends BaseAdapter {
     holder.mFavoriteScheduleSpeakers.setText(mySchedule.getSubTitle());
 
     holder.mFrameLayout.setBackgroundColor(
-        mContext.getResources().getColor(android.R.color.transparent));
+        ContextCompat.getColor(mContext, android.R.color.transparent));
     mySchedule.setId(mySchedule.getId());
     mySchedule.setHasFavorite(false);
     mySchedule.setFavoriteTalkId(0);
     myScheduleDao.createOrUpdate(mySchedule);
-    List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
-
-    if (favTalks.size() == 1) {
-      Talk talk = favTalks.get(0);
-      mySchedule.setId(((MySchedule) getItem(i)).getId());
-      mySchedule.setHasFavorite(true);
-      mySchedule.setFavoriteTalkId(talk.getId());
-
-      myScheduleDao.createOrUpdate(mySchedule);
-      holder.mFavoriteScheduleTitle.setText(talk.getTitle());
-      holder.mFromTime.setText(lFormattedFrom);
-      holder.mToTime.setText("to " + lFormattedTo);
-      holder.mFrameLayout.setBackgroundColor(
-          mContext.getResources().getColor(R.color.theme_accent_1_light));
-
-      ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
-      StringBuilder stringBuilder = new StringBuilder();
-      for (int j = 0; j < speakers.size(); j++) {
-        stringBuilder.append(speakers.get(j).getName());
-        // Do not append comma at the end of last element
-        if (j < (speakers.size() - 1)) {
-          stringBuilder.append(", ");
-        }
-
-        holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
-      }
-    }
-
-    if (favTalks.size() > 1) {
-      holder.mFavoriteScheduleTitle.setText(
-          "You have chosen more than one sessions in the same time \n"
-              + "Please remove one first.");
-    }
+    // FIXME To wait until the schedule is out
+    //List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
+    //LOGD(TAG, "favTalks " + favTalks.size());
+    //
+    //if (favTalks.size() == 1) {
+    //  Talk talk = favTalks.get(0);
+    //  mySchedule.setId(((MySchedule) getItem(i)).getId());
+    //  mySchedule.setHasFavorite(true);
+    //  mySchedule.setFavoriteTalkId(talk.getId());
+    //
+    //  myScheduleDao.createOrUpdate(mySchedule);
+    //  holder.mFavoriteScheduleTitle.setText(talk.getTitle());
+    //  holder.mFromTime.setText(lFormattedFrom);
+    //  holder.mToTime.setText("to " + lFormattedTo);
+    //  holder.mFrameLayout.setBackgroundColor(
+    //      ContextCompat.getColor(mContext, R.color.theme_accent_1_light));
+    //
+    //  ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
+    //  StringBuilder stringBuilder = new StringBuilder();
+    //  for (int j = 0; j < speakers.size(); j++) {
+    //    stringBuilder.append(speakers.get(j).getName());
+    //    // Do not append comma at the end of last element
+    //    if (j < (speakers.size() - 1)) {
+    //      stringBuilder.append(", ");
+    //    }
+    //
+    //    holder.mFavoriteScheduleSpeakers.setText(stringBuilder.toString());
+    //  }
+    //} else if (favTalks.size() > 1) {
+    //  holder.mFavoriteScheduleTitle.setText(
+    //      "You have chosen more than one sessions in the same time \n"
+    //          + "Please remove one first.");
+    //}
 
     return view;
   }
