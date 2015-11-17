@@ -140,7 +140,7 @@ public class TalkChooserFragment extends BaseFragment implements TalkClickListen
     return mTalks;
   }
 
-  @Override public void onTalkClick(Talk talk, View v, int position) {
+  @Override public void onTalkClick(View v, int position) {
     int id = lists.get(position).getId();
     Intent intent = new Intent(getActivity(), TalkChooserDetailActivity.class);
     intent.putExtra(Config.POSITION, id);

@@ -141,7 +141,7 @@ public class SecondDayFragment extends BaseFragment implements TalkClickListener
     }
   }
 
-  @Override public void onTalkClick(Talk talk, View v, int position) {
+  @Override public void onTalkClick(View v, int position) {
     int id = mTalks.get(position).getId();
     Intent i = new Intent(getActivity(), TalkDetailActivity.class);
     AnalyticsManager.sendEvent("Explore Second Day", "selecttalk", mTalks.get(position).getTitle());

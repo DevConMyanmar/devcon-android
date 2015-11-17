@@ -102,13 +102,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return new KeynoteViewHolder(keynoteView, talkClickListener);
       case VIEW_TYPE_NORMAL:
         View scheduleView = mInflater.inflate(R.layout.row_normal_schedule, viewGroup, false);
-        return new NormalViewHolder(scheduleView);
+        return new NormalViewHolder(scheduleView, talkClickListener);
       case VIEW_TYPE_WORKSHOP:
         View workshopView = mInflater.inflate(R.layout.row_workshop, viewGroup, false);
-        return new WorkshopViewHolder(workshopView);
+        return new WorkshopViewHolder(workshopView, talkClickListener);
       default:
         View defaultView = mInflater.inflate(R.layout.row_normal_schedule, viewGroup, false);
-        return new NormalViewHolder(defaultView);
+        return new NormalViewHolder(defaultView, talkClickListener);
     }
   }
 
@@ -198,14 +198,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Bind(R.id.keynote_title) TextView mKeynoteTitle;
     @Bind(R.id.keynote_time_and_place) TextView mKeyNoteTime;
 
-    Talk mTalk;
-
     public KeynoteViewHolder(View view, final TalkClickListener talkClickListener) {
       super(view);
       ButterKnife.bind(this, view);
       mKeynoteWrapper.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
-          talkClickListener.onTalkClick(mTalk, v, getAdapterPosition());
+          talkClickListener.onTalkClick(v, getAdapterPosition());
         }
       });
     }
@@ -218,20 +216,31 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Bind(R.id.normal_schedule_title) TextView mScheduleTitle;
     @Bind(R.id.normal_schedule_speakers) TextView mScheduleSpeakers;
 
-    public NormalViewHolder(View view) {
+    public NormalViewHolder(View view, final TalkClickListener talkClickListener) {
       super(view);
       ButterKnife.bind(this, view);
+      mNormalContainer.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          talkClickListener.onTalkClick(v, getAdapterPosition());
+        }
+      });
     }
   }
 
   static class WorkshopViewHolder extends RecyclerView.ViewHolder {
+    @Bind(R.id.workshop_wrapper) FrameLayout workshopWrapper;
     @Bind(R.id.workshop_background) ForegroundImageView mWorkshopBackground;
     @Bind(R.id.workshop_title) TextView mWorkshopTitle;
     @Bind(R.id.workshop_time_and_place) TextView mWorkshopTime;
 
-    public WorkshopViewHolder(View view) {
+    public WorkshopViewHolder(View view, final TalkClickListener talkClickListenerk) {
       super(view);
       ButterKnife.bind(this, view);
+      workshopWrapper.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          talkClickListenerk.onTalkClick(v, getAdapterPosition());
+        }
+      });
     }
   }
 }

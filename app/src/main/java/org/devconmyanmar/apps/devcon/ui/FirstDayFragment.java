@@ -198,7 +198,7 @@ public class FirstDayFragment extends BaseFragment implements TalkClickListener 
     }
   }
 
-  @Override public void onTalkClick(Talk talk, View v, int position) {
+  @Override public void onTalkClick(View v, int position) {
     int id = mTalks.get(position).getId();
     LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
     Intent i = new Intent(getActivity(), TalkDetailActivity.class);

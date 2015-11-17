@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    android:id="@+id/normal_card_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/normal_card_container"
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
->
+    >
+
   <android.support.v7.widget.CardView
       android:orientation="horizontal"
       android:layout_width="match_parent"
@@ -15,13 +16,14 @@
       android:layout_marginLeft="@dimen/spacing_pico"
       android:layout_marginRight="@dimen/spacing_pico"
       android:layout_marginBottom="@dimen/spacing_pico"
-  >
+      >
 
     <LinearLayout
         android:padding="@dimen/spacing_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    >
+        >
+
       <LinearLayout
           android:orientation="vertical"
           android:paddingLeft="@dimen/spacing_minor"
@@ -31,14 +33,14 @@
           android:gravity="center_horizontal"
           android:layout_width="@dimen/talk_time_column_width"
           android:layout_height="wrap_content"
-      >
+          >
 
         <TextView
             android:id="@+id/normal_schedule_from_time"
             tools:text="10:00 AM"
             style="@style/ScheduleView.TitleStyle"
             android:layout_width="wrap_content"
-        />
+            />
 
         <TextView
             android:id="@+id/normal_schedule_to_time"
@@ -49,20 +51,20 @@
             android:layout_gravity="start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        />
+            />
       </LinearLayout>
 
       <LinearLayout
           android:orientation="vertical"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-      >
+          >
 
         <TextView
             android:id="@+id/normal_schedule_title"
             style="@style/ScheduleView.TitleStyle"
             tools:text="Bringing Silicon Valley to Yangon"
-        />
+            />
 
         <TextView
             android:id="@+id/normal_schedule_speakers"
@@ -71,8 +73,11 @@
             tools:text="Bringing Silicon Valley to Yangon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        />
+            />
       </LinearLayout>
+
     </LinearLayout>
+
   </android.support.v7.widget.CardView>
+
 </FrameLayout>
