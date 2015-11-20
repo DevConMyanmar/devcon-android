@@ -1,9 +1,23 @@
-DevCon Myanmar 2015 Android Client
-----------------------------------
+# DevCon Myanmar Android App
+
+DevCon Myanmar is a developer conference held each year with two days of technical content featuring technical sessions and of demonstrations from developers showcasing their technologies.
+
+This project is the Android app for the conference. The app supports devices running Android 4.0+.
+
+## Features
+
+With the app, you can:
+
+- View the conference agenda 
+- View the speaker list 
+- Edit your personal schedule
+- View detailed session and speaker information, including speaker bios, photos
+
+## How to get the app
 
 Check the [releases](https://github.com/DevConMyanmar/devcon-android/releases/).
 
-![Devcon](https://raw.githubusercontent.com/DevConMyanmar/devcon-android-2014/master/devcon_screenshot.png)
+![Devcon Home Screen](https://raw.githubusercontent.com/DevConMyanmar/devcon-android/master/screenshot.png)
 
 It's also available on Play Store.
 
