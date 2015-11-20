@@ -48,7 +48,6 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.utils.TimeUtils;
 
-import static org.devconmyanmar.apps.devcon.utils.LogUtils.LOGD;
 import static org.devconmyanmar.apps.devcon.utils.LogUtils.makeLogTag;
 
 /**
@@ -121,9 +120,8 @@ public class MyScheduleAdapter extends BaseAdapter {
     mySchedule.setHasFavorite(false);
     mySchedule.setFavoriteTalkId(0);
     myScheduleDao.createOrUpdate(mySchedule);
-    // FIXME To wait until the schedule is out
     List<Talk> favTalks = myScheduleDao.favedTalk(mySchedule);
-    LOGD(TAG, "favTalks " + favTalks.size());
+    //LOGD(TAG, "favTalks " + favTalks.size());
 
     if (favTalks.size() == 1) {
       Talk talk = favTalks.get(0);
@@ -135,8 +133,8 @@ public class MyScheduleAdapter extends BaseAdapter {
       holder.mFavoriteScheduleTitle.setText(talk.getTitle());
       holder.mFromTime.setText(lFormattedFrom);
       holder.mToTime.setText("to " + lFormattedTo);
-      holder.mFrameLayout.setBackgroundColor(
-          ContextCompat.getColor(mContext, R.color.theme_accent_1_light));
+      //holder.mFrameLayout.setBackgroundColor(
+      //    ContextCompat.getColor(mContext, R.color.theme_accent_1_light));
 
       ArrayList<Speaker> speakers = flatternSpeakers(talk.getSpeakers());
       StringBuilder stringBuilder = new StringBuilder();
