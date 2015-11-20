@@ -157,16 +157,14 @@ public class FavoriteDayFragment extends BaseFragment {
       for (MySchedule mySchedule : mMySchedules) {
         if (mySchedule.getDate() == 0) {
           firstDay.add(mySchedule);
-        }
-        if (mySchedule.getDate() == 1) {
+        } else if (mySchedule.getDate() == 1) {
           secondDay.add(mySchedule);
         }
       }
 
       if (arg.getInt(POSITION_ARGS) == 0) {
         adapter.replaceWith(firstDay);
-      }
-      if (arg.getInt(POSITION_ARGS) == 1) {
+      } else if (arg.getInt(POSITION_ARGS) == 1) {
         adapter.replaceWith(secondDay);
       }
 

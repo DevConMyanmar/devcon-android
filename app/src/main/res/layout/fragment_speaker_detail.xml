@@ -1,9 +1,6 @@
-<org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:androidsucks="http://schemas.android.com/apk/res-auto"
-    androidsucks:stuckShadowDrawable="@drawable/sticky_shawdow"
-    androidsucks:stuckShadowHeight="10dip"
     android:id="@+id/talk_detail_scroll_view"
     android:background="@android:color/white"
     android:layout_width="match_parent"
@@ -47,8 +44,6 @@
               android:id="@+id/speaker_detail_name"
               tools:text="Paul Graham"
               android:paddingLeft="@dimen/spacing_major"
-              android:paddingStart="@dimen/spacing_major"
-              android:paddingEnd="@dimen/spacing_major"
               android:paddingTop="@dimen/spacing_major"
               android:textSize="@dimen/text_size_large"
               android:layout_width="match_parent"
@@ -98,24 +93,24 @@
           layout="@layout/divider"/>
 
       <!--<TextView-->
-          <!--android:text="@string/related_talks"-->
-          <!--style="@style/SessionDetailSectionHeader"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="wrap_content"/>-->
+      <!--android:text="@string/related_talks"-->
+      <!--style="@style/SessionDetailSectionHeader"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="wrap_content"/>-->
 
       <!--<include-->
       <!--android:id="@+id/include_speaker_list"-->
       <!--layout="@layout/speaker_list"/>-->
 
       <!--<include-->
-          <!--android:layout_margin="@dimen/spacing_major"-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="1dp"-->
-          <!--layout="@layout/divider"/>-->
+      <!--android:layout_margin="@dimen/spacing_major"-->
+      <!--android:layout_width="wrap_content"-->
+      <!--android:layout_height="1dp"-->
+      <!--layout="@layout/divider"/>-->
     </LinearLayout>
 
   </LinearLayout>
 
 
-</org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView>
+</ScrollView>
 

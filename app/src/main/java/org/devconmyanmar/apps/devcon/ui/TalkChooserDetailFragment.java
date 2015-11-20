@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -51,7 +52,6 @@ import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
 import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
-import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.HelpUtils;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
@@ -67,7 +67,7 @@ public class TalkChooserDetailFragment extends BaseFragment {
   private static final String SCREEN_LABEL = "Talk Detail";
 
   @Bind(R.id.talk_title) TextView mTalkTitle;
-  @Bind(R.id.talk_detail_scroll_view) StickyScrollView talkDetailScrollView;
+  @Bind(R.id.talk_detail_scroll_view) ScrollView talkDetailScrollView;
   @Bind(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @Bind(R.id.talk_description) TextView talkDescription;
   @Bind(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
@@ -128,7 +128,7 @@ public class TalkChooserDetailFragment extends BaseFragment {
     LOGD(TAG, "favourite ? " + isFavourite);
     showStarred(isFavourite, true);
 
-    talkDetailScrollView.hideActionBarOnScroll(true);
+    //talkDetailScrollView.hideActionBarOnScroll(true);
 
     // If talk type is keynote, don't show the add to fav button
     showAddToFav(mTalk);
