@@ -13,11 +13,11 @@ With the app, you can:
 - Edit your personal schedule
 - View detailed session and speaker information, including speaker bios, photos
 
+![Devcon Home Screen](https://raw.githubusercontent.com/DevConMyanmar/devcon-android/master/screenshot.png)
+
 ## How to get the app
 
 Check the [releases](https://github.com/DevConMyanmar/devcon-android/releases/).
-
-![Devcon Home Screen](https://raw.githubusercontent.com/DevConMyanmar/devcon-android/master/screenshot.png)
 
 It's also available on Play Store.
 
