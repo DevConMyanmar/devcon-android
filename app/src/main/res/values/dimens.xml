@@ -26,4 +26,6 @@
   <dimen name="talk_time_column_width">90dp</dimen>
 
   <dimen name="add_to_schedule_button_height">56dp</dimen> <!-- including padding -->
+
+  <dimen name="toolbar_elevation_height">4dp</dimen>
 </resources>

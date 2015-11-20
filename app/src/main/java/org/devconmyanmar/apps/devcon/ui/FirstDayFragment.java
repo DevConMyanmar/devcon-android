@@ -140,22 +140,6 @@ public class FirstDayFragment extends BaseFragment implements TalkClickListener 
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     firstDayList.setLayoutManager(linearLayoutManager);
 
-    //firstDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    // @Override public void onItemClick(AdapterView<?> adapterView, View view,
-    // int position, long l) {
-    //    int id = mTalks.get(position).getId();
-    //    LOGD(TAG, "Talk Type -> " + mTalks.get(position).getTalk_type());
-    //
-    //    // GA
-    //    AnalyticsManager.sendEvent("Explore First Day", "selecttalk",
-    //        mTalks.get(position).getTitle());
-    //
-    //    Intent i = new Intent(getActivity(), TalkDetailActivity.class);
-    //    i.putExtra(POSITION, id);
-    //    startActivity(i);
-    //  }
-    //});
-
     return rootView;
   }
 

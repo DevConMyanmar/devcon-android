@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
   <include layout="@layout/toolbar"
       android:id="@+id/toolbar"/>
 
-  <org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout
-      android:id="@+id/speaker_swipe_refresh_view"
-      android:layout_below="@+id/toolbar"
-      android:layout_width="wrap_content"
+  <FrameLayout
+      android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-    <include layout="@layout/speaker_list"
-        android:layout_below="@id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout
+        android:id="@+id/speaker_swipe_refresh_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-  </org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout>
-</RelativeLayout>
+      <include layout="@layout/speaker_list"
+          android:layout_below="@id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>
+
+    </org.devconmyanmar.apps.devcon.ui.widget.CustomSwipeRefreshLayout>
+
+    <include
+        layout="@layout/include_toolbar_shadow"
+        android:id="@+id/home_toolbar_shadow"
+    />
+  </FrameLayout>
+
+</LinearLayout>
 
