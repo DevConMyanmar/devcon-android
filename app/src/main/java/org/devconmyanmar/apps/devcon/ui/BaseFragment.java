@@ -37,6 +37,8 @@ import com.squareup.okhttp.OkHttpClient;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.devconmyanmar.apps.devcon.Config;
 import org.devconmyanmar.apps.devcon.db.MyScheduleDao;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
@@ -211,5 +213,14 @@ public abstract class BaseFragment extends Fragment {
   public int dpToPx(int dp) {
     DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
     return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+  }
+
+  public static boolean isMyanmarText(String str) {
+    Pattern normalRange = Pattern.compile("^[\\u1000-\\u109f]");
+    Pattern extendedRange = Pattern.compile("^[\\uaa60-\\uaa7f]");
+    Matcher normalMatcher = normalRange.matcher(str);
+    Matcher extendedMatcher = extendedRange.matcher(str);
+
+    return normalMatcher.find() || extendedMatcher.find();
   }
 }

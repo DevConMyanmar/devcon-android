@@ -41,6 +41,7 @@ import butterknife.OnClick;
 import com.google.gson.Gson;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.util.ArrayList;
+import mm.technomation.tmmtextutilities.mmtext;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
@@ -108,7 +109,12 @@ public class TalkDetailFragment extends BaseFragment {
     }
 
     mTalk = talkDao.getTalkById(mTalkId);
-    mTalkTitle.setText(mTalk.getTitle());
+
+    String talkTitle = mTalk.getTitle();
+    mTalkTitle.setText(talkTitle);
+    if (isMyanmarText(talkTitle)) {
+      mmtext.prepareView(mContext, mTalkTitle, mmtext.TEXT_UNICODE, true, true);
+    }
 
     AnalyticsManager.sendScreenView(SCREEN_LABEL + " : " + mTalk.getTitle());
 

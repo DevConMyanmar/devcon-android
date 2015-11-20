@@ -40,6 +40,9 @@ import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mm.technomation.tmmtextutilities.mmtext;
 import org.devconmyanmar.apps.devcon.R;
 import org.devconmyanmar.apps.devcon.db.SpeakerDao;
 import org.devconmyanmar.apps.devcon.model.Talk;
@@ -147,7 +150,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         String normalFormattedFrom = TimeUtils.parseFromToString(mTalk.getFrom_time());
         String normalFormattedTo = TimeUtils.parseFromToString(mTalk.getTo_time());
 
-        normalViewHolder.mScheduleTitle.setText(mTalk.getTitle());
+        String talkTitle = mTalk.getTitle();
+        normalViewHolder.mScheduleTitle.setText(talkTitle);
+        if (isMyanmarText(talkTitle)) {
+          mmtext.prepareView(mContext, normalViewHolder.mScheduleTitle, mmtext.TEXT_UNICODE, true,
+              true);
+        }
+
         normalViewHolder.mFromTime.setText(normalFormattedFrom);
         normalViewHolder.mToTime.setText(normalFormattedTo);
 
@@ -242,5 +251,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
       });
     }
+  }
+
+  public static boolean isMyanmarText(String str) {
+    Pattern normalRange = Pattern.compile("^[\\u1000-\\u109f]");
+    Pattern extendedRange = Pattern.compile("^[\\uaa60-\\uaa7f]");
+    Matcher normalMatcher = normalRange.matcher(str);
+    Matcher extendedMatcher = extendedRange.matcher(str);
+
+    return normalMatcher.find() || extendedMatcher.find();
   }
 }
