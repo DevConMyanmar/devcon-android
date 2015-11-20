@@ -56,8 +56,10 @@ public class TalkDetailActivity extends BaseActivity {
     ButterKnife.bind(this);
     setSupportActionBar(mToolbar);
     ActionBar actionBar = getSupportActionBar();
-    actionBar.setTitle(R.string.title_activity_schedule_detail);
-    actionBar.setDisplayHomeAsUpEnabled(true);
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.title_activity_schedule_detail);
+      actionBar.setDisplayHomeAsUpEnabled(true);
+    }
     Intent intent = getIntent();
     int position = intent.getIntExtra(POSITION, 0) - 1;
 

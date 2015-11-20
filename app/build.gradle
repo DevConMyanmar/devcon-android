@@ -21,7 +21,10 @@ def versionPatch = 0
 def versionBuild = 0
 
 def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
-def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
+
+def buildTime() {
+  return new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
+}
 
 android {
   compileSdkVersion 23
@@ -35,14 +38,30 @@ android {
     versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
     buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
-    buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+    buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
   }
+
+  signingConfigs {
+    release {
+      try {
+        keyAlias "devcon-2014"
+        storeFile file("../devcon-2014.jks")
+        storePassword KEYSTORE_PASSWORD
+        keyPassword KEY_PASSWORD
+      } catch (ex) {
+        ex.localizedMessage
+      }
+    }
+  }
+
 
   buildTypes {
     release {
       minifyEnabled true
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
+      buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
     }
   }
 

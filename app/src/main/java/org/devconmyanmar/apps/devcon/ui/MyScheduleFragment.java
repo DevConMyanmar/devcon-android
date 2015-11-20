@@ -81,9 +81,11 @@ public class MyScheduleFragment extends BaseFragment {
     ButterKnife.bind(this, view);
     mActivity.setSupportActionBar(mToolbar);
     ActionBar actionBar = mActivity.getSupportActionBar();
-    actionBar.setTitle(R.string.my_schedule_title);
-    actionBar.setDisplayHomeAsUpEnabled(true);
-    actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.my_schedule_title);
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+    }
     mSlidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
     int mPrimaryColor = ContextCompat.getColor(getActivity(), R.color.theme_primary);
     mSlidingTabLayout.setSelectedIndicatorColors(Color.WHITE);

@@ -24,6 +24,7 @@
 
 package org.devconmyanmar.apps.devcon.ui;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -44,6 +45,7 @@ import org.devconmyanmar.apps.devcon.adapter.SpeakerAdapter;
 import org.devconmyanmar.apps.devcon.model.Speaker;
 import org.devconmyanmar.apps.devcon.model.Talk;
 import org.devconmyanmar.apps.devcon.ui.widget.CheckableFrameLayout;
+import org.devconmyanmar.apps.devcon.ui.widget.SpeakerItemView;
 import org.devconmyanmar.apps.devcon.ui.widget.StickyScrollView;
 import org.devconmyanmar.apps.devcon.utils.AnalyticsManager;
 import org.devconmyanmar.apps.devcon.utils.LUtils;
@@ -63,7 +65,7 @@ public class TalkDetailFragment extends BaseFragment {
   @Bind(R.id.talk_time_and_room) TextView talkTimeAndRoom;
   @Bind(R.id.talk_description) TextView talkDescription;
   @Bind(R.id.add_schedule_button) CheckableFrameLayout mAddToFav;
-  @Bind(R.id.related_speaker_wrapper) LinearLayout realatedSpeakerWrapper;
+  @Bind(R.id.related_speaker_wrapper) LinearLayout relatedSpeakerWrapper;
 
   private LUtils mLUtils;
   private int mTalkId;
@@ -141,22 +143,22 @@ public class TalkDetailFragment extends BaseFragment {
 
     ArrayList<Speaker> mSpeakers = flatternSpeakers(mTalk.getSpeakers());
     LOGD(TAG, "mSpeakers " + mSpeakers.size());
-    //if (mSpeakers.size() > 0) {
-    //  for (Speaker s : mSpeakers) {
-    //    final SpeakerItemView speakerItemView =
-    //        (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
-    //
-    //    speakerItemView.setId(s.getId());
-    //    speakerItemView.setBackgroundColor(Color.WHITE);
-    //    TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
-    //    TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
-    //
-    //    speakerName.setText(s.getName());
-    //    speakerAbstract.setText(s.getTitle());
-    //
-    //    realatedSpeakerWrapper.addView(speakerItemView);
-    //  }
-    //}
+    if (mSpeakers.size() > 0) {
+      for (Speaker s : mSpeakers) {
+        final SpeakerItemView speakerItemView =
+            (SpeakerItemView) inflater.inflate(R.layout.speaker_layout, null, false);
+
+        speakerItemView.setId(s.getId());
+        speakerItemView.setBackgroundColor(Color.WHITE);
+        TextView speakerName = (TextView) speakerItemView.findViewById(R.id.speaker_title);
+        TextView speakerAbstract = (TextView) speakerItemView.findViewById(R.id.speaker_abstract);
+
+        speakerName.setText(s.getName());
+        speakerAbstract.setText(s.getTitle());
+
+        relatedSpeakerWrapper.addView(speakerItemView);
+      }
+    }
 
     return rootView;
   }

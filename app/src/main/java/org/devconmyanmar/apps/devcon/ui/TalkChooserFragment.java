@@ -85,7 +85,7 @@ public class TalkChooserFragment extends BaseFragment implements TalkClickListen
     ActionBar actionBar = mBaseActivity.getSupportActionBar();
     if (actionBar != null) {
       actionBar.setTitle(
-          getArguments().getString("START_TIME") + "-" + getArguments().getString("END_TIME"));
+          getArguments().getString("START_TIME") + " - " + getArguments().getString("END_TIME"));
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
@@ -95,11 +95,6 @@ public class TalkChooserFragment extends BaseFragment implements TalkClickListen
 
     mTalkChooserList.setLayoutManager(new LinearLayoutManager(mContext));
     mTalkChooserList.setAdapter(scheduleAdapter);
-    //mTalkChooserList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    //  @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-    //  }
-    //});
 
     if (Build.VERSION.SDK_INT >= 19) {
 
