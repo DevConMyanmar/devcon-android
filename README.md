@@ -1,9 +1,7 @@
-DevCon Myanmar 2014 Android Client
+DevCon Myanmar 2015 Android Client
 ----------------------------------
 
-This is a WIP Project and changing really fast.
-
-Check the [releases](https://github.com/DevConMyanmar/devcon-android-2014/releases).
+Check the [releases](https://github.com/DevConMyanmar/devcon-android/releases/).
 
 ![Devcon](https://raw.githubusercontent.com/DevConMyanmar/devcon-android-2014/master/devcon_screenshot.png)
 
