@@ -2,21 +2,21 @@
   "sessions": [
     {
       "id": "1",
-      "title": "Opening Announcement",
-      "description": "Opening Announcement",
+      "title": "Opening Ceremony",
+      "description": "Opening Ceremony",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "true",
       "talk_type": "1",
       "room": "conference",
       "from_time": "08:30",
-      "to_time": "08:33",
+      "to_time": "09:45",
       "speakers": []
     },
     {
       "id": "2",
-      "title": "DevCon Welcome Speech",
-      "description": "DevCon Welcome Speech",
+      "title": "DevCon Keynote Speech",
+      "description": "DevCon Keynote Speech",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "true",
@@ -25,171 +25,473 @@
       "from_time": "08:33",
       "to_time": "08:45",
       "speakers": [
-        "39"
+        "24"
       ]
     },
     {
       "id": "3",
-      "title": "Opening Speech (VIP)",
-      "description": "Opening Announcement",
+      "title": "Technopreneurs, not just Developers",
+      "description": "Technopreneurs, not just Developers",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "true",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "08:45",
-      "to_time": "09:00",
-      "speakers": []
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "22"
+      ]
     },
     {
       "id": "4",
-      "title": "Systems for the age of the Internet of Things",
-      "description": "Systems for the age of the Internet of Things",
+      "title": "တစ်ပင်တိုင် ၃၆၀",
+      "description": "တစ်ပင်တိုင် ၃၆၀",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
-      "room": "conference",
-      "from_time": "",
-      "to_time": "",
+      "room": "205",
+      "from_time": "10:00",
+      "to_time": "11:00",
       "speakers": [
-        "9"
+        "5"
       ]
     },
     {
       "id": "5",
-      "title": "Code with Security or Secure Coding",
-      "description": "Code with Security or Secure Coding",
-      "photo": "",
-      "date": "2015-11-22",
-      "favourite": "",
-      "talk_type": "2",
-      "room": "205",
-      "from_time": "",
-      "to_time": "",
-      "speakers": [
-        "10"
-      ]
-    },
-    {
-      "id": "6",
-      "title": "Function the Ultimate (JavaScript)",
-      "description": "Function the Ultimate (JavaScript)",
-      "photo": "",
-      "date": "2015-11-22",
-      "favourite": "",
-      "talk_type": "2",
-      "room": "conference",
-      "from_time": "",
-      "to_time": "",
-      "speakers": [
-        "8"
-      ]
-    },
-    {
-      "id": "7",
       "title": "Next Hot Key Technology of the Web Application",
       "description": "Next Hot Key Technology of the Web Application",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
-      "room": "conference",
-      "from_time": "",
-      "to_time": "",
+      "room": "203",
+      "from_time": "10:00",
+      "to_time": "11:00",
       "speakers": [
         "6"
       ]
     },
     {
-      "id": "8",
-      "title": "Wire up with Japanese Outsourcing",
-      "description": "Wire up with Japanese Outsourcing",
+      "id": "6",
+      "title": "Business for Customized OS",
+      "description": "Business for Customized OS",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
       "room": "conference",
-      "from_time": "",
-      "to_time": "",
+      "from_time": "11:00",
+      "to_time": "12:00",
       "speakers": [
-        "11"
+        "7"
       ]
     },
     {
-      "id": "9",
-      "title": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
-      "description": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
+      "id": "7",
+      "title": "Systems for the age of the Internet of Things",
+      "description": "Systems for the age of the Internet of Things",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
-      "room": "mcf",
-      "from_time": "",
-      "to_time": "",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
       "speakers": [
-        "12"
+        "9"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Function the Ultimate (JavaScript)",
+      "description": "Function the Ultimate (JavaScript)",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "8"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Building Better Cross-Platform Mobile Apps Faster",
+      "description": "Building Better Cross-Platform Mobile Apps Faster",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "18"
       ]
     },
     {
       "id": "10",
+      "title": "IoT for GPIO Zero",
+      "description": "Building Better Cross-Platform Mobile Apps Faster",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "7"
+      ]
+    },
+    {
+      "id": "11",
       "title": "A Large-scale Study of Statistical Machine Translation Methods for Myanmar Language",
       "description": "A Large-scale Study of Statistical Machine Translation Methods for Myanmar Language",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
-      "room": "mcf",
-      "from_time": "",
-      "to_time": "",
+      "room": "203",
+      "from_time": "13:00",
+      "to_time": "14:00",
       "speakers": [
         "13"
       ]
     },
     {
-      "id": "11",
+      "id": "12",
       "title": "Software Project Management 101",
       "description": "Software Project Management 101",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
-      "room": "205",
-      "from_time": "",
-      "to_time": "",
+      "room": "conference",
+      "from_time": "14:00",
+      "to_time": "15:00",
       "speakers": [
         "3"
       ]
     },
     {
-      "id": "12",
-      "title": "Experiences on Teaching and Mentoring Technology in Myanmar",
-      "description": "Experiences on Teaching and Mentoring Technology in Myanmar",
+      "id": "13",
+      "title": "Secure Coding or Code with Security",
+      "description": "Secure Coding or Code with Security",
       "photo": "",
       "date": "2015-11-21",
       "favourite": "",
       "talk_type": "2",
       "room": "205",
-      "from_time": "",
-      "to_time": "",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "10"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
+      "description": "Developing Myanmar Automatic Speech Recognition and Text to Speech Systems",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "speakers": [
+        "12"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Collecting, Visualizing and Analyzing Web Application Logs: The Programmer's Way",
+      "description": "Collecting, Visualizing and Analyzing Web Application Logs: The Programmer's Way",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "25"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "The Journey of a Mobile Developer",
+      "description": "The Journey of a Mobile Developer",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "17"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Organizations Security",
+      "description": "Organizations Security",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "15:00",
+      "to_time": "16:00",
+      "speakers": [
+        "26"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Robotic Frameworks",
+      "description": "Robotic Frameworks",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "16:00",
+      "to_time": "17:00",
+      "speakers": [
+        "20"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "3D Printing Technology",
+      "description": "3D Printing Technology",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "16:00",
+      "to_time": "17:00",
+      "speakers": [
+        "23"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Introduction to Human Computer Interaction",
+      "description": "Introduction to Human Computer Interaction",
+      "photo": "",
+      "date": "2015-11-21",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "16:00",
+      "to_time": "17:00",
+      "speakers": [
+        "27"
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Women in IT Industry",
+      "description": "Women in IT Industry",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "09:00",
+      "to_time": "10:00",
+      "speakers": [
+        "11"
+      ]
+    },
+    {
+      "id": "22",
+      "title": "Better Frontend Development Quality Beyond Bootstrap",
+      "description": "Better Frontend Development Quality Beyond Bootstrap",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "10:00",
+      "to_time": "11:00",
       "speakers": [
         "15"
       ]
     },
     {
-      "id": "13",
+      "id": "23",
+      "title": "Making Unicode Friendly Mobile Apps",
+      "description": "Making Unicode Friendly Mobile Apps",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "4"
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Project Management for ICT Infrastructure Implementation",
+      "description": "Project Management for ICT Infrastructure Implementation",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "10:00",
+      "to_time": "11:00",
+      "speakers": [
+        "16"
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Responsibility & Developing Mindset",
+      "description": "Responsibility & Developing Mindset",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "conference",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "29"
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Move to iOS",
+      "description": "Move to iOS",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "19"
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Getting Your First Client as a Freelancer",
+      "description": "Getting Your First Client as a Freelancer",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "11:00",
+      "to_time": "12:00",
+      "speakers": [
+        "2"
+      ]
+    },
+    {
+      "id": "28",
       "title": "Developer တစ်ယောက် အမှား တစ်သိန်း",
       "description": "Developer တစ်ယောက် အမှား တစ်သိန်း",
       "photo": "",
-      "date": "2015-11-21",
+      "date": "2015-11-22",
       "favourite": "",
       "talk_type": "2",
-      "room": "102",
-      "from_time": "",
-      "to_time": "",
+      "room": "conference",
+      "from_time": "13:00",
+      "to_time": "14:00",
       "speakers": [
         "1"
       ]
+    },
+    {
+      "id": "29",
+      "title": "Computerized Secret Hiding",
+      "description": "Computerized Secret Hiding",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "205",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "30"
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Experiences on Teaching and Mentoring Technology in Myanmar",
+      "description": "Experiences on Teaching and Mentoring Technology in Myanmar",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "",
+      "talk_type": "2",
+      "room": "203",
+      "from_time": "13:00",
+      "to_time": "14:00",
+      "speakers": [
+        "15"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Oblivious Transition (Moving Into Unicode-era)",
+      "description": "Oblivious Transition (Moving Into Unicode-era) Panel Discussion",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "08:30",
+      "to_time": "09:45",
+      "speakers": [
+        "4",
+        "30",
+        "31",
+        "32",
+        "33"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "Townhall Meeting (Open Discussion)",
+      "description": "Townhall Meeting (Open Discussion)",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "15:00",
+      "to_time": "16:30",
+      "speakers": []
+    },
+    {
+      "id": "33",
+      "title": "Closing Ceremony",
+      "description": "Closing Ceremony",
+      "photo": "",
+      "date": "2015-11-22",
+      "favourite": "true",
+      "talk_type": "1",
+      "room": "conference",
+      "from_time": "16:30",
+      "to_time": "17:00",
+      "speakers": []
     }
   ],
   "speakers": [
@@ -226,7 +528,7 @@
       "name": "Noe Noe",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2015/photos/Noe%20Noe.jpg"
     },
     {
       "id": "6",
@@ -247,7 +549,7 @@
       "name": "Thuya Myo Nyunt",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2015/photos/Thuya%20Myo%20Nyunt.jpg"
     },
     {
       "id": "9",
@@ -289,7 +591,7 @@
       "name": "Soe Thiha Naung",
       "title": "",
       "description": "",
-      "photo": ""
+      "photo": "http://devconmyanmar.org/2015/photos/Soe%20Thiha%20Naung.jpg"
     },
     {
       "id": "15",
@@ -353,6 +655,76 @@
       "title": "",
       "description": "",
       "photo": ""
+    },
+    {
+      "id": "24",
+      "name": "U Win Htein Win",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "25",
+      "name": "Ye Thura Thet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "26",
+      "name": "College Phyoth",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "27",
+      "name": "Ye Lin Kyaw",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "28",
+      "name": "Cho Zin Wint",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "29",
+      "name": "Zaw Min Aung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "30",
+      "name": "Htoo Myint Naung",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "31",
+      "name": "Dr. Tun Thura Thet",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "32",
+      "name": "Dr. Zaw Tun",
+      "title": "",
+      "description": "",
+      "photo": ""
+    },
+    {
+      "id": "33",
+      "name": "Soe Naung Win",
+      "title": "",
+      "description": "",
+      "photo": ""
     }
   ],
   "my_schedules": [
@@ -365,9 +737,9 @@
       "sub_title": "Click to view",
       "date": "0",
       "associated_talk": [
-        "7",
-        "13",
-        "18"
+        "3",
+        "4",
+        "5"
       ]
     },
     {
@@ -379,9 +751,9 @@
       "sub_title": "Click to view",
       "date": "0",
       "associated_talk": [
-        "8",
-        "14",
-        "19"
+        "6",
+        "7",
+        "8"
       ]
     },
     {
@@ -404,9 +776,8 @@
       "date": "0",
       "associated_talk": [
         "9",
-        "15",
-        "20",
-        "24"
+        "10",
+        "11"
       ]
     },
     {
@@ -418,9 +789,9 @@
       "sub_title": "Click to View",
       "date": "0",
       "associated_talk": [
-        "10",
-        "21",
-        "24"
+        "12",
+        "13",
+        "14"
       ]
     },
     {
@@ -432,10 +803,9 @@
       "sub_title": "Click to View",
       "date": "0",
       "associated_talk": [
-        "11",
+        "15",
         "16",
-        "22",
-        "24"
+        "17"
       ]
     },
     {
@@ -447,29 +817,13 @@
       "sub_title": "Click to View",
       "date": "0",
       "associated_talk": [
-        "12",
-        "17",
-        "23",
-        "24"
+        "18",
+        "19",
+        "20"
       ]
     },
     {
       "id": "7",
-      "title": "Browse Sessions",
-      "start": "09:00",
-      "end": "10:00",
-      "click_block": "false",
-      "sub_title": "Click to view",
-      "date": "1",
-      "associated_talk": [
-        "25",
-        "31",
-        "37",
-        "42"
-      ]
-    },
-    {
-      "id": "8",
       "title": "Browse Sessions",
       "start": "10:00",
       "end": "11:00",
@@ -477,10 +831,9 @@
       "sub_title": "Click to view",
       "date": "1",
       "associated_talk": [
-        "26",
-        "32",
-        "38",
-        "42"
+        "22",
+        "23",
+        "24"
       ]
     },
     {
@@ -492,10 +845,9 @@
       "sub_title": "Click to view",
       "date": "1",
       "associated_talk": [
-        "27",
-        "33",
-        "39",
-        "42"
+        "25",
+        "26",
+        "27"
       ]
     },
     {
@@ -518,35 +870,8 @@
       "date": "1",
       "associated_talk": [
         "28",
-        "34",
-        "40"
-      ]
-    },
-    {
-      "id": "12",
-      "title": "Browse Sessions",
-      "start": "14:00",
-      "end": "15:00",
-      "click_block": "false",
-      "sub_title": "Click to View",
-      "date": "1",
-      "associated_talk": [
         "29",
-        "35",
-        "41"
-      ]
-    },
-    {
-      "id": "13",
-      "title": "Browse Sessions",
-      "start": "15:00",
-      "end": "16:00",
-      "click_block": "false",
-      "sub_title": "Click to View",
-      "date": "1",
-      "associated_talk": [
-        "30",
-        "36"
+        "30"
       ]
     }
   ]
