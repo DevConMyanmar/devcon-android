@@ -18,23 +18,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/activated_background">
+    android:background="@drawable/activated_background"
+    >
   <ImageView
       android:id="@+id/drawer_icon"
-      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:layout_gravity="center_vertical"
       android:layout_marginLeft="10dp"
-      android:layout_marginRight="20dp"/>
-<TextView
-    android:id="@android:id/text1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:layout_gravity="center_vertical"
-    android:gravity="center_vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="8dp"
-    android:textColor="@android:color/black"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"/>
-  </LinearLayout>
+      android:layout_marginStart="10dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginEnd="20dp"
+      />
+  <TextView
+      android:id="@android:id/text1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceListItemSmall"
+      android:layout_gravity="center_vertical"
+      android:gravity="center_vertical"
+      android:paddingLeft="16dp"
+      android:paddingRight="16dp"
+      android:paddingBottom="8dp"
+      android:textColor="@android:color/black"
+      android:minHeight="?android:attr/listPreferredItemHeightSmall"
+      />
+</LinearLayout>

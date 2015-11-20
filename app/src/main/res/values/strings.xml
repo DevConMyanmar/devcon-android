@@ -39,10 +39,8 @@
   <!-- Navigation Drawer Item -->
   <array name="nav_drawer_items">
     <item>My Schedules</item>
-    <item>Lightening Talks</item>
     <item>Explore</item>
     <item>Speakers</item>
-    <item>Sponsors</item>
   </array>
 
   <!-- Speaker Item -->

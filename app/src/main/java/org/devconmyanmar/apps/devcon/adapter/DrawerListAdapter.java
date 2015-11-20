@@ -25,6 +25,7 @@
 package org.devconmyanmar.apps.devcon.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class DrawerListAdapter extends BaseAdapter {
   }
 
   @Override public int getCount() {
-    return 5;
+    return 3;
   }
 
   @Override public Object getItem(int i) {
@@ -67,12 +68,10 @@ public class DrawerListAdapter extends BaseAdapter {
 
   @Override public View getView(int i, View view, ViewGroup viewGroup) {
     mNavDrawerItems = mContext.getResources().getStringArray(R.array.nav_drawer_items);
-    ArrayList<Integer> drawerIcons = new ArrayList<Integer>();
+    ArrayList<Integer> drawerIcons = new ArrayList<>();
     drawerIcons.add(R.drawable.ic_drawer_my_schedule);
-    drawerIcons.add(R.drawable.ic_drawer_social);
     drawerIcons.add(R.drawable.ic_drawer_explore);
     drawerIcons.add(R.drawable.ic_drawer_people_met);
-    drawerIcons.add(R.drawable.ic_drawer_explore);
 
     ViewHolder holder;
     if (view != null) {
@@ -85,13 +84,13 @@ public class DrawerListAdapter extends BaseAdapter {
     }
     holder.mText1.setText((String) getItem(i));
     if (mCurrentSelectedPosition == i) {
-      holder.mText1.setTextColor(mContext.getResources().getColor(R.color.theme_primary));
+      holder.mText1.setTextColor(ContextCompat.getColor(mContext, R.color.theme_primary));
     } else {
-      holder.mText1.setTextColor(mContext.getResources().getColor(android.R.color.black));
+      holder.mText1.setTextColor(ContextCompat.getColor(mContext, android.R.color.black));
     }
     holder.mDrawerIcon.setImageResource(drawerIcons.get(i));
     if (mCurrentSelectedPosition == i) {
-      holder.mDrawerIcon.setColorFilter(mContext.getResources().getColor(R.color.theme_primary));
+      holder.mDrawerIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.theme_primary));
     } else {
       holder.mDrawerIcon.clearColorFilter();
     }

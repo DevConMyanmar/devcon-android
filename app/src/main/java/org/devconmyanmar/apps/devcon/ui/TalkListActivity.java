@@ -62,28 +62,23 @@ public class TalkListActivity extends BaseActivity
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
         (DrawerLayout) findViewById(R.id.drawer_layout));
 
-    int fragmentNo = getIntent().getIntExtra("Fragment", 2);
+    int fragmentNo = getIntent().getIntExtra("Fragment", 1);
     switch (fragmentNo) {
       case 0:
         fragment = MyScheduleFragment.getInstance();
         ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(0);
         break;
       case 1:
-        fragment = LighteningTalksFragment.getInstance();
-        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
+        fragment = ExploreFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
         break;
       case 2:
-        fragment = ExploreFragment.getInstance();
+        fragment = SpeakerFragment.getInstance();
         ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(2);
         break;
-      case 3:
-        fragment = SpeakerFragment.getInstance();
-        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(3);
-      case 4:
-        fragment = SpeakerFragment.getInstance();
-        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(4);
-        break;
       default:
+        fragment = ExploreFragment.getInstance();
+        ((DrawerListAdapter) mNavigationDrawerFragment.mDrawerListView.getAdapter()).setChecked(1);
         break;
     }
   }
@@ -95,16 +90,10 @@ public class TalkListActivity extends BaseActivity
         fragment = MyScheduleFragment.getInstance();
         break;
       case 1:
-        fragment = LighteningTalksFragment.getInstance();
-        break;
-      case 2:
         fragment = ExploreFragment.getInstance();
         break;
-      case 3:
+      case 2:
         fragment = SpeakerFragment.getInstance();
-        break;
-      case 4:
-        fragment = SponsorFragment.getInstance();
         break;
     }
 
